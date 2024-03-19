@@ -1,23 +1,23 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://phjkyxyerh35"]
 
-[ext_resource type="Texture2D" path="res://Gamedev/Main/Characters/Cube.png" id="1_j3x3k"]
+[ext_resource type="Texture2D" uid="uid://clc0jhcll1vbx" path="res://Gamedev/Main/Characters/CavePlayer/Cube.png" id="1_jlbqc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpn7m"]
-atlas = ExtResource("1_j3x3k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fwpd"]
+atlas = ExtResource("1_jlbqc")
 region = Rect2(0, 0, 10, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnr4q"]
-atlas = ExtResource("1_j3x3k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjurg"]
+atlas = ExtResource("1_jlbqc")
 region = Rect2(0, 10, 10, 10)
 
 [resource]
 animations = [{
 "frames": [{
-"duration": 20.0,
-"texture": SubResource("AtlasTexture_gpn7m")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fwpd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pnr4q")
+"texture": SubResource("AtlasTexture_mjurg")
 }],
 "loop": true,
 "name": &"default",

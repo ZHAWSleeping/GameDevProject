@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dq8vqcccyvj0x"]
+
+[node name="Deathbox" type="Area2D"]
+collision_layer = 8
+collision_mask = 0

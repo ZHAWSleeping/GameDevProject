@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmo2ksosfmxbx"]
+[gd_scene load_steps=5 format=3 uid="uid://cmo2ksosfmxbx"]
 
 [ext_resource type="PackedScene" uid="uid://c8aflbixp4njy" path="res://Gamedev/Main/Tiles/Basic.tscn" id="1_shlny"]
-[ext_resource type="PackedScene" uid="uid://cfu65xqbnp57n" path="res://Gamedev/Main/Characters/Player.tscn" id="2_mi7xp"]
+[ext_resource type="PackedScene" uid="uid://bdex20ybgovrs" path="res://Gamedev/Main/Characters/Player.tscn" id="2_mi7xp"]
+[ext_resource type="PackedScene" uid="uid://dq8vqcccyvj0x" path="res://Gamedev/Main/Characters/DeathBox.tscn" id="3_8yyp6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5h7b"]
+size = Vector2(107, 20)
 
 [node name="Level1" type="Node2D"]
 
 [node name="Basic" parent="." instance=ExtResource("1_shlny")]
 layer_0/tile_data = PackedInt32Array(196605, 524288, 0, 196606, 655360, 0, 196607, 655360, 0, 131072, 655360, 0, 131073, 655360, 0, 131074, 655360, 0, 196610, 589824, 3, 196609, 589824, 3, 196608, 589824, 3, 262143, 589824, 3, 262142, 589824, 3, 262141, 524288, 3, 131075, 655360, 0, 131076, 720896, 0, 196612, 720896, 3, 196611, 589824, 3, 131080, 524288, 0, 131081, 655360, 0, 131082, 655360, 0, 131083, 655360, 0, 131084, 655360, 0, 131085, 655360, 0, 131086, 720896, 0, 196622, 720896, 3, 196621, 589824, 3, 196620, 589824, 3, 196619, 589824, 3, 196618, 589824, 3, 196617, 589824, 3, 196616, 524288, 3)
 
-[node name="Player" parent="." node_paths=PackedStringArray("Sprite", "Dot", "Footsteps", "DeathSound") instance=ExtResource("2_mi7xp")]
+[node name="Player" parent="." instance=ExtResource("2_mi7xp")]
 position = Vector2(14, -2)
-Sprite = NodePath("DirectionalSprite")
-Dot = NodePath("")
-Footsteps = NodePath("Footsteps")
-DeathSound = NodePath("DeathSound")
+
+[node name="Deathbox" parent="." instance=ExtResource("3_8yyp6")]
+position = Vector2(33, 66)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathbox"]
+position = Vector2(28.5, 0)
+shape = SubResource("RectangleShape2D_w5h7b")
