@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1y6odqenmgif"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Tiles/Darkness.cs" id="1_tfw8a"]
+
+[node name="Darkness" type="CanvasModulate"]
+script = ExtResource("1_tfw8a")

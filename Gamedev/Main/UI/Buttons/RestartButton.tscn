@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://osuh67gsbt6n"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Buttons/RestartButton.cs" id="1_cyguo"]
+
+[node name="RestartButton" type="Button"]
+auto_translate_mode = 1
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+script = ExtResource("1_cyguo")

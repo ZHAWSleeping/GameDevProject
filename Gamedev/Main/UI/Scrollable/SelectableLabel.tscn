@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://crd67hbvwbknw"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.cs" id="1_33awd"]
+[ext_resource type="AudioStream" uid="uid://cwgl1jktaeiwu" path="res://Gamedev/Main/Audio/hammer.wav" id="2_kqt38"]
+[ext_resource type="AudioStream" uid="uid://v14b7rjar0vu" path="res://Gamedev/Main/Audio/accept.wav" id="3_c6u7n"]
+
+[node name="SelectableLabel" type="Label" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio")]
+auto_translate_mode = 1
+theme_override_font_sizes/font_size = 86
+text = "NULL"
+horizontal_alignment = 1
+script = ExtResource("1_33awd")
+PrimaryColor = Color(0.3168, 0.88, 0.37312, 1)
+SecondaryColor = Color(0.8799, 0.9, 0.297, 1)
+SelectAudio = NodePath("Select")
+ConfirmAudio = NodePath("Confirm")
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_kqt38")
+volume_db = -8.0
+bus = &"UI"
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_c6u7n")
+volume_db = -16.0
+pitch_scale = 1.5
+bus = &"UI"

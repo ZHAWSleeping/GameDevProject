@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc3up4rukdl00"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Buttons/QuitButton.cs" id="1_xeww5"]
+
+[node name="QuitButton" type="Button"]
+auto_translate_mode = 1
+theme_override_font_sizes/font_size = 72
+text = "Quit
+"
+script = ExtResource("1_xeww5")

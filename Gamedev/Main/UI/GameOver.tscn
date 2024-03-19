@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://chdku2xe1ftxv"]
+
+[ext_resource type="Shader" path="res://Gamedev/Main/UI/Blur.gdshader" id="1_xtvcv"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/GameOver.cs" id="2_01iny"]
+[ext_resource type="PackedScene" uid="uid://osuh67gsbt6n" path="res://Gamedev/Main/UI/Buttons/RestartButton.tscn" id="3_4intb"]
+[ext_resource type="PackedScene" uid="uid://dc3up4rukdl00" path="res://Gamedev/Main/UI/Buttons/QuitButton.tscn" id="3_oorm6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7i1r"]
+shader = ExtResource("1_xtvcv")
+
+[sub_resource type="Gradient" id="Gradient_xpj2u"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_un0ax"]
+gradient = SubResource("Gradient_xpj2u")
+
+[node name="GameOver" type="TextureRect"]
+material = SubResource("ShaderMaterial_j7i1r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_un0ax")
+script = ExtResource("2_01iny")
+BlurAmount = 2.0
+BlurDuration = 0.25
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_right = 500
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 78
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_4intb")]
+layout_mode = 2
+
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_oorm6")]
+layout_mode = 2

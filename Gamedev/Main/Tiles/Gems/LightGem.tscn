@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://fiukj25nkvj4"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Tiles/Gems/LightGem.cs" id="1_2r3gk"]
+[ext_resource type="Texture2D" uid="uid://ditvxb341qxlh" path="res://Gamedev/Main/Tiles/Gems/LightGem.png" id="1_7cjb5"]
+[ext_resource type="AudioStream" uid="uid://ck6cekb78mvs6" path="res://Gamedev/Main/Audio/Ping.wav" id="3_ouks8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85h7g"]
+atlas = ExtResource("1_7cjb5")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lxpc"]
+atlas = ExtResource("1_7cjb5")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fyq2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85h7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lxpc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_o6i60"]
+offsets = PackedFloat32Array(0.07393, 0.653696)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rpt11"]
+gradient = SubResource("Gradient_o6i60")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2cav"]
+
+[node name="LightGem" type="Area2D" node_paths=PackedStringArray("GemSprite", "PrimaryLight", "SecondaryLight", "PingSound")]
+collision_layer = 0
+script = ExtResource("1_2r3gk")
+GemSprite = NodePath("AnimatedSprite2D")
+PrimaryLight = NodePath("PointLight2D")
+SecondaryLight = NodePath("PointLight2D2")
+LitModulate = Color(2, 2, 2, 1)
+PingSound = NodePath("Ping")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 8
+sprite_frames = SubResource("SpriteFrames_fyq2c")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 0
+enabled = false
+range_item_cull_mask = 86
+shadow_enabled = true
+shadow_item_cull_mask = 86
+texture = SubResource("GradientTexture2D_rpt11")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+light_mask = 0
+enabled = false
+blend_mode = 2
+range_item_cull_mask = 42
+shadow_item_cull_mask = 0
+texture = SubResource("GradientTexture2D_rpt11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d2cav")
+
+[node name="Ping" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ouks8")
+volume_db = -8.0
+pitch_scale = 4.0
+bus = &"SFX"

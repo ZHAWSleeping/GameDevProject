@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://25q4qsexy41w"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_bu5ai"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Title/OptionsLabel.cs" id="2_jtttd"]
+
+[node name="SelectableLabel" instance=ExtResource("1_bu5ai")]
+text = "Options"
+script = ExtResource("2_jtttd")

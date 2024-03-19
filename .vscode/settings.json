@@ -1,0 +1,4 @@
+{
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    "rest-client.enableTelemetry": false,
+}

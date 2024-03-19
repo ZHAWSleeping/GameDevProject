@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://brwpaqk7l6bsx"]
+
+[node name="FPSCounter" type="Label"]
+offset_left = 44.0
+offset_top = 38.0
+offset_right = 138.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 20
+text = "FPS 000"

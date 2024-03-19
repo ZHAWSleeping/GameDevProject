@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://i7mp2a65iege"]
+
+[sub_resource type="Gradient" id="Gradient_mjc0a"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.13363, 0.11448, 0.243619, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6jylr"]
+gradient = SubResource("Gradient_mjc0a")
+width = 320
+
+[node name="Background" type="Sprite2D"]
+light_mask = 2
+z_index = -1
+scale = Vector2(1, 180)
+texture = SubResource("GradientTexture1D_6jylr")
+centered = false

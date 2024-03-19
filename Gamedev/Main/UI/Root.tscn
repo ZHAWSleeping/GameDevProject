@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://h6d7kbhyxf08"]
+
+[ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
+[ext_resource type="PackedScene" uid="uid://chdku2xe1ftxv" path="res://Gamedev/Main/UI/GameOver.tscn" id="2_tofx8"]
+[ext_resource type="PackedScene" uid="uid://bnr32jwpw6hmg" path="res://Gamedev/Main/Rendering/DefaultEnvironment.tscn" id="3_nom6r"]
+[ext_resource type="PackedScene" uid="uid://ce1jks86gaxc0" path="res://Gamedev/Main/UI/SlidingOverlay.tscn" id="4_3uud4"]
+[ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/FPSCounter.cs" id="6_kupfl"]
+[ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2ass6"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_afext")
+GameOverScene = ExtResource("2_tofx8")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_nom6r")]
+
+[node name="FPSCounter" parent="." instance=ExtResource("5_2e066")]
+z_index = 2
+layout_mode = 1
+script = ExtResource("6_kupfl")
+
+[node name="GameViewport" parent="." instance=ExtResource("1_631j5")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_2ass6")
+
+[node name="SlidingOverlay" parent="." instance=ExtResource("4_3uud4")]
+visible = false
+z_index = 1
+layout_mode = 1
+
+[node name="PauseScreen" parent="." node_paths=PackedStringArray("Menu", "Audio") instance=ExtResource("7_k48l2")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+Menu = NodePath("ScrollableVBox")
+Audio = NodePath("AudioStreamPlayer")

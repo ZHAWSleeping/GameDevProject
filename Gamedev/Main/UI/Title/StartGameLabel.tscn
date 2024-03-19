@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwlc7ugncruug"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_12w8s"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Title/StartGameLabel.cs" id="2_wbse2"]
+
+[node name="StartGameLabel" instance=ExtResource("1_12w8s")]
+text = "Start"
+script = ExtResource("2_wbse2")
+Game = null

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://rg8sx2isblsy"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_okae3"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Pause/ContinueLabel.cs" id="2_qj2yf"]
+
+[node name="ContinueLabel" instance=ExtResource("1_okae3")]
+text = "Continue"
+script = ExtResource("2_qj2yf")

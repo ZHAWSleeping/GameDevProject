@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://e63rrywsw4bb"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_2ixvs"]
+[ext_resource type="Script" path="res://RestartLabel.cs" id="2_bgqwv"]
+
+[node name="RestartLabel" instance=ExtResource("1_2ixvs")]
+text = "Restart"
+script = ExtResource("2_bgqwv")

@@ -1,0 +1,31 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://ce81nepoc4uy3"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_q7vq0"]
+resource_name = "Reverb"
+room_size = 0.56
+damping = 0.24
+spread = 0.47
+hipass = 0.06
+wet = 0.56
+
+[resource]
+bus/1/name = &"Ambiance"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"UI"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"SFX"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_q7vq0")
+bus/3/effect/0/enabled = true
