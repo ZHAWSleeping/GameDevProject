@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg2fd3mj0fneu"]
+[gd_scene load_steps=8 format=3 uid="uid://bg2fd3mj0fneu"]
 
 [ext_resource type="PackedScene" uid="uid://c8aflbixp4njy" path="res://Gamedev/Main/Tiles/Basic.tscn" id="1_26wh1"]
 [ext_resource type="PackedScene" uid="uid://cdraokc8w7as3" path="res://Gamedev/Main/Tiles/LoadingZone/LoadingZone.tscn" id="1_q5p8m"]
 [ext_resource type="PackedScene" uid="uid://i7mp2a65iege" path="res://Gamedev/Main/Tiles/Background.tscn" id="1_qnprt"]
 [ext_resource type="PackedScene" uid="uid://da8visnr5i2yh" path="res://Gamedev/Main/Level/PlayerCamera.tscn" id="3_e7yj6"]
+[ext_resource type="PackedScene" uid="uid://b4o60hnap32vo" path="res://Gamedev/Main/Characters/Player/Player.tscn" id="7_b3ad8"]
 [ext_resource type="AudioStream" uid="uid://ciap1puxr0pid" path="res://Gamedev/Main/Audio/trickle.wav" id="8_2s0bu"]
 [ext_resource type="AudioStream" uid="uid://c7ujjfsmenikv" path="res://Gamedev/Main/Audio/CaveDrone.wav" id="8_b3l2v"]
 
@@ -113,3 +114,6 @@ volume_db = -16.0
 autoplay = true
 max_distance = 200.0
 area_mask = 0
+
+[node name="Player" parent="." instance=ExtResource("7_b3ad8")]
+position = Vector2(123, 89)

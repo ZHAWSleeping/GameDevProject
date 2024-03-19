@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4o60hnap32vo"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_8ykvk"]
+[ext_resource type="SpriteFrames" uid="uid://dcg43b6gpim04" path="res://Gamedev/Main/Characters/CavePlayer/Cube.tres" id="2_5rbin"]
+[ext_resource type="PackedScene" uid="uid://xlx0k7vpgxe" path="res://Gamedev/Main/Characters/CavePlayer/ZoneTrigger.tscn" id="3_gnjan"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cxf4"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prcd5"]
+size = Vector2(10, 10)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_8ykvk")
+Speed = 200.0
+JumpVelocity = -300.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_5rbin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0cxf4")
+
+[node name="ZoneTrigger" parent="." instance=ExtResource("3_gnjan")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTrigger"]
+shape = SubResource("RectangleShape2D_prcd5")
