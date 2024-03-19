@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xlx0k7vpgxe"]
 
-[ext_resource type="Script" path="res://Gamedev/Main/Characters/ZoneTrigger.cs" id="1_vs5wu"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/CavePlayer/ZoneTrigger.cs" id="1_vs5wu"]
 
 [node name="ZoneTrigger" type="Area2D"]
 collision_layer = 0

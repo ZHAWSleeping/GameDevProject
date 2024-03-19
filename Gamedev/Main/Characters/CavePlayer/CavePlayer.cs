@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Gamedev.Main.Characters
 {
-	public partial class Player : CharacterBody2D
+	public partial class CavePlayer : CharacterBody2D
 	{
 		[Export]
 		private float Speed = 300.0f;

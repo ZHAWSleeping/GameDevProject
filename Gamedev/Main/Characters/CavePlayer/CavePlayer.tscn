@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://cfu65xqbnp57n"]
 
-[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player.cs" id="1_8mqi3"]
-[ext_resource type="SpriteFrames" uid="uid://dcg43b6gpim04" path="res://Gamedev/Main/Characters/Cube.tres" id="1_bohwi"]
-[ext_resource type="PackedScene" uid="uid://cnlq1wjmouub8" path="res://Gamedev/Main/Characters/DirectionalSprite.tscn" id="2_gjgrm"]
-[ext_resource type="PackedScene" uid="uid://xlx0k7vpgxe" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
-[ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/step_wood.wav" id="5_vwthq"]
-[ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Death.wav" id="6_hdsnq"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/CavePlayer/CavePlayer.cs" id="1_7l4wm"]
+[ext_resource type="PackedScene" uid="uid://cnlq1wjmouub8" path="res://Gamedev/Main/Characters/DirectionalSprite.tscn" id="2_vcn0l"]
+[ext_resource type="SpriteFrames" uid="uid://dcg43b6gpim04" path="res://Gamedev/Main/Characters/CavePlayer/Cube.tres" id="3_mwuvb"]
+[ext_resource type="PackedScene" uid="uid://xlx0k7vpgxe" path="res://Gamedev/Main/Characters/CavePlayer/ZoneTrigger.tscn" id="4_1dcmt"]
+[ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/step_wood.wav" id="5_3b4vl"]
+[ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Death.wav" id="6_yjfjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
 size = Vector2(10, 10)
@@ -28,10 +28,10 @@ fill_to = Vector2(0.880342, 0.102564)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4f21t"]
 polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "Footsteps", "DeathSound")]
+[node name="CavePlayer" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "Footsteps", "DeathSound")]
 light_mask = 32
 collision_mask = 3
-script = ExtResource("1_8mqi3")
+script = ExtResource("1_7l4wm")
 Speed = 80.0
 Sprite = NodePath("DirectionalSprite")
 Footsteps = NodePath("Footsteps")
@@ -40,13 +40,13 @@ DeathSound = NodePath("DeathSound")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tps25")
 
-[node name="DirectionalSprite" parent="." instance=ExtResource("2_gjgrm")]
+[node name="DirectionalSprite" parent="." instance=ExtResource("2_vcn0l")]
 modulate = Color(2, 2, 2, 1)
 light_mask = 32
-sprite_frames = ExtResource("1_bohwi")
+sprite_frames = ExtResource("3_mwuvb")
 autoplay = "default"
 
-[node name="ZoneTrigger" parent="." instance=ExtResource("4_oqr5q")]
+[node name="ZoneTrigger" parent="." instance=ExtResource("4_1dcmt")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTrigger"]
 shape = SubResource("RectangleShape2D_bgfme")
@@ -71,14 +71,12 @@ occluder = SubResource("OccluderPolygon2D_4f21t")
 occluder_light_mask = 64
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_vwthq")
+stream = ExtResource("5_3b4vl")
 volume_db = -20.0
 pitch_scale = 2.0
-bus = &"SFX"
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("6_hdsnq")
+stream = ExtResource("6_yjfjh")
 volume_db = -16.0
 pitch_scale = 1.5
-bus = &"SFX"

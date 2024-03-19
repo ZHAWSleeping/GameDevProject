@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cam4bkj0fv1s1"]
 
-[ext_resource type="Script" path="res://Gamedev/Main/Characters/WallTrigger.cs" id="1_gjqfd"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/CavePlayer/WallTrigger.cs" id="1_gjqfd"]
 
 [node name="WallTrigger" type="Area2D"]
 collision_layer = 0
