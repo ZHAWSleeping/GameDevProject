@@ -1,3 +1,4 @@
+using Gamedev.Main.Events;
 using Godot;
 using System;
 
@@ -9,6 +10,17 @@ namespace Gamedev.Main.Characters.Player
 		private float Speed = 300.0f;
 		[Export]
 		private float JumpVelocity = -400.0f;
+		public override void _Ready()
+		{
+			base._Ready();
+			CollisionEvents.CollisionDeath += Die;
+		}
+
+
+		private void Die(){
+			
+		}
+
 
 		public override void _PhysicsProcess(double delta)
 		{
