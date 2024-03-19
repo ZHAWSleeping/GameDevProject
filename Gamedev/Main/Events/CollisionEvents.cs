@@ -6,8 +6,8 @@ namespace Gamedev.Main.Events
 	public static class CollisionEvents
 	{
 		public static event Action CollisionWall = delegate { };
-		public static event Action CollisionDeath = delegate { };
 		public static void OnCollisionWall() => CollisionWall();
+		public static event Action CollisionDeath = delegate { };
 		public static void OnCollisionDeath() => CollisionDeath();
 
 		static CollisionEvents()

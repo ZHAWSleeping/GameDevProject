@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://diue0qiq1n3ci"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Tiles/Pickups/BatteryPickup.cs" id="1_0drjh"]
+[ext_resource type="Texture2D" uid="uid://bk6v33cua25cr" path="res://Gamedev/Main/Tiles/Pickups/Battery.png" id="1_rc0jt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gf06"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c62a"]
+atlas = ExtResource("1_rc0jt")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpka5"]
+atlas = ExtResource("1_rc0jt")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u20dk"]
+atlas = ExtResource("1_rc0jt")
+region = Rect2(0, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gmgo"]
+atlas = ExtResource("1_rc0jt")
+region = Rect2(0, 30, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x8wt"]
+atlas = ExtResource("1_rc0jt")
+region = Rect2(0, 40, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xqbw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c62a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpka5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u20dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gmgo")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_2x8wt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="BatteryPickup" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_0drjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1gf06")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3xqbw")
+autoplay = "default"
+frame_progress = 0.571723

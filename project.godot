@@ -118,6 +118,7 @@ Cancel={
 2d_physics/layer_2="Walls"
 2d_physics/layer_3="CameraTriggers"
 2d_physics/layer_4="DeathTriggers"
+2d_physics/layer_5="Pickups"
 
 [rendering]
 
