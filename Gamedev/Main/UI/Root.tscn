@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=9 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bnr32jwpw6hmg" path="res://Gamedev/Main/Rendering/DefaultEnvironment.tscn" id="3_nom6r"]
 [ext_resource type="PackedScene" uid="uid://ce1jks86gaxc0" path="res://Gamedev/Main/UI/SlidingOverlay.tscn" id="4_3uud4"]
 [ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
-[ext_resource type="Script" path="res://Gamedev/Main/UI/FPSCounter.cs" id="6_kupfl"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]
@@ -27,7 +26,8 @@ GameOverScene = ExtResource("2_tofx8")
 [node name="FPSCounter" parent="." instance=ExtResource("5_2e066")]
 z_index = 2
 layout_mode = 1
-script = ExtResource("6_kupfl")
+offset_top = 74.0
+offset_bottom = 74.0
 
 [node name="GameViewport" parent="." instance=ExtResource("1_631j5")]
 layout_mode = 1
