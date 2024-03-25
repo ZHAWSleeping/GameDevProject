@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ciap1puxr0pid"
-path="res://.godot/imported/trickle.wav-18e180077ccca46e08e623ff025b9d15.sample"
+path="res://.godot/imported/trickle.wav-e13312fe3a2a6aca07478e13068c8eca.sample"
 
 [deps]
 
-source_file="res://Gamedev/Main/Audio/trickle.wav"
-dest_files=["res://.godot/imported/trickle.wav-18e180077ccca46e08e623ff025b9d15.sample"]
+source_file="res://Gamedev/Main/Audio/Ambient/trickle.wav"
+dest_files=["res://.godot/imported/trickle.wav-e13312fe3a2a6aca07478e13068c8eca.sample"]
 
 [params]
 

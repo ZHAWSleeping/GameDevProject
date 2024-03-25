@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dgg5kol0duq5j"
-path="res://.godot/imported/drone.wav-bd2260bdeb2b96517af07d6f385a0652.sample"
+uid="uid://v14b7rjar0vu"
+path="res://.godot/imported/accept.wav-a85cd9b8a0db8cc90ec1d9c53f109ee5.sample"
 
 [deps]
 
-source_file="res://Gamedev/Main/Audio/drone.wav"
-dest_files=["res://.godot/imported/drone.wav-bd2260bdeb2b96517af07d6f385a0652.sample"]
+source_file="res://Gamedev/Main/Audio/UI/accept.wav"
+dest_files=["res://.godot/imported/accept.wav-a85cd9b8a0db8cc90ec1d9c53f109ee5.sample"]
 
 [params]
 

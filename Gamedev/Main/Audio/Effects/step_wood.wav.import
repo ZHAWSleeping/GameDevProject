@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://boh3jue4cgf1u"
-path="res://.godot/imported/step_wood.wav-d067f9ba878302d3ba9d4c93f0a6a690.sample"
+path="res://.godot/imported/step_wood.wav-e9553e492100086b1e444006256af3dd.sample"
 
 [deps]
 
-source_file="res://Gamedev/Main/Audio/step_wood.wav"
-dest_files=["res://.godot/imported/step_wood.wav-d067f9ba878302d3ba9d4c93f0a6a690.sample"]
+source_file="res://Gamedev/Main/Audio/Effects/step_wood.wav"
+dest_files=["res://.godot/imported/step_wood.wav-e9553e492100086b1e444006256af3dd.sample"]
 
 [params]
 

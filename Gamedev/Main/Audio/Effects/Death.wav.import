@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ck6cekb78mvs6"
-path="res://.godot/imported/Ping.wav-49a4384ece1c07b21dcece3d1fe29178.sample"
+uid="uid://bfrthbwaovc6r"
+path="res://.godot/imported/Death.wav-eab9af5588c2eeface110f30c9661a7c.sample"
 
 [deps]
 
-source_file="res://Gamedev/Main/Audio/Ping.wav"
-dest_files=["res://.godot/imported/Ping.wav-49a4384ece1c07b21dcece3d1fe29178.sample"]
+source_file="res://Gamedev/Main/Audio/Effects/Death.wav"
+dest_files=["res://.godot/imported/Death.wav-eab9af5588c2eeface110f30c9661a7c.sample"]
 
 [params]
 

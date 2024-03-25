@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://rg8sx2isblsy" path="res://Gamedev/Main/UI/Pause/ContinueLabel.tscn" id="2_gbxx4"]
 [ext_resource type="PackedScene" uid="uid://e63rrywsw4bb" path="res://Gamedev/Main/UI/Pause/RestartLabel.tscn" id="3_cfhkt"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="4_u46gu"]
-[ext_resource type="AudioStream" uid="uid://cjaur33kr4xl4" path="res://Gamedev/Main/Audio/pause.wav" id="6_iee23"]
+[ext_resource type="AudioStream" uid="uid://cjaur33kr4xl4" path="res://Gamedev/Main/Audio/UI/pause.wav" id="6_iee23"]
 
 [sub_resource type="Gradient" id="Gradient_rg77j"]
 offsets = PackedFloat32Array(0)

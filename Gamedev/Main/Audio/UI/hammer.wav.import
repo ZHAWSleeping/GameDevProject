@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cjaur33kr4xl4"
-path="res://.godot/imported/pause.wav-b5a659596e6323fd62fb78948c735c41.sample"
+uid="uid://cwgl1jktaeiwu"
+path="res://.godot/imported/hammer.wav-bb67b209747b80ef4c494e43efb04105.sample"
 
 [deps]
 
-source_file="res://Gamedev/Main/Audio/pause.wav"
-dest_files=["res://.godot/imported/pause.wav-b5a659596e6323fd62fb78948c735c41.sample"]
+source_file="res://Gamedev/Main/Audio/UI/hammer.wav"
+dest_files=["res://.godot/imported/hammer.wav-bb67b209747b80ef4c494e43efb04105.sample"]
 
 [params]
 
