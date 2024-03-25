@@ -67,4 +67,3 @@ ConfirmAudio = NodePath("Confirm")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_iee23")
 volume_db = -16.0
-bus = &"UI"

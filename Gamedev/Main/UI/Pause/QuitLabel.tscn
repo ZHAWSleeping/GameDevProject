@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cevehmbuf8md0"]
 
 [ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_ylpbw"]
-[ext_resource type="Script" path="res://QuitLabel.cs" id="2_mbpvl"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Pause/QuitLabel.cs" id="2_mbpvl"]
 
 [node name="QuitLabel" instance=ExtResource("1_ylpbw")]
 text = "Quit"
