@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://Gamedev/Main/Level/PlayerCamera.cs" id="1_d2nhe"]
 
 [node name="PlayerCamera" type="Camera2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
 script = ExtResource("1_d2nhe")
