@@ -95,3 +95,5 @@ pitch_scale = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathTrigger"]
 visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
+
+[node name="WallChecker" type="CollisionShape2D" parent="."]

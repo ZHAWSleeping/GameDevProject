@@ -17,14 +17,17 @@ namespace Gamedev.Main.Characters.Player
 		private float WallJumpVelocity = -150.0f;
 		[Export]
 		private float WallJumpVelocityX = 300.0f;
+		
+		private bool canWallJump = true;
+		private bool isFalling = false;
+
+		public CollisionObject2D wallChecker;
 		public override void _Ready()
 		{
 			base._Ready();
 			CollisionEvents.CollisionDeath += Die;
 		}
 
-		private bool canWallJump = true;
-		private bool isFalling = false;
 
 
 		private void Die()
@@ -76,7 +79,6 @@ namespace Gamedev.Main.Characters.Player
 			{
 				if (!IsOnFloor())
 				{
-					GD.Print(direction.X);
 					velocity.X += direction.X * Speed / 12;
 				}
 				else
@@ -89,15 +91,11 @@ namespace Gamedev.Main.Characters.Player
 					velocity.X = Speed * Mathf.Sign(velocity.X);
 				}
 
-
-				//if (MathF.Abs(velocity.X) <= (MathF.Abs(direction.X) * Speed))
-
 			}
 			else
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			}
-
 
 			// Handle Wall Jump.
 			if (Input.IsActionJustPressed("Jump") && IsOnWallOnly() && canWallJump)
@@ -115,8 +113,7 @@ namespace Gamedev.Main.Characters.Player
 				}
 
 				velocity += new Vector2(whichSideOnWall, WallJumpVelocity);
-				//canWallJump = false;
-
+				//canWallJump = false; timer
 			}
 
 			Velocity = velocity;
