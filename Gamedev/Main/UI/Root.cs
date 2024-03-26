@@ -11,7 +11,7 @@ public partial class Root : Control
 	public override void _Ready()
 	{
 		CollisionEvents.CollisionWall += GameOver;
-		//RenderingServer.SetDefaultClearColor(Colors.Black);
+		RenderingServer.SetDefaultClearColor(Colors.Black);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

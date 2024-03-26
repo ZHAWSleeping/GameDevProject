@@ -1,5 +1,6 @@
 using Gamedev.Events;
 using Gamedev.Main.Events;
+using Gamedev.Main.Extensions;
 using Godot;
 using System;
 
@@ -23,7 +24,7 @@ namespace Gamedev.Main.Characters.Player
 			StateEvents.OnRestartRequested();
 			//Deathsound
 			Modulate = new Color(4, 1, 1, 1);
-			ProcessMode = ProcessModeEnum.Disabled;
+			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 		}
 
 

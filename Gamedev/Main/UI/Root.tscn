@@ -23,11 +23,12 @@ GameOverScene = ExtResource("2_tofx8")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_nom6r")]
 
-[node name="FPSCounter" parent="." instance=ExtResource("5_2e066")]
+[node name="FPSCounter" parent="." node_paths=PackedStringArray("Counter") instance=ExtResource("5_2e066")]
 z_index = 2
 layout_mode = 1
 offset_top = 74.0
 offset_bottom = 74.0
+Counter = NodePath("Counter")
 
 [node name="GameViewport" parent="." instance=ExtResource("1_631j5")]
 layout_mode = 1
