@@ -25,6 +25,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Game Dev Project"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
+
 [gui]
 
 theme/custom="res://Gamedev/Main/Theme/CaveTheme.tres"

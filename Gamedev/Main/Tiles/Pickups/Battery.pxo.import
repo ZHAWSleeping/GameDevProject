@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rlsen807avuy"
-path="res://.godot/imported/SlimeSmall.png-ffaa00bd9b91479605b2a3c26c0c93de.ctex"
+uid="uid://ivadx3wjttsc"
+path="res://.godot/imported/Battery.pxo-b6539a2a2136daffda9d863075640535.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.png"
-dest_files=["res://.godot/imported/SlimeSmall.png-ffaa00bd9b91479605b2a3c26c0c93de.ctex"]
+source_file="res://Gamedev/Main/Tiles/Pickups/Battery.pxo"
+dest_files=["res://.godot/imported/Battery.pxo-b6539a2a2136daffda9d863075640535.ctex"]
 
 [params]
 
