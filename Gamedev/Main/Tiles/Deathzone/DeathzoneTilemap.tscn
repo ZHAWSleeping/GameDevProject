@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://j44uwlvq2m40"]
+[gd_scene load_steps=3 format=3 uid="uid://j44uwlvq2m40"]
 
 [ext_resource type="TileSet" uid="uid://cs5rb3oifxote" path="res://Gamedev/Main/Tiles/Deathzone/DeathTileset.tres" id="1_1ajek"]
+[ext_resource type="Script" path="res://Gamedev/Main/Tiles/Deathzone/DeathzoneTilemap.cs" id="2_t5xmg"]
 
 [node name="DeathzoneTilemap" type="TileMap"]
 tile_set = ExtResource("1_1ajek")
 format = 2
+script = ExtResource("2_t5xmg")

@@ -39,14 +39,19 @@ namespace Gamedev.Main.Characters.Player
 			}
 
 			// Handle Jump.
-			if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+			if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 			{
 				velocity.Y = JumpVelocity;
 			}
 
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
-			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+			Vector2 direction = Input.GetVector(
+				VectorExtensions.Direction.West.ToString(),
+				VectorExtensions.Direction.East.ToString(),
+				VectorExtensions.Direction.North.ToString(),
+				VectorExtensions.Direction.South.ToString()
+			);
 			if (direction != Vector2.Zero)
 			{
 				velocity.X = direction.X * Speed;
