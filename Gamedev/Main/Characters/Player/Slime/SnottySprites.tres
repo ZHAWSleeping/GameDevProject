@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bn1oeio50ph07"]
+
+[ext_resource type="Texture2D" uid="uid://rlsen807avuy" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.png" id="1_kwvpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tije"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmafl"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd2t2"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65umr"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 100, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1oil"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 120, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhmtf"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 140, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ece26"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 160, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roxtr"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 180, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc26g"]
+atlas = ExtResource("1_kwvpn")
+region = Rect2(0, 200, 20, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 40.0,
+"texture": SubResource("AtlasTexture_3tije")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmafl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd2t2")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_65umr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1oil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhmtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ece26")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_roxtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc26g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]

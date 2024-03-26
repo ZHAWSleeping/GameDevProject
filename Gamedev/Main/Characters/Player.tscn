@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bdex20ybgovrs"]
 
-[ext_resource type="SpriteFrames" uid="uid://phjkyxyerh35" path="res://Gamedev/Main/Characters/Cube.tres" id="1_bohwi"]
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="PackedScene" uid="uid://cnlq1wjmouub8" path="res://Gamedev/Main/Characters/DirectionalSprite.tscn" id="2_gjgrm"]
+[ext_resource type="SpriteFrames" uid="uid://bn1oeio50ph07" path="res://Gamedev/Main/Characters/Player/Slime/SnottySprites.tres" id="3_ed1ky"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
 [ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/Effects/step_wood.wav" id="5_vwthq"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
@@ -45,15 +45,19 @@ shape = SubResource("RectangleShape2D_tps25")
 [node name="DirectionalSprite" parent="." instance=ExtResource("2_gjgrm")]
 modulate = Color(2, 2, 2, 1)
 light_mask = 32
-sprite_frames = ExtResource("1_bohwi")
+position = Vector2(0, -5)
+sprite_frames = ExtResource("3_ed1ky")
 autoplay = "default"
+frame_progress = 0.656995
 
 [node name="ZoneTrigger" parent="." instance=ExtResource("4_oqr5q")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTrigger"]
+visible = false
 shape = SubResource("RectangleShape2D_bgfme")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 light_mask = 0
 range_item_cull_mask = 22
 shadow_enabled = true
@@ -61,6 +65,7 @@ shadow_item_cull_mask = 22
 texture = SubResource("GradientTexture2D_oqylj")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
 light_mask = 0
 blend_mode = 2
 range_item_cull_mask = 42
@@ -68,6 +73,7 @@ shadow_item_cull_mask = 0
 texture = SubResource("GradientTexture2D_oqylj")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 light_mask = 0
 occluder = SubResource("OccluderPolygon2D_4f21t")
 occluder_light_mask = 64
@@ -86,4 +92,5 @@ pitch_scale = 1.5
 [node name="DeathTrigger" parent="." instance=ExtResource("7_mbr1e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathTrigger"]
+visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
