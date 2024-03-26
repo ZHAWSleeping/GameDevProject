@@ -76,7 +76,8 @@ namespace Gamedev.Main.Characters.Player
 			{
 				if (!IsOnFloor())
 				{
-					velocity.X += direction.X * Speed / 8;
+					GD.Print(direction.X);
+					velocity.X += direction.X * Speed / 12;
 				}
 				else
 				{
