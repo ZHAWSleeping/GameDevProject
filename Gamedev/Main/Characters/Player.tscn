@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=15 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="PackedScene" uid="uid://cnlq1wjmouub8" path="res://Gamedev/Main/Characters/DirectionalSprite.tscn" id="2_gjgrm"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/Effects/step_wood.wav" id="5_vwthq"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="7_mbr1e"]
+[ext_resource type="PackedScene" uid="uid://s1lso5ibbbpw" path="res://Gamedev/Main/Characters/wallchecker.tscn" id="8_cyxy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
 size = Vector2(10, 10)
@@ -32,13 +33,14 @@ polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwv7"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker")]
 light_mask = 32
 collision_mask = 3
 script = ExtResource("1_j87et")
 Speed = 200.0
 JumpVelocity = -280.0
 WallJumpVelocityX = 800.0
+wallChecker = NodePath("Wallchecker")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tps25")
@@ -96,4 +98,5 @@ pitch_scale = 1.5
 visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
 
-[node name="WallChecker" type="CollisionShape2D" parent="."]
+[node name="Wallchecker" parent="." node_paths=PackedStringArray("wallChecker") instance=ExtResource("8_cyxy1")]
+wallChecker = NodePath("CollisionShape2D")

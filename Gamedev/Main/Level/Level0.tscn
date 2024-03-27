@@ -84,8 +84,6 @@ position = Vector2(160, 90)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_e7yj6")]
 position = Vector2(170, 90)
-position_smoothing_enabled = true
-position_smoothing_speed = 6.0
 
 [node name="Anchor1" type="Node2D" parent="."]
 position = Vector2(170, 90)

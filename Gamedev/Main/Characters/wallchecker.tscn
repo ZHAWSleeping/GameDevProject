@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://s1lso5ibbbpw"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/WallCheckerArea.cs" id="1_7ct50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u3ot"]
+size = Vector2(11, 11)
+
+[node name="Wallchecker" type="Area2D" node_paths=PackedStringArray("wallChecker")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7ct50")
+wallChecker = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1u3ot")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

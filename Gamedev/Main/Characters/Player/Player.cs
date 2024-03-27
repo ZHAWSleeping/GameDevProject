@@ -14,14 +14,16 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		private float JumpVelocity = -400.0f;
 		[Export]
-		private float WallJumpVelocity = -150.0f;
+		private float WallJumpVelocity = -200.0f;
 		[Export]
-		private float WallJumpVelocityX = 300.0f;
-		
+		private float WallJumpVelocityX = 250.0f;
+		[Export]
+		private float WallSlideSpeed = 700.0f;
+		[Export]
+		public CollisionObject2D wallChecker;
 		private bool canWallJump = true;
 		private bool isFalling = false;
 
-		public CollisionObject2D wallChecker;
 		public override void _Ready()
 		{
 			base._Ready();
@@ -41,20 +43,22 @@ namespace Gamedev.Main.Characters.Player
 
 		public override void _PhysicsProcess(double delta)
 		{
+
 			Vector2 velocity = Velocity;
+			//if (IsOnWallOnly() && !isFalling) { }
+
 
 			// Add the gravity.
 			if (!IsOnFloor())
 			{
 				if (IsOnWallOnly() && !isFalling)
 				{
-					velocity += new Vector2(0, 600) * (float)delta;
+					velocity = new Vector2(0, WallSlideSpeed) * (float)delta;
 				}
 				else
 				{
 					velocity += GetGravity() * (float)delta;
 				}
-
 			}
 
 			//needs to change wall or be away from the wall for a sec
