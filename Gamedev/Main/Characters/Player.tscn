@@ -40,7 +40,7 @@ script = ExtResource("1_j87et")
 Speed = 100.0
 JumpVelocity = -280.0
 WallJumpVelocity = -180.0
-WallJumpVelocityX = 50.0
+WallJumpVelocityX = 75.0
 wallChecker = NodePath("WallCheckerNode")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

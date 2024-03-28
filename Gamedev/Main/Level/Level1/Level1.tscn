@@ -44,7 +44,7 @@ Camera = NodePath("../PlayerCamera1")
 position = Vector2(480, 90)
 
 [node name="Loading_Room2" parent="." node_paths=PackedStringArray("Anchor", "Camera") instance=ExtResource("6_f5n6t")]
-layer_0/tile_data = PackedInt32Array(917565, 0, 0, 983101, 0, 0, 1048637, 0, 0)
+layer_0/tile_data = PackedInt32Array(917565, 0, 0, 983101, 0, 0, 1048637, 0, 0, -130990, 0, 0, -130989, 0, 0, -130988, 0, 0)
 Anchor = NodePath("Anchor3")
 Camera = NodePath("../PlayerCamera1")
 
@@ -59,3 +59,11 @@ position = Vector2(-530, 20)
 
 [node name="BatteryPickup3" parent="BatteryPickup1" instance=ExtResource("7_mu6mb")]
 position = Vector2(40, 10)
+
+[node name="Loading_Room3" parent="." node_paths=PackedStringArray("Anchor", "Camera") instance=ExtResource("6_f5n6t")]
+layer_0/tile_data = PackedInt32Array(-196526, 0, 0, -196525, 0, 0, -196524, 0, 0)
+Anchor = NodePath("Anchor4")
+Camera = NodePath("../PlayerCamera1")
+
+[node name="Anchor4" type="Node2D" parent="Loading_Room3"]
+position = Vector2(770, -110)
