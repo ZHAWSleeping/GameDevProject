@@ -37,10 +37,10 @@ size = Vector2(10, 10)
 light_mask = 32
 collision_mask = 3
 script = ExtResource("1_j87et")
-Speed = 200.0
+Speed = 100.0
 JumpVelocity = -280.0
 WallJumpVelocity = -180.0
-WallJumpVelocityX = 300.0
+WallJumpVelocityX = 50.0
 wallChecker = NodePath("WallCheckerNode")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

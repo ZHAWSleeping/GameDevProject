@@ -19,8 +19,6 @@ layer_0/tile_data = PackedInt32Array(1179680, 589824, 3, 1114144, 589824, 2, 104
 
 [node name="Player" parent="." node_paths=PackedStringArray("wallChecker") instance=ExtResource("2_mi7xp")]
 position = Vector2(20, 160)
-Speed = 100.0
-WallJumpVelocity = -50.0
 wallChecker = NodePath("WallCheckerNode")
 
 [node name="DeathzoneTilemap" parent="." instance=ExtResource("3_vi1d7")]

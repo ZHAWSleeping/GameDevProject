@@ -95,7 +95,7 @@ namespace Gamedev.Main.Characters.Player
 				}
 
 			}
-			else
+			else if (IsOnFloor())
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			}
