@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6v33cua25cr" path="res://Gamedev/Main/Tiles/Pickups/Battery.png" id="1_rc0jt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gf06"]
-size = Vector2(14, 14)
+size = Vector2(7, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7c62a"]
 atlas = ExtResource("1_rc0jt")
@@ -51,7 +51,6 @@ animations = [{
 
 [node name="BatteryPickup" type="Area2D"]
 collision_layer = 16
-collision_mask = 16
 script = ExtResource("1_0drjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -61,3 +60,5 @@ shape = SubResource("RectangleShape2D_1gf06")
 sprite_frames = SubResource("SpriteFrames_3xqbw")
 autoplay = "default"
 frame_progress = 0.571723
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

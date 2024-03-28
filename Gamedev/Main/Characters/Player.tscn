@@ -35,12 +35,13 @@ size = Vector2(10, 10)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker")]
 light_mask = 32
-collision_mask = 3
+collision_mask = 19
 script = ExtResource("1_j87et")
 Speed = 100.0
 JumpVelocity = -280.0
 WallJumpVelocity = -180.0
-WallJumpVelocityX = 75.0
+WallJumpVelocityX = 100.0
+WallSlideSpeed = 800.0
 wallChecker = NodePath("WallCheckerNode")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

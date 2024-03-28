@@ -12,4 +12,9 @@ public partial class BatteryPickup : Area2D
 	public override void _Process(double delta)
 	{
 	}
+
+	private void _on_body_entered(Node2D body)
+	{
+		QueueFree();
+	}
 }
