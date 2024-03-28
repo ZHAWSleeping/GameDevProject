@@ -20,7 +20,7 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		private float WallSlideSpeed = 700.0f;
 		[Export]
-		public CollisionObject2D wallChecker;
+		public WallCheckerNode wallChecker;
 		private bool canWallJump = true;
 		private bool isFalling = false;
 
@@ -28,9 +28,8 @@ namespace Gamedev.Main.Characters.Player
 		{
 			base._Ready();
 			CollisionEvents.CollisionDeath += Die;
+			GD.Print(WallJumpVelocity);
 		}
-
-
 
 		private void Die()
 		{
@@ -45,13 +44,13 @@ namespace Gamedev.Main.Characters.Player
 		{
 
 			Vector2 velocity = Velocity;
-			//if (IsOnWallOnly() && !isFalling) { }
+			//if (IsOnWallOnly() && !isFalling && wallChecker.isOnWall) { 			}
 
 
 			// Add the gravity.
 			if (!IsOnFloor())
 			{
-				if (IsOnWallOnly() && !isFalling)
+				if (!isFalling && wallChecker.isOnAnyWall())
 				{
 					velocity = new Vector2(0, WallSlideSpeed) * (float)delta;
 				}
@@ -102,12 +101,12 @@ namespace Gamedev.Main.Characters.Player
 			}
 
 			// Handle Wall Jump.
-			if (Input.IsActionJustPressed("Jump") && IsOnWallOnly() && canWallJump)
+			if (Input.IsActionJustPressed("Jump") && wallChecker.isOnAnyWall() && !IsOnFloor())
 			{
 				float whichSideOnWall;
-				Godot.KinematicCollision2D[] dir = this.GetSlideCollisions();
+				GD.Print(wallChecker.leftOrRight());
 
-				if (Position.X - dir[0].GetPosition().X > 0)
+				if (wallChecker.leftOrRight() == 0)
 				{
 					whichSideOnWall = WallJumpVelocityX;
 				}
@@ -116,7 +115,8 @@ namespace Gamedev.Main.Characters.Player
 					whichSideOnWall = -WallJumpVelocityX;
 				}
 
-				velocity += new Vector2(whichSideOnWall, WallJumpVelocity);
+				velocity = new Vector2(whichSideOnWall, WallJumpVelocity);
+				GD.Print(velocity + " and " + WallJumpVelocity);
 				//canWallJump = false; timer
 			}
 

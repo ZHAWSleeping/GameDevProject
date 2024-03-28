@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/Effects/step_wood.wav" id="5_vwthq"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="7_mbr1e"]
-[ext_resource type="PackedScene" uid="uid://s1lso5ibbbpw" path="res://Gamedev/Main/Characters/wallchecker.tscn" id="8_cyxy1"]
+[ext_resource type="PackedScene" uid="uid://b6xxhiybj4juj" path="res://Gamedev/Main/Characters/WallCheckerNode.tscn" id="8_cyxy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
 size = Vector2(10, 10)
@@ -39,8 +39,9 @@ collision_mask = 3
 script = ExtResource("1_j87et")
 Speed = 200.0
 JumpVelocity = -280.0
-WallJumpVelocityX = 800.0
-wallChecker = NodePath("Wallchecker")
+WallJumpVelocity = -180.0
+WallJumpVelocityX = 300.0
+wallChecker = NodePath("WallCheckerNode")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tps25")
@@ -98,5 +99,6 @@ pitch_scale = 1.5
 visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
 
-[node name="Wallchecker" parent="." node_paths=PackedStringArray("wallChecker") instance=ExtResource("8_cyxy1")]
-wallChecker = NodePath("CollisionShape2D")
+[node name="WallCheckerNode" parent="." node_paths=PackedStringArray("rightWall", "leftWall") instance=ExtResource("8_cyxy1")]
+rightWall = NodePath("rightWall")
+leftWall = NodePath("leftWall")
