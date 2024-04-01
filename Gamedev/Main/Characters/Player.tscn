@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="PackedScene" uid="uid://cnlq1wjmouub8" path="res://Gamedev/Main/Characters/DirectionalSprite.tscn" id="2_gjgrm"]
-[ext_resource type="SpriteFrames" uid="uid://b4v4ul3a4hmfh" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="3_yyego"]
+[ext_resource type="SpriteFrames" uid="uid://erxnvcd6ni68" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="3_yyego"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
 [ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/Effects/step_wood.wav" id="5_vwthq"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
