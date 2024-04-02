@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://lcg5gjlt8egt"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y63hj"]
+
+[node name="PlayerTree" type="AnimationTree"]
+tree_root = SubResource("AnimationNodeStateMachine_y63hj")
+parameters/current_length = 0.0
+parameters/current_position = 0.0
+parameters/current_delta = 0.0
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0

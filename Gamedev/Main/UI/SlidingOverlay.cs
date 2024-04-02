@@ -52,6 +52,7 @@ public partial class SlidingOverlay : TextureRect
 			GetTree().ReloadCurrentScene();
 			CollisionEvents.Clear();
 			StateEvents.Clear();
+			DebugEvents.Clear();
 		}))
 		.SetDelay(1.0f);
 	}

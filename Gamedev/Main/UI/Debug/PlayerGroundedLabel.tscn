@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceywc8jyb6jb2"]
+
+[ext_resource type="PackedScene" uid="uid://dm8jvfybs4oa8" path="res://Gamedev/Main/UI/Debug/DebugLabel.tscn" id="1_4upft"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Debug/PlayerGroundedLabel.cs" id="2_16ngf"]
+
+[node name="PlayerGroundedLabel" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("1_4upft")]
+script = ExtResource("2_16ngf")
+LabelName = "Grounded"
+NameLabel = NodePath("Name")
+DataLabel = NodePath("Data")

@@ -10,26 +10,27 @@ public partial class WallCheckerNode : Node2D
 	WallCheckerArea leftWall;
 	// Called when the node enters the scene tree for the first time.
 
-	public bool isOnAnyWall()
+	public bool IsOnAnyWall
 	{
-		return rightWall.isOnWall || leftWall.isOnWall;
+		get
+		{
+			return rightWall.isOnWall || leftWall.isOnWall;
+		}
 	}
 
-	// return 1 for right and 0 for left
-	public int leftOrRight()
+	public bool IsOnlyOnRightWall
 	{
-		if (isOnAnyWall())
+		get
 		{
-			if (rightWall.isOnWall)
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
+			return rightWall.isOnWall && !leftWall.isOnWall;
 		}
+	}
 
-		return -1; // error
+	public bool IsOnlyOnLeftWall
+	{
+		get
+		{
+			return !rightWall.isOnWall && leftWall.isOnWall;
+		}
 	}
 }
