@@ -7,7 +7,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 16
 script = ExtResource("1_ld3fi")
-LabelName = null
 NameLabel = NodePath("Name")
 DataLabel = NodePath("Data")
 

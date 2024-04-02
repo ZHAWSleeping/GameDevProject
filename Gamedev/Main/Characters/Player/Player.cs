@@ -75,7 +75,7 @@ namespace Gamedev.Main.Characters.Player
 			// Add the gravity.
 			if (!IsOnFloor())
 			{
-				if (!isFalling && wallChecker.IsOnAnyWall)
+				if (isFalling && wallChecker.IsOnAnyWall)
 				{
 					velocity = new Vector2(0, WallSlideSpeed) * (float)delta;
 					Animations.Travel(AnimationState.Wall.ToString());
@@ -155,14 +155,17 @@ namespace Gamedev.Main.Characters.Player
 
 			Velocity = velocity;
 
-			if (Velocity.Y >= 0)
+			if (Velocity.Y > 0)
 			{
-				isFalling = false;
+				isFalling = true;
+				if (!IsOnWall())
+				{
+					Animations.Travel(AnimationState.Fall.ToString());
+				}
 			}
 			else
 			{
-				isFalling = true;
-				Animations.Travel(AnimationState.Fall.ToString());
+				isFalling = false;
 			}
 
 			if (direction.X > 0)
