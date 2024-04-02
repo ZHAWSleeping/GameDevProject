@@ -1,14 +1,14 @@
 [remap]
 
-importer="Pixelorama SpriteFrames"
-type="SpriteFrames"
+importer="Pixelorama Sprite2D with AnimationPlayer"
+type="PackedScene"
 uid="uid://erxnvcd6ni68"
-path="res://.godot/imported/SlimeSmall.pxo-2561fddcd8ad8f6d65cb3ce9e309dc1d.res"
+path="res://.godot/imported/SlimeSmall.pxo-2561fddcd8ad8f6d65cb3ce9e309dc1d.scn"
 
 [deps]
 
 source_file="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo"
-dest_files=["res://.godot/imported/SlimeSmall.pxo-2561fddcd8ad8f6d65cb3ce9e309dc1d.res"]
+dest_files=["res://.godot/imported/SlimeSmall.pxo-2561fddcd8ad8f6d65cb3ce9e309dc1d.scn"]
 
 [params]
 
@@ -17,6 +17,9 @@ animation/default/direction=0
 animation/default/repeat_count=0
 animation/autoplay_name=""
 atlas_textures/region_filter_clip_enabled=false
+animation/strategy=0
+sprite/centered=false
+root_node_name=""
 middle_import_script=""
 post_import_script=""
 sprite_sheet/edges_artifacts_avoidance_method=0

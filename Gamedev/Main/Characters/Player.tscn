@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=32 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
-[ext_resource type="PackedScene" uid="uid://cnlq1wjmouub8" path="res://Gamedev/Main/Characters/DirectionalSprite.tscn" id="2_gjgrm"]
-[ext_resource type="SpriteFrames" uid="uid://erxnvcd6ni68" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="3_yyego"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
 [ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/Effects/step_wood.wav" id="5_vwthq"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
+[ext_resource type="PackedScene" uid="uid://erxnvcd6ni68" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="7_bly8k"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="7_mbr1e"]
 [ext_resource type="PackedScene" uid="uid://b6xxhiybj4juj" path="res://Gamedev/Main/Characters/WallCheckerNode.tscn" id="8_cyxy1"]
 
@@ -33,7 +32,75 @@ polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwv7"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker")]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k46j7"]
+animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hniiu"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vh1yx"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_plxal"]
+animation = &"JumpTransition"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ss5ud"]
+animation = &"Land"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vqq8"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6avey"]
+animation = &"Wall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4n0ih"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gtxka"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8g2pq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8r1l4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyl7h"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b60rc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xnsm3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1gu3y"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f4ag4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hvhdx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3fon4"]
+states/End/position = Vector2(1047, 225.664)
+states/Fall/node = SubResource("AnimationNodeAnimation_k46j7")
+states/Fall/position = Vector2(740.48, 63)
+states/Idle/node = SubResource("AnimationNodeAnimation_hniiu")
+states/Idle/position = Vector2(428.48, 225.664)
+states/Jump/node = SubResource("AnimationNodeAnimation_vh1yx")
+states/Jump/position = Vector2(428.48, 63)
+states/JumpTransition/node = SubResource("AnimationNodeAnimation_plxal")
+states/JumpTransition/position = Vector2(594.48, 63)
+states/Land/node = SubResource("AnimationNodeAnimation_ss5ud")
+states/Land/position = Vector2(853.48, 63)
+states/Start/position = Vector2(191, 225.664)
+states/Walk/node = SubResource("AnimationNodeAnimation_5vqq8")
+states/Walk/position = Vector2(853.48, 225.664)
+states/Wall/node = SubResource("AnimationNodeAnimation_6avey")
+states/Wall/position = Vector2(197.48, 63)
+transitions = ["Jump", "JumpTransition", SubResource("AnimationNodeStateMachineTransition_4n0ih"), "JumpTransition", "Fall", SubResource("AnimationNodeStateMachineTransition_gtxka"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_8g2pq"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_8r1l4"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_uyl7h"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_b60rc"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xnsm3"), "Jump", "Wall", SubResource("AnimationNodeStateMachineTransition_1gu3y"), "Wall", "Jump", SubResource("AnimationNodeStateMachineTransition_f4ag4"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hvhdx")]
+graph_offset = Vector2(-164.52, 2.66406)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker", "AnimTree", "Sprite")]
+process_mode = 4
 light_mask = 32
 collision_mask = 19
 script = ExtResource("1_j87et")
@@ -43,16 +110,11 @@ WallJumpVelocity = -180.0
 WallJumpVelocityX = 100.0
 WallSlideSpeed = 800.0
 wallChecker = NodePath("WallCheckerNode")
+AnimTree = NodePath("AnimationTree")
+Sprite = NodePath("SlimeSmall")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tps25")
-
-[node name="DirectionalSprite" parent="." instance=ExtResource("2_gjgrm")]
-modulate = Color(2, 2, 2, 1)
-light_mask = 32
-position = Vector2(0, -5)
-sprite_frames = ExtResource("3_yyego")
-animation = &"Idle"
 
 [node name="ZoneTrigger" parent="." instance=ExtResource("4_oqr5q")]
 
@@ -102,3 +164,14 @@ shape = SubResource("RectangleShape2D_rhwv7")
 [node name="WallCheckerNode" parent="." node_paths=PackedStringArray("rightWall", "leftWall") instance=ExtResource("8_cyxy1")]
 rightWall = NodePath("rightWall")
 leftWall = NodePath("leftWall")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../SlimeSmall")
+tree_root = SubResource("AnimationNodeStateMachine_3fon4")
+anim_player = NodePath("../SlimeSmall/AnimationPlayer")
+
+[node name="SlimeSmall" parent="." instance=ExtResource("7_bly8k")]
+position = Vector2(-10, -15)
+region_rect = Rect2(0, 0, 20, 20)
+
+[editable path="SlimeSmall"]

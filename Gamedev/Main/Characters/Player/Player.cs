@@ -9,26 +9,53 @@ namespace Gamedev.Main.Characters.Player
 {
 	public partial class Player : CharacterBody2D
 	{
+
+		private enum AnimationState
+		{
+			Idle,
+			Walk,
+			Jump,
+			Fall,
+			Land,
+			Wall,
+		}
+
 		[Export]
 		private float Speed = 300.0f;
+
 		[Export]
 		private float JumpVelocity = -400.0f;
+
 		[Export]
 		private float WallJumpVelocity = -200.0f;
+
 		[Export]
 		private float WallJumpVelocityX = 250.0f;
+
 		[Export]
 		private float WallSlideSpeed = 700.0f;
+
 		[Export]
-		public WallCheckerNode wallChecker;
+		private WallCheckerNode wallChecker;
+
+		[Export]
+		private AnimationTree AnimTree;
+
+		[Export]
+		private Sprite2D Sprite;
+
+		private AnimationNodeStateMachinePlayback Animations;
 		private bool canWallJump = true;
 		private bool isFalling = false;
+		private bool justLanded = false;
 
 		public override void _Ready()
 		{
 			base._Ready();
 			CollisionEvents.CollisionDeath += Die;
 			GD.Print(WallJumpVelocity);
+			Animations = AnimTree.GetStateMachinePlayback();
+			ProcessMode = ProcessModeEnum.Inherit;
 		}
 
 		private void Die()
@@ -42,7 +69,6 @@ namespace Gamedev.Main.Characters.Player
 
 		public override void _PhysicsProcess(double delta)
 		{
-
 			Vector2 velocity = Velocity;
 			//if (IsOnWallOnly() && !isFalling && wallChecker.isOnWall) { 			}
 
@@ -50,9 +76,10 @@ namespace Gamedev.Main.Characters.Player
 			// Add the gravity.
 			if (!IsOnFloor())
 			{
-				if (!isFalling && wallChecker.isOnAnyWall())
+				if (!isFalling && wallChecker.IsOnAnyWall)
 				{
 					velocity = new Vector2(0, WallSlideSpeed) * (float)delta;
+					Animations.Travel(AnimationState.Wall.ToString());
 				}
 				else
 				{
@@ -68,6 +95,11 @@ namespace Gamedev.Main.Characters.Player
 				velocity.Y = JumpVelocity;
 			}
 
+			if (IsOnFloor() && isFalling && !justLanded)
+			{
+				justLanded = false;
+				Animations.Travel(AnimationState.Land.ToString());
+			}
 
 
 			// Get the input direction and handle the movement/deceleration.
@@ -87,6 +119,7 @@ namespace Gamedev.Main.Characters.Player
 				else
 				{
 					velocity.X = direction.X * Speed;
+					Animations.Travel(AnimationState.Walk.ToString());
 				}
 
 				if (MathF.Abs(velocity.X) > Speed)
@@ -98,19 +131,20 @@ namespace Gamedev.Main.Characters.Player
 			else if (IsOnFloor())
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				Animations.Travel(AnimationState.Idle.ToString());
+
 			}
 
 			// Handle Wall Jump.
-			if (Input.IsActionJustPressed("Jump") && wallChecker.isOnAnyWall() && !IsOnFloor())
+			if (Input.IsActionJustPressed("Jump") && wallChecker.IsOnAnyWall && !IsOnFloor())
 			{
-				float whichSideOnWall;
-				GD.Print(wallChecker.leftOrRight());
+				float whichSideOnWall = 0.0f;
 
-				if (wallChecker.leftOrRight() == 0)
+				if (wallChecker.IsOnLeftWall)
 				{
 					whichSideOnWall = WallJumpVelocityX;
 				}
-				else
+				else if (wallChecker.IsOnRightWall)
 				{
 					whichSideOnWall = -WallJumpVelocityX;
 				}
@@ -126,7 +160,20 @@ namespace Gamedev.Main.Characters.Player
 			{
 				isFalling = false;
 			}
-			else { isFalling = true; }
+			else
+			{
+				isFalling = true;
+				Animations.Travel(AnimationState.Fall.ToString());
+			}
+
+			if (direction.X > 0)
+			{
+				Sprite.FlipH = false;
+			}
+			else if (direction.X < 0)
+			{
+				Sprite.FlipH = true;
+			}
 
 
 			MoveAndSlide();
