@@ -158,7 +158,7 @@ namespace Gamedev.Main.Characters.Player
 			if (Velocity.Y > 0)
 			{
 				isFalling = true;
-				if (!IsOnWall())
+				if (!wallChecker.IsOnAnyWall)
 				{
 					Animations.Travel(AnimationState.Fall.ToString());
 				}
