@@ -47,7 +47,6 @@ namespace Gamedev.Main.Characters.Player
 		private AnimationNodeStateMachinePlayback Animations;
 		private bool canWallJump = true;
 		private bool isFalling = false;
-		private bool justLanded = false;
 
 		public override void _Ready()
 		{
@@ -55,7 +54,7 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.CollisionDeath += Die;
 			GD.Print(WallJumpVelocity);
 			Animations = AnimTree.GetStateMachinePlayback();
-			ProcessMode = ProcessModeEnum.Inherit;
+			//ProcessMode = ProcessModeEnum.Inherit;
 		}
 
 		private void Die()
@@ -95,12 +94,11 @@ namespace Gamedev.Main.Characters.Player
 				velocity.Y = JumpVelocity;
 			}
 
-			if (IsOnFloor() && isFalling && !justLanded)
+			// Just landed
+			if (IsOnFloor() && isFalling)
 			{
-				justLanded = false;
 				Animations.Travel(AnimationState.Land.ToString());
 			}
-
 
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
@@ -110,16 +108,17 @@ namespace Gamedev.Main.Characters.Player
 				VectorExtensions.Direction.North.ToString(),
 				VectorExtensions.Direction.South.ToString()
 			);
+
 			if (direction != Vector2.Zero)
 			{
-				if (!IsOnFloor())
-				{
-					velocity.X += direction.X * Speed / 12;
-				}
-				else
+				if (IsOnFloor())
 				{
 					velocity.X = direction.X * Speed;
 					Animations.Travel(AnimationState.Walk.ToString());
+				}
+				else
+				{
+					velocity.X += direction.X * Speed / 12;
 				}
 
 				if (MathF.Abs(velocity.X) > Speed)
