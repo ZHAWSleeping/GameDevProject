@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=10 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnr32jwpw6hmg" path="res://Gamedev/Main/Rendering/DefaultEnvironment.tscn" id="3_nom6r"]
 [ext_resource type="PackedScene" uid="uid://ce1jks86gaxc0" path="res://Gamedev/Main/UI/SlidingOverlay.tscn" id="4_3uud4"]
 [ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
+[ext_resource type="PackedScene" uid="uid://bdtumb7ckh8yk" path="res://Gamedev/Main/UI/Debug/PlayerSpeedLabel.tscn" id="5_v66gg"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]
@@ -23,13 +24,6 @@ GameOverScene = ExtResource("2_tofx8")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_nom6r")]
 
-[node name="FPSCounter" parent="." node_paths=PackedStringArray("Counter") instance=ExtResource("5_2e066")]
-z_index = 2
-layout_mode = 1
-offset_top = 74.0
-offset_bottom = 74.0
-Counter = NodePath("Counter")
-
 [node name="GameViewport" parent="." instance=ExtResource("1_631j5")]
 layout_mode = 1
 anchors_preset = 15
@@ -45,9 +39,26 @@ texture = SubResource("ViewportTexture_hjyhc")
 visible = false
 z_index = 1
 layout_mode = 1
+SlideDuration = null
 
 [node name="PauseScreen" parent="." node_paths=PackedStringArray("Menu", "Audio") instance=ExtResource("7_k48l2")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 Menu = NodePath("ScrollableVBox")
 Audio = NodePath("AudioStreamPlayer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 201.0
+offset_bottom = 79.0
+theme_override_constants/separation = 32
+
+[node name="FPSCounter" parent="VBoxContainer" node_paths=PackedStringArray("Counter") instance=ExtResource("5_2e066")]
+layout_mode = 2
+Counter = NodePath("Counter")
+
+[node name="PlayerSpeedLabel" parent="VBoxContainer" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("5_v66gg")]
+layout_mode = 2
+NameLabel = NodePath("Name")
+DataLabel = NodePath("Data")

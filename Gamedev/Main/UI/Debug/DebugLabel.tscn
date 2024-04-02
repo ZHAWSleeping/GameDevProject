@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm8jvfybs4oa8"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Debug/DebugLabel.cs" id="1_ld3fi"]
+
+[node name="DebugLabel" type="HBoxContainer" node_paths=PackedStringArray("NameLabel", "DataLabel")]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 16
+script = ExtResource("1_ld3fi")
+LabelName = null
+NameLabel = NodePath("Name")
+DataLabel = NodePath("Data")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 25
+text = "UNSET:"
+vertical_alignment = 2
+
+[node name="Data" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "NULL"
+vertical_alignment = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=36 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
@@ -85,6 +85,8 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mwij8"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cd5rs"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3fon4"]
 states/End/position = Vector2(1047, 225.664)
 states/Fall/node = SubResource("AnimationNodeAnimation_k46j7")
@@ -102,8 +104,8 @@ states/Walk/node = SubResource("AnimationNodeAnimation_5vqq8")
 states/Walk/position = Vector2(853.48, 225.664)
 states/Wall/node = SubResource("AnimationNodeAnimation_6avey")
 states/Wall/position = Vector2(197.48, 63)
-transitions = ["Jump", "JumpTransition", SubResource("AnimationNodeStateMachineTransition_4n0ih"), "JumpTransition", "Fall", SubResource("AnimationNodeStateMachineTransition_gtxka"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_8g2pq"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_8r1l4"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_uyl7h"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_b60rc"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xnsm3"), "Jump", "Wall", SubResource("AnimationNodeStateMachineTransition_1gu3y"), "Wall", "Jump", SubResource("AnimationNodeStateMachineTransition_f4ag4"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hvhdx"), "JumpTransition", "Land", SubResource("AnimationNodeStateMachineTransition_c2w6q"), "Jump", "Land", SubResource("AnimationNodeStateMachineTransition_03ade"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_mwij8")]
-graph_offset = Vector2(26.3511, -16.8906)
+transitions = ["Jump", "JumpTransition", SubResource("AnimationNodeStateMachineTransition_4n0ih"), "JumpTransition", "Fall", SubResource("AnimationNodeStateMachineTransition_gtxka"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_8g2pq"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_8r1l4"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_uyl7h"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_b60rc"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xnsm3"), "Jump", "Wall", SubResource("AnimationNodeStateMachineTransition_1gu3y"), "Wall", "Jump", SubResource("AnimationNodeStateMachineTransition_f4ag4"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hvhdx"), "JumpTransition", "Land", SubResource("AnimationNodeStateMachineTransition_c2w6q"), "Jump", "Land", SubResource("AnimationNodeStateMachineTransition_03ade"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_mwij8"), "Land", "Jump", SubResource("AnimationNodeStateMachineTransition_cd5rs")]
+graph_offset = Vector2(98.3628, 35.8985)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker", "AnimTree", "Sprite")]
 light_mask = 32
@@ -176,7 +178,8 @@ tree_root = SubResource("AnimationNodeStateMachine_3fon4")
 anim_player = NodePath("../SlimeSmall/AnimationPlayer")
 
 [node name="SlimeSmall" parent="." instance=ExtResource("7_bly8k")]
+modulate = Color(0, 2, 0, 1)
 position = Vector2(-10, -15)
-region_rect = Rect2(0, 0, 20, 20)
+region_rect = Rect2(120, 0, 20, 20)
 
 [editable path="SlimeSmall"]

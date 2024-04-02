@@ -18,7 +18,7 @@ public partial class WallCheckerNode : Node2D
 		}
 	}
 
-	public bool IsOnRightWall
+	public bool IsOnlyOnRightWall
 	{
 		get
 		{
@@ -26,7 +26,7 @@ public partial class WallCheckerNode : Node2D
 		}
 	}
 
-	public bool IsOnLeftWall
+	public bool IsOnlyOnLeftWall
 	{
 		get
 		{

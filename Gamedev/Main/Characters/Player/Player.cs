@@ -139,11 +139,11 @@ namespace Gamedev.Main.Characters.Player
 			{
 				float whichSideOnWall = 0.0f;
 
-				if (wallChecker.IsOnLeftWall)
+				if (wallChecker.IsOnlyOnLeftWall)
 				{
 					whichSideOnWall = WallJumpVelocityX;
 				}
-				else if (wallChecker.IsOnRightWall)
+				else if (wallChecker.IsOnlyOnRightWall)
 				{
 					whichSideOnWall = -WallJumpVelocityX;
 				}
@@ -174,6 +174,22 @@ namespace Gamedev.Main.Characters.Player
 				Sprite.FlipH = true;
 			}
 
+
+			// Debug stuff
+			DebugEvents.OnPlayerSpeed(Velocity);
+			DebugEvents.OnPlayerGrounded(IsOnFloor());
+			DebugEvents.OnPlayerFalling(isFalling);
+			DebugEvents.OnPlayerWall(IsOnWall());
+			VectorExtensions.Direction? wallSide = null;
+			if (wallChecker.IsOnlyOnLeftWall)
+			{
+				wallSide = VectorExtensions.Direction.West;
+			}
+			else if (wallChecker.IsOnlyOnRightWall)
+			{
+				wallSide = VectorExtensions.Direction.East;
+			}
+			DebugEvents.OnPlayerWallSide(wallSide);
 
 			MoveAndSlide();
 		}
