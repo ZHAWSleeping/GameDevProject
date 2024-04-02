@@ -180,6 +180,6 @@ anim_player = NodePath("../SlimeSmall/AnimationPlayer")
 [node name="SlimeSmall" parent="." instance=ExtResource("7_bly8k")]
 modulate = Color(0, 2, 0, 1)
 position = Vector2(-10, -15)
-region_rect = Rect2(120, 0, 20, 20)
+region_rect = Rect2(60, 0, 20, 20)
 
 [editable path="SlimeSmall"]

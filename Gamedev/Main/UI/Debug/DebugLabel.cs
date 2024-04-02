@@ -1,20 +1,39 @@
+using Gamedev.Main.Extensions;
 using Godot;
 using System;
 
-public partial class DebugLabel : HBoxContainer
+namespace Gamedev.Main.UI.Debug
 {
-	[Export]
-	private string LabelName;
-
-	[Export]
-	private Label NameLabel;
-
-	[Export]
-	protected Label DataLabel;
-
-	public override void _Ready()
+	public partial class DebugLabel : HBoxContainer
 	{
-		base._Ready();
-		NameLabel.Text = LabelName;
+		[Export]
+		private string LabelName;
+
+		[Export]
+		private Label NameLabel;
+
+		[Export]
+		protected Label DataLabel;
+
+		public override void _Ready()
+		{
+			base._Ready();
+			NameLabel.Text = LabelName + ":";
+		}
+
+		protected void DisplayBool(bool b)
+		{
+			DataLabel.Text = b ? "Y" : "N";
+		}
+
+		protected void DisplayVector2(Vector2 vec)
+		{
+			DataLabel.Text = $"{vec.X}, {vec.Y}";
+		}
+
+		protected void DisplayDirection(VectorExtensions.Direction? dir)
+		{
+			DataLabel.Text = dir?.ToString() ?? "None";
+		}
 	}
 }

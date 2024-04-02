@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://xwydf5lrcwgs"]
+
+[ext_resource type="PackedScene" uid="uid://dm8jvfybs4oa8" path="res://Gamedev/Main/UI/Debug/DebugLabel.tscn" id="1_bcry7"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Debug/PlayerWallLabel.cs" id="2_ofpsq"]
+
+[node name="PlayerWallLabel" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("1_bcry7")]
+script = ExtResource("2_ofpsq")
+LabelName = "Wall"
+NameLabel = NodePath("Name")
+DataLabel = NodePath("Data")
