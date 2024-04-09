@@ -8,6 +8,10 @@ public partial class BaseEnemy : RigidBody2D
 	public float speed;
 	[Export]
 	public RayCastEnemy terrainDetection;
+	[Export]
+	public TopDetectionEnemy topDetectionEnemyRight;
+	[Export]
+	public TopDetectionEnemy topDetectionEnemyLeft;
 
 	private Vector2 Velocity = new Vector2(0, 0);
 
@@ -16,6 +20,8 @@ public partial class BaseEnemy : RigidBody2D
 	public override void _Ready()
 	{
 		Velocity.X = speed;
+		topDetectionEnemyRight.PlayerJumpedOnTop += Die;
+		topDetectionEnemyLeft.PlayerJumpedOnTop += Die;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,5 +50,11 @@ public partial class BaseEnemy : RigidBody2D
 	private void Move(double delta)
 	{
 		MoveAndCollide((float)delta * Velocity);
+	}
+
+
+	protected virtual void Die()
+	{
+		QueueFree();
 	}
 }

@@ -12,7 +12,7 @@ rightWall = NodePath("rightWall")
 leftWall = NodePath("leftWall")
 
 [node name="rightWall" type="Area2D" parent="." node_paths=PackedStringArray("wallChecker")]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_rxppv")
 wallChecker = NodePath("rigthCollision")
@@ -22,7 +22,7 @@ position = Vector2(2.7, 0)
 shape = SubResource("RectangleShape2D_jcjx6")
 
 [node name="leftWall" type="Area2D" parent="." node_paths=PackedStringArray("wallChecker")]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_rxppv")
 wallChecker = NodePath("leftCollision")
