@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=37 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://erxnvcd6ni68" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="7_bly8k"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="7_mbr1e"]
 [ext_resource type="PackedScene" uid="uid://b6xxhiybj4juj" path="res://Gamedev/Main/Characters/WallCheckerNode.tscn" id="8_cyxy1"]
+[ext_resource type="PackedScene" uid="uid://cihejt48jvtrp" path="res://Gamedev/Main/Characters/EnemyTrigger.tscn" id="8_koefh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
 size = Vector2(10, 10)
@@ -181,5 +182,7 @@ anim_player = NodePath("../SlimeSmall/AnimationPlayer")
 modulate = Color(0, 2, 0, 1)
 position = Vector2(-10, -15)
 region_rect = Rect2(0, 0, 20, 20)
+
+[node name="EnemyTrigger" parent="." instance=ExtResource("8_koefh")]
 
 [editable path="SlimeSmall"]
