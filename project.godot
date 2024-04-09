@@ -124,6 +124,7 @@ Cancel={
 2d_physics/layer_4="DeathTriggers"
 2d_physics/layer_5="Pickups"
 2d_physics/layer_6="Enemies"
+2d_physics/layer_7="Objects"
 
 [rendering]
 

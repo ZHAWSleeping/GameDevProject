@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmo2ksosfmxbx"]
+[gd_scene load_steps=11 format=3 uid="uid://cmo2ksosfmxbx"]
 
 [ext_resource type="Texture2D" uid="uid://dm5lrdh2d1k1m" path="res://Gamedev/Main/Tiles/Background/TestBackground.png" id="1_c6u3b"]
 [ext_resource type="PackedScene" uid="uid://c8aflbixp4njy" path="res://Gamedev/Main/Tiles/Basic.tscn" id="1_shlny"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://diue0qiq1n3ci" path="res://Gamedev/Main/Tiles/Pickups/BatteryPickup.tscn" id="7_mu6mb"]
 [ext_resource type="PackedScene" uid="uid://d2gk22l4faa46" path="res://Gamedev/Main/Tiles/Pickups/PowerUps/WallJump.tscn" id="8_2abix"]
 [ext_resource type="PackedScene" uid="uid://cb24i0l8mp7he" path="res://Gamedev/Main/Characters/Enemies/base_enemy.tscn" id="9_k1ncv"]
+[ext_resource type="PackedScene" uid="uid://8sbo1htpqnll" path="res://Gamedev/Main/Objects/boulder.tscn" id="10_ap66c"]
 
 [node name="Level1" type="Node2D"]
 
@@ -26,7 +27,7 @@ AnimTree = NodePath("AnimationTree")
 Sprite = NodePath("SlimeSmall")
 
 [node name="DeathzoneTilemap" parent="." instance=ExtResource("3_vi1d7")]
-layer_0/tile_data = PackedInt32Array(1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1114110, 0, 0, 1114109, 0, 0, 1114108, 0, 0, 1114107, 0, 0, 1114106, 0, 0, 1114105, 0, 0, 1114104, 0, 0, 1114103, 0, 0, 1114102, 0, 0, 1114101, 0, 0, 1114100, 0, 0, 1114099, 0, 0, 1048563, 0, 0, 983027, 0, 0, 917491, 0, 0, 851955, 0, 0, 786419, 0, 0, 720883, 0, 0, 655347, 0, 0, 589811, 0, 0, 1245222, 0, 0, 1245223, 0, 0, 1245224, 0, 0, 1245225, 0, 0, 1245226, 0, 0, 1310764, 0, 0, 1310765, 0, 0, 1310766, 0, 0, 1310767, 0, 0, 1310768, 0, 0, 1310769, 0, 0, 1310770, 0, 0, 1310771, 0, 0, 1310772, 0, 0, 1310773, 0, 0, 1310774, 0, 0, 1310775, 0, 0, -458679, 0, 0, -524215, 0, 0, -458686, 0, 0, -524222, 0, 0)
+layer_0/tile_data = PackedInt32Array(1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1114110, 0, 0, 1114109, 0, 0, 1114108, 0, 0, 1114107, 0, 0, 1114106, 0, 0, 1114105, 0, 0, 1114104, 0, 0, 1114103, 0, 0, 1114102, 0, 0, 1114101, 0, 0, 1114100, 0, 0, 1114099, 0, 0, 1048563, 0, 0, 983027, 0, 0, 917491, 0, 0, 851955, 0, 0, 786419, 0, 0, 720883, 0, 0, 655347, 0, 0, 589811, 0, 0, 1245222, 0, 0, 1245223, 0, 0, 1245224, 0, 0, 1245225, 0, 0, 1245226, 0, 0, 1310764, 0, 0, 1310765, 0, 0, 1310766, 0, 0, 1310767, 0, 0, 1310768, 0, 0, 1310769, 0, 0, 1310770, 0, 0, 1310771, 0, 0, 1310772, 0, 0, 1310773, 0, 0, 1310774, 0, 0, 1310775, 0, 0)
 
 [node name="PlayerCamera1" parent="." instance=ExtResource("4_e0yph")]
 position = Vector2(160, 90)
@@ -79,3 +80,7 @@ collisionShape2D = NodePath("CollisionShape2D")
 [node name="BaseEnemy" parent="." node_paths=PackedStringArray("terrainDetection") instance=ExtResource("9_k1ncv")]
 position = Vector2(557, 18)
 terrainDetection = NodePath("RayCastEnemy")
+
+[node name="Boulder" parent="." instance=ExtResource("10_ap66c")]
+position = Vector2(65, 35)
+speed = 30.0

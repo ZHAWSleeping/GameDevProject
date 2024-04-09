@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://8sbo1htpqnll"]
+[gd_scene load_steps=5 format=3 uid="uid://8sbo1htpqnll"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Objects/Boulder.cs" id="1_k08ts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7sle"]
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_6ftv0"]
+offsets = PackedFloat32Array(0.308442, 0.694805, 0.701299)
+colors = PackedColorArray(0.0792199, 0.0233422, 0.00108761, 1, 0.396078, 0.2, 0.0196078, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_egv38"]
+gradient = SubResource("Gradient_6ftv0")
+width = 30
+height = 30
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Boulder" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 66
+script = ExtResource("1_k08ts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c7sle")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_egv38")
