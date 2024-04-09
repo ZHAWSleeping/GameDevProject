@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2fxwhoepbpub"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Enemies/RayCastEnemy.cs" id="1_nr6ex"]
+
+[node name="RayCastEnemy" type="Node2D" node_paths=PackedStringArray("rayFront", "rayBack", "rayRight", "rayLeft")]
+script = ExtResource("1_nr6ex")
+rayFront = NodePath("RayFront")
+rayBack = NodePath("RayBack")
+rayRight = NodePath("RayRight")
+rayLeft = NodePath("RayLeft")
+
+[node name="RayFront" type="RayCast2D" parent="."]
+position = Vector2(7, 0)
+target_position = Vector2(0, 7)
+collision_mask = 2
+
+[node name="RayBack" type="RayCast2D" parent="."]
+position = Vector2(-7, 0)
+target_position = Vector2(0, 7)
+collision_mask = 2
+
+[node name="RayRight" type="RayCast2D" parent="."]
+target_position = Vector2(6, 0)
+collision_mask = 2
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-6, 0)
+collision_mask = 2

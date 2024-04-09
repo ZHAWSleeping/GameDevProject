@@ -52,7 +52,6 @@ namespace Gamedev.Main.Characters.Player
 		{
 			base._Ready();
 			CollisionEvents.CollisionDeath += Die;
-			GD.Print(WallJumpVelocity);
 			Animations = AnimTree.GetStateMachinePlayback();
 			//ProcessMode = ProcessModeEnum.Inherit;
 		}
@@ -149,7 +148,6 @@ namespace Gamedev.Main.Characters.Player
 				}
 
 				velocity = new Vector2(whichSideOnWall, WallJumpVelocity);
-				GD.Print(velocity + " and " + WallJumpVelocity);
 				//canWallJump = false; timer
 			}
 
