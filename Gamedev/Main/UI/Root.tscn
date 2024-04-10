@@ -47,8 +47,10 @@ offset_top = 2.0
 offset_right = 441.0
 offset_bottom = 65.0
 
-[node name="BatteryCounter" parent="GameHud" instance=ExtResource("5_kdugc")]
+[node name="BatteryCounter" parent="GameHud" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("5_kdugc")]
 layout_mode = 2
+NameLabel = NodePath("Name")
+DataLabel = NodePath("Data")
 
 [node name="PauseScreen" parent="." node_paths=PackedStringArray("Menu", "Audio") instance=ExtResource("7_k48l2")]
 modulate = Color(1, 1, 1, 0)

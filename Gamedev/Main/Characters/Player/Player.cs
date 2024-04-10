@@ -25,6 +25,8 @@ namespace Gamedev.Main.Characters.Player
 
 		[Export]
 		private float JumpVelocity = -400.0f;
+		[Export]
+		private float JumpMidAirIncrease = -100.0f;
 
 		[Export]
 		private float WallJumpVelocity = -200.0f;
@@ -50,6 +52,7 @@ namespace Gamedev.Main.Characters.Player
 		private AnimationNodeStateMachinePlayback Animations;
 		private bool canWallJump = true;
 		private bool isFalling = false;
+		private int jumpTimer = 15;
 
 		public override void _Ready()
 		{
@@ -68,13 +71,15 @@ namespace Gamedev.Main.Characters.Player
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 		}
 
-		private void BatteryCollected(){
+		private void BatteryCollected()
+		{
 			BatteryCount++;
 		}
 
 
 		public override void _PhysicsProcess(double delta)
 		{
+
 			Vector2 velocity = Velocity;
 			//if (IsOnWallOnly() && !isFalling && wallChecker.isOnWall) { 			}
 
@@ -89,6 +94,11 @@ namespace Gamedev.Main.Characters.Player
 				}
 				else
 				{
+					if (Input.IsActionPressed("Jump") && (jumpTimer > 0))
+					{
+						jumpTimer--;
+						velocity.Y -= 500 * (float)delta;
+					}
 					velocity += GetGravity() * (float)delta;
 				}
 			}
@@ -199,6 +209,11 @@ namespace Gamedev.Main.Characters.Player
 				wallSide = VectorExtensions.Direction.East;
 			}
 			DebugEvents.OnPlayerWallSide(wallSide);
+
+			if (IsOnFloor() || IsOnWall())
+			{
+				jumpTimer = 15;
+			}
 
 			MoveAndSlide();
 		}

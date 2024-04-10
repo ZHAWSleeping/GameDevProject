@@ -113,8 +113,9 @@ light_mask = 32
 collision_mask = 115
 script = ExtResource("1_j87et")
 Speed = 100.0
-JumpVelocity = -280.0
-WallJumpVelocity = -180.0
+JumpVelocity = -230.0
+JumpMidAirIncrease = -80.0
+WallJumpVelocity = -130.0
 WallJumpVelocityX = 100.0
 WallSlideSpeed = 900.0
 wallChecker = NodePath("WallCheckerNode")
@@ -181,7 +182,7 @@ anim_player = NodePath("../SlimeSmall/AnimationPlayer")
 [node name="SlimeSmall" parent="." instance=ExtResource("7_bly8k")]
 modulate = Color(0, 2, 0, 1)
 position = Vector2(-10, -15)
-region_rect = Rect2(0, 0, 20, 20)
+region_rect = Rect2(40, 0, 20, 20)
 
 [node name="EnemyTrigger" parent="." instance=ExtResource("8_koefh")]
 
