@@ -44,6 +44,9 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		private Sprite2D Sprite;
 
+		[Export]
+		public int BatteryCount = 0;
+
 		private AnimationNodeStateMachinePlayback Animations;
 		private bool canWallJump = true;
 		private bool isFalling = false;
@@ -52,6 +55,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			base._Ready();
 			CollisionEvents.CollisionDeath += Die;
+			CollisionEvents.BatteryCollected += BatteryCollected;
 			Animations = AnimTree.GetStateMachinePlayback();
 			//ProcessMode = ProcessModeEnum.Inherit;
 		}
@@ -62,6 +66,10 @@ namespace Gamedev.Main.Characters.Player
 			//Deathsound
 			Modulate = new Color(4, 1, 1, 1);
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+		}
+
+		private void BatteryCollected(){
+			BatteryCount++;
 		}
 
 

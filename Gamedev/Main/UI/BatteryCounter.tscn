@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cigaq1jrw6f7u"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/BatteryCounter.cs" id="1_mlt31"]
+
+[node name="BatteryCounter" type="HBoxContainer" node_paths=PackedStringArray("NameLabel", "DataLabel")]
+script = ExtResource("1_mlt31")
+LabelName = "BatteryCount"
+NameLabel = NodePath("Name")
+DataLabel = NodePath("Data")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+text = "UNSET:"
+
+[node name="Data" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 2
+text = "NULL"
