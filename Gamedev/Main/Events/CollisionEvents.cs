@@ -23,6 +23,7 @@ namespace Gamedev.Main.Events
 			CollisionWall += () => GD.Print("Wall hit");
 			CollisionDeath += () => GD.Print("Collided to death");
 			BatteryCollected += () => GD.Print("Battery collected");
+			ActivateLight += () => GD.Print("Activated light gem");
 		}
 
 		public static void Clear()
