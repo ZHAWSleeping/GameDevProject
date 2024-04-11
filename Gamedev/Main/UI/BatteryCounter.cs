@@ -23,6 +23,7 @@ public partial class BatteryCounter : HBoxContainer
 	public override void _Ready()
 	{
 		CollisionEvents.BatteryCollected += BatteryCollected;
+		CollisionEvents.ActivateLight += BatteryUsed;
 		NameLabel.Text = "Battery Count";
 		DataLabel.Text = $"{BatteryCount}";
 	}
@@ -36,6 +37,12 @@ public partial class BatteryCounter : HBoxContainer
 	private void BatteryCollected()
 	{
 		BatteryCount++;
+		DataLabel.Text = $"{BatteryCount}";
+	}
+
+	private void BatteryUsed()
+	{
+		BatteryCount--;
 		DataLabel.Text = $"{BatteryCount}";
 	}
 }
