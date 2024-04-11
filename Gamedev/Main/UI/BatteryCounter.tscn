@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Gamedev/Main/UI/BatteryCounter.cs" id="1_mlt31"]
 
 [node name="BatteryCounter" type="HBoxContainer" node_paths=PackedStringArray("NameLabel", "DataLabel")]
+offset_right = 120.0
+offset_bottom = 23.0
 script = ExtResource("1_mlt31")
 LabelName = "BatteryCount"
 NameLabel = NodePath("Name")

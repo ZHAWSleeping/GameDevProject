@@ -59,6 +59,7 @@ namespace Gamedev.Main.Characters.Player
 			base._Ready();
 			CollisionEvents.CollisionDeath += Die;
 			CollisionEvents.BatteryCollected += BatteryCollected;
+			CollisionEvents.LightTouched += CheckForBatteries;
 			Animations = AnimTree.GetStateMachinePlayback();
 			//ProcessMode = ProcessModeEnum.Inherit;
 		}
@@ -74,6 +75,15 @@ namespace Gamedev.Main.Characters.Player
 		private void BatteryCollected()
 		{
 			BatteryCount++;
+		}
+
+		private void CheckForBatteries()
+		{
+			if (BatteryCount > 0)
+			{
+				CollisionEvents.OnActivateLight();
+				BatteryCount--;
+			}
 		}
 
 

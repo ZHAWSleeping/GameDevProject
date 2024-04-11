@@ -1,3 +1,6 @@
+using Gamedev.Main.Characters.Player;
+using Gamedev.Events;
+using Gamedev.Main.Events;
 using Godot;
 using System;
 
@@ -23,16 +26,23 @@ namespace Gamedev.Main.Tiles.Gems
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			BodyEntered += LightUpGem;
+			BodyEntered += CheckForBattery;
+			CollisionEvents.ActivateLight += LightUpGem;
 		}
 
-		private void LightUpGem(Node2D _) {
+		private void LightUpGem()
+		{
 			GemSprite.Frame = 1;
 			GemSprite.Modulate = LitModulate;
 			PrimaryLight.Enabled = true;
 			SecondaryLight.Enabled = true;
-			BodyEntered -= LightUpGem;
+			CollisionEvents.ActivateLight -= LightUpGem;
 			PingSound.Play();
+		}
+
+		private void CheckForBattery(Node2D _)
+		{
+			CollisionEvents.OnLightTouched();
 		}
 
 	}

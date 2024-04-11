@@ -11,6 +11,11 @@ namespace Gamedev.Main.Events
 		public static void OnCollisionDeath() => CollisionDeath();
 		public static event Action BatteryCollected = delegate { };
 		public static void OnBatteryCollected() => BatteryCollected();
+		public static event Action LightTouched = delegate { };
+		public static void OnLightTouched() => LightTouched();
+		public static event Action ActivateLight = delegate { };
+		public static void OnActivateLight() => ActivateLight();
+
 
 
 		static CollisionEvents()
