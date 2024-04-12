@@ -15,6 +15,8 @@ namespace Gamedev.Main.Events
 		public static void OnLightTouched() => LightTouched();
 		public static event Action ActivateLight = delegate { };
 		public static void OnActivateLight() => ActivateLight();
+		public static event Action CollectedPowerUp = delegate { };
+		public static void OnCollectedPowerUp(int num) => CollectedPowerUp();
 
 
 

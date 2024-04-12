@@ -20,6 +20,13 @@ namespace Gamedev.Main.Characters.Player
 			Wall,
 		}
 
+		public enum SpecialAction
+		{
+			None,
+			WallJump,
+			Dash,
+		}
+
 		[Export]
 		private float Speed = 300.0f;
 
@@ -48,6 +55,9 @@ namespace Gamedev.Main.Characters.Player
 
 		[Export]
 		public int BatteryCount = 0;
+		[Export]
+		public SpecialAction specialAction = SpecialAction.None;
+
 
 		private AnimationNodeStateMachinePlayback Animations;
 		private bool canWallJump = true;
@@ -60,6 +70,7 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.CollisionDeath += Die;
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
+			CollisionEvents.CollectedPowerUp += ActivatePowerUp;
 			Animations = AnimTree.GetStateMachinePlayback();
 			//ProcessMode = ProcessModeEnum.Inherit;
 		}
@@ -84,6 +95,11 @@ namespace Gamedev.Main.Characters.Player
 				CollisionEvents.OnActivateLight();
 				BatteryCount--;
 			}
+		}
+
+		private void ActivatePowerUp()
+		{
+			specialAction = SpecialAction.WallJump;
 		}
 
 
