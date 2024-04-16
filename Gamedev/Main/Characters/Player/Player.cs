@@ -48,10 +48,7 @@ namespace Gamedev.Main.Characters.Player
 		private WallCheckerNode wallChecker;
 
 		[Export]
-		private AnimationTree AnimTree;
-
-		[Export]
-		private Sprite2D Sprite;
+		private PlayerSprite Sprite;
 
 		[Export]
 		public int BatteryCount = 0;
@@ -71,8 +68,7 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
 			CollisionEvents.CollectedPowerUp += ActivatePowerUp;
-			Animations = AnimTree.GetStateMachinePlayback();
-			//ProcessMode = ProcessModeEnum.Inherit;
+			Animations = Sprite.AnimTree.GetStateMachinePlayback();
 		}
 
 		private void Die()
@@ -146,10 +142,10 @@ namespace Gamedev.Main.Characters.Player
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
 			Vector2 direction = Input.GetVector(
-				VectorExtensions.Direction.West.ToString(),
-				VectorExtensions.Direction.East.ToString(),
-				VectorExtensions.Direction.North.ToString(),
-				VectorExtensions.Direction.South.ToString()
+				Inputs.West.ToString(),
+				Inputs.East.ToString(),
+				Inputs.North.ToString(),
+				Inputs.South.ToString()
 			);
 
 			if (direction != Vector2.Zero)
