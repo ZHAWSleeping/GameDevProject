@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://difsxl6mgpehu"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Objects/Goal.cs" id="1_bba67"]
+[ext_resource type="Texture2D" uid="uid://cvow417ap7duq" path="res://Gamedev/Main/Level/goal_object.png.png" id="1_epwlg"]
+[ext_resource type="PackedScene" uid="uid://bc3pg4v0irmy1" path="res://Gamedev/Main/Level/WinScreen.tscn" id="2_e8cb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2qbk"]
+radius = 8.0
+
+[node name="Goal" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_bba67")
+packedscene = ExtResource("2_e8cb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o2qbk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.024, 0.024)
+texture = ExtResource("1_epwlg")
+
+[connection signal="body_entered" from="." to="." method="GoalReached"]

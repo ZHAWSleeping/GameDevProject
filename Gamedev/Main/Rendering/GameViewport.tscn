@@ -6,13 +6,14 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_0dp02"]
 viewport_path = NodePath("SubViewport")
 
-[node name="GameViewport" type="TextureRect"]
+[node name="GameViewport" type="TextureRect" node_paths=PackedStringArray("subviewport")]
 texture_filter = 1
 offset_right = 320.0
 offset_bottom = 180.0
 texture = SubResource("ViewportTexture_0dp02")
 stretch_mode = 5
 script = ExtResource("1_k8jac")
+subviewport = NodePath("SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false

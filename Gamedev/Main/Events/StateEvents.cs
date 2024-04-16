@@ -15,6 +15,8 @@ namespace Gamedev.Events
 
 		public static event Action ResumeRequested = delegate { };
 		public static void OnResumeRequested() => ResumeRequested();
+		public static event Action<PackedScene> LevelFinished = delegate { };
+		public static void OnLevelFinished(PackedScene packedScene) => LevelFinished(packedScene);
 
 
 		static StateEvents()
