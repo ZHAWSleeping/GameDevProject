@@ -4,21 +4,13 @@ using Gamedev.Main.Extensions;
 using Godot;
 using System;
 using System.Diagnostics;
+using static Gamedev.Main.Characters.Player.PlayerSprite;
 
 namespace Gamedev.Main.Characters.Player
 {
 	public partial class Player : CharacterBody2D
 	{
 
-		private enum AnimationState
-		{
-			Idle,
-			Walk,
-			Jump,
-			Fall,
-			Land,
-			Wall,
-		}
 
 		public enum SpecialAction
 		{
@@ -56,7 +48,6 @@ namespace Gamedev.Main.Characters.Player
 		public SpecialAction specialAction = SpecialAction.None;
 
 
-		private AnimationNodeStateMachinePlayback Animations;
 		private bool canWallJump = true;
 		private bool isFalling = false;
 		private int jumpTimer = 15;
@@ -68,7 +59,6 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
 			CollisionEvents.CollectedPowerUp += ActivatePowerUp;
-			Animations = Sprite.AnimTree.GetStateMachinePlayback();
 		}
 
 		private void Die()
@@ -112,7 +102,7 @@ namespace Gamedev.Main.Characters.Player
 				if (isFalling && wallChecker.IsOnAnyWall)
 				{
 					velocity = new Vector2(0, WallSlideSpeed) * (float)delta;
-					Animations.Travel(AnimationState.Wall.ToString());
+					Sprite.Travel(AnimationState.Wall);
 				}
 				else
 				{
@@ -136,7 +126,7 @@ namespace Gamedev.Main.Characters.Player
 			// Just landed
 			if (IsOnFloor() && isFalling)
 			{
-				Animations.Travel(AnimationState.Land.ToString());
+				Sprite.Travel(AnimationState.Land);
 			}
 
 			// Get the input direction and handle the movement/deceleration.
@@ -153,7 +143,7 @@ namespace Gamedev.Main.Characters.Player
 				if (IsOnFloor())
 				{
 					velocity.X = direction.X * Speed;
-					Animations.Travel(AnimationState.Walk.ToString());
+					Sprite.Travel(AnimationState.Walk);
 				}
 				else
 				{
@@ -169,7 +159,7 @@ namespace Gamedev.Main.Characters.Player
 			else if (IsOnFloor())
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-				Animations.Travel(AnimationState.Idle.ToString());
+				Sprite.Travel(AnimationState.Idle);
 
 			}
 
@@ -198,7 +188,7 @@ namespace Gamedev.Main.Characters.Player
 				isFalling = true;
 				if (!wallChecker.IsOnAnyWall)
 				{
-					Animations.Travel(AnimationState.Fall.ToString());
+					Sprite.Travel(AnimationState.Fall);
 				}
 			}
 			else
