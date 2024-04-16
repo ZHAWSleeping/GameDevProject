@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Gamedev/Main/Objects/Goal.cs" id="1_bba67"]
 [ext_resource type="Texture2D" uid="uid://cvow417ap7duq" path="res://Gamedev/Main/Level/goal_object.png.png" id="1_epwlg"]
-[ext_resource type="PackedScene" uid="uid://bc3pg4v0irmy1" path="res://Gamedev/Main/Level/WinScreen.tscn" id="2_e8cb8"]
+[ext_resource type="PackedScene" uid="uid://bc3pg4v0irmy1" path="res://Gamedev/Main/UI/Menu/Victory/WinScreen.tscn" id="2_e8cb8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2qbk"]
 radius = 8.0
