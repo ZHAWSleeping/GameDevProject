@@ -86,7 +86,7 @@ Sprite = NodePath("SlimeSmall")
 [node name="SlimeSmall" parent="." instance=ExtResource("1_wp2db")]
 modulate = Color(0, 2, 0, 1)
 position = Vector2(-10, -15)
-region_rect = Rect2(60, 0, 20, 20)
+region_rect = Rect2(0, 0, 20, 20)
 
 [node name="AnimationTree" type="AnimationTree" parent="SlimeSmall"]
 tree_root = SubResource("AnimationNodeStateMachine_ngj5v")

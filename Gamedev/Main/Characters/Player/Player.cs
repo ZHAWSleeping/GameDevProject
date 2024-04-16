@@ -1,9 +1,8 @@
+using System;
 using Gamedev.Events;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Godot;
-using System;
-using System.Diagnostics;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
 
 namespace Gamedev.Main.Characters.Player
@@ -11,12 +10,19 @@ namespace Gamedev.Main.Characters.Player
 	public partial class Player : CharacterBody2D
 	{
 
-
 		public enum SpecialAction
 		{
 			None,
 			WallJump,
 			Dash,
+		}
+
+		public enum PlayerState
+		{
+			Grounded,
+			Jumping,
+			Falling,
+			Wall,
 		}
 
 		[Export]
@@ -37,6 +43,12 @@ namespace Gamedev.Main.Characters.Player
 		private float WallSlideSpeed = 700.0f;
 
 		[Export]
+		private int CoyoteTimeFrames = 15;
+
+		[Export]
+		private int JumpFrames = 20;
+
+		[Export]
 		private WallCheckerNode wallChecker;
 
 		[Export]
@@ -47,10 +59,9 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		public SpecialAction specialAction = SpecialAction.None;
 
+		private PlayerData Data;
 
 		private bool canWallJump = true;
-		private bool isFalling = false;
-		private int jumpTimer = 15;
 
 		public override void _Ready()
 		{
@@ -59,7 +70,135 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
 			CollisionEvents.CollectedPowerUp += ActivatePowerUp;
+			Data = new();
+			Data.CoyoteTime = CoyoteTimeFrames;
+			Data.JumpTime = JumpFrames;
 		}
+
+
+		public override void _PhysicsProcess(double delta)
+		{
+			Data.Velocity = Velocity;
+			Data.InputDirection = InputExtensions.MovementVector();
+			Data.JumpHeld = Inputs.Jump.Pressed();
+
+			switch (Data.State)
+			{
+				case PlayerState.Grounded:
+					HandleGrounded();
+					break;
+				case PlayerState.Falling:
+					HandleFalling();
+					break;
+				case PlayerState.Jumping:
+					HandleJumping();
+					break;
+				case PlayerState.Wall:
+					HandleWall();
+					break;
+			}
+
+			Velocity = Data.Velocity;
+			MoveAndSlide();
+		}
+
+		private void HandleGrounded()
+		{
+			GD.Print(Data.State.ToString());
+			// Transition to Jumping state if the jump button is held
+			if (Data.JumpHeld)
+			{
+				Data.State = PlayerState.Jumping;
+				Data.PreviousState = Data.State;
+				HandleJumping();
+				return;
+			}
+
+			// Transition to the Falling state if we don't have a floor anymore and the coyote timer has expired
+			if (!IsOnFloor() && Data.CoyoteTime <= 0)
+			{
+				Data.State = PlayerState.Falling;
+				Data.PreviousState = Data.State;
+				HandleFalling();
+				return;
+			}
+
+			// Reset coyote timer and jump timer or count down coyote
+			if (IsOnFloor())
+			{
+				Data.JumpTime = JumpFrames;
+				Data.CoyoteTime = CoyoteTimeFrames;
+			}
+			else
+			{
+				Data.CoyoteTime--;
+			}
+
+			// Slow down and accelerate
+			if (Data.InputDirection == Vector2.Zero)
+			{
+				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed), 0.0f);
+				Sprite.Travel(AnimationState.Idle);
+			}
+			else
+			{
+				Data.Velocity = new(Data.InputDirection.X * Speed, 0.0f);
+				Sprite.Travel(AnimationState.Walk);
+			}
+
+			// Clamp speed
+			if (MathF.Abs(Data.Velocity.X) > Speed)
+			{
+				Data.Velocity = new(Speed * Mathf.Sign(Data.Velocity.X), 0.0f);
+			}
+		}
+
+		private void HandleJumping()
+		{
+			GD.Print(Data.State.ToString());
+			if (!Data.JumpHeld || Data.JumpTime <= 0)
+			{
+				Data.State = PlayerState.Falling;
+				Data.PreviousState = Data.State;
+				HandleFalling();
+				return;
+			}
+
+			if (IsOnWall())
+			{
+				Data.State = PlayerState.Wall;
+				Data.PreviousState = Data.State;
+				HandleWall();
+				return;
+			}
+		}
+
+		private void HandleFalling()
+		{
+			GD.Print(Data.State.ToString());
+			if (IsOnWall())
+			{
+				Data.State = PlayerState.Wall;
+				Data.PreviousState = Data.State;
+				HandleWall();
+				return;
+			}
+
+		}
+
+		private void HandleWall()
+		{
+			GD.Print(Data.State.ToString());
+			if (Data.JumpHeld)
+			{
+				Data.State = PlayerState.Jumping;
+				Data.PreviousState = Data.State;
+				HandleJumping();
+				return;
+			}
+
+		}
+
 
 		private void Die()
 		{
@@ -89,145 +228,5 @@ namespace Gamedev.Main.Characters.Player
 		}
 
 
-		public override void _PhysicsProcess(double delta)
-		{
-
-			Vector2 velocity = Velocity;
-			//if (IsOnWallOnly() && !isFalling && wallChecker.isOnWall) { 			}
-
-
-			// Add the gravity.
-			if (!IsOnFloor())
-			{
-				if (isFalling && wallChecker.IsOnAnyWall)
-				{
-					velocity = new Vector2(0, WallSlideSpeed) * (float)delta;
-					Sprite.Travel(AnimationState.Wall);
-				}
-				else
-				{
-					if (Input.IsActionPressed("Jump") && (jumpTimer > 0))
-					{
-						jumpTimer--;
-						velocity.Y -= 500 * (float)delta;
-					}
-					velocity += GetGravity() * (float)delta;
-				}
-			}
-
-			//needs to change wall or be away from the wall for a sec
-
-			// Handle Jump.
-			if (Input.IsActionJustPressed("Jump") && IsOnFloor())
-			{
-				velocity.Y = JumpVelocity;
-			}
-
-			// Just landed
-			if (IsOnFloor() && isFalling)
-			{
-				Sprite.Travel(AnimationState.Land);
-			}
-
-			// Get the input direction and handle the movement/deceleration.
-			// As good practice, you should replace UI actions with custom gameplay actions.
-			Vector2 direction = Input.GetVector(
-				Inputs.West.ToString(),
-				Inputs.East.ToString(),
-				Inputs.North.ToString(),
-				Inputs.South.ToString()
-			);
-
-			if (direction != Vector2.Zero)
-			{
-				if (IsOnFloor())
-				{
-					velocity.X = direction.X * Speed;
-					Sprite.Travel(AnimationState.Walk);
-				}
-				else
-				{
-					velocity.X += direction.X * Speed / 12;
-				}
-
-				if (MathF.Abs(velocity.X) > Speed)
-				{
-					velocity.X = Speed * Mathf.Sign(velocity.X);
-				}
-
-			}
-			else if (IsOnFloor())
-			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-				Sprite.Travel(AnimationState.Idle);
-
-			}
-
-			// Handle Wall Jump.
-			if (Input.IsActionJustPressed("Jump") && wallChecker.IsOnAnyWall && !IsOnFloor())
-			{
-				float whichSideOnWall = 0.0f;
-
-				if (wallChecker.IsOnlyOnLeftWall)
-				{
-					whichSideOnWall = WallJumpVelocityX;
-				}
-				else if (wallChecker.IsOnlyOnRightWall)
-				{
-					whichSideOnWall = -WallJumpVelocityX;
-				}
-
-				velocity = new Vector2(whichSideOnWall, WallJumpVelocity);
-				//canWallJump = false; timer
-			}
-
-			Velocity = velocity;
-
-			if (Velocity.Y > 0)
-			{
-				isFalling = true;
-				if (!wallChecker.IsOnAnyWall)
-				{
-					Sprite.Travel(AnimationState.Fall);
-				}
-			}
-			else
-			{
-				isFalling = false;
-			}
-
-			if (direction.X > 0)
-			{
-				Sprite.FlipH = false;
-			}
-			else if (direction.X < 0)
-			{
-				Sprite.FlipH = true;
-			}
-
-
-			// Debug stuff
-			DebugEvents.OnPlayerSpeed(Velocity);
-			DebugEvents.OnPlayerGrounded(IsOnFloor());
-			DebugEvents.OnPlayerFalling(isFalling);
-			DebugEvents.OnPlayerWall(IsOnWall());
-			VectorExtensions.Direction? wallSide = null;
-			if (wallChecker.IsOnlyOnLeftWall)
-			{
-				wallSide = VectorExtensions.Direction.West;
-			}
-			else if (wallChecker.IsOnlyOnRightWall)
-			{
-				wallSide = VectorExtensions.Direction.East;
-			}
-			DebugEvents.OnPlayerWallSide(wallSide);
-
-			if (IsOnFloor() || IsOnWall())
-			{
-				jumpTimer = 15;
-			}
-
-			MoveAndSlide();
-		}
 	}
 }
