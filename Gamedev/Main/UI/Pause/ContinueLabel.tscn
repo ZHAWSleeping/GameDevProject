@@ -3,6 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_okae3"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Pause/ContinueLabel.cs" id="2_qj2yf"]
 
-[node name="ContinueLabel" instance=ExtResource("1_okae3")]
+[node name="ContinueLabel" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_okae3")]
 text = "Continue"
 script = ExtResource("2_qj2yf")
+SelectAudio = NodePath("Select")
+ConfirmAudio = NodePath("Confirm")
+
+[node name="Select" parent="." index="0"]
+bus = &"Master"
+
+[node name="Confirm" parent="." index="1"]
+bus = &"Master"

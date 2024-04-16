@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbsqxtor5q1gq"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_4wi37"]
+
+[node name="LevelSelectLabel" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_4wi37")]
+SelectAudio = NodePath("Select")
+ConfirmAudio = NodePath("Confirm")
+
+[node name="Select" parent="." index="0"]
+bus = &"Master"
+
+[node name="Confirm" parent="." index="1"]
+bus = &"Master"

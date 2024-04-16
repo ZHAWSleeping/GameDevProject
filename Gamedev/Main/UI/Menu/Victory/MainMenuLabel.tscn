@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://77rhcbfpch8e"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_biqnq"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Victory/MainMenuLabel.cs" id="2_55nqe"]
+
+[node name="MainMenuLabel" instance=ExtResource("1_biqnq")]
+text = "Main Menu"
+script = ExtResource("2_55nqe")
+
+[node name="Select" parent="." index="0"]
+bus = &"Master"
+
+[node name="Confirm" parent="." index="1"]
+bus = &"Master"

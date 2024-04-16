@@ -11,6 +11,5 @@ public partial class Goal : Area2D
 	private void GoalReached(Node2D body)
 	{
 		StateEvents.OnLevelFinished(packedscene);
-
 	}
 }

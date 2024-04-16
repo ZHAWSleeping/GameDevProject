@@ -13,11 +13,12 @@ namespace Gamedev.Main.Rendering
 		{
 			StateEvents.PauseRequested += () => ProcessMode = ProcessModeEnum.Disabled;
 			StateEvents.ResumeRequested += () => ProcessMode = ProcessModeEnum.Inherit;
-			StateEvents.LevelFinished += ReplaceLevel;
+			StateEvents.LevelFinished += ReplaceScene;
+			StateEvents.MainMenuRequest += ReplaceScene;
 
 		}
 
-		private void ReplaceLevel(PackedScene packedScene)
+		private void ReplaceScene(PackedScene packedScene)
 		{
 			subviewport.GetChildren().ToList().First().QueueFree();
 			subviewport.AddChild(packedScene.Instantiate());
