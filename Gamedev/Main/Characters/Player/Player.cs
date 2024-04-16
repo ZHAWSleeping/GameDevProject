@@ -49,6 +49,9 @@ namespace Gamedev.Main.Characters.Player
 		private int JumpFrames = 20;
 
 		[Export]
+		private float AirborneModifier;
+
+		[Export]
 		private WallCheckerNode wallChecker;
 
 		[Export]
@@ -81,6 +84,8 @@ namespace Gamedev.Main.Characters.Player
 			Data.Velocity = Velocity;
 			Data.InputDirection = InputExtensions.MovementVector();
 			Data.JumpHeld = Inputs.Jump.Pressed();
+			Data.JumpJustPressed = Inputs.Jump.JustPressed();
+			Data.Delta = delta;
 
 			switch (Data.State)
 			{
@@ -104,9 +109,8 @@ namespace Gamedev.Main.Characters.Player
 
 		private void HandleGrounded()
 		{
-			GD.Print(Data.State.ToString());
 			// Transition to Jumping state if the jump button is held
-			if (Data.JumpHeld)
+			if (Data.JumpJustPressed)
 			{
 				Data.State = PlayerState.Jumping;
 				Data.PreviousState = Data.State;
@@ -155,7 +159,7 @@ namespace Gamedev.Main.Characters.Player
 
 		private void HandleJumping()
 		{
-			GD.Print(Data.State.ToString());
+			GD.Print("jumpojg");
 			if (!Data.JumpHeld || Data.JumpTime <= 0)
 			{
 				Data.State = PlayerState.Falling;
@@ -171,11 +175,33 @@ namespace Gamedev.Main.Characters.Player
 				HandleWall();
 				return;
 			}
+
+			Data.JumpTime--;
+
+			// Accelerate
+			if (Data.InputDirection == Vector2.Zero)
+			{
+				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed * AirborneModifier), 0.0f);
+			}
+
+			switch (Data.PreviousState)
+			{
+				case PlayerState.Grounded:
+					Data.Velocity = new(Data.Velocity.X, JumpVelocity);
+					break;
+				case PlayerState.Wall:
+					break;
+				default:
+					Data.Velocity = new(Data.Velocity.X, Data.Velocity.Y - 500 * (float)Data.Delta);
+					Data.Velocity += GetGravity() * (float)Data.Delta;
+					break;
+			}
+
 		}
 
 		private void HandleFalling()
 		{
-			GD.Print(Data.State.ToString());
+			GD.Print("Falling");
 			if (IsOnWall())
 			{
 				Data.State = PlayerState.Wall;
@@ -184,11 +210,26 @@ namespace Gamedev.Main.Characters.Player
 				return;
 			}
 
+			if (IsOnFloor())
+			{
+				Data.State = PlayerState.Grounded;
+				Data.PreviousState = Data.State;
+				HandleGrounded();
+				return;
+			}
+
+			// Slow down and accelerate
+			if (Data.InputDirection == Vector2.Zero)
+			{
+				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed * AirborneModifier), 0.0f);
+			}
+
+			Data.Velocity += GetGravity() * (float)Data.Delta;
+
 		}
 
 		private void HandleWall()
 		{
-			GD.Print(Data.State.ToString());
 			if (Data.JumpHeld)
 			{
 				Data.State = PlayerState.Jumping;

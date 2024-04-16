@@ -19,5 +19,10 @@ namespace Gamedev.Main.Extensions
 		{
 			return Input.IsActionPressed(input.ToString());
 		}
+
+		public static bool JustPressed(this Inputs input)
+		{
+			return Input.IsActionJustPressed(input.ToString());
+		}
 	}
 }
