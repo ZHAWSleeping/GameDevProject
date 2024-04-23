@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3hlnh7lg47ao"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Debug/PlayerDebug.cs" id="1_3ygy1"]
+
+[node name="PlayerDebug" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3ygy1")

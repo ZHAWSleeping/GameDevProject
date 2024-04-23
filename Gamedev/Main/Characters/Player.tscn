@@ -38,14 +38,18 @@ light_mask = 32
 collision_mask = 115
 script = ExtResource("1_j87et")
 Speed = 100.0
-JumpVelocity = -10000.0
-JumpMidAirIncrease = -1000.0
+JumpVelocity = -150.0
+JumpMidAirIncrease = -25.0
 WallJumpVelocity = -130.0
 WallJumpVelocityX = 100.0
 WallSlideSpeed = 900.0
+CoyoteTimeFrames = null
+JumpFrames = 15
 AirborneModifier = 0.08
 wallChecker = NodePath("WallCheckerNode")
 Sprite = NodePath("PlayerSprite")
+BatteryCount = null
+specialAction = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tps25")

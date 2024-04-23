@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=12 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
@@ -7,12 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ce1jks86gaxc0" path="res://Gamedev/Main/UI/SlidingOverlay.tscn" id="4_3uud4"]
 [ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
 [ext_resource type="PackedScene" uid="uid://cigaq1jrw6f7u" path="res://Gamedev/Main/UI/BatteryCounter.tscn" id="5_kdugc"]
-[ext_resource type="PackedScene" uid="uid://bdtumb7ckh8yk" path="res://Gamedev/Main/UI/Debug/PlayerSpeedLabel.tscn" id="5_v66gg"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
-[ext_resource type="PackedScene" uid="uid://ceywc8jyb6jb2" path="res://Gamedev/Main/UI/Debug/PlayerGroundedLabel.tscn" id="8_kmxow"]
-[ext_resource type="PackedScene" uid="uid://dr00o7hkc5wu0" path="res://Gamedev/Main/UI/Debug/PlayerFallingLabel.tscn" id="9_ybag4"]
-[ext_resource type="PackedScene" uid="uid://xwydf5lrcwgs" path="res://Gamedev/Main/UI/Debug/PlayerWallLabel.tscn" id="10_gvxob"]
-[ext_resource type="PackedScene" uid="uid://dok0n7a66kqeu" path="res://Gamedev/Main/UI/Debug/PlayerWallSideLabel.tscn" id="11_b6qwv"]
+[ext_resource type="PackedScene" uid="uid://c3hlnh7lg47ao" path="res://Gamedev/Main/UI/Debug/PlayerDebug.tscn" id="8_dv8f2"]
+[ext_resource type="PackedScene" uid="uid://dm8jvfybs4oa8" path="res://Gamedev/Main/UI/Debug/DebugLabel.tscn" id="9_lr3gu"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]
 viewport_path = NodePath("SubViewport")
@@ -73,33 +70,13 @@ offset_right = 215.0
 offset_bottom = 145.0
 theme_override_constants/separation = 4
 
-[node name="PlayerSpeedLabel" parent="DebugContainer" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("5_v66gg")]
+[node name="PlayerDebug" parent="DebugContainer" instance=ExtResource("8_dv8f2")]
 layout_mode = 2
-NameLabel = NodePath("Name")
-DataLabel = NodePath("Data")
-
-[node name="PlayerGroundedLabel" parent="DebugContainer" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("8_kmxow")]
-layout_mode = 2
-NameLabel = NodePath("Name")
-DataLabel = NodePath("Data")
-
-[node name="PlayerFallingLabel" parent="DebugContainer" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("9_ybag4")]
-layout_mode = 2
-NameLabel = NodePath("Name")
-DataLabel = NodePath("Data")
-
-[node name="PlayerWallLabel" parent="DebugContainer" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("10_gvxob")]
-layout_mode = 2
-NameLabel = NodePath("Name")
-DataLabel = NodePath("Data")
-
-[node name="PlayerWallSideLabel" parent="DebugContainer" node_paths=PackedStringArray("NameLabel", "DataLabel") instance=ExtResource("11_b6qwv")]
-layout_mode = 2
-NameLabel = NodePath("Name")
-DataLabel = NodePath("Data")
+LabelScene = ExtResource("9_lr3gu")
 
 [node name="SlidingOverlay" parent="." instance=ExtResource("4_3uud4")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
 offset_right = 55.0
+SlideDuration = null

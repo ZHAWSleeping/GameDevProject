@@ -43,7 +43,7 @@ namespace Gamedev.Main.Characters.Player
 		private float WallSlideSpeed = 700.0f;
 
 		[Export]
-		private int CoyoteTimeFrames = 15;
+		private int CoyoteTimeFrames = 5;
 
 		[Export]
 		private int JumpFrames = 20;
@@ -104,6 +104,7 @@ namespace Gamedev.Main.Characters.Player
 			}
 
 			Velocity = Data.Velocity;
+			UpdateDebug();
 			MoveAndSlide();
 		}
 
@@ -112,8 +113,8 @@ namespace Gamedev.Main.Characters.Player
 			// Transition to Jumping state if the jump button is held
 			if (Data.JumpJustPressed)
 			{
-				Data.State = PlayerState.Jumping;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Jumping;
 				HandleJumping();
 				return;
 			}
@@ -121,8 +122,8 @@ namespace Gamedev.Main.Characters.Player
 			// Transition to the Falling state if we don't have a floor anymore and the coyote timer has expired
 			if (!IsOnFloor() && Data.CoyoteTime <= 0)
 			{
-				Data.State = PlayerState.Falling;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Falling;
 				HandleFalling();
 				return;
 			}
@@ -130,8 +131,7 @@ namespace Gamedev.Main.Characters.Player
 			// Reset coyote timer and jump timer or count down coyote
 			if (IsOnFloor())
 			{
-				Data.JumpTime = JumpFrames;
-				Data.CoyoteTime = CoyoteTimeFrames;
+				ResetTimers();
 			}
 			else
 			{
@@ -162,16 +162,16 @@ namespace Gamedev.Main.Characters.Player
 			GD.Print("jumpojg");
 			if (!Data.JumpHeld || Data.JumpTime <= 0)
 			{
-				Data.State = PlayerState.Falling;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Falling;
 				HandleFalling();
 				return;
 			}
 
 			if (IsOnWall())
 			{
-				Data.State = PlayerState.Wall;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Wall;
 				HandleWall();
 				return;
 			}
@@ -181,7 +181,11 @@ namespace Gamedev.Main.Characters.Player
 			// Accelerate
 			if (Data.InputDirection == Vector2.Zero)
 			{
-				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed * AirborneModifier), 0.0f);
+				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed * AirborneModifier), Data.Velocity.Y);
+			}
+			else
+			{
+				Data.Velocity = new(Data.InputDirection.X * Speed, Data.Velocity.Y);
 			}
 
 			switch (Data.PreviousState)
@@ -204,16 +208,16 @@ namespace Gamedev.Main.Characters.Player
 			GD.Print("Falling");
 			if (IsOnWall())
 			{
-				Data.State = PlayerState.Wall;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Wall;
 				HandleWall();
 				return;
 			}
 
 			if (IsOnFloor())
 			{
-				Data.State = PlayerState.Grounded;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Grounded;
 				HandleGrounded();
 				return;
 			}
@@ -221,7 +225,11 @@ namespace Gamedev.Main.Characters.Player
 			// Slow down and accelerate
 			if (Data.InputDirection == Vector2.Zero)
 			{
-				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed * AirborneModifier), 0.0f);
+				Data.Velocity = new(Mathf.MoveToward(Velocity.X, 0, Speed * AirborneModifier), Data.Velocity.Y);
+			}
+			else
+			{
+				Data.Velocity = new(Data.InputDirection.X * Speed, Data.Velocity.Y);
 			}
 
 			Data.Velocity += GetGravity() * (float)Data.Delta;
@@ -230,14 +238,21 @@ namespace Gamedev.Main.Characters.Player
 
 		private void HandleWall()
 		{
-			if (Data.JumpHeld)
+			if (Data.JumpJustPressed)
 			{
-				Data.State = PlayerState.Jumping;
 				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Jumping;
 				HandleJumping();
 				return;
 			}
 
+		}
+
+
+		private void ResetTimers()
+		{
+			Data.JumpTime = JumpFrames;
+			Data.CoyoteTime = CoyoteTimeFrames;
 		}
 
 
@@ -268,6 +283,9 @@ namespace Gamedev.Main.Characters.Player
 			specialAction = SpecialAction.WallJump;
 		}
 
-
+		private void UpdateDebug()
+		{
+			DebugEvents.OnPlayerDataEvent(Data);
+		}
 	}
 }
