@@ -1,9 +1,9 @@
 using Gamedev.Events;
+using Gamedev.Main.Constants;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Godot;
 using System;
-using System.Diagnostics;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
 
 namespace Gamedev.Main.Characters.Player

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=16 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
@@ -33,7 +33,10 @@ polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwv7"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker", "Sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv0xg"]
+size = Vector2(0.2, 9)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker", "Sprite", "Shape", "LeftWallCast", "RightWallCast")]
 light_mask = 32
 collision_mask = 115
 script = ExtResource("1_j87et")
@@ -43,13 +46,13 @@ JumpMidAirIncrease = -25.0
 WallJumpVelocity = -130.0
 WallJumpVelocityX = 100.0
 WallSlideSpeed = 900.0
-CoyoteTimeFrames = null
 JumpFrames = 15
 AirborneModifier = 0.08
 wallChecker = NodePath("WallCheckerNode")
 Sprite = NodePath("PlayerSprite")
-BatteryCount = null
-specialAction = null
+Shape = NodePath("CollisionShape2D")
+LeftWallCast = NodePath("LeftWallCast")
+RightWallCast = NodePath("RightWallCast")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tps25")
@@ -100,6 +103,7 @@ visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
 
 [node name="WallCheckerNode" parent="." node_paths=PackedStringArray("rightWall", "leftWall") instance=ExtResource("8_cyxy1")]
+visible = false
 rightWall = NodePath("rightWall")
 leftWall = NodePath("leftWall")
 
@@ -108,3 +112,18 @@ AnimTree = NodePath("SlimeSmall/AnimationTree")
 Sprite = NodePath("SlimeSmall")
 
 [node name="EnemyTrigger" parent="." instance=ExtResource("8_koefh")]
+visible = false
+
+[node name="LeftWallCast" type="ShapeCast2D" parent="."]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_xv0xg")
+target_position = Vector2(-0.4, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RightWallCast" type="ShapeCast2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_xv0xg")
+target_position = Vector2(0.4, 0)
+collision_mask = 2
+collide_with_areas = true

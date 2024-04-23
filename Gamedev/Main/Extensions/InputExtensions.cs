@@ -1,4 +1,4 @@
-using Gamedev.Main.Characters;
+using Gamedev.Main.Constants;
 using Godot;
 
 namespace Gamedev.Main.Extensions

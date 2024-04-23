@@ -45,6 +45,7 @@ namespace Gamedev.Main.Extensions
 			NorthWest,
 			North,
 			NorthEast,
+			None,
 		}
 
 		/// <summary>
@@ -69,6 +70,16 @@ namespace Gamedev.Main.Extensions
 			double angle = direction.Angle();
 			Direction quadrant = (Direction)(2 * (Math.Round(_quadrant * angle / (2 * Math.PI) + _quadrant) % _quadrant));
 			return quadrant;
+		}
+
+		/// <summary>
+		/// Returns a normalized vector that points in the specified direction.
+		/// </summary>
+		/// <param name="direction"></param>
+		/// <returns></returns>
+		public static Vector2 ToVector(this Direction direction)
+		{
+			return Vector2.Right.Rotated(MathF.PI / 4 * (int)direction).Normalized();
 		}
 
 	}

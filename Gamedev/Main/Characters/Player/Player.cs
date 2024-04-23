@@ -1,5 +1,6 @@
 using System;
 using Gamedev.Events;
+using Gamedev.Main.Constants;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Godot;
@@ -62,9 +63,19 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		public SpecialAction specialAction = SpecialAction.None;
 
+		[Export]
+		private CollisionShape2D Shape;
+
+		[Export]
+		private ShapeCast2D LeftWallCast;
+
+		[Export]
+		private ShapeCast2D RightWallCast;
+
 		private PlayerData Data;
 
-		private bool canWallJump = true;
+		private float Width = 0.0f;
+		private float Height = 0.0f;
 
 		public override void _Ready()
 		{
@@ -73,9 +84,14 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
 			CollisionEvents.CollectedPowerUp += ActivatePowerUp;
+
 			Data = new();
 			Data.CoyoteTime = CoyoteTimeFrames;
 			Data.JumpTime = JumpFrames;
+
+			RectangleShape2D rectangle = (RectangleShape2D)Shape.Shape;
+			Width = rectangle.Size.X;
+			Height = rectangle.Size.Y;
 		}
 
 
@@ -86,6 +102,20 @@ namespace Gamedev.Main.Characters.Player
 			Data.JumpHeld = Inputs.Jump.Pressed();
 			Data.JumpJustPressed = Inputs.Jump.JustPressed();
 			Data.Delta = delta;
+
+			if (LeftWallCast.GetCollisions().HasNodesInGroup("Walls"))
+			{
+				Data.WallSide = VectorExtensions.Direction.West;
+			}
+			else if (RightWallCast.GetCollisions().HasNodesInGroup("Walls"))
+			{
+				Data.WallSide = VectorExtensions.Direction.East;
+			}
+			else
+			{
+				Data.WallSide = VectorExtensions.Direction.None;
+			}
+
 
 			switch (Data.State)
 			{
@@ -101,6 +131,15 @@ namespace Gamedev.Main.Characters.Player
 				case PlayerState.Wall:
 					HandleWall();
 					break;
+			}
+
+			if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.East)
+			{
+				Sprite.FlipH = false;
+			}
+			else if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.West)
+			{
+				Sprite.FlipH = true;
 			}
 
 			Velocity = Data.Velocity;
@@ -159,7 +198,6 @@ namespace Gamedev.Main.Characters.Player
 
 		private void HandleJumping()
 		{
-			GD.Print("jumpojg");
 			if (!Data.JumpHeld || Data.JumpTime <= 0)
 			{
 				Data.PreviousState = Data.State;
@@ -192,8 +230,11 @@ namespace Gamedev.Main.Characters.Player
 			{
 				case PlayerState.Grounded:
 					Data.Velocity = new(Data.Velocity.X, JumpVelocity);
+					Sprite.Travel(AnimationState.Jump);
 					break;
 				case PlayerState.Wall:
+					Sprite.Travel(AnimationState.Jump);
+
 					break;
 				default:
 					Data.Velocity = new(Data.Velocity.X, Data.Velocity.Y - 500 * (float)Data.Delta);
@@ -205,7 +246,6 @@ namespace Gamedev.Main.Characters.Player
 
 		private void HandleFalling()
 		{
-			GD.Print("Falling");
 			if (IsOnWall())
 			{
 				Data.PreviousState = Data.State;
@@ -233,6 +273,7 @@ namespace Gamedev.Main.Characters.Player
 			}
 
 			Data.Velocity += GetGravity() * (float)Data.Delta;
+			Sprite.Travel(AnimationState.Fall);
 
 		}
 
@@ -245,6 +286,20 @@ namespace Gamedev.Main.Characters.Player
 				HandleJumping();
 				return;
 			}
+
+			if (Data.WallSide == VectorExtensions.Direction.None || Data.InputDirection.ToQuadrantDirection() != Data.WallSide)
+			{
+				Data.PreviousState = Data.State;
+				Data.State = PlayerState.Falling;
+				HandleFalling();
+				return;
+			}
+
+
+			Position = new(MathF.Round(Position.X), Position.Y);
+			ResetTimers();
+			Data.Velocity = GetGravity() * 0.5f * (float)Data.Delta;
+			Sprite.Travel(AnimationState.Wall);
 
 		}
 

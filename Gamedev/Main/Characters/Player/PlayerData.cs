@@ -1,5 +1,6 @@
 
 using Godot;
+using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.Characters.Player
 {
@@ -13,6 +14,7 @@ namespace Gamedev.Main.Characters.Player
 		public bool JumpJustPressed { get; set; } = false;
 		public int CoyoteTime { get; set; } = 0;
 		public int JumpTime { get; set; } = 0;
+		public Direction WallSide = Direction.None;
 		public double Delta = 0;
 	}
 }

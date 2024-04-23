@@ -18,6 +18,7 @@ public partial class PlayerDebug : VBoxContainer
 		"JumpJustPressed",
 		"CoyoteTime",
 		"JumpTime",
+		"WallSide",
 	};
 
 	private Dictionary<string, DebugLabel> Labels;
@@ -44,11 +45,7 @@ public partial class PlayerDebug : VBoxContainer
 			Labels[nameof(data.JumpJustPressed)].DataLabel.Text = data.JumpJustPressed.ToString();
 			Labels[nameof(data.CoyoteTime)].DataLabel.Text = data.CoyoteTime.ToString();
 			Labels[nameof(data.JumpTime)].DataLabel.Text = data.JumpTime.ToString();
+			Labels[nameof(data.WallSide)].DataLabel.Text = data.WallSide.ToString();
 		};
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }

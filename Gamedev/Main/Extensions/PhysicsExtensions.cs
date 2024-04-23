@@ -13,5 +13,9 @@ namespace Gamedev.Main.Extensions
         public static bool HasNodesInGroup(this KinematicCollision2D[] collisions, StringName group) {
             return collisions.Select(collision => collision.GetCollider() as Node).Where(body => body.IsInGroup(group)).Any();
         }
+
+        public static Node[] GetCollisions (this ShapeCast2D caster) {
+            return Enumerable.Range(0, caster.GetCollisionCount()).Select(index => caster.GetCollider(index)).Cast<Node>().ToArray();
+        }
     }
 }

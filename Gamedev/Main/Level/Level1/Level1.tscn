@@ -37,10 +37,13 @@ layer_0/tile_data = PackedInt32Array(1179680, 589824, 3, 1114144, 589824, 2, 104
 [node name="DeathzoneTilemap" parent="." instance=ExtResource("3_vi1d7")]
 layer_0/tile_data = PackedInt32Array(1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1114110, 0, 0, 1114109, 0, 0, 1114108, 0, 0, 1114107, 0, 0, 1114106, 0, 0, 1114105, 0, 0, 1114104, 0, 0, 1114103, 0, 0, 1114102, 0, 0, 1114101, 0, 0, 1114100, 0, 0, 1114099, 0, 0, 1048563, 0, 0, 983027, 0, 0, 917491, 0, 0, 851955, 0, 0, 786419, 0, 0, 720883, 0, 0, 655347, 0, 0, 589811, 0, 0, 1245222, 0, 0, 1245223, 0, 0, 1245224, 0, 0, 1245225, 0, 0, 1245226, 0, 0, 1310764, 0, 0, 1310765, 0, 0, 1310766, 0, 0, 1310767, 0, 0, 1310768, 0, 0, 1310769, 0, 0, 1310770, 0, 0, 1310771, 0, 0, 1310772, 0, 0, 1310773, 0, 0, 1310774, 0, 0, 1310775, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0)
 
-[node name="Player" parent="." node_paths=PackedStringArray("wallChecker", "Sprite") instance=ExtResource("2_mi7xp")]
-position = Vector2(57, 166)
+[node name="Player" parent="." node_paths=PackedStringArray("wallChecker", "Sprite", "Shape", "LeftWallCast", "RightWallCast") instance=ExtResource("2_mi7xp")]
+position = Vector2(14, 166)
 wallChecker = NodePath("WallCheckerNode")
 Sprite = NodePath("PlayerSprite")
+Shape = NodePath("CollisionShape2D")
+LeftWallCast = NodePath("LeftWallCast")
+RightWallCast = NodePath("RightWallCast")
 
 [node name="PlayerCamera1" parent="." instance=ExtResource("4_e0yph")]
 position = Vector2(160, 90)
