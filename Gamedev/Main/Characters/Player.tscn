@@ -37,20 +37,11 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xv0xg"]
 size = Vector2(0.2, 9)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("wallChecker", "Sprite", "Shape", "LeftWallCast", "RightWallCast")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "Shape", "LeftWallCast", "RightWallCast")]
 light_mask = 32
 collision_mask = 115
 script = ExtResource("1_j87et")
 Data = ExtResource("2_s4our")
-Speed = 100.0
-JumpVelocity = -150.0
-JumpMidAirIncrease = -25.0
-WallJumpVelocity = -130.0
-WallJumpVelocityX = 100.0
-WallSlideSpeed = 900.0
-JumpFrames = 15
-AirborneModifier = 0.08
-wallChecker = NodePath("WallCheckerNode")
 Sprite = NodePath("PlayerSprite")
 Shape = NodePath("CollisionShape2D")
 LeftWallCast = NodePath("LeftWallCast")

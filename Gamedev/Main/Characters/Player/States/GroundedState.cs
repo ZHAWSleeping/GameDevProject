@@ -1,13 +1,13 @@
 using System;
 using Godot;
-using static Gamedev.Main.Characters.Player.Player;
+using static Gamedev.Main.Characters.Player.PlayerFSM;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
 
 namespace Gamedev.Main.Characters.Player
 {
 	public class GroundedState : PlayerState
 	{
-		public override State State => throw new NotImplementedException();
+		public override State State { get; } = State.Grounded;
 
 		protected override Func<PlayerData, State>[] Transitions { get; }
 

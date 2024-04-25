@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using static Gamedev.Main.Characters.Player.Player;
+using static Gamedev.Main.Characters.Player.PlayerFSM;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
 using static Gamedev.Main.Extensions.VectorExtensions;
 

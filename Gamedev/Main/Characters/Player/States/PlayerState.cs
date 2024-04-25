@@ -1,5 +1,5 @@
 using System;
-using static Gamedev.Main.Characters.Player.Player;
+using static Gamedev.Main.Characters.Player.PlayerFSM;
 
 namespace Gamedev.Main.Characters.Player
 {

@@ -1,4 +1,5 @@
 using Godot;
+using static Gamedev.Main.Characters.Player.PlayerFSM;
 using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.Characters.Player
@@ -25,8 +26,8 @@ namespace Gamedev.Main.Characters.Player
 		public ShapeCast2D LeftWallCast;
 		public ShapeCast2D RightWallCast;
 		public RectangleShape2D Shape;
-		public Player.State State = Player.State.Grounded;
-		public Player.State PreviousState = Player.State.Grounded;
+		public State State = State.Grounded;
+		public State PreviousState = State.Grounded;
 		public Vector2 Velocity = Vector2.Zero;
 		public Vector2 InputDirection = Vector2.Zero;
 		public bool JumpHeld = false;
