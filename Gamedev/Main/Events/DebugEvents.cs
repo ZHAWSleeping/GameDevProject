@@ -19,8 +19,8 @@ namespace Gamedev.Main.Events
 		public static event Action<bool> PlayerFalling;
 		public static void OnPlayerFalling(bool falling) => PlayerFalling(falling);
 
-		public static event Action<PlayerData> PlayerDataEvent;
-		public static void OnPlayerDataEvent(PlayerData data) => PlayerDataEvent(data);
+		public static event Action<PlayerDataOld> PlayerDataEvent;
+		public static void OnPlayerDataEvent(PlayerDataOld data) => PlayerDataEvent(data);
 
 		public static event Action<VectorExtensions.Direction?> PlayerWallSide;
 		public static void OnPlayerWallSide(VectorExtensions.Direction? side) => PlayerWallSide(side);

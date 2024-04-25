@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=17 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
+[ext_resource type="Resource" uid="uid://cyhmo207n15cb" path="res://Gamedev/Main/Characters/Player/PlayerDataRegular.tres" id="2_s4our"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="4_oqr5q"]
 [ext_resource type="AudioStream" uid="uid://boh3jue4cgf1u" path="res://Gamedev/Main/Audio/Effects/step_wood.wav" id="5_vwthq"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
@@ -40,6 +41,7 @@ size = Vector2(0.2, 9)
 light_mask = 32
 collision_mask = 115
 script = ExtResource("1_j87et")
+Data = ExtResource("2_s4our")
 Speed = 100.0
 JumpVelocity = -150.0
 JumpMidAirIncrease = -25.0

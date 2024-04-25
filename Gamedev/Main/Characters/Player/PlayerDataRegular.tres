@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://cyhmo207n15cb"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="1_6hjva"]
+
+[resource]
+script = ExtResource("1_6hjva")
+MovementSpeed = 100.0
+JumpVelocity = -150.0
+JumpVelocityIncrement = -25.0
+AirborneModifier = 0.08
+CoyoteTimeFrames = 5
+JumpTimeFrames = 15
