@@ -1,22 +1,24 @@
 using System;
-using Godot;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
 using static Gamedev.Main.Extensions.VectorExtensions;
 using static Gamedev.Main.Characters.Player.PlayerFSM;
+using Godot;
 
 namespace Gamedev.Main.Characters.Player
 {
-	public class JumpingState : PlayerState
+	public class WallJumpState : PlayerState
 	{
-		public override State State { get; } = State.Jumping;
+		public override State State { get; } = State.WallJumping;
+
 		protected override Func<PlayerData, State>[] Transitions { get; }
 
-		public JumpingState()
+		private Direction LastWallSide = Direction.None;
+
+		public WallJumpState()
 		{
 			Transitions = new[]
 			{
-				FallingTransition,
-				WallTransition,
+				FallTransition,
 			};
 		}
 
@@ -24,6 +26,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			data.JumpTime--;
 
+			/*
 			// Accelerate
 			if (data.InputDirection == Vector2.Zero)
 			{
@@ -33,29 +36,27 @@ namespace Gamedev.Main.Characters.Player
 			{
 				data.Velocity = new(data.InputDirection.X * data.MovementSpeed, data.Velocity.Y);
 			}
-
-			if (data.PreviousState == State.Grounded)
+			*/
+			if (data.PreviousState == State.Wall)
 			{
-				data.Velocity = new(data.Velocity.X, data.JumpVelocity);
+				data.Velocity = (Vector2.Up + data.WallSide.ToVector().Rotated(MathF.PI)) * data.MovementSpeed;
+				LastWallSide = data.WallSide;
 				data.Sprite.Travel(AnimationState.Jump);
 			}
 			else
 			{
-				data.Velocity = new(data.Velocity.X, data.Velocity.Y - 500 * (float)data.Delta);
+				data.Velocity = (Vector2.Up + LastWallSide.ToVector().Rotated(MathF.PI)) * data.MovementSpeed * 0.5f;
 				data.Velocity += data.Player.GetGravity() * (float)data.Delta;
 			}
 		}
 
-		private State FallingTransition(PlayerData data)
+		private State FallTransition(PlayerData data)
 		{
 			return !data.JumpHeld || data.JumpTime <= 0
 				? State.Falling
 				: State.Invalid;
 		}
 
-		private State WallTransition(PlayerData data)
-		{
-			return data.WallSide != Direction.None && data.WallSide == data.InputDirection.ToQuadrantDirection() ? State.Wall : State.Invalid;
-		}
+
 	}
 }

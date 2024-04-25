@@ -39,7 +39,11 @@ namespace Gamedev.Main.Characters.Player
 
 		private State WallTransition(PlayerData data)
 		{
-			return data.WallSide != Direction.None ? State.Wall : State.Invalid;
+			if (data.InputDirection.ToQuadrantDirection() == data.WallSide && data.WallSide != Direction.None)
+			{
+				return State.Wall;
+			}
+			return State.Invalid;
 		}
 
 		private State GroundedTransition(PlayerData data)

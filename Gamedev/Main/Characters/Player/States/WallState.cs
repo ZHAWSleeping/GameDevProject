@@ -2,6 +2,7 @@ using System;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
 using static Gamedev.Main.Extensions.VectorExtensions;
 using static Gamedev.Main.Characters.Player.PlayerFSM;
+using Godot;
 
 namespace Gamedev.Main.Characters.Player
 {
@@ -15,33 +16,37 @@ namespace Gamedev.Main.Characters.Player
 		{
 			Transitions = new[]
 			{
-				JumpingTransition,
-				WallTransition,
+				FallTransition,
+				WallJumpingTransition,
+				GroundedTransition,
 			};
 		}
 
 		public override void Execute(PlayerData data)
 		{
-			data.Player.Position = new(MathF.Round(data.Player.Position.X), data.Player.Position.Y);
+			//data.Player.Position = new(MathF.Round(data.Player.Position.X), data.Player.Position.Y);
 			ResetTimers(data);
 			data.Velocity = data.Player.GetGravity() * 0.5f * (float)data.Delta;
 			data.Sprite.Travel(AnimationState.Wall);
-
-
 		}
 
-		private State JumpingTransition(PlayerData data)
+		private State WallJumpingTransition(PlayerData data)
 		{
-			return data.JumpJustPressed ? State.Jumping : State.Invalid;
+			return data.JumpJustPressed ? State.WallJumping : State.Invalid;
 		}
 
-		private State WallTransition(PlayerData data)
+		private State FallTransition(PlayerData data)
 		{
-			if (data.WallSide == Direction.None || data.InputDirection.ToQuadrantDirection() != data.WallSide)
+			if (data.InputDirection.ToQuadrantDirection() != data.WallSide)
 			{
 				return State.Falling;
 			}
 			return State.Invalid;
+		}
+
+		private State GroundedTransition(PlayerData data)
+		{
+			return data.Player.IsOnFloor() ? State.Grounded : State.Invalid;
 		}
 
 		private void ResetTimers(PlayerData data)

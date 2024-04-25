@@ -81,7 +81,6 @@ namespace Gamedev.Main.Characters.Player
 			}
 
 			StateMachine?.RunState(Data);
-
 			if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.East)
 			{
 				Sprite.FlipH = false;

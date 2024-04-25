@@ -15,6 +15,7 @@ namespace Gamedev.Main.Characters.Player
 			Jumping,
 			Falling,
 			Wall,
+			WallJumping,
 			Invalid,
 		}
 
@@ -28,6 +29,7 @@ namespace Gamedev.Main.Characters.Player
 				new JumpingState(),
 				new WallState(),
 				new FallingState(),
+				new WallJumpState(),
 			};
 			States = states.ToDictionary(state => state.State);
 		}
