@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace Gamedev.Main.Characters.Player
 {
+	/// <summary>
+	/// The player's movement state machine. Transitions are checked first. Then, the state gets executed.
+	/// </summary>
 	public class PlayerFSM
 	{
 
@@ -29,6 +32,10 @@ namespace Gamedev.Main.Characters.Player
 			States = states.ToDictionary(state => state.State);
 		}
 
+		/// <summary>
+		/// Ticks the state machine.
+		/// </summary>
+		/// <param name="data"></param>
 		public void RunState(PlayerData data)
 		{
 			State stateResult = States[data.State].Transition(data);

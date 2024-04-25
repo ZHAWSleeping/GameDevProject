@@ -36,7 +36,5 @@ namespace Gamedev.Main.Characters.Player
 		public double Delta = 0;
 		public int CoyoteTime = 0;
 		public int JumpTime = 0;
-
-
 	}
 }
