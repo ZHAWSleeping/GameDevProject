@@ -25,7 +25,7 @@ namespace Gamedev.Main.Characters.Player
 			// Reset coyote timer and jump timer or count down coyote
 			if (data.Player.IsOnFloor())
 			{
-				ResetTimers(data);
+				data.ResetTimers();
 			}
 			else
 			{
@@ -61,12 +61,6 @@ namespace Gamedev.Main.Characters.Player
 			return !data.Player.IsOnFloor() && data.CoyoteTime <= 0
 				? State.Falling
 				: State.Invalid;
-		}
-
-		private void ResetTimers(PlayerData data)
-		{
-			data.JumpTime = data.JumpTimeFrames;
-			data.CoyoteTime = data.CoyoteTimeFrames;
 		}
 	}
 }

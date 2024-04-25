@@ -5,8 +5,12 @@
 [resource]
 script = ExtResource("1_6hjva")
 MovementSpeed = 100.0
-JumpVelocity = -150.0
-JumpVelocityIncrement = -25.0
-AirborneModifier = 0.08
+JumpVelocity = 125.0
+JumpVelocityIncrement = 15.0
+WallJumpVelocity = Vector2(125, 125)
+WallJumpVelocityIncrement = 15.0
+WallSlideModifier = 0.75
+AirborneModifier = 0.5
 CoyoteTimeFrames = 5
-JumpTimeFrames = 15
+JumpTimeFrames = 12
+Gravity = Vector2(0, 16)

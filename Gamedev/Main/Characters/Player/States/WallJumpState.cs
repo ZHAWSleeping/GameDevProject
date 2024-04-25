@@ -26,7 +26,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			data.JumpTime--;
 
-			/*
+			
 			// Accelerate
 			if (data.InputDirection == Vector2.Zero)
 			{
@@ -34,19 +34,19 @@ namespace Gamedev.Main.Characters.Player
 			}
 			else
 			{
-				data.Velocity = new(data.InputDirection.X * data.MovementSpeed, data.Velocity.Y);
+				data.Velocity = new(data.Velocity.X + data.InputDirection.X * data.MovementSpeed * data.AirborneModifier, data.Velocity.Y);
 			}
-			*/
-			if (data.PreviousState == State.Wall)
+			
+			if (data.PreviousState != State.WallJumping)
 			{
-				data.Velocity = (Vector2.Up + data.WallSide.ToVector().Rotated(MathF.PI)) * data.MovementSpeed;
+				data.Velocity = (Vector2.Up + data.WallSide.ToVector().Rotated(MathF.PI)) * data.WallJumpVelocity;
 				LastWallSide = data.WallSide;
 				data.Sprite.Travel(AnimationState.Jump);
 			}
 			else
 			{
-				data.Velocity = (Vector2.Up + LastWallSide.ToVector().Rotated(MathF.PI)) * data.MovementSpeed * 0.5f;
-				data.Velocity += data.Player.GetGravity() * (float)data.Delta;
+				data.Velocity = new(data.Velocity.X, data.Velocity.Y - data.WallJumpVelocityIncrement);
+				data.Velocity += data.Gravity;
 			}
 		}
 

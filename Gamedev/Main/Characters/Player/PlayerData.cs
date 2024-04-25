@@ -15,11 +15,19 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		public float JumpVelocityIncrement;
 		[Export]
+		public Vector2 WallJumpVelocity;
+		[Export]
+		public float WallJumpVelocityIncrement;
+		[Export]
+		public float WallSlideModifier;
+		[Export]
 		public float AirborneModifier;
 		[Export]
 		public int CoyoteTimeFrames;
 		[Export]
 		public int JumpTimeFrames;
+		[Export]
+		public Vector2 Gravity;
 
 		public Player Player;
 		public PlayerSprite Sprite;
@@ -36,5 +44,11 @@ namespace Gamedev.Main.Characters.Player
 		public double Delta = 0;
 		public int CoyoteTime = 0;
 		public int JumpTime = 0;
+
+		public void ResetTimers()
+		{
+			CoyoteTime = CoyoteTimeFrames;
+			JumpTime = JumpTimeFrames;
+		}
 	}
 }

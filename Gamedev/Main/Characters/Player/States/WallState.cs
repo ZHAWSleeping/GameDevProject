@@ -25,8 +25,8 @@ namespace Gamedev.Main.Characters.Player
 		public override void Execute(PlayerData data)
 		{
 			//data.Player.Position = new(MathF.Round(data.Player.Position.X), data.Player.Position.Y);
-			ResetTimers(data);
-			data.Velocity = data.Player.GetGravity() * 0.5f * (float)data.Delta;
+			data.ResetTimers();
+			data.Velocity = data.Gravity * data.WallSlideModifier;
 			data.Sprite.Travel(AnimationState.Wall);
 		}
 
@@ -48,12 +48,5 @@ namespace Gamedev.Main.Characters.Player
 		{
 			return data.Player.IsOnFloor() ? State.Grounded : State.Invalid;
 		}
-
-		private void ResetTimers(PlayerData data)
-		{
-			data.JumpTime = data.JumpTimeFrames;
-			data.CoyoteTime = data.CoyoteTimeFrames;
-		}
-
 	}
 }

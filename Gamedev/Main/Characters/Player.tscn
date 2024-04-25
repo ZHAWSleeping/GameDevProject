@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=16 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="Resource" uid="uid://cyhmo207n15cb" path="res://Gamedev/Main/Characters/Player/PlayerDataRegular.tres" id="2_s4our"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="6_hdsnq"]
 [ext_resource type="PackedScene" uid="uid://l2s63awt1crk" path="res://Gamedev/Main/Characters/Player/PlayerSprite.tscn" id="7_68xpn"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="7_mbr1e"]
-[ext_resource type="PackedScene" uid="uid://b6xxhiybj4juj" path="res://Gamedev/Main/Characters/WallCheckerNode.tscn" id="8_cyxy1"]
 [ext_resource type="PackedScene" uid="uid://cihejt48jvtrp" path="res://Gamedev/Main/Characters/EnemyTrigger.tscn" id="8_koefh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
@@ -94,11 +93,6 @@ pitch_scale = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathTrigger"]
 visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
-
-[node name="WallCheckerNode" parent="." node_paths=PackedStringArray("rightWall", "leftWall") instance=ExtResource("8_cyxy1")]
-visible = false
-rightWall = NodePath("rightWall")
-leftWall = NodePath("leftWall")
 
 [node name="PlayerSprite" parent="." node_paths=PackedStringArray("AnimTree", "Sprite") instance=ExtResource("7_68xpn")]
 AnimTree = NodePath("SlimeSmall/AnimationTree")

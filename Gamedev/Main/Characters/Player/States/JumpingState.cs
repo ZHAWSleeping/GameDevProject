@@ -15,6 +15,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			Transitions = new[]
 			{
+				WallJumpTransition,
 				FallingTransition,
 				WallTransition,
 			};
@@ -36,13 +37,13 @@ namespace Gamedev.Main.Characters.Player
 
 			if (data.PreviousState == State.Grounded)
 			{
-				data.Velocity = new(data.Velocity.X, data.JumpVelocity);
+				data.Velocity = new(data.Velocity.X, -data.JumpVelocity);
 				data.Sprite.Travel(AnimationState.Jump);
 			}
 			else
 			{
-				data.Velocity = new(data.Velocity.X, data.Velocity.Y - 500 * (float)data.Delta);
-				data.Velocity += data.Player.GetGravity() * (float)data.Delta;
+				data.Velocity = new(data.Velocity.X, data.Velocity.Y - data.JumpVelocityIncrement);
+				data.Velocity += data.Gravity;
 			}
 		}
 
@@ -56,6 +57,16 @@ namespace Gamedev.Main.Characters.Player
 		private State WallTransition(PlayerData data)
 		{
 			return data.WallSide != Direction.None && data.WallSide == data.InputDirection.ToQuadrantDirection() ? State.Wall : State.Invalid;
+		}
+
+		private State WallJumpTransition(PlayerData data)
+		{
+			if (data.JumpJustPressed && data.WallSide != Direction.None)
+			{
+				data.ResetTimers();
+				return State.WallJumping;
+			}
+			return State.Invalid;
 		}
 	}
 }

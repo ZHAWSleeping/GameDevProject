@@ -16,6 +16,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			Transitions = new[]
 			{
+				WallJumpTransition,
 				WallTransition,
 				GroundedTransition,
 			};
@@ -30,10 +31,10 @@ namespace Gamedev.Main.Characters.Player
 			}
 			else
 			{
-				data.Velocity = new(data.InputDirection.X * data.MovementSpeed, data.Velocity.Y);
+				data.Velocity = new(data.InputDirection.X * data.MovementSpeed * data.AirborneModifier, data.Velocity.Y);
 			}
 
-			data.Velocity += data.Player.GetGravity() * (float)data.Delta;
+			data.Velocity += data.Gravity;
 			data.Sprite.Travel(AnimationState.Fall);
 		}
 
@@ -50,5 +51,16 @@ namespace Gamedev.Main.Characters.Player
 		{
 			return data.Player.IsOnFloor() ? State.Grounded : State.Invalid;
 		}
+
+		private State WallJumpTransition(PlayerData data)
+		{
+			if (data.JumpJustPressed && data.WallSide != Direction.None)
+			{
+				data.ResetTimers();
+				return State.WallJumping;
+			}
+			return State.Invalid;
+		}
+
 	}
 }
