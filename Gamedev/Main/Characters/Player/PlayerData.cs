@@ -11,6 +11,10 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		public float MovementSpeed;
 		[Export]
+		public float MaxMovementSpeed;
+		[Export]
+		public float AirDrag;
+		[Export]
 		public float JumpVelocity;
 		[Export]
 		public float JumpVelocityIncrement;

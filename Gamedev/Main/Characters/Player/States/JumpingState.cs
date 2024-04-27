@@ -17,7 +17,6 @@ namespace Gamedev.Main.Characters.Player
 			{
 				WallJumpTransition,
 				FallingTransition,
-				WallTransition,
 			};
 		}
 
@@ -25,15 +24,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			data.JumpTime--;
 
-			// Accelerate
-			if (data.InputDirection == Vector2.Zero)
-			{
-				data.Velocity = new(Mathf.MoveToward(data.Velocity.X, 0, data.MovementSpeed * data.AirborneModifier), data.Velocity.Y);
-			}
-			else
-			{
-				data.Velocity = new(data.InputDirection.X * data.MovementSpeed, data.Velocity.Y);
-			}
+			data.Velocity = Move(data, data.MovementSpeed * data.AirborneModifier, data.AirDrag);
 
 			if (data.PreviousState == State.Grounded)
 			{

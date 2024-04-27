@@ -24,15 +24,7 @@ namespace Gamedev.Main.Characters.Player
 
 		public override void Execute(PlayerData data)
 		{
-			// Slow down and accelerate
-			if (data.InputDirection == Vector2.Zero)
-			{
-				data.Velocity = new(Mathf.MoveToward(data.Velocity.X, 0, data.MovementSpeed * data.AirborneModifier), data.Velocity.Y);
-			}
-			else
-			{
-				data.Velocity = new(data.InputDirection.X * data.MovementSpeed * data.AirborneModifier, data.Velocity.Y);
-			}
+			data.Velocity = Move(data, data.MovementSpeed * data.AirborneModifier, data.AirDrag);
 
 			data.Velocity += data.Gravity;
 			data.Sprite.Travel(AnimationState.Fall);

@@ -1,4 +1,5 @@
 using System;
+using Godot;
 using static Gamedev.Main.Characters.Player.PlayerFSM;
 
 namespace Gamedev.Main.Characters.Player
@@ -32,5 +33,23 @@ namespace Gamedev.Main.Characters.Player
 			}
 			return State;
 		}
+
+		protected virtual Vector2 Move(PlayerData data, float speed, float drag)
+		{
+			if (
+				(
+					MathF.Sign(data.Velocity.X) == MathF.Sign(data.InputDirection.X)
+					&& data.Velocity.X <= data.MaxMovementSpeed
+					&& data.Velocity.X >= -data.MaxMovementSpeed
+				)
+				|| MathF.Sign(data.Velocity.X) != MathF.Sign(data.InputDirection.X)
+				&& data.InputDirection != Vector2.Zero
+			)
+			{
+				return new(data.Velocity.X + data.InputDirection.X * speed, data.Velocity.Y);
+			}
+			return new(Mathf.MoveToward(data.Velocity.X, 0, drag), data.Velocity.Y);
+		}
+
 	}
 }
