@@ -82,11 +82,12 @@ namespace Gamedev.Main.Characters.Player
 			}
 
 			StateMachine?.RunState(Data);
-			if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.East)
+
+			if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.East || Data.WallSide == VectorExtensions.Direction.East)
 			{
 				Sprite.FlipH = false;
 			}
-			else if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.West)
+			else if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.West || Data.WallSide == VectorExtensions.Direction.West)
 			{
 				Sprite.FlipH = true;
 			}
