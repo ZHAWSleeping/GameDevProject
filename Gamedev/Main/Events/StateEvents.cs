@@ -26,10 +26,7 @@ namespace Gamedev.Events
 
 		static StateEvents()
 		{
-			QuitRequested += () => GD.Print("Quit requested");
-			RestartRequested += () => GD.Print("Restart requested");
-			PauseRequested += () => GD.Print("Pause requested");
-			ResumeRequested += () => GD.Print("Resume requested");
+			Clear();
 		}
 
 		public static void Clear()
@@ -38,6 +35,8 @@ namespace Gamedev.Events
 			RestartRequested = delegate { };
 			PauseRequested = delegate { };
 			ResumeRequested = delegate { };
+			MainMenuRequest = delegate { };
+			LevelFinished = delegate { };
 		}
 	}
 }
