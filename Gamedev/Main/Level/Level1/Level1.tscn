@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmo2ksosfmxbx"]
+[gd_scene load_steps=14 format=3 uid="uid://cmo2ksosfmxbx"]
 
 [ext_resource type="Texture2D" uid="uid://bqwp1ow0od87b" path="res://Gamedev/Main/Level/pixel_art_dark_cave_background.png.png" id="1_ou3nc"]
 [ext_resource type="PackedScene" uid="uid://c8aflbixp4njy" path="res://Gamedev/Main/Tiles/Basic.tscn" id="1_shlny"]
