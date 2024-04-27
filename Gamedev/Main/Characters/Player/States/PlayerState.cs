@@ -10,6 +10,10 @@ namespace Gamedev.Main.Characters.Player
 		/// Which state this class represents.
 		/// </summary>
 		public abstract State State { get; }
+
+		/// <summary>
+		/// List of transitions that will be checked before this state is executed.
+		/// </summary>
 		protected abstract Func<PlayerData, State>[] Transitions { get; }
 
 		/// <summary>
@@ -34,6 +38,13 @@ namespace Gamedev.Main.Characters.Player
 			return State;
 		}
 
+		/// <summary>
+		/// General purpose routine to process user input into horizontal movement with drag.
+		/// </summary>
+		/// <param name="data"></param>
+		/// <param name="speed"></param>
+		/// <param name="drag"></param>
+		/// <returns></returns>
 		protected virtual Vector2 Move(PlayerData data, float speed, float drag)
 		{
 			if (
