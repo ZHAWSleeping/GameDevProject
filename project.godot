@@ -27,7 +27,7 @@ project/assembly_name="Game Dev Project"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
+enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg", "res://addons/softbody2d/plugin.cfg")
 
 [gui]
 
