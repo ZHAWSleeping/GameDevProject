@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://l2s63awt1crk"]
+[gd_scene load_steps=26 format=3 uid="uid://l2s63awt1crk"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerSprite.cs" id="1_2md11"]
 [ext_resource type="PackedScene" uid="uid://erxnvcd6ni68" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="1_wp2db"]
+[ext_resource type="PackedScene" uid="uid://dss07bjr0qki7" path="res://Gamedev/Main/Characters/Player/FlappyThing.tscn" id="3_xulfr"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k46j7"]
 animation = &"Fall"
@@ -91,5 +92,8 @@ region_rect = Rect2(0, 0, 20, 20)
 [node name="AnimationTree" type="AnimationTree" parent="SlimeSmall"]
 tree_root = SubResource("AnimationNodeStateMachine_ngj5v")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="FlappyThing" parent="." instance=ExtResource("3_xulfr")]
+position = Vector2(0, -17)
 
 [editable path="SlimeSmall"]
