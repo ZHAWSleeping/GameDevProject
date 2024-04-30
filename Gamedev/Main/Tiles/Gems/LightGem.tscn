@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Gamedev/Main/Tiles/Gems/LightGem.cs" id="1_2r3gk"]
 [ext_resource type="Texture2D" uid="uid://ditvxb341qxlh" path="res://Gamedev/Main/Tiles/Gems/LightGem.png" id="1_7cjb5"]
-[ext_resource type="AudioStream" uid="uid://ck6cekb78mvs6" path="res://Gamedev/Main/Audio/Ping.wav" id="3_ouks8"]
+[ext_resource type="AudioStream" uid="uid://ck6cekb78mvs6" path="res://Gamedev/Main/Audio/UI/Ping.wav" id="3_ouks8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85h7g"]
 atlas = ExtResource("1_7cjb5")
@@ -75,4 +75,3 @@ shape = SubResource("RectangleShape2D_d2cav")
 stream = ExtResource("3_ouks8")
 volume_db = -8.0
 pitch_scale = 4.0
-bus = &"SFX"

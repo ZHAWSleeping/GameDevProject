@@ -7,13 +7,13 @@ namespace Gamedev.Main.UI.Debug
 	public partial class DebugLabel : HBoxContainer
 	{
 		[Export]
-		private string LabelName;
+		public string LabelName;
 
 		[Export]
 		private Label NameLabel;
 
 		[Export]
-		protected Label DataLabel;
+		public Label DataLabel;
 
 		public override void _Ready()
 		{

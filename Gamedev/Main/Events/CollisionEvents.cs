@@ -5,27 +5,27 @@ namespace Gamedev.Main.Events
 {
 	public static class CollisionEvents
 	{
-		public static event Action CollisionWall = delegate { };
+		public static event Action CollisionWall;
 		public static void OnCollisionWall() => CollisionWall();
-		public static event Action CollisionDeath = delegate { };
+
+		public static event Action CollisionDeath;
 		public static void OnCollisionDeath() => CollisionDeath();
-		public static event Action BatteryCollected = delegate { };
+
+		public static event Action BatteryCollected;
 		public static void OnBatteryCollected() => BatteryCollected();
-		public static event Action LightTouched = delegate { };
+
+		public static event Action LightTouched;
 		public static void OnLightTouched() => LightTouched();
+
 		public static event Action ActivateLight = delegate { };
 		public static void OnActivateLight() => ActivateLight();
-		public static event Action CollectedPowerUp = delegate { };
+
+		public static event Action CollectedPowerUp;
 		public static void OnCollectedPowerUp(int num) => CollectedPowerUp();
-
-
 
 		static CollisionEvents()
 		{
-			CollisionWall += () => GD.Print("Wall hit");
-			CollisionDeath += () => GD.Print("Collided to death");
-			BatteryCollected += () => GD.Print("Battery collected");
-			ActivateLight += () => GD.Print("Activated light gem");
+			Clear();
 		}
 
 		public static void Clear()
@@ -33,8 +33,9 @@ namespace Gamedev.Main.Events
 			CollisionWall = delegate { };
 			CollisionDeath = delegate { };
 			BatteryCollected = delegate { };
+			LightTouched = delegate { };
+			ActivateLight = delegate { };
+			CollectedPowerUp = delegate { };
 		}
-
-
 	}
 }
