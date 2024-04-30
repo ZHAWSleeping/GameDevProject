@@ -118,4 +118,4 @@ PingSound = NodePath("Ping")
 [node name="Parallax2D" type="Parallax2D" parent="."]
 
 [node name="Goal" parent="." instance=ExtResource("14_f0mlk")]
-position = Vector2(970, -157)
+position = Vector2(119, 57)

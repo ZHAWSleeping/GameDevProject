@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://mnm3a20felw"]
+
+[ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_8urk1"]
+[ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="2_1rugc"]
+
+[sub_resource type="Gradient" id="Gradient_j8erh"]
+offsets = PackedFloat32Array(0.155844, 0.477273, 1)
+colors = PackedColorArray(0, 0, 0.686275, 1, 0.190237, 0.499941, 0.397363, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_13ffv"]
+gradient = SubResource("Gradient_j8erh")
+
+[node name="OverworldMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture1D_13ffv")
+
+[node name="ScrollableVBox" parent="." instance=ExtResource("1_8urk1")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="QuitLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("2_1rugc")]
+layout_mode = 2
+SelectAudio = NodePath("Select")
+ConfirmAudio = NodePath("Confirm")

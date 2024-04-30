@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://qwin6murmda"]
+[gd_scene load_steps=7 format=3 uid="uid://qwin6murmda"]
 
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_f5mgt"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="1_jm6ag"]
 [ext_resource type="PackedScene" uid="uid://bbsqxtor5q1gq" path="res://Gamedev/Main/UI/Menu/Main/LevelSelectLabel.tscn" id="1_p5axe"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.cs" id="1_qbnue"]
+
+[sub_resource type="Gradient" id="Gradient_brep8"]
+offsets = PackedFloat32Array(0.155844, 0.477273, 1)
+colors = PackedColorArray(0, 0, 0.686275, 1, 0.190237, 0.499941, 0.397363, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ftbiv"]
+gradient = SubResource("Gradient_brep8")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,11 +19,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qbnue")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+auto_translate_mode = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture1D_ftbiv")
 
 [node name="ScrollableVBox" parent="." instance=ExtResource("1_f5mgt")]
 layout_mode = 0
@@ -33,9 +44,12 @@ theme_override_font_sizes/font_size = 156
 text = "Main Menu"
 horizontal_alignment = 1
 
-[node name="LevelSelectLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_p5axe")]
+[node name="OverWorldLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_p5axe")]
 layout_mode = 2
 text = "Overworld"
+overworldScene = null
+PrimaryColor = Color(0, 0, 0, 0)
+SecondaryColor = Color(0, 0, 0, 0)
 SelectAudio = NodePath("Select")
 ConfirmAudio = NodePath("Confirm")
 

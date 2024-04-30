@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://77rhcbfpch8e"]
+[gd_scene load_steps=4 format=3 uid="uid://77rhcbfpch8e"]
 
 [ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_biqnq"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Victory/MainMenuLabel.cs" id="2_55nqe"]
+[ext_resource type="PackedScene" uid="uid://qwin6murmda" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.tscn" id="3_33f78"]
 
-[node name="MainMenuLabel" instance=ExtResource("1_biqnq")]
+[node name="MainMenuLabel" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_biqnq")]
 text = "Main Menu"
 script = ExtResource("2_55nqe")
+mainMenuScene = ExtResource("3_33f78")
+SelectAudio = NodePath("Select")
+ConfirmAudio = NodePath("Confirm")
 
 [node name="Select" parent="." index="0"]
 bus = &"Master"

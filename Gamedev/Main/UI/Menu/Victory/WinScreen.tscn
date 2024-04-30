@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc3pg4v0irmy1"]
+[gd_scene load_steps=8 format=3 uid="uid://bc3pg4v0irmy1"]
 
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Victory/WinScreen.cs" id="1_4a7qs"]
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_a22yx"]
 [ext_resource type="PackedScene" uid="uid://77rhcbfpch8e" path="res://Gamedev/Main/UI/Menu/Victory/MainMenuLabel.tscn" id="2_f3mbd"]
 [ext_resource type="PackedScene" uid="uid://qwin6murmda" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.tscn" id="3_q1cer"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="3_tyird"]
 
-[sub_resource type="Gradient" id="Gradient_brep8"]
+[sub_resource type="Gradient" id="Gradient_j8erh"]
 offsets = PackedFloat32Array(0.155844, 0.477273, 1)
 colors = PackedColorArray(0, 0, 0.686275, 1, 0.190237, 0.499941, 0.397363, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_wvxpk"]
-gradient = SubResource("Gradient_brep8")
+gradient = SubResource("Gradient_j8erh")
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4a7qs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 auto_translate_mode = 1

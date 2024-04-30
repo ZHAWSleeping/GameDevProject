@@ -29,7 +29,7 @@ GameOverScene = ExtResource("2_tofx8")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_nom6r")]
 
-[node name="GameViewport" parent="." instance=ExtResource("1_631j5")]
+[node name="GameViewport" parent="." node_paths=PackedStringArray("subviewport") instance=ExtResource("1_631j5")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +39,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_hjyhc")
+subviewport = NodePath("SubViewport")
 
 [node name="GameHud" type="VBoxContainer" parent="."]
 layout_mode = 0

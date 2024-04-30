@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbsqxtor5q1gq"]
+[gd_scene load_steps=4 format=3 uid="uid://bbsqxtor5q1gq"]
 
 [ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_4wi37"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Main/OverworldLabel.cs" id="2_fd6sr"]
+[ext_resource type="PackedScene" uid="uid://mnm3a20felw" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.tscn" id="3_6deiv"]
 
-[node name="LevelSelectLabel" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_4wi37")]
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
+[node name="LevelSelectLabel" instance=ExtResource("1_4wi37")]
+script = ExtResource("2_fd6sr")
+overworldScene = ExtResource("3_6deiv")
 
 [node name="Select" parent="." index="0"]
 bus = &"Master"

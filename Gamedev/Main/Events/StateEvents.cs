@@ -17,8 +17,11 @@ namespace Gamedev.Events
 		public static event Action ResumeRequested = delegate { };
 		public static void OnResumeRequested() => ResumeRequested();
 
-		public static event Action<PackedScene> MainMenuRequest = delegate { };
-		public static void OnMainMenuRequest(PackedScene packedScene) => MainMenuRequest(packedScene);
+		public static event Action<PackedScene> SceneChangeRequest = delegate { };
+		public static void OnSceneChangeRequest(PackedScene packedScene) => SceneChangeRequest(packedScene);
+
+		public static event Action<PackedScene> LevelChangeRequest = delegate { };
+		public static void OnLevelChangeRequest(PackedScene packedScene) => LevelChangeRequest(packedScene);
 
 		public static event Action<PackedScene> LevelFinished = delegate { };
 		public static void OnLevelFinished(PackedScene packedScene) => LevelFinished(packedScene);
