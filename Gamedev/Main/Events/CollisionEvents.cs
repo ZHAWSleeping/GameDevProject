@@ -1,4 +1,5 @@
 using System;
+using Gamedev.Main.Objects.Cards;
 using Godot;
 
 namespace Gamedev.Main.Events
@@ -23,6 +24,12 @@ namespace Gamedev.Main.Events
 		public static event Action CollectedPowerUp;
 		public static void OnCollectedPowerUp(int num) => CollectedPowerUp();
 
+		public static event Action<PowerUpCard> CardCollected;
+		public static void OnCardCollected(PowerUpCard card) => CardCollected(card);
+
+		public static event Action<PowerUpCard> CardConsumed;
+		public static void OnCardConsumed(PowerUpCard card) => CardConsumed(card);
+
 		static CollisionEvents()
 		{
 			Clear();
@@ -36,6 +43,8 @@ namespace Gamedev.Main.Events
 			LightTouched = delegate { };
 			ActivateLight = delegate { };
 			CollectedPowerUp = delegate { };
+			CardCollected = delegate { };
+			CardConsumed = delegate { };
 		}
 	}
 }

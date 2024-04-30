@@ -34,6 +34,7 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8g2pq"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8r1l4"]
+reset = false
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyl7h"]
@@ -383,7 +384,6 @@ anim_player = NodePath("../AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_7dvkq")
 }
-autoplay = "Idle"
 
 [node name="FlappyAnchor" type="Node2D" parent="."]
 position = Vector2(-2, -1)
