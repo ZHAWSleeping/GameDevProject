@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://l2s63awt1crk"]
+[gd_scene load_steps=33 format=3 uid="uid://l2s63awt1crk"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerSprite.cs" id="1_2md11"]
-[ext_resource type="PackedScene" uid="uid://erxnvcd6ni68" path="res://Gamedev/Main/Characters/Player/Slime/SlimeSmall.pxo" id="1_wp2db"]
-[ext_resource type="PackedScene" uid="uid://dss07bjr0qki7" path="res://Gamedev/Main/Characters/Player/FlappyThing.tscn" id="3_xulfr"]
+[ext_resource type="PackedScene" uid="uid://dryls7tqda7sk" path="res://Gamedev/Main/Characters/Player/Human/Human.pxo" id="2_14jo0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k46j7"]
 animation = &"Fall"
@@ -17,7 +16,7 @@ animation = &"Jump"
 animation = &"JumpTransition"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ss5ud"]
-animation = &"Land"
+animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vqq8"]
 animation = &"Walk"
@@ -35,7 +34,6 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8g2pq"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8r1l4"]
-switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyl7h"]
@@ -68,32 +66,326 @@ states/Idle/position = Vector2(428.48, 225.664)
 states/Jump/node = SubResource("AnimationNodeAnimation_vh1yx")
 states/Jump/position = Vector2(428.48, 63)
 states/JumpTransition/node = SubResource("AnimationNodeAnimation_plxal")
-states/JumpTransition/position = Vector2(594.48, 63)
+states/JumpTransition/position = Vector2(599.28, 62.04)
 states/Land/node = SubResource("AnimationNodeAnimation_ss5ud")
-states/Land/position = Vector2(740.48, 143)
+states/Land/position = Vector2(618.88, 149.4)
 states/Start/position = Vector2(191, 225.664)
 states/Walk/node = SubResource("AnimationNodeAnimation_5vqq8")
 states/Walk/position = Vector2(853.48, 225.664)
 states/Wall/node = SubResource("AnimationNodeAnimation_6avey")
 states/Wall/position = Vector2(197.48, 63)
 transitions = ["Jump", "JumpTransition", SubResource("AnimationNodeStateMachineTransition_4n0ih"), "JumpTransition", "Fall", SubResource("AnimationNodeStateMachineTransition_gtxka"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_8g2pq"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_8r1l4"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_uyl7h"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_b60rc"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_xnsm3"), "Jump", "Wall", SubResource("AnimationNodeStateMachineTransition_1gu3y"), "Wall", "Jump", SubResource("AnimationNodeStateMachineTransition_f4ag4"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hvhdx"), "JumpTransition", "Land", SubResource("AnimationNodeStateMachineTransition_c2w6q"), "Jump", "Land", SubResource("AnimationNodeStateMachineTransition_03ade"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_mwij8"), "Land", "Jump", SubResource("AnimationNodeStateMachineTransition_cd5rs")]
-graph_offset = Vector2(98.3628, 35.8985)
+graph_offset = Vector2(102.976, 25.2696)
+
+[sub_resource type="Animation" id="Animation_paqab"]
+resource_name = "Fall"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Human:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"JumpTransition"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlappyAnchor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-2, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_n8dkh"]
+resource_name = "Idle"
+length = 3.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Human:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.3, 1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlappyAnchor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0164246, 1.1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-2, -1), Vector2(-2, -2), Vector2(-2, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_wnfbj"]
+resource_name = "Jump"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlappyAnchor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-2, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Human:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_axmbc"]
+resource_name = "JumpTransition"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Human:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"JumpTransition"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlappyAnchor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_e78ep"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Human:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlappyAnchor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_6rquo"]
+resource_name = "Walk"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Human:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlappyAnchor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-2, -1), Vector2(-2, -2), Vector2(-2, -1), Vector2(-2, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_6y85i"]
+resource_name = "Wall"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlappyAnchor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Human:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Wall"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Human:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dvkq"]
+_data = {
+"Fall": SubResource("Animation_paqab"),
+"Idle": SubResource("Animation_n8dkh"),
+"Jump": SubResource("Animation_wnfbj"),
+"JumpTransition": SubResource("Animation_axmbc"),
+"RESET": SubResource("Animation_e78ep"),
+"Walk": SubResource("Animation_6rquo"),
+"Wall": SubResource("Animation_6y85i")
+}
 
 [node name="PlayerSprite" type="Node2D" node_paths=PackedStringArray("AnimTree", "Sprite")]
 script = ExtResource("1_2md11")
-AnimTree = NodePath("SlimeSmall/AnimationTree")
-Sprite = NodePath("SlimeSmall")
+AnimTree = NodePath("AnimationTree")
+Sprite = NodePath("Human")
 
-[node name="SlimeSmall" parent="." instance=ExtResource("1_wp2db")]
-modulate = Color(0, 2, 0, 1)
-position = Vector2(-10, -15)
-region_rect = Rect2(0, 0, 20, 20)
-
-[node name="AnimationTree" type="AnimationTree" parent="SlimeSmall"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ngj5v")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="FlappyThing" parent="." instance=ExtResource("3_xulfr")]
-position = Vector2(0, -17)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7dvkq")
+}
+autoplay = "Idle"
 
-[editable path="SlimeSmall"]
+[node name="FlappyAnchor" type="Node2D" parent="."]
+position = Vector2(-2, -1)
+
+[node name="Human" parent="." instance=ExtResource("2_14jo0")]

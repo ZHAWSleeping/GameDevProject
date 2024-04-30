@@ -23,7 +23,7 @@ namespace Gamedev.Main.Characters.Player
 		private AnimationTree AnimTree;
 		
 		[Export]
-		private Sprite2D Sprite;
+		private AnimatedSprite2D Sprite;
 
 		private AnimationNodeStateMachinePlayback Animations;
 

@@ -95,8 +95,9 @@ visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
 
 [node name="PlayerSprite" parent="." node_paths=PackedStringArray("AnimTree", "Sprite") instance=ExtResource("7_68xpn")]
-AnimTree = NodePath("SlimeSmall/AnimationTree")
-Sprite = NodePath("SlimeSmall")
+position = Vector2(0, -5)
+AnimTree = NodePath("AnimationTree")
+Sprite = NodePath("Human")
 
 [node name="EnemyTrigger" parent="." instance=ExtResource("8_koefh")]
 visible = false
