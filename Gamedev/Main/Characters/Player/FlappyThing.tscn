@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dss07bjr0qki7"]
+[gd_scene load_steps=16 format=3 uid="uid://dss07bjr0qki7"]
 
 [ext_resource type="Texture2D" uid="uid://cmpjc00dwsymc" path="res://Gamedev/Main/Characters/Player/Slime/Tail.pxo" id="1_vajv0"]
 [ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_c8wj6"]
 [ext_resource type="PackedScene" uid="uid://j6kwf74fqqy" path="res://Gamedev/Main/Characters/Player/Slime/PinnableSoftBody2D.tscn" id="3_2al0x"]
-[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Slime/PinnableSoftBody2d.cs" id="4_6tyvw"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_48d34"]
 resource_local_to_scene = true
@@ -155,7 +154,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-3" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(2, 1.5)
 rotation = -0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, -0.447214, 0.447214, 0.894427, 2, 1.5)
 auto_calculate_length_and_angle = false
 length = 2.0
@@ -169,6 +167,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-4" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(4, 0.5)
 rotation = 2.86329
+scale = Vector2(1, 1)
 rest = Transform2D(-0.961524, 0.274721, -0.274721, -0.961524, 4, 0.5)
 auto_calculate_length_and_angle = false
 length = 2.0
@@ -244,12 +243,11 @@ metadata/connected_nodes_paths = [NodePath("Bone-7"), NodePath("Bone-8"), NodePa
 metadata/connected_nodes_idx = [7, 8, 6, 4, 5]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-0" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-0" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 0
 metadata/bone_name = &"Bone-0"
 
@@ -297,12 +295,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
 softness = 30.0
 
-[node name="Bone-1" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-1" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(0.5, 1.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 1
 metadata/bone_name = &"Bone-1"
 
@@ -351,12 +348,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
 softness = 30.0
 
-[node name="Bone-2" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-2" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(2, 0.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 2
 metadata/bone_name = &"Bone-2"
 
@@ -418,12 +414,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
 softness = 30.0
 
-[node name="Bone-3" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-3" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(2, 1.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 3
 metadata/bone_name = &"Bone-3"
 
@@ -486,12 +481,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
 softness = 30.0
 
-[node name="Bone-4" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-4" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(4, 0.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 4
 metadata/bone_name = &"Bone-4"
 
@@ -567,12 +561,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
 softness = 30.0
 
-[node name="Bone-5" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-5" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(4, 1.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 5
 metadata/bone_name = &"Bone-5"
 
@@ -649,12 +642,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
 softness = 30.0
 
-[node name="Bone-6" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-6" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(6, 0.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 6
 metadata/bone_name = &"Bone-6"
 
@@ -716,12 +708,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
 softness = 30.0
 
-[node name="Bone-7" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-7" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(6, 1.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 7
 metadata/bone_name = &"Bone-7"
 
@@ -784,12 +775,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
 softness = 30.0
 
-[node name="Bone-8" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-8" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(7.5, 0.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 8
 metadata/bone_name = &"Bone-8"
 
@@ -837,12 +827,11 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
 softness = 30.0
 
-[node name="Bone-9" type="RigidBody2D" parent="." instance=ExtResource("3_2al0x")]
+[node name="Bone-9" parent="." instance=ExtResource("3_2al0x")]
 position = Vector2(7.5, 1.5)
 collision_layer = 0
 collision_mask = 2
 gravity_scale = 0.2
-script = ExtResource("4_6tyvw")
 metadata/idx = 9
 metadata/bone_name = &"Bone-9"
 

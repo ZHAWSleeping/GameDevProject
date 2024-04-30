@@ -63,7 +63,6 @@ namespace Gamedev.Main.Characters.Player
 		{
 			Data.Velocity = Velocity;
 			Data.InputDirection = InputExtensions.MovementVector();
-			//Data.JumpHeld = true;
 			Data.JumpHeld = Inputs.Jump.Pressed();
 			Data.JumpJustPressed = Inputs.Jump.JustPressed();
 			Data.Delta = delta;
