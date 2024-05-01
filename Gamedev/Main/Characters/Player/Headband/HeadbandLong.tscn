@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cmpjc00dwsymc" path="res://Gamedev/Main/Characters/Player/Slime/Tail.pxo" id="1_vajv0"]
 [ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_c8wj6"]
-[ext_resource type="PackedScene" uid="uid://j6kwf74fqqy" path="res://Gamedev/Main/Characters/Player/Slime/PinnableSoftBody2D.tscn" id="3_2al0x"]
+[ext_resource type="PackedScene" uid="uid://j6kwf74fqqy" path="res://Gamedev/Main/Characters/Player/Headband/PinnableSoftBody2D.tscn" id="3_2al0x"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_48d34"]
 resource_local_to_scene = true
@@ -93,7 +93,7 @@ modifications/9 = SubResource("SkeletonModification2DLookAt_4d4nm")
 resource_local_to_scene = true
 size = Vector2(2, 2)
 
-[node name="FlappyThing" type="Polygon2D"]
+[node name="HeadbandLong" type="Polygon2D"]
 position = Vector2(0, -8)
 texture = ExtResource("1_vajv0")
 skeleton = NodePath("Skeleton2D")

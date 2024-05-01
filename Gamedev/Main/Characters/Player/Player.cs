@@ -109,7 +109,6 @@ namespace Gamedev.Main.Characters.Player
 			{
 				PowerUpCard card = Inventory.Consume();
 				bool valid = true;
-				GD.Print(card);
 				switch (card.CardType)
 				{
 					case PowerUpCard.Type.DoubleJump:

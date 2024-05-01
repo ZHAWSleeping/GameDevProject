@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://j6kwf74fqqy"]
 
-[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Slime/PinnableSoftBody2D.cs" id="1_b7ski"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Headband/PinnableSoftBody2D.cs" id="1_b7ski"]
 
 [node name="PinnableSoftBody2D" type="RigidBody2D"]
 script = ExtResource("1_b7ski")

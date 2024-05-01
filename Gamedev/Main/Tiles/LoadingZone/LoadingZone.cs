@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Gamedev.Main.Tiles
 {
-	public partial class LoadingZone : TileMap
+	public partial class LoadingZone : TileMapLayer
 	{
 		[Export]
 		private Node2D Anchor;

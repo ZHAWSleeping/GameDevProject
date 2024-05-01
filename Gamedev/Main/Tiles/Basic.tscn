@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dwh215netsh41" path="res://Gamedev/Main/Tiles/BasicTiles.tres" id="1_0kn0k"]
 
-[node name="Basic" type="TileMap" groups=["Walls"]]
+[node name="Basic" type="TileMapLayer" groups=["Walls"]]
 light_mask = 8
+use_parent_material = true
 tile_set = ExtResource("1_0kn0k")
-format = 2

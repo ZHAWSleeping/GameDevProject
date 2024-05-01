@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://ca2p7dt2ely2r" path="res://Gamedev/Main/Tiles/LoadingZone/LoadingZoneTiles.tres" id="1_5hoec"]
 [ext_resource type="Script" path="res://Gamedev/Main/Tiles/LoadingZone/LoadingZone.cs" id="2_xdody"]
 
-[node name="LoadingZone" type="TileMap"]
+[node name="LoadingZone" type="TileMapLayer"]
+use_parent_material = true
 tile_set = ExtResource("1_5hoec")
-format = 2
 script = ExtResource("2_xdody")

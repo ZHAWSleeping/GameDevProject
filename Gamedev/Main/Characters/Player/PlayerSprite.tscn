@@ -379,6 +379,36 @@ Sprite = NodePath("Human")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ngj5v")
 anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 3.00001
+parameters/current_position = 1.02366
+parameters/current_delta = 0.005531
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Fall/current_length = null
+parameters/Fall/current_position = null
+parameters/Fall/current_delta = null
+parameters/Idle/current_length = 3.00001
+parameters/Idle/current_position = 1.02366
+parameters/Idle/current_delta = 0.005531
+parameters/Jump/current_length = null
+parameters/Jump/current_position = null
+parameters/Jump/current_delta = null
+parameters/JumpTransition/current_length = null
+parameters/JumpTransition/current_position = null
+parameters/JumpTransition/current_delta = null
+parameters/Land/current_length = null
+parameters/Land/current_position = null
+parameters/Land/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/Walk/current_length = null
+parameters/Walk/current_position = null
+parameters/Walk/current_delta = null
+parameters/Wall/current_length = null
+parameters/Wall/current_position = null
+parameters/Wall/current_delta = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
