@@ -29,6 +29,8 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		public float DashVelocity;
 		[Export]
+		public float StompVelocity;
+		[Export]
 		public int CoyoteTimeFrames;
 		[Export]
 		public int JumpTimeFrames;

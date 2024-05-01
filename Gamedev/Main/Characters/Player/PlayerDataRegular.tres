@@ -14,6 +14,7 @@ WallJumpVelocityIncrement = 15.0
 WallSlideModifier = 0.8
 AirborneModifier = 0.15
 DashVelocity = 300.0
+StompVelocity = 350.0
 CoyoteTimeFrames = 5
 JumpTimeFrames = 12
 DashTimeFrames = 8
