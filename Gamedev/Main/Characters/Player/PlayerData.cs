@@ -44,6 +44,7 @@ namespace Gamedev.Main.Characters.Player
 		public Vector2 InputDirection = Vector2.Zero;
 		public bool JumpHeld = false;
 		public bool JumpJustPressed = false;
+		public bool DiscardJustPressed = false;
 		public Direction WallSide = Direction.None;
 		public double Delta = 0;
 		public int CoyoteTime = 0;

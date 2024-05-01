@@ -3,6 +3,7 @@ using Gamedev.Events;
 using Gamedev.Main.Constants;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
+using Gamedev.Main.Objects.Cards;
 using Godot;
 
 namespace Gamedev.Main.Characters.Player
@@ -40,6 +41,7 @@ namespace Gamedev.Main.Characters.Player
 		private ShapeCast2D RightWallCast;
 
 		private PlayerFSM StateMachine;
+		private CardInventory Inventory;
 
 		public override void _Ready()
 		{
@@ -56,6 +58,7 @@ namespace Gamedev.Main.Characters.Player
 			Data.Shape = (RectangleShape2D)Shape.Shape;
 
 			StateMachine = new();
+			Inventory = new();
 		}
 
 
@@ -65,7 +68,9 @@ namespace Gamedev.Main.Characters.Player
 			Data.InputDirection = InputExtensions.MovementVector();
 			Data.JumpHeld = Inputs.Jump.Pressed();
 			Data.JumpJustPressed = Inputs.Jump.JustPressed();
+			Data.DiscardJustPressed = Inputs.Discard.JustPressed();
 			Data.Delta = delta;
+			PollDiscard();
 
 			if (LeftWallCast.GetCollisions().HasNodesInGroup("Walls"))
 			{
@@ -96,7 +101,35 @@ namespace Gamedev.Main.Characters.Player
 			MoveAndSlide();
 		}
 
+		private void PollDiscard()
+		{
+			if (Data.DiscardJustPressed)
+			{
+				PowerUpCard card = Inventory.Consume();
+				bool valid = true;
+				switch (card.CardType)
+				{
+					case PowerUpCard.Type.DoubleJump:
+						Data.State = PlayerFSM.State.DoubleJumping;
+						break;
+					case PowerUpCard.Type.Dash:
+						Data.State = PlayerFSM.State.Dashing;
+						break;
+					case PowerUpCard.Type.Stomp:
+						Data.State = PlayerFSM.State.Stomping;
+						break;
+					default:
+						valid = false;
+						break;
+				}
 
+				if (valid)
+				{
+					CollisionEvents.OnCardConsumed(card);
+					Data.ResetTimers();
+				}
+			}
+		}
 
 		private void Die()
 		{

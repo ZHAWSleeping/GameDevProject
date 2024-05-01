@@ -12,7 +12,7 @@ namespace Gamedev.Main.Constants
 		Pause,
 		Precise,
 		Jump,
-		Dash,
+		Discard,
 		Accept,
 		Cancel,
 	}

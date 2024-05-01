@@ -33,6 +33,7 @@ namespace Gamedev.Main.Characters.Player
 				new WallState(),
 				new FallingState(),
 				new WallJumpState(),
+				new DoubleJumpingState(),
 			};
 			States = states.ToDictionary(state => state.State);
 		}
