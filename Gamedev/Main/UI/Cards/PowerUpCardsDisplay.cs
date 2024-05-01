@@ -69,12 +69,20 @@ public partial class PowerUpCardsDisplay : Control
 	private void ConsumeCardAnimation(TextureRect card)
 	{
 		Tween tween = card.CreateTween();
+		tween.SetParallel(true);
 		tween.TweenProperty(
 			card,
 			TextureRect.PropertyName.Scale.ToString(),
 			new Vector2(0, 0),
 			0.5f
 		).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(
+			card,
+			TextureRect.PropertyName.Position.ToString(),
+			card.Position + card.Size / 2,
+			0.5f
+		).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Cubic);
+		tween.SetParallel(false);
 		tween.TweenCallback(Callable.From(() => card.QueueFree()));
 	}
 
