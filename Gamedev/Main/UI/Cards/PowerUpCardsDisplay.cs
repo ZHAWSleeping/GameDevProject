@@ -25,12 +25,18 @@ public partial class PowerUpCardsDisplay : Control
 		CollisionEvents.CardConsumed += RemoveLastCard;
 	}
 
+	/// <summary>
+	/// Adds a new card to the top of the hand
+	/// If the hand limit would be exceeded, removes the bottom card
+	/// </summary>
+	/// <param name="card"></param>
 	private void AddCard(PowerUpCard card)
 	{
 		if (CardRects.Count() >= MaxCards)
 		{
 			RemoveFirstCard();
 		}
+
 		TextureRect newCard = new TextureRect();
 		newCard.Texture = Cards[(int)card.CardType];
 		newCard.Position = new(CardOffset * CardRects.Count(), 400);
@@ -46,6 +52,9 @@ public partial class PowerUpCardsDisplay : Control
 		GainCardAnimation(newCard);
 	}
 
+	/// <summary>
+	/// Removes the first (top) card from the hand and plays an animation
+	/// </summary>
 	private void RemoveFirstCard()
 	{
 		TextureRect oldCard = CardRects.First();
@@ -57,6 +66,10 @@ public partial class PowerUpCardsDisplay : Control
 		}
 	}
 
+	/// <summary>
+	/// Removes the last (bottom) card from the hand and plays an animation
+	/// </summary>
+	/// <param name="_"></param>
 	private void RemoveLastCard(PowerUpCard _)
 	{
 		TextureRect oldCard = CardRects.Last();
@@ -64,8 +77,10 @@ public partial class PowerUpCardsDisplay : Control
 		ConsumeCardAnimation(oldCard);
 	}
 
-
-
+	/// <summary>
+	/// Consumes then removes the first (top) card and plays an animation
+	/// </summary>
+	/// <param name="card"></param>
 	private void ConsumeCardAnimation(TextureRect card)
 	{
 		Tween tween = card.CreateTween();
@@ -86,6 +101,10 @@ public partial class PowerUpCardsDisplay : Control
 		tween.TweenCallback(Callable.From(() => card.QueueFree()));
 	}
 
+	/// <summary>
+	/// Shifts a card to the left by the set offset
+	/// </summary>
+	/// <param name="card"></param>
 	private void LeftShiftAnimation(TextureRect card)
 	{
 		Tween tween = card.CreateTween();
@@ -97,6 +116,10 @@ public partial class PowerUpCardsDisplay : Control
 		).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Cubic);
 	}
 
+	/// <summary>
+	/// Animates the loss of the last (bottom) card.
+	/// </summary>
+	/// <param name="card"></param>
 	private void LoseCardAnimation(TextureRect card)
 	{
 		Tween tween = card.CreateTween();
@@ -117,6 +140,10 @@ public partial class PowerUpCardsDisplay : Control
 		tween.TweenCallback(Callable.From(() => card.QueueFree()));
 	}
 
+	/// <summary>
+	/// Animates the gain of the first (top) card.
+	/// </summary>
+	/// <param name="card"></param>
 	private void GainCardAnimation(TextureRect card)
 	{
 		Tween tween = card.CreateTween();
