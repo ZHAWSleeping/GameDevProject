@@ -1,13 +1,25 @@
+using Gamedev.Main.Characters.Player;
 using Godot;
 
 namespace Gamedev.Main.Objects.Cards
 {
-	public partial class PowerUpCard : Area2D
+	public class PowerUpCard
 	{
-		public override void _Ready()
+		public enum Type
 		{
-			base._Ready();
-			
+			Invalid,
+			DoubleJump,
+			Dash,
+			Stomp,
+		}
+
+		public PlayerFSM.State CardState { get; }
+		public Type CardType { get; }
+
+		public PowerUpCard(Type type, PlayerFSM.State state)
+		{
+			CardType = type;
+			CardState = state;
 		}
 	}
 }

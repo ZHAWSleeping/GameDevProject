@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=13 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
 [ext_resource type="PackedScene" uid="uid://c3hlnh7lg47ao" path="res://Gamedev/Main/UI/Debug/PlayerDebug.tscn" id="8_dv8f2"]
 [ext_resource type="PackedScene" uid="uid://dm8jvfybs4oa8" path="res://Gamedev/Main/UI/Debug/DebugLabel.tscn" id="9_lr3gu"]
+[ext_resource type="PackedScene" uid="uid://dge5ccrjsbdo0" path="res://Gamedev/Main/UI/Cards/PowerUpCardsDisplay.tscn" id="11_01kuk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]
 viewport_path = NodePath("SubViewport")
@@ -80,3 +81,10 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 offset_right = 55.0
+
+[node name="PowerUpCardsDisplay" parent="." instance=ExtResource("11_01kuk")]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 886.0
+offset_right = 888.0
+offset_bottom = 886.0

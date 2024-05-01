@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://i1et08txpcpx"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Objects/Cards/PowerUpCard2D.cs" id="1_itpee"]
+[ext_resource type="PackedScene" uid="uid://bbwusil534xtn" path="res://Gamedev/Main/Objects/Cards/PowerUpCards.pxo" id="2_3o3cp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu8bc"]
+size = Vector2(10, 12)
+
+[node name="PowerUpCard2D" type="Area2D" node_paths=PackedStringArray("Sprite")]
+collision_layer = 0
+script = ExtResource("1_itpee")
+Sprite = NodePath("PowerUpCards")
+CardType = 1
+CollectDuration = 0.75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uu8bc")
+
+[node name="PowerUpCards" parent="." instance=ExtResource("2_3o3cp")]
+position = Vector2(0, -4)
+frame = 1

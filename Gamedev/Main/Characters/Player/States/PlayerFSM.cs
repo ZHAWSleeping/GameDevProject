@@ -17,6 +17,9 @@ namespace Gamedev.Main.Characters.Player
 			Wall,
 			WallJumping,
 			Invalid,
+			DoubleJumping,
+			Dashing,
+			Stomping,
 		}
 
 		private Dictionary<State, PlayerState> States { get; }

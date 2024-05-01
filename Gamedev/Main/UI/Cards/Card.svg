@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="241.88977"
+   height="336.37796"
+   viewBox="0 0 241.88977 336.37796"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   sodipodi:docname="Card.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#777777"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="2.6759573"
+     inkscape:cx="83.334664"
+     inkscape:cy="155.27154"
+     inkscape:window-width="3372"
+     inkscape:window-height="1412"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+    <rect
+       x="43.928637"
+       y="44.063738"
+       width="131.78416"
+       height="213.03731"
+       id="rect2" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch2"
+       id="linearGradient4"
+       gradientUnits="userSpaceOnUse"
+       x1="44.000234"
+       y1="50.722955"
+       x2="48.895234"
+       y2="50.722955"
+       gradientTransform="matrix(1.6334416,0,0,1.6334416,-57.081119,-19.72288)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch2"
+       id="linearGradient5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.25083346,0,0,0.25083346,3.9451502,8.2204379)"
+       x1="44.000234"
+       y1="50.722955"
+       x2="48.895234"
+       y2="50.722955" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch2"
+       id="linearGradient6"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.25083346,0,0,0.25083346,182.53486,270.78127)"
+       x1="44.000234"
+       y1="50.722955"
+       x2="48.895234"
+       y2="50.722955" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       id="rect1"
+       width="218.04059"
+       height="311.5748"
+       x="11.924591"
+       y="12.401581"
+       ry="10.385509" />
+    <path
+       d="m 109.55,196.51939 v -32.82565 q 17.98092,-0.83632 28.22587,-7.73597 10.24495,-7.10874 10.24495,-21.32621 v -2.92713 q 0,-11.70851 -7.10874,-17.56276 -6.89966,-5.85426 -19.02633,-5.85426 -12.54483,0 -20.07173,6.89966 -7.526902,6.89966 -10.45403,17.56276 l -15.681039,-5.85425 q 2.090805,-6.89966 5.854255,-12.963 3.763449,-6.27241 9.408623,-10.87218 5.854255,-4.599774 13.590231,-7.317821 7.94507,-2.718047 17.98093,-2.718047 10.03587,0 17.98093,2.927128 8.15414,2.718047 13.79931,7.94506 5.64518,5.01793 8.78138,12.33575 3.13621,7.31782 3.13621,16.30828 0,9.82679 -3.55437,17.35368 -3.55437,7.31782 -9.19954,12.54483 -5.64517,5.22701 -12.96299,8.5723 -7.10874,3.13621 -14.42656,4.39069 v 21.11714 z m 8.99046,46.83403 q -8.5723,0 -12.12667,-3.55436 -3.34529,-3.55437 -3.34529,-8.99047 v -3.76345 q 0,-5.43609 3.34529,-8.99046 3.55437,-3.55437 12.12667,-3.55437 8.5723,0 11.91759,3.55437 3.55437,3.55437 3.55437,8.99046 v 3.76345 q 0,5.4361 -3.55437,8.99047 -3.34529,3.55436 -11.91759,3.55436 z"
+       id="text1"
+       style="font-size:128px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;text-anchor:middle;white-space:pre;fill:url(#linearGradient4);stroke-width:0.233582;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="?" />
+    <path
+       d="m 29.533247,41.426889 v -5.04075 q 2.761174,-0.128427 4.334403,-1.187946 1.573228,-1.091628 1.573228,-3.274881 v -0.449494 q 0,-1.797975 -1.091628,-2.696961 -1.059521,-0.898988 -2.921708,-0.898988 -1.926401,0 -3.082242,1.059521 -1.155841,1.059521 -1.605335,2.696961 l -2.408001,-0.898987 q 0.321067,-1.059521 0.898987,-1.990615 0.57792,-0.9632 1.444801,-1.669547 0.898987,-0.706347 2.086934,-1.123734 1.220055,-0.417387 2.761175,-0.417387 1.541122,0 2.761176,0.449494 1.252161,0.417387 2.11904,1.220054 0.866881,0.77056 1.34848,1.894294 0.481601,1.123734 0.481601,2.504321 0,1.509015 -0.545814,2.664854 -0.545814,1.123735 -1.412693,1.926401 -0.86688,0.802667 -1.990614,1.316374 -1.091628,0.481601 -2.215362,0.67424 v 3.242776 z m 1.380587,7.191897 q -1.316373,0 -1.862187,-0.545813 -0.513707,-0.545814 -0.513707,-1.380588 v -0.577921 q 0,-0.834773 0.513707,-1.380587 0.545814,-0.545813 1.862187,-0.545813 1.316374,0 1.830081,0.545813 0.545814,0.545814 0.545814,1.380587 v 0.577921 q 0,0.834774 -0.545814,1.380588 -0.513707,0.545813 -1.830081,0.545813 z"
+       id="path4"
+       style="font-size:128px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;text-anchor:middle;white-space:pre;fill:url(#linearGradient5);stroke-width:0.0358692;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="?" />
+    <path
+       d="m 208.12296,303.98772 v -5.04075 q 2.76117,-0.12843 4.3344,-1.18795 1.57323,-1.09162 1.57323,-3.27488 v -0.44949 q 0,-1.79798 -1.09163,-2.69696 -1.05952,-0.89899 -2.92171,-0.89899 -1.9264,0 -3.08224,1.05952 -1.15584,1.05952 -1.60533,2.69696 l -2.408,-0.89899 q 0.32106,-1.05952 0.89898,-1.99061 0.57792,-0.9632 1.4448,-1.66955 0.89899,-0.70634 2.08694,-1.12373 1.22005,-0.41739 2.76117,-0.41739 1.54112,0 2.76118,0.4495 1.25216,0.41738 2.11904,1.22005 0.86688,0.77056 1.34848,1.89429 0.4816,1.12374 0.4816,2.50432 0,1.50902 -0.54581,2.66486 -0.54582,1.12373 -1.4127,1.9264 -0.86688,0.80267 -1.99061,1.31637 -1.09163,0.4816 -2.21536,0.67424 v 3.24278 z m 1.38059,7.1919 q -1.31638,0 -1.86219,-0.54582 -0.51371,-0.54581 -0.51371,-1.38058 v -0.57793 q 0,-0.83477 0.51371,-1.38058 0.54581,-0.54582 1.86219,-0.54582 1.31637,0 1.83008,0.54582 0.54581,0.54581 0.54581,1.38058 v 0.57793 q 0,0.83477 -0.54581,1.38058 -0.51371,0.54582 -1.83008,0.54582 z"
+       id="path5"
+       style="font-size:128px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;text-anchor:middle;white-space:pre;fill:url(#linearGradient6);stroke-width:0.0358692;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="?" />
+  </g>
+</svg>

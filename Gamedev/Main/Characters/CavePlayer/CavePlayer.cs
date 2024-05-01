@@ -10,8 +10,8 @@ namespace Gamedev.Main.Characters
 	{
 		[Export]
 		private float Speed = 300.0f;
-		[Export]
-		private DirectionalSprite Sprite;
+		//[Export]
+		//private DirectionalSprite Sprite;
 		[Export]
 		private Node2D Dot;
 		[Export]
@@ -62,7 +62,7 @@ namespace Gamedev.Main.Characters
 
 			if (direction.Length() > 0.0)
 			{
-				Sprite.AlignSprite(velocity);
+				//Sprite.AlignSprite(velocity);
 			}
 
 			Velocity = velocity;
@@ -77,7 +77,7 @@ namespace Gamedev.Main.Characters
 
 		private void Die()
 		{
-			Sprite.Modulate = new Color(4, 1, 1, 1);
+			//Sprite.Modulate = new Color(4, 1, 1, 1);
 			DeathSound.Play();
 			ProcessMode = ProcessModeEnum.Disabled;
 		}

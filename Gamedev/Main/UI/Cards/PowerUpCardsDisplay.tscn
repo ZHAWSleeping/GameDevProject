@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dge5ccrjsbdo0"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Cards/PowerUpCardsDisplay.cs" id="1_xp5cy"]
+[ext_resource type="Texture2D" uid="uid://bbj8oa1w7x0ml" path="res://Gamedev/Main/UI/Cards/Card.svg" id="2_orln7"]
+[ext_resource type="Texture2D" uid="uid://doxgw8bmo2fvi" path="res://Gamedev/Main/UI/Cards/DoubleJumpCard.svg" id="3_7p8rk"]
+[ext_resource type="Texture2D" uid="uid://dekfhde3ivt84" path="res://Gamedev/Main/UI/Cards/DashCard.svg" id="4_55fu2"]
+[ext_resource type="Texture2D" uid="uid://btyyu3un1dkav" path="res://Gamedev/Main/UI/Cards/StompCard.svg" id="5_gjua3"]
+
+[node name="PowerUpCardsDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xp5cy")
+Cards = Array[Texture2D]([ExtResource("2_orln7"), ExtResource("3_7p8rk"), ExtResource("4_55fu2"), ExtResource("5_gjua3")])
+CardOffset = 60.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_orln7")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 60.0
+offset_right = 302.0
+offset_bottom = 336.0
+texture = ExtResource("2_orln7")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 122.0
+offset_right = 364.0
+offset_bottom = 336.0
+texture = ExtResource("2_orln7")
