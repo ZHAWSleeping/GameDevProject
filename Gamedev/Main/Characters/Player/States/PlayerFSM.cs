@@ -34,6 +34,7 @@ namespace Gamedev.Main.Characters.Player
 				new FallingState(),
 				new WallJumpState(),
 				new DoubleJumpingState(),
+				new DashingState(),
 			};
 			States = states.ToDictionary(state => state.State);
 		}

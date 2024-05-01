@@ -90,10 +90,12 @@ namespace Gamedev.Main.Characters.Player
 			if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.East || Data.WallSide == VectorExtensions.Direction.East)
 			{
 				Sprite.FlipH = false;
+				Data.Facing = VectorExtensions.Direction.East;
 			}
 			else if (Data.Velocity.ToQuadrantDirection() == VectorExtensions.Direction.West || Data.WallSide == VectorExtensions.Direction.West)
 			{
 				Sprite.FlipH = true;
+				Data.Facing = VectorExtensions.Direction.West;
 			}
 
 			Velocity = Data.Velocity;
@@ -107,6 +109,7 @@ namespace Gamedev.Main.Characters.Player
 			{
 				PowerUpCard card = Inventory.Consume();
 				bool valid = true;
+				GD.Print(card);
 				switch (card.CardType)
 				{
 					case PowerUpCard.Type.DoubleJump:

@@ -27,9 +27,13 @@ namespace Gamedev.Main.Characters.Player
 		[Export]
 		public float AirborneModifier;
 		[Export]
+		public float DashVelocity;
+		[Export]
 		public int CoyoteTimeFrames;
 		[Export]
 		public int JumpTimeFrames;
+		[Export]
+		public int DashTimeFrames;
 		[Export]
 		public Vector2 Gravity;
 
@@ -49,11 +53,14 @@ namespace Gamedev.Main.Characters.Player
 		public double Delta = 0;
 		public int CoyoteTime = 0;
 		public int JumpTime = 0;
+		public int DashTime = 0;
+		public Direction Facing = Direction.West;
 
 		public void ResetTimers()
 		{
 			CoyoteTime = CoyoteTimeFrames;
 			JumpTime = JumpTimeFrames;
+			DashTime = DashTimeFrames;
 		}
 	}
 }

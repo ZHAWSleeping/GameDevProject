@@ -26,7 +26,10 @@ namespace Gamedev.Main.Characters.Player
 
 		public PowerUpCard Consume()
 		{
-			return Cards.LastOrDefault();
+			var card = Cards.LastOrDefault(new PowerUpCard(PowerUpCard.Type.Invalid, PlayerFSM.State.Invalid));
+			if (card.CardType != PowerUpCard.Type.Invalid)
+				Cards.RemoveLast();
+			return card;
 		}
 	}
 }

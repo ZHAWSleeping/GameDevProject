@@ -122,6 +122,16 @@ position = Vector2(69, 162)
 Sprite = NodePath("PowerUpCards")
 CardType = 2
 
+[node name="PowerUpCard2D5" parent="." node_paths=PackedStringArray("Sprite") instance=ExtResource("14_q3k4s")]
+position = Vector2(93, 162)
+Sprite = NodePath("PowerUpCards")
+CardType = 2
+
+[node name="PowerUpCard2D6" parent="." node_paths=PackedStringArray("Sprite") instance=ExtResource("14_q3k4s")]
+position = Vector2(117, 162)
+Sprite = NodePath("PowerUpCards")
+CardType = 2
+
 [node name="PowerUpCard2D2" parent="." node_paths=PackedStringArray("Sprite") instance=ExtResource("14_q3k4s")]
 position = Vector2(101, 120)
 Sprite = NodePath("PowerUpCards")

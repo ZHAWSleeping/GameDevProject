@@ -19,6 +19,7 @@ public partial class PlayerDebug : VBoxContainer
 		"CoyoteTime",
 		"JumpTime",
 		"WallSide",
+		"Facing",
 	};
 
 	private Dictionary<string, DebugLabel> Labels;
@@ -46,6 +47,7 @@ public partial class PlayerDebug : VBoxContainer
 			Labels[nameof(data.CoyoteTime)].DataLabel.Text = data.CoyoteTime.ToString();
 			Labels[nameof(data.JumpTime)].DataLabel.Text = data.JumpTime.ToString();
 			Labels[nameof(data.WallSide)].DataLabel.Text = data.WallSide.ToString();
+			Labels[nameof(data.Facing)].DataLabel.Text = data.Facing.ToString();
 		};
 	}
 }
