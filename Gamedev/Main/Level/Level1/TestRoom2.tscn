@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://djnwc15xpvhjd"]
+[gd_scene load_steps=3 format=4 uid="uid://djnwc15xpvhjd"]
 
 [ext_resource type="PackedScene" uid="uid://dm6irsyrgpir5" path="res://Gamedev/Main/Level/Room.tscn" id="1_543r5"]
+[ext_resource type="PackedScene" uid="uid://i1et08txpcpx" path="res://Gamedev/Main/Objects/Cards/PowerUpCard2D.tscn" id="2_mvrgc"]
 
 [node name="Room" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("1_543r5")]
 Tiles = NodePath("Tiles")
@@ -15,3 +16,17 @@ Anchor = NodePath("../Anchor")
 
 [node name="DeathzoneTilemap" parent="." index="3"]
 tile_map_data = PackedByteArray("AAAUABIAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAXABIAAAAAAAAAAAAYABIAAAAAAAAAAAAZABIAAAAAAAAAAAAaABIAAAAAAAAAAAA=")
+
+[node name="PowerUpCard2D" parent="." index="5" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_mvrgc")]
+position = Vector2(98, 103)
+Sprite = NodePath("PowerUpCards")
+
+[node name="PowerUpCard2D2" parent="." index="6" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_mvrgc")]
+position = Vector2(179, 65)
+Sprite = NodePath("PowerUpCards")
+CardType = 2
+
+[node name="PowerUpCard2D3" parent="." index="7" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_mvrgc")]
+position = Vector2(284, 65)
+Sprite = NodePath("PowerUpCards")
+CardType = 3

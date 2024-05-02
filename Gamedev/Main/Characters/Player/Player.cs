@@ -109,12 +109,19 @@ namespace Gamedev.Main.Characters.Player
 				Data.VisuallyFacing = Data.Facing;
 			}
 
+
 			Velocity = Data.Velocity;
 			UpdateDebug();
 			MoveAndSlide();
+			UpdateHeadband();
 		}
 
 		public override void _Process(double delta)
+		{
+			UpdateHeadband();
+		}
+
+		private void UpdateHeadband()
 		{
 			if (Sprite.HeadbandAnchor != null)
 				StateEvents.OnHeadbandAnchorMoved(Sprite.HeadbandAnchor.GlobalPosition, Data.VisuallyFacing);
