@@ -29,6 +29,10 @@ project/assembly_name="Game Dev Project"
 
 enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg", "res://addons/softbody2d/plugin.cfg")
 
+[global_group]
+
+Walls=""
+
 [gui]
 
 theme/custom="res://Gamedev/Main/Theme/CaveTheme.tres"

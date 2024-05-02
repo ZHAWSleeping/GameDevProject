@@ -30,6 +30,9 @@ namespace Gamedev.Main.Events
 		public static event Action<PowerUpCard> CardConsumed;
 		public static void OnCardConsumed(PowerUpCard card) => CardConsumed(card);
 
+		public static event Action<Vector2> CameraTransitionTriggered;
+		public static void OnCameraTransitionTriggered(Vector2 pos) => CameraTransitionTriggered(pos);
+
 		static CollisionEvents()
 		{
 			Clear();
@@ -45,6 +48,7 @@ namespace Gamedev.Main.Events
 			CollectedPowerUp = delegate { };
 			CardCollected = delegate { };
 			CardConsumed = delegate { };
+			CameraTransitionTriggered = delegate { };
 		}
 	}
 }

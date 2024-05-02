@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq74yfdxshoho"]
+
+[ext_resource type="TileSet" uid="uid://dwh215netsh41" path="res://Gamedev/Main/Tiles/BasicTiles.tres" id="1_hefnb"]
+[ext_resource type="Script" path="res://Gamedev/Main/Level/RoomMerger.cs" id="2_s61xk"]
+
+[node name="RoomMerger" type="TileMapLayer" groups=["Walls"]]
+tile_set = ExtResource("1_hefnb")
+script = ExtResource("2_s61xk")

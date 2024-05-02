@@ -1,4 +1,5 @@
 using Gamedev.Main;
+using Gamedev.Main.Events;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace Gamedev.Main.Tiles
 
 		public void TransitionCamera()
 		{
-			Camera.GlobalPosition = Anchor?.GlobalPosition ?? Camera.GlobalPosition;
+			GD.Print("Transition");
+			CollisionEvents.OnCameraTransitionTriggered(Anchor.GlobalPosition);
 		}
 	}
 }
