@@ -1,3 +1,4 @@
+using Gamedev.Events;
 using Gamedev.Main.Extensions;
 using Godot;
 using System;
@@ -24,6 +25,9 @@ namespace Gamedev.Main.Characters.Player
 		
 		[Export]
 		private AnimatedSprite2D Sprite;
+
+		[Export]
+		public Node2D HeadbandAnchor { get; private set; }
 
 		private AnimationNodeStateMachinePlayback Animations;
 

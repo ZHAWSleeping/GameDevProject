@@ -1,30 +1,31 @@
 using System;
 using Godot;
+using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Events
 {
 	public static class StateEvents
 	{
-		public static event Action QuitRequested = delegate { };
+		public static event Action QuitRequested;
 		public static void OnQuitRequested() => QuitRequested();
 
-		public static event Action RestartRequested = delegate { };
+		public static event Action RestartRequested;
 		public static void OnRestartRequested() => RestartRequested();
 
-		public static event Action PauseRequested = delegate { };
+		public static event Action PauseRequested;
 		public static void OnPauseRequested() => PauseRequested();
 
-		public static event Action ResumeRequested = delegate { };
+		public static event Action ResumeRequested;
 		public static void OnResumeRequested() => ResumeRequested();
 
-		public static event Action<PackedScene> SceneChangeRequest = delegate { };
-		public static void OnSceneChangeRequest(PackedScene packedScene) => SceneChangeRequest(packedScene);
+		public static event Action<PackedScene> MainMenuRequest;
+		public static void OnMainMenuRequest(PackedScene packedScene) => MainMenuRequest(packedScene);
 
-		public static event Action<PackedScene> LevelChangeRequest = delegate { };
-		public static void OnLevelChangeRequest(PackedScene packedScene) => LevelChangeRequest(packedScene);
-
-		public static event Action<PackedScene> LevelFinished = delegate { };
+		public static event Action<PackedScene> LevelFinished;
 		public static void OnLevelFinished(PackedScene packedScene) => LevelFinished(packedScene);
+
+		public static event Action<Vector2, Direction> HeadbandAnchorMoved;
+		public static void OnHeadbandAnchorMoved(Vector2 pos, Direction dir) => HeadbandAnchorMoved(pos, dir);
 
 
 		static StateEvents()
@@ -40,6 +41,7 @@ namespace Gamedev.Events
 			ResumeRequested = delegate { };
 			MainMenuRequest = delegate { };
 			LevelFinished = delegate { };
+			HeadbandAnchorMoved = delegate { };
 		}
 	}
 }

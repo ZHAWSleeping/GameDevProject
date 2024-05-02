@@ -57,6 +57,7 @@ namespace Gamedev.Main.Characters.Player
 		public int JumpTime = 0;
 		public int DashTime = 0;
 		public Direction Facing = Direction.West;
+		public Direction VisuallyFacing = Direction.West;
 
 		public void ResetTimers()
 		{

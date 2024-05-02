@@ -98,9 +98,26 @@ namespace Gamedev.Main.Characters.Player
 				Data.Facing = VectorExtensions.Direction.West;
 			}
 
+			if (Data.State == PlayerFSM.State.Wall)
+			{
+				Data.VisuallyFacing = Sprite.FlipH
+					? VectorExtensions.Direction.West
+					: VectorExtensions.Direction.East;
+			}
+			else
+			{
+				Data.VisuallyFacing = Data.Facing;
+			}
+
 			Velocity = Data.Velocity;
 			UpdateDebug();
 			MoveAndSlide();
+		}
+
+		public override void _Process(double delta)
+		{
+			if (Sprite.HeadbandAnchor != null)
+				StateEvents.OnHeadbandAnchorMoved(Sprite.HeadbandAnchor.GlobalPosition, Data.VisuallyFacing);
 		}
 
 		private void PollDiscard()

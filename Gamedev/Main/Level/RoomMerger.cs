@@ -14,7 +14,6 @@ namespace Gamedev.Main.Tiles
 		public override void _Ready()
 		{
 			GetChildren().OfType<Room>().ToList().ForEach(MergeTilemap);
-			GetChildren().ToList().ForEach(n => GD.Print(n.Name));
 		}
 
 		private void MergeTilemap(Room room)
