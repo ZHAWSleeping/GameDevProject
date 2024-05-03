@@ -132,6 +132,10 @@ Cancel={
 2d_physics/layer_6="Enemies"
 2d_physics/layer_7="Objects"
 
+[physics]
+
+2d/solver/default_constraint_bias=1.0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

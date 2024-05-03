@@ -1,5 +1,6 @@
 using Gamedev.Events;
 using Gamedev.Main.Constants;
+using Gamedev.Main.Events;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,9 @@ public partial class Headband : Node2D
 	private Color _color;
 
 	[Export]
+	private Color DefaultColor = Colors.Magenta;
+
+	[Export]
 	public Sprite2D Sprite { get; private set; }
 
 
@@ -33,7 +37,18 @@ public partial class Headband : Node2D
 
 	public override void _Ready()
 	{
-		Color = Colors.Magenta;
+		Color = DefaultColor;
 		NodePaths.Headband = this;
+		CollisionEvents.CurrentCardChanged += card =>
+		{
+			if (card.CardType == Gamedev.Main.Objects.Cards.PowerUpCard.Type.Invalid)
+			{
+				Color = DefaultColor;
+			}
+			else
+			{
+				Color = card.CardColor;
+			}
+		};
 	}
 }

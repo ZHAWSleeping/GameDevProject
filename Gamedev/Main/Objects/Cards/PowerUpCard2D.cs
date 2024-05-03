@@ -8,11 +8,11 @@ namespace Gamedev.Main.Objects.Cards
 	[Tool]
 	public partial class PowerUpCard2D : Area2D
 	{
-		private readonly Dictionary<PowerUpCard.Type, PlayerFSM.State> TypeMap = new()
+		private static Dictionary<PowerUpCard.Type, PowerUpCard> TypeMap = new()
 		{
-			[PowerUpCard.Type.Dash] = PlayerFSM.State.Dashing,
-			[PowerUpCard.Type.DoubleJump] = PlayerFSM.State.DoubleJumping,
-			[PowerUpCard.Type.Stomp] = PlayerFSM.State.Stomping,
+			[PowerUpCard.Type.Dash] = new(PowerUpCard.Type.Dash, PlayerFSM.State.Dashing, Colors.Blue),
+			[PowerUpCard.Type.DoubleJump] = new(PowerUpCard.Type.DoubleJump, PlayerFSM.State.DoubleJumping, Colors.Yellow),
+			[PowerUpCard.Type.Stomp] = new(PowerUpCard.Type.Stomp, PlayerFSM.State.Stomping, Colors.Green),
 		};
 
 		[Export]
@@ -76,7 +76,7 @@ namespace Gamedev.Main.Objects.Cards
 		private void Collected(object _)
 		{
 			BodyEntered -= Collected;
-			CollisionEvents.OnCardCollected(new PowerUpCard(CardType, TypeMap[CardType]));
+			CollisionEvents.OnCardCollected(TypeMap[CardType]);
 			if (!Engine.IsEditorHint())
 			{
 				// Spinning animation

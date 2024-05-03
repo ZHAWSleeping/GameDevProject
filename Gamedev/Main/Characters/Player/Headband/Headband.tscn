@@ -24,6 +24,7 @@ size = Vector2(1, 4)
 
 [node name="Headband" type="Node2D" node_paths=PackedStringArray("Sprite", "Body")]
 script = ExtResource("1_q0sfp")
+DefaultColor = Color(1, 0.373323, 0.348078, 1)
 Sprite = NodePath("Sprite2D")
 Body = NodePath("RigidBody2D")
 

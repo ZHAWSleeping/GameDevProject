@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gamedev.Main.Events;
 using Gamedev.Main.Objects.Cards;
+using Godot;
 
 namespace Gamedev.Main.Characters.Player
 {
@@ -22,14 +23,21 @@ namespace Gamedev.Main.Characters.Player
 				Cards.RemoveFirst();
 			}
 			Cards.AddLast(card);
+			CollisionEvents.OnCurrentCardChanged(Current());
 		}
 
 		public PowerUpCard Consume()
 		{
-			var card = Cards.LastOrDefault(new PowerUpCard(PowerUpCard.Type.Invalid, PlayerFSM.State.Invalid));
+			var card = Current();
 			if (card.CardType != PowerUpCard.Type.Invalid)
 				Cards.RemoveLast();
+			CollisionEvents.OnCurrentCardChanged(Current());
 			return card;
+		}
+
+		public PowerUpCard Current()
+		{
+			return Cards.LastOrDefault(new PowerUpCard(PowerUpCard.Type.Invalid, PlayerFSM.State.Invalid, Colors.Pink));
 		}
 	}
 }
