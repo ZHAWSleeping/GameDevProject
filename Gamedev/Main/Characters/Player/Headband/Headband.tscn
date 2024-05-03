@@ -22,14 +22,12 @@ height = 4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wupf"]
 size = Vector2(1, 4)
 
-[node name="Headband" type="Node2D" node_paths=PackedStringArray("NormalSprite", "Bones", "HeadbandSprite")]
+[node name="Headband" type="Node2D" node_paths=PackedStringArray("Sprite", "Body")]
 script = ExtResource("1_q0sfp")
-NormalSprite = NodePath("Sprite2D")
-Bones = [null, null]
-HeadbandSprite = NodePath("RigidBody2D")
+Sprite = NodePath("Sprite2D")
+Body = NodePath("RigidBody2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.851301, 0.231883, 0.366428, 1)
 texture = SubResource("GradientTexture1D_uoymp")
 centered = false
 offset = Vector2(-1, 0)
@@ -43,7 +41,6 @@ linear_damp = 5.0
 angular_damp = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-modulate = Color(1, 0.388235, 1, 1)
 position = Vector2(0, 2)
 texture = SubResource("GradientTexture2D_5y4kj")
 

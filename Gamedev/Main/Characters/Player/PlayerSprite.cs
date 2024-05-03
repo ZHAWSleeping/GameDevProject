@@ -32,30 +32,34 @@ namespace Gamedev.Main.Characters.Player
 		private Node2D HeadbandAnchor;
 
 		[Export]
+		private RemoteTransform2D HeadbandTransform;
+
+		[Export]
 		private PinJoint2D Joint;
 
 		private AnimationNodeStateMachinePlayback Animations;
 
 
-		private bool flipH;
+		private bool _flipH = false;
 		public bool FlipH
 		{
-			get { return flipH; }
+			get { return _flipH; }
 			set
 			{
-				flipH = value;
-				Sprite.FlipH = value;
+				_flipH = value;
+				Scale = new(value ? -1 : 1, Scale.Y);
 			}
 		}
 
-		private bool flipV;
+		private bool _flipV = false;
 		public bool FlipV
 		{
-			get { return flipV; }
+			get { return _flipV; }
 			set
 			{
-				flipV = value;
+				_flipV = value;
 				Sprite.FlipV = value;
+				Scale = new(Scale.X, value ? -1 : 1);
 			}
 		}
 
@@ -69,9 +73,10 @@ namespace Gamedev.Main.Characters.Player
 		{
 			if (NodePaths.Headband != null && Joint.NodeB.IsEmpty)
 			{
-				NodePaths.Headband.GlobalPosition = HeadbandAnchor.GlobalPosition;
-				NodePaths.Headband.Freeze = false;
-				Joint.NodeB = NodePaths.Headband.GetPath();
+				NodePaths.Headband.Body.GlobalPosition = HeadbandAnchor.GlobalPosition;
+				NodePaths.Headband.Body.Freeze = false;
+				Joint.NodeB = NodePaths.Headband.Body.GetPath();
+				HeadbandTransform.RemotePath = NodePaths.Headband.Sprite.GetPath();
 			}
 		}
 

@@ -371,11 +371,12 @@ _data = {
 "Wall": SubResource("Animation_6y85i")
 }
 
-[node name="PlayerSprite" type="Node2D" node_paths=PackedStringArray("AnimTree", "Sprite", "HeadbandAnchor", "Joint")]
+[node name="PlayerSprite" type="Node2D" node_paths=PackedStringArray("AnimTree", "Sprite", "HeadbandAnchor", "HeadbandTransform", "Joint")]
 script = ExtResource("1_2md11")
 AnimTree = NodePath("AnimationTree")
 Sprite = NodePath("Human")
 HeadbandAnchor = NodePath("HeadbandAnchor")
+HeadbandTransform = NodePath("HeadbandAnchor/RemoteTransform2D")
 Joint = NodePath("HeadbandAnchor/PinJoint2D")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -425,5 +426,7 @@ node_a = NodePath("../StaticBody2D")
 bias = 0.9
 
 [node name="StaticBody2D" type="StaticBody2D" parent="HeadbandAnchor"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="HeadbandAnchor"]
 
 [node name="Human" parent="." instance=ExtResource("2_14jo0")]
