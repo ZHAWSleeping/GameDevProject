@@ -24,7 +24,6 @@ namespace Gamedev.Main.Tiles
 
 		public void TransitionCamera()
 		{
-			GD.Print("Transition");
 			CollisionEvents.OnCameraTransitionTriggered(Anchor.GlobalPosition);
 		}
 	}

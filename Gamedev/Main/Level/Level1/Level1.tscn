@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmo2ksosfmxbx"]
+[gd_scene load_steps=12 format=3 uid="uid://cmo2ksosfmxbx"]
 
 [ext_resource type="Texture2D" uid="uid://bqwp1ow0od87b" path="res://Gamedev/Main/Level/pixel_art_dark_cave_background.png.png" id="1_ou3nc"]
 [ext_resource type="PackedScene" uid="uid://bdex20ybgovrs" path="res://Gamedev/Main/Characters/Player.tscn" id="2_mi7xp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://da8visnr5i2yh" path="res://Gamedev/Main/Level/PlayerCamera.tscn" id="4_e0yph"]
 [ext_resource type="PackedScene" uid="uid://c6hp0j8plytly" path="res://Gamedev/Main/Level/Level1/TestRoom1.tscn" id="5_kkl37"]
 [ext_resource type="PackedScene" uid="uid://djnwc15xpvhjd" path="res://Gamedev/Main/Level/Level1/TestRoom2.tscn" id="6_bbctc"]
+[ext_resource type="PackedScene" uid="uid://bti8qjpe5tpsh" path="res://Gamedev/Main/Level/Level1/TestRoom3.tscn" id="8_t82xc"]
 [ext_resource type="PackedScene" uid="uid://ca5jnjkkgvujn" path="res://Gamedev/Main/Characters/Player/Headband/Headband.tscn" id="9_le61h"]
 [ext_resource type="PackedScene" uid="uid://difsxl6mgpehu" path="res://Gamedev/Main/Objects/goal.tscn" id="14_f0mlk"]
 
@@ -36,12 +37,17 @@ texture = ExtResource("3_y82ku")
 
 [node name="RoomMerger" parent="." instance=ExtResource("4_3lhdq")]
 
-[node name="Room" parent="RoomMerger" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("5_kkl37")]
+[node name="TestRoom1" parent="RoomMerger" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("5_kkl37")]
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 
-[node name="Room2" parent="RoomMerger" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("6_bbctc")]
+[node name="TestRoom2" parent="RoomMerger" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("6_bbctc")]
 position = Vector2(310, 0)
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+
+[node name="TestRoom3" parent="RoomMerger" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("8_t82xc")]
+position = Vector2(620, 0)
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 
@@ -52,7 +58,9 @@ Shape = NodePath("CollisionShape2D")
 LeftWallCast = NodePath("LeftWallCast")
 RightWallCast = NodePath("RightWallCast")
 
-[node name="Headband" parent="." instance=ExtResource("9_le61h")]
+[node name="Headband" parent="." node_paths=PackedStringArray("Sprite", "Body") instance=ExtResource("9_le61h")]
+Sprite = NodePath("Sprite2D")
+Body = NodePath("RigidBody2D")
 
 [node name="Goal" parent="." instance=ExtResource("14_f0mlk")]
 position = Vector2(970, -157)

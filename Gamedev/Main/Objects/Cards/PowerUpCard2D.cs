@@ -10,9 +10,9 @@ namespace Gamedev.Main.Objects.Cards
 	{
 		private static Dictionary<PowerUpCard.Type, PowerUpCard> TypeMap = new()
 		{
-			[PowerUpCard.Type.Dash] = new(PowerUpCard.Type.Dash, PlayerFSM.State.Dashing, Colors.Blue),
-			[PowerUpCard.Type.DoubleJump] = new(PowerUpCard.Type.DoubleJump, PlayerFSM.State.DoubleJumping, Colors.Yellow),
-			[PowerUpCard.Type.Stomp] = new(PowerUpCard.Type.Stomp, PlayerFSM.State.Stomping, Colors.Green),
+			[PowerUpCard.Type.Dash] = new(PowerUpCard.Type.Dash, PlayerFSM.State.Dashing, new Color("4d82e1")),
+			[PowerUpCard.Type.DoubleJump] = new(PowerUpCard.Type.DoubleJump, PlayerFSM.State.DoubleJumping, new Color("e6db3c")),
+			[PowerUpCard.Type.Stomp] = new(PowerUpCard.Type.Stomp, PlayerFSM.State.Stomping, new Color("3aa444")),
 		};
 
 		[Export]

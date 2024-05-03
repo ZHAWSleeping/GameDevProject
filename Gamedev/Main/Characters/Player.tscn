@@ -94,11 +94,12 @@ pitch_scale = 1.5
 visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
 
-[node name="PlayerSprite" parent="." node_paths=PackedStringArray("AnimTree", "Sprite", "HeadbandAnchor", "Joint") instance=ExtResource("7_68xpn")]
+[node name="PlayerSprite" parent="." node_paths=PackedStringArray("AnimTree", "Sprite", "HeadbandAnchor", "HeadbandTransform", "Joint") instance=ExtResource("7_68xpn")]
 position = Vector2(0, -5)
 AnimTree = NodePath("AnimationTree")
 Sprite = NodePath("Human")
 HeadbandAnchor = NodePath("HeadbandAnchor")
+HeadbandTransform = NodePath("HeadbandAnchor/RemoteTransform2D")
 Joint = NodePath("HeadbandAnchor/PinJoint2D")
 
 [node name="EnemyTrigger" parent="." instance=ExtResource("8_koefh")]
