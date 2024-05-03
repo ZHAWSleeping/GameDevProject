@@ -52,8 +52,9 @@ Shape = NodePath("CollisionShape2D")
 LeftWallCast = NodePath("LeftWallCast")
 RightWallCast = NodePath("RightWallCast")
 
-[node name="Headband" parent="." node_paths=PackedStringArray("NormalSprite") instance=ExtResource("9_le61h")]
+[node name="Headband" parent="." node_paths=PackedStringArray("NormalSprite", "Bones") instance=ExtResource("9_le61h")]
 NormalSprite = NodePath("Sprite2D")
+Bones = []
 
 [node name="Goal" parent="." instance=ExtResource("14_f0mlk")]
 position = Vector2(970, -157)

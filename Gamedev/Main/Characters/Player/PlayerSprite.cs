@@ -1,7 +1,9 @@
 using Gamedev.Events;
+using Gamedev.Main.Constants;
 using Gamedev.Main.Extensions;
 using Godot;
 using System;
+using System.Linq;
 
 
 
@@ -22,12 +24,15 @@ namespace Gamedev.Main.Characters.Player
 
 		[Export]
 		private AnimationTree AnimTree;
-		
+
 		[Export]
 		private AnimatedSprite2D Sprite;
 
 		[Export]
-		public Node2D HeadbandAnchor { get; private set; }
+		private Node2D HeadbandAnchor;
+
+		[Export]
+		private PinJoint2D Joint;
 
 		private AnimationNodeStateMachinePlayback Animations;
 
@@ -58,6 +63,16 @@ namespace Gamedev.Main.Characters.Player
 		{
 			base._Ready();
 			Animations = AnimTree.GetStateMachinePlayback();
+		}
+
+		public override void _Process(double delta)
+		{
+			if (NodePaths.Headband != null && Joint.NodeB.IsEmpty)
+			{
+				NodePaths.Headband.GlobalPosition = HeadbandAnchor.GlobalPosition;
+				NodePaths.Headband.Freeze = false;
+				Joint.NodeB = NodePaths.Headband.GetPath();
+			}
 		}
 
 		public void Travel(AnimationState state)
