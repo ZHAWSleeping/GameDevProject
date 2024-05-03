@@ -17,7 +17,7 @@ public partial class Root : Control
 		CollisionEvents.CollisionWall += GameOver;
 		RenderingServer.SetDefaultClearColor(Colors.Black);
 		StateEvents.LevelFinished += ReplaceScene;
-		StateEvents.SceneChangeRequest += ReplaceScene;
+		StateEvents.SceneChangeRequested += ReplaceScene;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

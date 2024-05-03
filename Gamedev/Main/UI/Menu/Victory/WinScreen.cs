@@ -7,7 +7,7 @@ public partial class WinScreen : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		StateEvents.SceneChangeRequest += Disable;
+		StateEvents.SceneChangeRequested += Disable;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

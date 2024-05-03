@@ -11,6 +11,6 @@ public partial class MainMenuLabel : SelectableLabel
 	{
 		GD.Print("Hello");
 		base.Trigger();
-		StateEvents.OnSceneChangeRequest(mainMenuScene);
+		StateEvents.OnSceneChangeRequested(mainMenuScene);
 	}
 }

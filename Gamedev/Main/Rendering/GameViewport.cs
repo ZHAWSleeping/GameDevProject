@@ -13,8 +13,8 @@ namespace Gamedev.Main.Rendering
 		{
 			StateEvents.PauseRequested += () => ProcessMode = ProcessModeEnum.Disabled;
 			StateEvents.ResumeRequested += () => ProcessMode = ProcessModeEnum.Inherit;
-			StateEvents.SceneChangeRequest += (PackedScene packedScene) => ProcessMode = ProcessModeEnum.Disabled;
-			StateEvents.LevelChangeRequest += (PackedScene packedScene) => ProcessMode = ProcessModeEnum.Inherit;
+			StateEvents.SceneChangeRequested += (PackedScene packedScene) => ProcessMode = ProcessModeEnum.Disabled;
+			StateEvents.LevelChangeRequested += (PackedScene packedScene) => ProcessMode = ProcessModeEnum.Inherit;
 
 		}
 
