@@ -1,6 +1,7 @@
 using Gamedev.Events;
 using Gamedev.Main.Constants;
 using Gamedev.Main.Events;
+using Gamedev.Main.Extensions;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ public partial class Headband : Node2D
 	{
 		Color = DefaultColor;
 		NodePaths.Headband = this;
+		CollisionEvents.CollisionDeath += () => this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 		CollisionEvents.CurrentCardChanged += card =>
 		{
 			if (card.CardType == Gamedev.Main.Objects.Cards.PowerUpCard.Type.Invalid)
