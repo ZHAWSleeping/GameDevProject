@@ -41,6 +41,7 @@ namespace Gamedev.Main.Characters.Player
 
 		public Player Player;
 		public PlayerSprite Sprite;
+		public PlayerParticleManager Particles;
 		public ShapeCast2D LeftWallCast;
 		public ShapeCast2D RightWallCast;
 		public RectangleShape2D Shape;

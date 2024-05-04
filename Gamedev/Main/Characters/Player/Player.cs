@@ -26,6 +26,9 @@ namespace Gamedev.Main.Characters.Player
 		private PlayerSprite Sprite;
 
 		[Export]
+		private PlayerParticleManager Particles;
+
+		[Export]
 		public int BatteryCount = 0;
 
 		[Export]
@@ -53,6 +56,7 @@ namespace Gamedev.Main.Characters.Player
 
 			Data.Player = this;
 			Data.Sprite = Sprite;
+			Data.Particles = Particles;
 			Data.LeftWallCast = LeftWallCast;
 			Data.RightWallCast = RightWallCast;
 			Data.Shape = (RectangleShape2D)Shape.Shape;

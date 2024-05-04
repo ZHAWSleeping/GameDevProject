@@ -30,6 +30,7 @@ namespace Gamedev.Main.Characters.Player
 			{
 				data.Velocity = new(data.Velocity.X, -data.JumpVelocity);
 				data.Sprite.Travel(AnimationState.Jump);
+				data.Particles.JumpParticlesEmitting = true;
 			}
 			else
 			{

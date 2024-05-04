@@ -36,6 +36,7 @@ namespace Gamedev.Main.Characters.Player
 				{
 					DashDirection = MathF.Sign(data.Facing.ToVector().X) * data.DashVelocity;
 				}
+				data.Particles.DashTrailEmitting = true;
 			}
 
 			data.DashTime--;

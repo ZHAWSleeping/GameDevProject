@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjfqed20ro5sb"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerParticleManager.cs" id="1_u4t0w"]
+
+[node name="PlayerParticleManager" type="Node2D"]
+script = ExtResource("1_u4t0w")

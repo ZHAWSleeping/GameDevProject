@@ -32,7 +32,18 @@ namespace Gamedev.Main.Characters.Player
 
 		private State WallJumpingTransition(PlayerData data)
 		{
-			return data.JumpJustPressed ? State.WallJumping : State.Invalid;
+			if (data.JumpJustPressed)
+			{
+				if (data.Facing == Direction.East)
+				{
+					data.Particles.WallJumpParticles.Scale = new(1, 1);
+				} else {
+					data.Particles.WallJumpParticles.Scale = new(-1, 1);
+				}
+				data.Particles.WallJumpParticlesEmitting = true;
+				return State.WallJumping;
+			}
+			return State.Invalid;
 		}
 
 		private State FallTransition(PlayerData data)

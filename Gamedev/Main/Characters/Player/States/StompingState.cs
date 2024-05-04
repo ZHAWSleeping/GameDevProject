@@ -28,7 +28,11 @@ namespace Gamedev.Main.Characters.Player
 
 		private State GroundedTransition(PlayerData data)
 		{
-			return data.Player.IsOnFloor() ? State.Grounded : State.Invalid;
+			if (data.Player.IsOnFloor()) {
+				data.Particles.StompParticlesEmitting = true;
+				return State.Grounded;
+			}
+			return State.Invalid;
 		}
 
 	}
