@@ -26,6 +26,9 @@ namespace Gamedev.Main.Characters.Player
 		private PlayerSprite Sprite;
 
 		[Export]
+		private PlayerAudioManager AudioManager;
+
+		[Export]
 		private PlayerParticleManager Particles;
 
 		[Export]
@@ -56,6 +59,7 @@ namespace Gamedev.Main.Characters.Player
 
 			Data.Player = this;
 			Data.Sprite = Sprite;
+			Data.Audio = AudioManager;
 			Data.Particles = Particles;
 			Data.LeftWallCast = LeftWallCast;
 			Data.RightWallCast = RightWallCast;

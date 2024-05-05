@@ -22,13 +22,20 @@ namespace Gamedev.Main.Characters.Player
 
 		public override void Execute(PlayerData data)
 		{
+			if (data.Velocity.Y != data.StompVelocity)
+			{
+				data.Audio.Play(PlayerAudioManager.Sound.Fall);
+			}
 			data.Velocity = new(0, data.StompVelocity);
 			data.Sprite.Travel(AnimationState.Fall);
 		}
 
 		private State GroundedTransition(PlayerData data)
 		{
-			if (data.Player.IsOnFloor()) {
+			if (data.Player.IsOnFloor())
+			{
+				data.Audio.Stop(PlayerAudioManager.Sound.Fall);
+				data.Audio.Play(PlayerAudioManager.Sound.Stomp);
 				data.Particles.StompParticlesEmitting = true;
 				return State.Grounded;
 			}

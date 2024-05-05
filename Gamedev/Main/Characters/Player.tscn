@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=20 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_j87et"]
 [ext_resource type="Resource" uid="uid://cyhmo207n15cb" path="res://Gamedev/Main/Characters/Player/PlayerDataRegular.tres" id="2_s4our"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d08dcb5tnic5g" path="res://Gamedev/Main/Rendering/Particles/DashTrail.tscn" id="9_tjib1"]
 [ext_resource type="PackedScene" uid="uid://oclsdyy7332g" path="res://Gamedev/Main/Rendering/Particles/StompParticles.tscn" id="10_1ckge"]
 [ext_resource type="PackedScene" uid="uid://c4vv6xnd4sm44" path="res://Gamedev/Main/Rendering/Particles/WallJumpParticles.tscn" id="11_hx0dq"]
+[ext_resource type="PackedScene" uid="uid://cletooeluxop1" path="res://Gamedev/Main/Characters/Player/PlayerAudioManager.tscn" id="12_2wo7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
 size = Vector2(10, 10)
@@ -39,12 +40,13 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xv0xg"]
 size = Vector2(0.2, 9)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
 light_mask = 32
 collision_mask = 115
 script = ExtResource("1_j87et")
 Data = ExtResource("2_s4our")
 Sprite = NodePath("PlayerSprite")
+AudioManager = NodePath("PlayerAudioManager")
 Particles = NodePath("PlayerParticleManager")
 Shape = NodePath("CollisionShape2D")
 LeftWallCast = NodePath("LeftWallCast")
@@ -128,3 +130,5 @@ position = Vector2(0, 5)
 
 [node name="WallJumpParticles" parent="PlayerParticleManager" instance=ExtResource("11_hx0dq")]
 position = Vector2(0, 5)
+
+[node name="PlayerAudioManager" parent="." instance=ExtResource("12_2wo7o")]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cletooeluxop1"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerAudioManager.cs" id="1_jywtk"]
+[ext_resource type="AudioStream" uid="uid://dib056r1034gl" path="res://Gamedev/Main/Audio/Effects/Jump.wav" id="2_wfkkk"]
+[ext_resource type="AudioStream" uid="uid://beiq6i3btry2d" path="res://Gamedev/Main/Audio/Effects/Stomp.wav" id="4_485dv"]
+[ext_resource type="AudioStream" uid="uid://cena8p5a1tpvl" path="res://Gamedev/Main/Audio/Effects/Dash.wav" id="5_t8xiu"]
+[ext_resource type="AudioStream" uid="uid://gsu1ldc7e60n" path="res://Gamedev/Main/Audio/Effects/Fall.wav" id="6_4vqhi"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bsdgc"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("2_wfkkk")
+
+[node name="PlayerAudioManager" type="Node2D"]
+script = ExtResource("1_jywtk")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_bsdgc")
+bus = &"Player"
+
+[node name="DoubleJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wfkkk")
+pitch_scale = 1.3
+bus = &"Player"
+
+[node name="Stomp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_485dv")
+bus = &"Player"
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t8xiu")
+bus = &"Player"
+
+[node name="Fall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4vqhi")
+bus = &"Player"

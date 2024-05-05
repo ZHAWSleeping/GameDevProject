@@ -33,6 +33,7 @@ namespace Gamedev.Main.Characters.Player
 				data.Velocity = (Vector2.Up + data.WallSide.ToVector().Rotated(MathF.PI)) * data.WallJumpVelocity;
 				LastWallSide = data.WallSide;
 				data.Sprite.Travel(AnimationState.Jump);
+				data.Audio.Play(PlayerAudioManager.Sound.Jump);
 			}
 			else
 			{

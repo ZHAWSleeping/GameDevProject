@@ -37,6 +37,7 @@ namespace Gamedev.Main.Characters.Player
 					DashDirection = MathF.Sign(data.Facing.ToVector().X) * data.DashVelocity;
 				}
 				data.Particles.DashTrailEmitting = true;
+				data.Audio.Play(PlayerAudioManager.Sound.Dash);
 			}
 
 			data.DashTime--;
