@@ -12,8 +12,6 @@ namespace Gamedev.Main.Characters.Player
 
 		protected override Func<PlayerData, State>[] Transitions { get; }
 
-		private Direction LastWallSide = Direction.None;
-
 		public DoubleJumpingState()
 		{
 			Transitions = new[]
