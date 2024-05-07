@@ -14,7 +14,7 @@ public partial class WinScreen : Control
 	//TODO Disable pause during menus
 	private void Disable(PackedScene packedScene)
 	{
-		StateEvents.SceneChangeRequest -= Disable;
+		StateEvents.SceneChangeRequested -= Disable;
 		QueueFree();
 	}
 }

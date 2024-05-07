@@ -12,6 +12,6 @@ public partial class LevelSelectLabel : SelectableLabel
 	{
 		GD.Print("Level selected");
 		base.Trigger();
-		StateEvents.OnSceneChangeRequest(levelScene);
+		StateEvents.OnSceneChangeRequested(levelScene);
 	}
 }
