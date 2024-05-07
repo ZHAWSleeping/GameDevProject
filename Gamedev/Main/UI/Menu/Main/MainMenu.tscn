@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://qwin6murmda"]
+[gd_scene load_steps=8 format=3 uid="uid://qwin6murmda"]
 
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_f5mgt"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="1_jm6ag"]
 [ext_resource type="PackedScene" uid="uid://bbsqxtor5q1gq" path="res://Gamedev/Main/UI/Menu/Main/LevelSelectLabel.tscn" id="1_p5axe"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.cs" id="1_qbnue"]
+[ext_resource type="PackedScene" uid="uid://mnm3a20felw" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.tscn" id="4_oi6f1"]
 
 [sub_resource type="Gradient" id="Gradient_brep8"]
 offsets = PackedFloat32Array(0.155844, 0.477273, 1)
@@ -44,12 +45,10 @@ theme_override_font_sizes/font_size = 156
 text = "Main Menu"
 horizontal_alignment = 1
 
-[node name="OverWorldLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_p5axe")]
+[node name="LevelSelectLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_p5axe")]
 layout_mode = 2
 text = "Overworld"
-overworldScene = null
-PrimaryColor = Color(0, 0, 0, 0)
-SecondaryColor = Color(0, 0, 0, 0)
+levelScene = ExtResource("4_oi6f1")
 SelectAudio = NodePath("Select")
 ConfirmAudio = NodePath("Confirm")
 

@@ -46,7 +46,7 @@ namespace Gamedev.Events
 			RestartRequested = delegate { };
 			PauseRequested = delegate { };
 			ResumeRequested = delegate { };
-			MainMenuRequest = delegate { };
+			SceneChangeRequested = delegate { };			
 			LevelFinished = delegate { };
 			HeadbandAnchorMoved = delegate { };
 		}

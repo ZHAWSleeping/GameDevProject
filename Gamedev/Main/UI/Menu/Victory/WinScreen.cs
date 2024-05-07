@@ -10,14 +10,11 @@ public partial class WinScreen : Control
 		StateEvents.SceneChangeRequested += Disable;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 
 	//TODO Disable pause during menus
 	private void Disable(PackedScene packedScene)
 	{
+		StateEvents.SceneChangeRequest -= Disable;
 		QueueFree();
 	}
 }

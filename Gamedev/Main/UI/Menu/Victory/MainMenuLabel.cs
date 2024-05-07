@@ -9,7 +9,7 @@ public partial class MainMenuLabel : SelectableLabel
 	private PackedScene mainMenuScene;
 	public override void Trigger()
 	{
-		GD.Print("Hello");
+		GD.Print("Main menu");
 		base.Trigger();
 		StateEvents.OnSceneChangeRequested(mainMenuScene);
 	}

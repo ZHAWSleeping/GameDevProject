@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://icu28vdtg5jy"]
+
+[ext_resource type="PackedScene" uid="uid://crd67hbvwbknw" path="res://Gamedev/Main/UI/Scrollable/SelectableLabel.tscn" id="1_n0af5"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/LevelSelectLabel.cs" id="2_tcfv4"]
+
+[node name="LevelSelectLabel" instance=ExtResource("1_n0af5")]
+script = ExtResource("2_tcfv4")
+levelScene = null
+PrimaryColor = Color(0, 0, 0, 0)
+SecondaryColor = Color(0, 0, 0, 0)
+
+[node name="Select" parent="." index="0"]
+bus = &"Master"
+
+[node name="Confirm" parent="." index="1"]
+bus = &"Master"

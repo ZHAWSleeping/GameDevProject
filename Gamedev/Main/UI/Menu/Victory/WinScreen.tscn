@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc3pg4v0irmy1"]
+[gd_scene load_steps=7 format=3 uid="uid://bc3pg4v0irmy1"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Victory/WinScreen.cs" id="1_4a7qs"]
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_a22yx"]
 [ext_resource type="PackedScene" uid="uid://77rhcbfpch8e" path="res://Gamedev/Main/UI/Menu/Victory/MainMenuLabel.tscn" id="2_f3mbd"]
-[ext_resource type="PackedScene" uid="uid://qwin6murmda" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.tscn" id="3_q1cer"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="3_tyird"]
 
 [sub_resource type="Gradient" id="Gradient_j8erh"]
@@ -47,7 +46,6 @@ horizontal_alignment = 1
 
 [node name="MainMenuLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("2_f3mbd")]
 layout_mode = 2
-mainMenuScene = ExtResource("3_q1cer")
 SelectAudio = NodePath("Select")
 ConfirmAudio = NodePath("Confirm")
 
