@@ -14,11 +14,14 @@ tile_map_data = PackedByteArray("AAD//wsAAAAAAAEAAAD//wwAAAAAAAEAAAD//w0AAAAAAAE
 tile_map_data = PackedByteArray("AAAeAA4AAAAAAAAAAAAeAA0AAAAAAAAAAAAeAAwAAAAAAAAAAAAeAAsAAAAAAAAAAAAeAAoAAAAAAAAAAAAeAAkAAAAAAAAAAAAeAAgAAAAAAAAAAAAeAAcAAAAAAAAAAAAeAAYAAAAAAAAAAAAeAAUAAAAAAAAAAAAeAAQAAAAAAAAAAAAeAAMAAAAAAAAAAAAeAAIAAAAAAAAAAAAeAAEAAAAAAAAAAAAeAAAAAAAAAAAAAAAeAP//AAAAAAAAAAA=")
 Anchor = NodePath("../Anchor")
 
-[node name="PowerUpCard2D" parent="." index="5" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_rb6sr")]
+[node name="RespawnPoint" parent="." index="5"]
+position = Vector2(36, 156)
+
+[node name="PowerUpCard2D" parent="." index="6" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_rb6sr")]
 position = Vector2(98, 144)
 Sprite = NodePath("PowerUpCards")
 
-[node name="PowerUpCard2D2" parent="." index="6" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_rb6sr")]
+[node name="PowerUpCard2D2" parent="." index="7" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_rb6sr")]
 position = Vector2(214, 119)
 Sprite = NodePath("PowerUpCards")
 CardType = 2

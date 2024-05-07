@@ -14,9 +14,6 @@
 
 [node name="Level1" type="Node2D"]
 
-[node name="PlayerCamera1" parent="." instance=ExtResource("4_e0yph")]
-position = Vector2(160, 90)
-
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(639, 91.5)
@@ -66,3 +63,6 @@ Body = NodePath("RigidBody2D")
 
 [node name="Goal" parent="." instance=ExtResource("14_f0mlk")]
 position = Vector2(970, -157)
+
+[node name="PlayerCamera1" parent="." instance=ExtResource("4_e0yph")]
+position = Vector2(160, 90)

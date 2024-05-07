@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm6irsyrgpir5"]
+[gd_scene load_steps=7 format=3 uid="uid://dm6irsyrgpir5"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Level/Room.cs" id="1_ckmwb"]
 [ext_resource type="Texture2D" uid="uid://cpfu4ygugxiv5" path="res://Gamedev/Main/Level/RoomBoundaries.pxo" id="1_rj52n"]
 [ext_resource type="PackedScene" uid="uid://c8aflbixp4njy" path="res://Gamedev/Main/Tiles/Basic.tscn" id="2_8lff0"]
 [ext_resource type="PackedScene" uid="uid://cdraokc8w7as3" path="res://Gamedev/Main/Tiles/LoadingZone/LoadingZone.tscn" id="3_2tc2j"]
 [ext_resource type="PackedScene" uid="uid://j44uwlvq2m40" path="res://Gamedev/Main/Tiles/Deathzone/DeathzoneTilemap.tscn" id="4_1ggpg"]
+[ext_resource type="PackedScene" uid="uid://dr27pihdq0j27" path="res://Gamedev/Main/Objects/Respawn/RespawnPoint.tscn" id="6_qkvfk"]
 
 [node name="Room" type="Node2D" node_paths=PackedStringArray("Tiles", "Boundaries")]
 script = ExtResource("1_ckmwb")
@@ -23,4 +24,7 @@ Anchor = NodePath("../Anchor")
 [node name="DeathzoneTilemap" parent="." instance=ExtResource("4_1ggpg")]
 
 [node name="Anchor" type="Node2D" parent="."]
+position = Vector2(160, 90)
+
+[node name="RespawnPoint" parent="." instance=ExtResource("6_qkvfk")]
 position = Vector2(160, 90)

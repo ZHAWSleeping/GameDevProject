@@ -17,16 +17,19 @@ Anchor = NodePath("../Anchor")
 [node name="DeathzoneTilemap" parent="." index="3"]
 tile_map_data = PackedByteArray("AAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAQABIAAAAAAAAAAAA=")
 
-[node name="PowerUpCard2D" parent="." index="5" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_2mm5s")]
+[node name="RespawnPoint" parent="." index="5"]
+position = Vector2(40, 156)
+
+[node name="PowerUpCard2D" parent="." index="6" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_2mm5s")]
 position = Vector2(60, 150)
 Sprite = NodePath("PowerUpCards")
 
-[node name="PowerUpCard2D2" parent="." index="6" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_2mm5s")]
+[node name="PowerUpCard2D2" parent="." index="7" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_2mm5s")]
 position = Vector2(100, 100)
 Sprite = NodePath("PowerUpCards")
 CardType = 2
 
-[node name="PowerUpCard2D3" parent="." index="7" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_2mm5s")]
+[node name="PowerUpCard2D3" parent="." index="8" node_paths=PackedStringArray("Sprite") instance=ExtResource("2_2mm5s")]
 position = Vector2(250, 50)
 Sprite = NodePath("PowerUpCards")
 CardType = 3

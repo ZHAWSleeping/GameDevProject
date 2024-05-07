@@ -157,7 +157,6 @@ namespace Gamedev.Main.Characters.Player
 		{
 			StateEvents.OnRestartRequested();
 			AudioManager.Play(PlayerAudioManager.Sound.Death);
-			Modulate = new Color(4, 1, 1, 1);
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 		}
 

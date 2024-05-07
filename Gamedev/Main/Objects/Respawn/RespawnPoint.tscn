@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr27pihdq0j27"]
+
+[ext_resource type="Texture2D" uid="uid://xnbjdmicfq75" path="res://Gamedev/Main/Characters/Player/Human/HumanInverted.pxo" id="1_mh514"]
+[ext_resource type="Script" path="res://Gamedev/Main/Objects/Respawn/RespawnPoint.cs" id="2_3rlpk"]
+
+[node name="RespawnPoint" type="Sprite2D"]
+texture = ExtResource("1_mh514")
+offset = Vector2(0, -5)
+script = ExtResource("2_3rlpk")
