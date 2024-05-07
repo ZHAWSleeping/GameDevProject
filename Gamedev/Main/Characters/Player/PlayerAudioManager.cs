@@ -1,3 +1,4 @@
+using Gamedev.Main.Events;
 using Godot;
 
 namespace Gamedev.Main.Characters.Player
@@ -12,7 +13,13 @@ namespace Gamedev.Main.Characters.Player
 			Fall,
 			Stomp,
 			Death,
-		}	
+			CardPickup
+		}
+
+		public override void _Ready()
+		{
+			CollisionEvents.CardCollected += (_) => Play(Sound.CardPickup);
+		}
 
 		public void Play(Sound sound)
 		{

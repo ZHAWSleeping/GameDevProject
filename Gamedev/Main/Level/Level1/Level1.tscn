@@ -51,9 +51,10 @@ position = Vector2(620, 0)
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 
-[node name="Player" parent="." node_paths=PackedStringArray("Sprite", "Particles", "Shape", "LeftWallCast", "RightWallCast") instance=ExtResource("2_mi7xp")]
+[node name="Player" parent="." node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast") instance=ExtResource("2_mi7xp")]
 position = Vector2(10, 90)
 Sprite = NodePath("PlayerSprite")
+AudioManager = NodePath("PlayerAudioManager")
 Particles = NodePath("PlayerParticleManager")
 Shape = NodePath("CollisionShape2D")
 LeftWallCast = NodePath("LeftWallCast")
