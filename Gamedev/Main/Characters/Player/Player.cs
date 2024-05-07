@@ -64,6 +64,7 @@ namespace Gamedev.Main.Characters.Player
 			Data.LeftWallCast = LeftWallCast;
 			Data.RightWallCast = RightWallCast;
 			Data.Shape = (RectangleShape2D)Shape.Shape;
+			Data.JustRespawned = true;
 
 			StateMachine = new();
 			Inventory = new();
@@ -72,6 +73,11 @@ namespace Gamedev.Main.Characters.Player
 
 		public override void _PhysicsProcess(double delta)
 		{
+			if (Data.JustRespawned)
+			{
+				StateEvents.OnPlayerRespawned(GlobalPosition);
+				Data.JustRespawned = false;
+			}
 			Data.Velocity = Velocity;
 			Data.InputDirection = InputExtensions.MovementVector();
 			Data.JumpHeld = Inputs.Jump.Pressed();
@@ -155,7 +161,7 @@ namespace Gamedev.Main.Characters.Player
 
 		private void Die()
 		{
-			StateEvents.OnRestartRequested();
+			StateEvents.OnRestartRequested(GlobalPosition);
 			AudioManager.Play(PlayerAudioManager.Sound.Death);
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 		}

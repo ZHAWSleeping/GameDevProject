@@ -1,16 +1,20 @@
 using Gamedev.Constants;
+using Gamedev.Events;
 using Godot;
 using System;
 
 public partial class RadialReveal : Sprite2D
 {
 	[Export]
-	private float Duration = 5.0f;
-	private static string FillFromPath = $"{Sprite2D.PropertyName.Texture}/{GradientTexture2D.PropertyName.FillFrom}";
+	private float Duration = 1.0f;
+
 	private Tween Animation;
+
 	public override void _Ready()
 	{
-		Hide(GlobalPosition + new Vector2(320/2, 320/2));
+		HideImmediate();
+		StateEvents.PlayerRespawned += Show;
+		StateEvents.RestartRequested += Hide;
 	}
 
 	private Vector2 MapToTextureSpace(Vector2 position)
@@ -22,7 +26,7 @@ public partial class RadialReveal : Sprite2D
 	{
 		Vector2 target = MapToTextureSpace(position);
 		((GradientTexture2D)Texture).FillFrom = target;
-		((GradientTexture2D)Texture).FillTo = new Vector2(2,2);
+		((GradientTexture2D)Texture).FillTo = new Vector2(2, 2);
 		if (Animation != null)
 		{
 			Animation.Stop();
@@ -38,6 +42,11 @@ public partial class RadialReveal : Sprite2D
 		.SetTrans(Tween.TransitionType.Cubic);
 	}
 
+	public void HideImmediate()
+	{
+		((GradientTexture2D)Texture).FillTo = ((GradientTexture2D)Texture).FillFrom - new Vector2(0.001f, 0.001f);
+	}
+
 	public void Show(Vector2 position)
 	{
 		Vector2 target = MapToTextureSpace(position);
@@ -51,11 +60,15 @@ public partial class RadialReveal : Sprite2D
 		Animation.TweenProperty(
 			Texture,
 			GradientTexture2D.PropertyName.FillTo.ToString(),
-			new Vector2(2,2),
+			new Vector2(2, 2),
 			Duration
 		)
 		.SetEase(Tween.EaseType.InOut)
 		.SetTrans(Tween.TransitionType.Cubic);
+	}
 
+	public void ShowImmediate()
+	{
+		((GradientTexture2D)Texture).FillTo = new Vector2(2, 2);
 	}
 }

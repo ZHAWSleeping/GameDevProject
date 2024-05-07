@@ -49,7 +49,7 @@ Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast") instance=ExtResource("2_mi7xp")]
-position = Vector2(10, 90)
+position = Vector2(40, 150)
 Sprite = NodePath("PlayerSprite")
 AudioManager = NodePath("PlayerAudioManager")
 Particles = NodePath("PlayerParticleManager")

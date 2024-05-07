@@ -70,7 +70,7 @@ namespace Gamedev.Main.Characters
 			KinematicCollision2D[] collisions = this.GetSlideCollisions();
 			if (collisions.HasNodesInGroup("Walls"))
 			{
-				StateEvents.OnRestartRequested();
+				//StateEvents.OnRestartRequested();
 				Die();
 			}
 		}

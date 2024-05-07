@@ -42,7 +42,7 @@ public partial class SlidingOverlay : TextureRect
 		tween.TweenCallback(Callable.From(() => GetTree().Quit()));
 	}
 
-	public void RestartGame()
+	public void RestartGame(Vector2 _)
 	{
 		Tween tween = CreateTween();
 		SlideIn(tween);

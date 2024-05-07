@@ -53,6 +53,7 @@ namespace Gamedev.Main.Characters.Player
 		public bool JumpHeld = false;
 		public bool JumpJustPressed = false;
 		public bool DiscardJustPressed = false;
+		public bool JustRespawned = false;
 		public Direction WallSide = Direction.None;
 		public double Delta = 0;
 		public int CoyoteTime = 0;
