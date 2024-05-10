@@ -1,33 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmo2ksosfmxbx"]
+[gd_scene load_steps=7 format=3 uid="uid://cmo2ksosfmxbx"]
 
 [ext_resource type="PackedScene" uid="uid://c8bxn0o50nv6q" path="res://Gamedev/Main/Level/Level.tscn" id="1_vitqb"]
 [ext_resource type="PackedScene" uid="uid://c6hp0j8plytly" path="res://Gamedev/Main/Level/Level1/TestRoom1.tscn" id="5_kkl37"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="5_xxi14"]
 [ext_resource type="PackedScene" uid="uid://djnwc15xpvhjd" path="res://Gamedev/Main/Level/Level1/TestRoom2.tscn" id="6_bbctc"]
 [ext_resource type="PackedScene" uid="uid://bti8qjpe5tpsh" path="res://Gamedev/Main/Level/Level1/TestRoom3.tscn" id="8_t82xc"]
 
-[node name="Level1" instance=ExtResource("1_vitqb")]
+[sub_resource type="Resource" id="Resource_0cl4e"]
+resource_local_to_scene = true
+script = ExtResource("5_xxi14")
+MovementSpeed = 100.0
+MaxMovementSpeed = 100.0
+AirDrag = 25.0
+JumpVelocity = 125.0
+JumpVelocityIncrement = 15.0
+WallJumpVelocity = Vector2(150, 150)
+WallJumpVelocityIncrement = 15.0
+WallSlideModifier = 0.8
+AirborneModifier = 0.15
+DashVelocity = 300.0
+StompVelocity = 350.0
+CoyoteTimeFrames = 5
+JumpTimeFrames = 12
+DashTimeFrames = 8
+Gravity = Vector2(0, 16)
 
-[node name="TestRoom1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone") instance=ExtResource("5_kkl37")]
+[node name="Level1" node_paths=PackedStringArray("Player", "Merger") instance=ExtResource("1_vitqb")]
+Player = NodePath("Player")
+Merger = NodePath("RoomMerger")
+
+[node name="TestRoom1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "RespawnPoint") instance=ExtResource("5_kkl37")]
 Id = 0
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 loadingZone = NodePath("LoadingZones")
+RespawnPoint = NodePath("RespawnPoint")
 
-[node name="TestRoom2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone") instance=ExtResource("6_bbctc")]
+[node name="TestRoom2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "RespawnPoint") instance=ExtResource("6_bbctc")]
 position = Vector2(310, 0)
 Id = 1
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 loadingZone = NodePath("LoadingZones")
+RespawnPoint = NodePath("RespawnPoint")
 
-[node name="TestRoom3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone") instance=ExtResource("8_t82xc")]
+[node name="TestRoom3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "RespawnPoint") instance=ExtResource("8_t82xc")]
 position = Vector2(620, 0)
 Id = 2
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 loadingZone = NodePath("LoadingZones")
+RespawnPoint = NodePath("RespawnPoint")
 
 [node name="Player" parent="." index="1" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
+Data = SubResource("Resource_0cl4e")
 Sprite = NodePath("PlayerSprite")
 AudioManager = NodePath("PlayerAudioManager")
 Particles = NodePath("PlayerParticleManager")

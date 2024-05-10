@@ -9,8 +9,8 @@ namespace Gamedev.Events
 		public static event Action QuitRequested;
 		public static void OnQuitRequested() => QuitRequested();
 
-		public static event Action<Vector2> RestartRequested;
-		public static void OnRestartRequested(Vector2 playerPosition) => RestartRequested(playerPosition);
+		public static event Action<Vector2> PlayerDied;
+		public static void OnPlayerDied(Vector2 playerPosition) => PlayerDied(playerPosition);
 
 		public static event Action<Vector2> PlayerRespawned;
 		public static void OnPlayerRespawned(Vector2 playerPosition) => PlayerRespawned(playerPosition);
@@ -66,7 +66,7 @@ namespace Gamedev.Events
 		public static void Clear()
 		{
 			QuitRequested = delegate { };
-			RestartRequested = delegate { };
+			PlayerDied = delegate { };
 			PlayerRespawned = delegate { };
 			PauseRequested = delegate { };
 			ResumeRequested = delegate { };

@@ -51,19 +51,23 @@ namespace Gamedev.Main.Characters.Player
 			Data.LeftWallCast = LeftWallCast;
 			Data.RightWallCast = RightWallCast;
 			Data.Shape = (RectangleShape2D)Shape.Shape;
-			Data.JustRespawned = true;
 
 			StateMachine = new();
 			Inventory = new();
+
 		}
 
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (Data.JustRespawned)
+			if (Data.JustRespawned == 0)
 			{
 				StateEvents.OnPlayerRespawned(GlobalPosition);
-				Data.JustRespawned = false;
+				Data.JustRespawned--;
+			}
+			else if (Data.JustRespawned > 0)
+			{
+				Data.JustRespawned--;
 			}
 			Data.Velocity = Velocity;
 			Data.InputDirection = InputExtensions.MovementVector();
@@ -148,9 +152,11 @@ namespace Gamedev.Main.Characters.Player
 
 		private void Die()
 		{
-			StateEvents.OnRestartRequested(GlobalPosition);
+			StateEvents.OnPlayerDied(GlobalPosition);
 			AudioManager.Play(PlayerAudioManager.Sound.Death);
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+			Tween tween = LevelManager.Instance.CreateTween();
+			tween.TweenCallback(Callable.From(() => StateEvents.OnLevelChangeRequested(LevelManager.Instance.World, LevelManager.Instance.Level))).SetDelay(1);
 		}
 
 		private void BatteryCollected()

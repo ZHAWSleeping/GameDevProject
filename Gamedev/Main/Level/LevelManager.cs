@@ -6,6 +6,7 @@ using System.Linq;
 
 public partial class LevelManager : Node
 {
+	public static LevelManager Instance { get; private set; }
 
 	/// <summary>
 	/// List of levels.
@@ -30,6 +31,7 @@ public partial class LevelManager : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Instance = this;
 		Levels = ExportedWorlds
 			.Select(
 				(w, i) => ExportedLevels.Skip(ExportedWorlds.Take(i).Sum()).Take(w).ToArray()
@@ -40,6 +42,7 @@ public partial class LevelManager : Node
 		StateEvents.LevelChangeRequested += ChangeLevel;
 		StateEvents.LevelFinished += MarkAsCompleted;
 		StateEvents.RoomChanged += ChangeRoom;
+		StateEvents.OnGameSceneChangeRequested(Levels[World][Level]);
 	}
 
 	private bool IsInBounds(int world, int level)

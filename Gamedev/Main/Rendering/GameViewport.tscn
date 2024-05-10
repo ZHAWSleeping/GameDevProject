@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://blxqeoy3g0eg2"]
+[gd_scene load_steps=4 format=3 uid="uid://blxqeoy3g0eg2"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Rendering/GameViewport.cs" id="1_k8jac"]
-[ext_resource type="PackedScene" uid="uid://bx4ut7y6v26rd" path="res://Gamedev/Main/Level/LevelManager.tscn" id="2_cnm14"]
-[ext_resource type="PackedScene" uid="uid://cmo2ksosfmxbx" path="res://Gamedev/Main/Level/Level1/Level1.tscn" id="2_thk1b"]
+[ext_resource type="Texture2D" uid="uid://cpfu4ygugxiv5" path="res://Gamedev/Main/Level/RoomBoundaries.pxo" id="2_tkkbj"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0dp02"]
 viewport_path = NodePath("SubViewport")
@@ -16,8 +15,6 @@ stretch_mode = 5
 script = ExtResource("1_k8jac")
 Viewport = NodePath("SubViewport")
 
-[node name="LevelManager" parent="." instance=ExtResource("2_cnm14")]
-
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
@@ -29,4 +26,6 @@ size_2d_override = Vector2i(320, 180)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Level1" parent="SubViewport" instance=ExtResource("2_thk1b")]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture = ExtResource("2_tkkbj")
+centered = false

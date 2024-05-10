@@ -10,7 +10,7 @@ namespace CaveGame.Main.UI.Pause
 		public override void Trigger()
 		{
 			base.Trigger();
-			StateEvents.OnRestartRequested(Vector2.Zero);
+			StateEvents.OnPlayerDied(Vector2.Zero);
 		}
 	}
 

@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://j44uwlvq2m40" path="res://Gamedev/Main/Tiles/Deathzone/DeathzoneTilemap.tscn" id="4_1ggpg"]
 [ext_resource type="PackedScene" uid="uid://dr27pihdq0j27" path="res://Gamedev/Main/Objects/Respawn/RespawnPoint.tscn" id="6_qkvfk"]
 
-[node name="Room" type="Node2D" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone")]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint")]
 script = ExtResource("1_ckmwb")
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
 
 [node name="Boundaries" type="Sprite2D" parent="."]
 texture = ExtResource("1_rj52n")

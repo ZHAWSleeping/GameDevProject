@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=14 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
 [ext_resource type="PackedScene" uid="uid://chdku2xe1ftxv" path="res://Gamedev/Main/UI/GameOver.tscn" id="2_tofx8"]
 [ext_resource type="PackedScene" uid="uid://bnr32jwpw6hmg" path="res://Gamedev/Main/Rendering/DefaultEnvironment.tscn" id="3_nom6r"]
 [ext_resource type="PackedScene" uid="uid://ce1jks86gaxc0" path="res://Gamedev/Main/UI/SlidingOverlay.tscn" id="4_3uud4"]
+[ext_resource type="PackedScene" uid="uid://bx4ut7y6v26rd" path="res://Gamedev/Main/Level/LevelManager.tscn" id="4_ec24p"]
 [ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
 [ext_resource type="PackedScene" uid="uid://cigaq1jrw6f7u" path="res://Gamedev/Main/UI/BatteryCounter.tscn" id="5_kdugc"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
@@ -38,6 +39,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_hjyhc")
 Viewport = NodePath("SubViewport")
+
+[node name="LevelManager" parent="." instance=ExtResource("4_ec24p")]
 
 [node name="PowerUpCardsDisplay" parent="." instance=ExtResource("11_01kuk")]
 layout_mode = 2
