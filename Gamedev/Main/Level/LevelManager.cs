@@ -39,6 +39,7 @@ public partial class LevelManager : Node
 		LevelsCompleted = Levels.Select(w => w.Select(_ => false).ToArray()).ToArray();
 		StateEvents.LevelChangeRequested += ChangeLevel;
 		StateEvents.LevelFinished += MarkAsCompleted;
+		StateEvents.RoomChanged += ChangeRoom;
 	}
 
 	private bool IsInBounds(int world, int level)
@@ -81,6 +82,12 @@ public partial class LevelManager : Node
 		{
 			GD.PrintErr($"Attempted to complete non-existent level {world}-{level}");
 		}
+		DebugEvents.OnRoomChanged(this);
+	}
+
+	private void ChangeRoom(int room)
+	{
+		Room = room;
 		DebugEvents.OnRoomChanged(this);
 	}
 }

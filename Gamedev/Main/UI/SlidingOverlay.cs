@@ -15,8 +15,6 @@ public partial class SlidingOverlay : TextureRect
 		Tween tween = CreateTween();
 		SlideOut(tween);
 
-		StateEvents.QuitRequested += QuitGame;
-		StateEvents.RestartRequested += RestartGame;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,13 +32,6 @@ public partial class SlidingOverlay : TextureRect
 		tween.TweenProperty(this, PropertyName.Position.ToString(), new Vector2(0, (int)Size.Y), SlideDuration).SetDelay(0.2f);
 	}
 
-	public void QuitGame()
-	{
-		Tween tween = CreateTween();
-		SlideIn(tween);
-		tween.TweenCallback(Callable.From(() => GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest))).SetDelay(1.0f);
-		tween.TweenCallback(Callable.From(() => GetTree().Quit()));
-	}
 
 	public void RestartGame(Vector2 _)
 	{
@@ -51,7 +42,7 @@ public partial class SlidingOverlay : TextureRect
 		{
 			GetTree().ReloadCurrentScene();
 			CollisionEvents.Clear();
-			StateEvents.Clear();
+			//StateEvents.Clear();
 			DebugEvents.Clear();
 		}))
 		.SetDelay(1.0f);

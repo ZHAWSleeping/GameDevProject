@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://i1et08txpcpx" path="res://Gamedev/Main/Objects/Cards/PowerUpCard2D.tscn" id="2_2mm5s"]
 
 [node name="TestRoom3" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("1_33mwk")]
-Id = 3
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 

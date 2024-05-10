@@ -48,6 +48,9 @@ namespace Gamedev.Events
 		/// <param name="level">Which level</param>
 		public static void OnLevelChangeRequested(int world, int level) => LevelChangeRequested(world, level);
 
+		public static event Action<int> RoomChanged;
+		public static void OnRoomChanged(int room) => RoomChanged(room);
+
 		public static event Action<int, int> LevelFinished;
 		public static void OnLevelFinished(int world, int level) => LevelFinished(world, level);
 
@@ -70,6 +73,7 @@ namespace Gamedev.Events
 			SceneChangeRequested = delegate { };
 			GameSceneChangeRequested = delegate { };
 			LevelChangeRequested = delegate { };
+			RoomChanged = delegate { };
 			LevelFinished = delegate { };
 			HeadbandAnchorMoved = delegate { };
 		}

@@ -12,12 +12,6 @@ namespace Gamedev.Main.Characters
 			BodyEntered += OnCameraTriggerHit;
 		}
 
-		// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
-		{
-
-		}
-
 		private void OnCameraTriggerHit(Node2D node)
 		{
 			if (node is LoadingZone zone)

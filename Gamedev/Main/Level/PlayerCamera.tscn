@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqvf1i6ihayer" path="res://Gamedev/Main/Objects/Respawn/RadialReveal.tscn" id="2_mc24y"]
 
 [node name="PlayerCamera" type="Camera2D"]
+process_mode = 3
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 script = ExtResource("1_d2nhe")

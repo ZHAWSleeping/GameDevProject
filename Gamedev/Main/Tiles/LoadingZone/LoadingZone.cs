@@ -1,3 +1,4 @@
+using Gamedev.Events;
 using Gamedev.Main;
 using Gamedev.Main.Events;
 using Godot;
@@ -11,8 +12,7 @@ namespace Gamedev.Main.Tiles
 		[Export]
 		private Node2D Anchor;
 
-		[Export]
-		private Camera2D Camera;
+		public int Id = -1;
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -25,6 +25,7 @@ namespace Gamedev.Main.Tiles
 		public void TransitionCamera()
 		{
 			CollisionEvents.OnCameraTransitionTriggered(Anchor.GlobalPosition);
+			StateEvents.OnRoomChanged(Id);
 		}
 	}
 }

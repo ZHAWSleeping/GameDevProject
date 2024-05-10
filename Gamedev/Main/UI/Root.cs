@@ -18,12 +18,21 @@ public partial class Root : Control
 		RenderingServer.SetDefaultClearColor(Colors.Black);
 		//StateEvents.LevelFinished += ReplaceScene;
 		StateEvents.SceneChangeRequested += ReplaceScene;
+		StateEvents.QuitRequested += QuitGame;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
+
+	public void QuitGame()
+	{
+		GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
+		GetTree().Quit();
+	}
+
 
 	private void GameOver()
 	{
