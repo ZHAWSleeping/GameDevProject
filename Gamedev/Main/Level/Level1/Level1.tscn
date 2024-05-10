@@ -7,22 +7,25 @@
 
 [node name="Level1" instance=ExtResource("1_vitqb")]
 
-[node name="TestRoom1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("5_kkl37")]
+[node name="TestRoom1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone") instance=ExtResource("5_kkl37")]
 Id = 0
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
 
-[node name="TestRoom2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("6_bbctc")]
+[node name="TestRoom2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone") instance=ExtResource("6_bbctc")]
 position = Vector2(310, 0)
 Id = 1
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
 
-[node name="TestRoom3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries") instance=ExtResource("8_t82xc")]
+[node name="TestRoom3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone") instance=ExtResource("8_t82xc")]
 position = Vector2(620, 0)
 Id = 2
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
 
 [node name="Player" parent="." index="1" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
 Sprite = NodePath("PlayerSprite")

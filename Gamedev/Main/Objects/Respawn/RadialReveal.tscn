@@ -16,4 +16,5 @@ fill_to = Vector2(2, 2)
 
 [node name="RadialReveal" type="Sprite2D"]
 texture = SubResource("GradientTexture2D_fwjtq")
+centered = false
 script = ExtResource("1_6wtrd")

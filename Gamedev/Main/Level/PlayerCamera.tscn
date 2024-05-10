@@ -10,3 +10,4 @@ position_smoothing_speed = 6.0
 script = ExtResource("1_d2nhe")
 
 [node name="RadialReveal" parent="." instance=ExtResource("2_mc24y")]
+position = Vector2(-160, -160)

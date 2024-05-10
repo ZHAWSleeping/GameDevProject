@@ -19,7 +19,7 @@ public partial class RadialReveal : Sprite2D
 
 	private Vector2 MapToTextureSpace(Vector2 position)
 	{
-		return (position - GlobalPosition) / Texture.GetSize();
+		return ToLocal(position) / Texture.GetSize();
 	}
 
 	public void Hide(Vector2 position)
