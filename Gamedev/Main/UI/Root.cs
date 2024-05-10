@@ -1,4 +1,3 @@
-using Gamedev.Events;
 using Gamedev.Main.Events;
 using Godot;
 using System;
@@ -14,7 +13,6 @@ public partial class Root : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		CollisionEvents.CollisionWall += GameOver;
 		RenderingServer.SetDefaultClearColor(Colors.Black);
 		//StateEvents.LevelFinished += ReplaceScene;
 		StateEvents.SceneChangeRequested += ReplaceScene;

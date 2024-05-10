@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Gamedev.Constants
+namespace Gamedev.Main.Constants
 {
 	public static class GameInfo
 	{

@@ -1,5 +1,4 @@
 using System.Linq;
-using Gamedev.Events;
 using Gamedev.Main.Events;
 using Godot;
 
@@ -19,7 +18,7 @@ namespace Gamedev.Main.Rendering
 
 		private void ReplaceGameScene(PackedScene scene)
 		{
-			CollisionEvents.Clear();
+			CollisionEvents.Clean();
 			Viewport.GetChildren().ToList().ForEach(c => c.QueueFree());
 			Node2D newScene = scene.Instantiate<Node2D>();
 			Viewport.AddChild(newScene);

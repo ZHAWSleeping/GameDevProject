@@ -23,6 +23,7 @@ public partial class PowerUpCardsDisplay : Control
 		GetChildren().OfType<TextureRect>().ToList().ForEach(node => node.QueueFree());
 		CollisionEvents.CardCollected += AddCard;
 		CollisionEvents.CardConsumed += RemoveLastCard;
+		StateEvents.PlayerDied += _ => RemoveAll();
 	}
 
 	/// <summary>
@@ -75,6 +76,12 @@ public partial class PowerUpCardsDisplay : Control
 		TextureRect oldCard = CardRects.Last();
 		CardRects.RemoveLast();
 		ConsumeCardAnimation(oldCard);
+	}
+
+	private void RemoveAll()
+	{
+		CardRects.ToList().ForEach(c => ConsumeCardAnimation(c));
+		CardRects.Clear();
 	}
 
 	/// <summary>

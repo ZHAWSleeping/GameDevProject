@@ -1,5 +1,5 @@
-using Gamedev.Constants;
-using Gamedev.Events;
+using Gamedev.Main.Constants;
+using Gamedev.Main.Events;
 using Godot;
 using System;
 

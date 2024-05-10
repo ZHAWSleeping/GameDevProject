@@ -1,5 +1,4 @@
 using System;
-using Gamedev.Events;
 using Gamedev.Main.Constants;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;

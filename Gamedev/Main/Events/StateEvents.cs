@@ -2,7 +2,7 @@ using System;
 using Godot;
 using static Gamedev.Main.Extensions.VectorExtensions;
 
-namespace Gamedev.Events
+namespace Gamedev.Main.Events
 {
 	public static class StateEvents
 	{

@@ -24,7 +24,6 @@ namespace Gamedev.Main.Characters
 		public override void _Ready()
 		{
 			base._Ready();
-			CollisionEvents.CollisionWall += Die;
 		}
 
 		public override void _PhysicsProcess(double delta)
