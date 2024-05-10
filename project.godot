@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -134,7 +135,9 @@ Cancel={
 
 [physics]
 
+common/physics_jitter_fix=0.0
 2d/solver/default_constraint_bias=1.0
+common/physics_interpolation=true
 
 [rendering]
 
