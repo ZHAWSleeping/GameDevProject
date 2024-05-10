@@ -18,7 +18,7 @@ namespace Gamedev.Main.Rendering
 
 		private void ReplaceGameScene(PackedScene scene)
 		{
-			CollisionEvents.Clean();
+			CollisionEvents.Clear();
 			Viewport.GetChildren().ToList().ForEach(c => c.QueueFree());
 			Node2D newScene = scene.Instantiate<Node2D>();
 			Viewport.AddChild(newScene);

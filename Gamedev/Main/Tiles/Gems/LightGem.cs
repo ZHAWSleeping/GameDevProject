@@ -1,5 +1,4 @@
 using Gamedev.Main.Characters.Player;
-using Gamedev.Events;
 using Gamedev.Main.Events;
 using Godot;
 using System;

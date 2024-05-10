@@ -1,4 +1,4 @@
-using Gamedev.Events;
+using Gamedev.Main.Events;
 using Godot;
 
 namespace Gamedev.Main.Rendering

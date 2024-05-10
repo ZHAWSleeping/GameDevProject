@@ -39,21 +39,13 @@ namespace Gamedev.Main.Events
 		public static void Clear()
 		{
 			CollisionDeath = delegate { };
-			//BatteryCollected = delegate { };
+			BatteryCollected = delegate { };
 			LightTouched = delegate { };
 			ActivateLight = delegate { };
 			CardCollected = delegate { };
 			CardConsumed = delegate { };
 			CurrentCardChanged = delegate { };
 			CameraTransitionTriggered = delegate { };
-		}
-
-		public static void Clean()
-		{
-			var m = CardCollected.GetInvocationList().Where(d => d != null).ToList();
-			GD.Print(m);
-			CardCollected = delegate { };
-			m.ForEach(d => CardCollected += (Action<PowerUpCard>)d);
 		}
 	}
 }

@@ -1,4 +1,3 @@
-using Gamedev.Events;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Godot;
