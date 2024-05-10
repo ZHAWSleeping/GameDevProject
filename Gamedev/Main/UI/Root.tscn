@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cigaq1jrw6f7u" path="res://Gamedev/Main/UI/BatteryCounter.tscn" id="5_kdugc"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
 [ext_resource type="PackedScene" uid="uid://c3hlnh7lg47ao" path="res://Gamedev/Main/UI/Debug/PlayerDebug.tscn" id="8_dv8f2"]
-[ext_resource type="PackedScene" uid="uid://dm8jvfybs4oa8" path="res://Gamedev/Main/UI/Debug/DebugLabel.tscn" id="9_lr3gu"]
+[ext_resource type="PackedScene" uid="uid://cur0h4kyv7fjc" path="res://Gamedev/Main/UI/Debug/RoomDebugBox.tscn" id="10_hjko8"]
 [ext_resource type="PackedScene" uid="uid://dge5ccrjsbdo0" path="res://Gamedev/Main/UI/Cards/PowerUpCardsDisplay.tscn" id="11_01kuk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]
@@ -27,7 +27,7 @@ GameOverScene = ExtResource("2_tofx8")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_nom6r")]
 
-[node name="GameViewport" parent="." node_paths=PackedStringArray("subviewport") instance=ExtResource("1_631j5")]
+[node name="GameViewport" parent="." node_paths=PackedStringArray("Viewport") instance=ExtResource("1_631j5")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,7 +37,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_hjyhc")
-subviewport = NodePath("SubViewport")
+Viewport = NodePath("SubViewport")
 
 [node name="PowerUpCardsDisplay" parent="." instance=ExtResource("11_01kuk")]
 layout_mode = 2
@@ -81,7 +81,9 @@ theme_override_constants/separation = 4
 
 [node name="PlayerDebug" parent="DebugContainer" instance=ExtResource("8_dv8f2")]
 layout_mode = 2
-LabelScene = ExtResource("9_lr3gu")
+
+[node name="RoomDebugBox" parent="DebugContainer" instance=ExtResource("10_hjko8")]
+layout_mode = 2
 
 [node name="SlidingOverlay" parent="." instance=ExtResource("4_3uud4")]
 visible = false

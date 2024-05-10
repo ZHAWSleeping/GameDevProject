@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8bxn0o50nv6q"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Level/Level.cs" id="1_hih3i"]
+[ext_resource type="PackedScene" uid="uid://bq74yfdxshoho" path="res://Gamedev/Main/Level/RoomMerger.tscn" id="1_ulaju"]
+[ext_resource type="PackedScene" uid="uid://bdex20ybgovrs" path="res://Gamedev/Main/Characters/Player.tscn" id="5_iqw2n"]
+[ext_resource type="PackedScene" uid="uid://ca5jnjkkgvujn" path="res://Gamedev/Main/Characters/Player/Headband/Headband.tscn" id="6_kwmr3"]
+[ext_resource type="PackedScene" uid="uid://da8visnr5i2yh" path="res://Gamedev/Main/Level/PlayerCamera.tscn" id="7_wh2sm"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_hih3i")
+
+[node name="RoomMerger" parent="." instance=ExtResource("1_ulaju")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast") instance=ExtResource("5_iqw2n")]
+Sprite = NodePath("PlayerSprite")
+AudioManager = NodePath("PlayerAudioManager")
+Particles = NodePath("PlayerParticleManager")
+Shape = NodePath("CollisionShape2D")
+LeftWallCast = NodePath("LeftWallCast")
+RightWallCast = NodePath("RightWallCast")
+
+[node name="Headband" parent="." node_paths=PackedStringArray("Sprite", "Body") instance=ExtResource("6_kwmr3")]
+Sprite = NodePath("Sprite2D")
+Body = NodePath("RigidBody2D")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("7_wh2sm")]
+position = Vector2(160, 90)

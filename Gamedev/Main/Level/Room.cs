@@ -4,6 +4,9 @@ using System;
 public partial class Room : Node2D
 {
 	[Export]
+	public int Id { get; private set; } = -1;
+
+	[Export]
 	public TileMapLayer Tiles;
 
 	[Export]
@@ -13,5 +16,7 @@ public partial class Room : Node2D
 	public override void _Ready()
 	{
 		Boundaries.QueueFree();
+		if (Id == -1)
+			GD.PrintErr($"Room \"{Name}\" has invalid ID");
 	}
 }

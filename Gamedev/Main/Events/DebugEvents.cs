@@ -25,6 +25,9 @@ namespace Gamedev.Main.Events
 		public static event Action<VectorExtensions.Direction?> PlayerWallSide;
 		public static void OnPlayerWallSide(VectorExtensions.Direction? side) => PlayerWallSide(side);
 
+		public static event Action<LevelManager> RoomChanged;
+		public static void OnRoomChanged(LevelManager manager) => RoomChanged(manager);
+
 
 		static DebugEvents()
 		{
@@ -39,6 +42,7 @@ namespace Gamedev.Main.Events
 			PlayerFalling = delegate { };
 			PlayerWallSide = delegate { };
 			PlayerDataEvent = delegate { };
+			RoomChanged = delegate { };
 		}
 	}
 }

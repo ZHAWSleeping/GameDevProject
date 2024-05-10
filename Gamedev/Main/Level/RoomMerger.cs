@@ -11,9 +11,12 @@ namespace Gamedev.Main.Tiles
 	/// </summary>
 	public partial class RoomMerger : TileMapLayer
 	{
+		public Dictionary<int, Room> Rooms { get; private set; }
+
 		public override void _Ready()
 		{
 			GetChildren().OfType<Room>().ToList().ForEach(MergeTilemap);
+			Rooms = GetChildren().OfType<Room>().ToDictionary(r => r.Id);
 		}
 
 		private void MergeTilemap(Room room)

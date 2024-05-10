@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx4ut7y6v26rd"]
+[gd_scene load_steps=7 format=3 uid="uid://bx4ut7y6v26rd"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Level/LevelManager.cs" id="1_r705l"]
+[ext_resource type="PackedScene" uid="uid://b4o60hnap32vo" path="res://Gamedev/Main/Characters/Player/Player.tscn" id="2_xdjp3"]
+[ext_resource type="PackedScene" uid="uid://dq8vqcccyvj0x" path="res://Gamedev/Main/Characters/DeathBox.tscn" id="3_tf2ty"]
+[ext_resource type="PackedScene" uid="uid://bg2fd3mj0fneu" path="res://Gamedev/Main/Level/Level0.tscn" id="4_2oh4y"]
+[ext_resource type="PackedScene" uid="uid://bti8qjpe5tpsh" path="res://Gamedev/Main/Level/Level1/TestRoom3.tscn" id="6_fvktl"]
+[ext_resource type="PackedScene" uid="uid://l2s63awt1crk" path="res://Gamedev/Main/Characters/Player/PlayerSprite.tscn" id="6_k4807"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_r705l")
+ExportedLevels = [ExtResource("2_xdjp3"), ExtResource("3_tf2ty"), ExtResource("4_2oh4y"), ExtResource("6_fvktl"), ExtResource("6_k4807"), ExtResource("4_2oh4y")]
+ExportedWorlds = [3, 1, 2]

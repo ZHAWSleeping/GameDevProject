@@ -16,7 +16,7 @@ public partial class Root : Control
 	{
 		CollisionEvents.CollisionWall += GameOver;
 		RenderingServer.SetDefaultClearColor(Colors.Black);
-		StateEvents.LevelFinished += ReplaceScene;
+		//StateEvents.LevelFinished += ReplaceScene;
 		StateEvents.SceneChangeRequested += ReplaceScene;
 	}
 

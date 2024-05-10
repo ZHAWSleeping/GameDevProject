@@ -10,15 +10,6 @@ namespace Gamedev.Main.Characters.Player
 {
 	public partial class Player : CharacterBody2D
 	{
-
-		public enum SpecialAction
-		{
-			None,
-			WallJump,
-			Dash,
-		}
-
-
 		[Export]
 		public PlayerData Data;
 
@@ -33,9 +24,6 @@ namespace Gamedev.Main.Characters.Player
 
 		[Export]
 		public int BatteryCount = 0;
-
-		[Export]
-		public SpecialAction specialAction = SpecialAction.None;
 
 		[Export]
 		private CollisionShape2D Shape;
@@ -55,7 +43,6 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.CollisionDeath += Die;
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
-			CollisionEvents.CollectedPowerUp += ActivatePowerUp;
 
 			Data.Player = this;
 			Data.Sprite = Sprite;
@@ -178,11 +165,6 @@ namespace Gamedev.Main.Characters.Player
 				CollisionEvents.OnActivateLight();
 				BatteryCount--;
 			}
-		}
-
-		private void ActivatePowerUp()
-		{
-			specialAction = SpecialAction.WallJump;
 		}
 
 		private void UpdateDebug()
