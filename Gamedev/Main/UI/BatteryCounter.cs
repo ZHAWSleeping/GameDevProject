@@ -21,8 +21,8 @@ public partial class BatteryCounter : HBoxContainer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		CollisionEvents.BatteryCollected += BatteryCollected;
-		CollisionEvents.ActivateLight += BatteryUsed;
+		PersistentEvents.BatteryCollected += BatteryCollected;
+		PersistentEvents.LightActivated += BatteryUsed;
 		NameLabel.Text = "Battery Count";
 		DataLabel.Text = $"{BatteryCount}";
 	}

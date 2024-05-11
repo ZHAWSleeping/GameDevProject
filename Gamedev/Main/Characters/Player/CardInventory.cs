@@ -24,6 +24,7 @@ namespace Gamedev.Main.Characters.Player
 			}
 			Cards.AddLast(card);
 			CollisionEvents.OnCurrentCardChanged(Current());
+			PersistentEvents.OnCurrentCardChanged(Current());
 		}
 
 		public PowerUpCard Consume()
@@ -32,6 +33,7 @@ namespace Gamedev.Main.Characters.Player
 			if (card.CardType != PowerUpCard.Type.Invalid)
 				Cards.RemoveLast();
 			CollisionEvents.OnCurrentCardChanged(Current());
+			PersistentEvents.OnCurrentCardChanged(Current());
 			return card;
 		}
 

@@ -1,10 +1,10 @@
 using System;
+using Gamedev.Main.Objects.Cards;
 using Godot;
-using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.Events
 {
-	public static class StateEvents
+	public static class PersistentEvents
 	{
 		public static event Action QuitRequested;
 		public static void OnQuitRequested() => QuitRequested();
@@ -12,17 +12,11 @@ namespace Gamedev.Main.Events
 		public static event Action<Vector2> PlayerDied;
 		public static void OnPlayerDied(Vector2 playerPosition) => PlayerDied(playerPosition);
 
-		public static event Action<Vector2> PlayerRespawned;
-		public static void OnPlayerRespawned(Vector2 playerPosition) => PlayerRespawned(playerPosition);
-
 		public static event Action PauseRequested;
 		public static void OnPauseRequested() => PauseRequested();
 
 		public static event Action ResumeRequested;
 		public static void OnResumeRequested() => ResumeRequested();
-
-		public static event Action<PackedScene> MainMenuRequested;
-		public static void OnMainMenuRequested(PackedScene packedScene) => MainMenuRequested(packedScene);
 
 		public static event Action<PackedScene> SceneChangeRequested;
 		public static void OnSceneChangeRequested(PackedScene scene) => SceneChangeRequested(scene);
@@ -54,20 +48,32 @@ namespace Gamedev.Main.Events
 		public static event Action<int, int> LevelFinished;
 		public static void OnLevelFinished(int world, int level) => LevelFinished(world, level);
 
-		public static event Action<Vector2, Direction> HeadbandAnchorMoved;
-		public static void OnHeadbandAnchorMoved(Vector2 pos, Direction dir) => HeadbandAnchorMoved(pos, dir);
+
+		public static event Action BatteryCollected;
+		public static void OnBatteryCollected() => BatteryCollected();
+
+		public static event Action LightActivated;
+		public static void OnLightActivated() => LightActivated();
+
+		public static event Action<PowerUpCard> CardCollected;
+		public static void OnCardCollected(PowerUpCard card) => CardCollected(card);
+
+		public static event Action<PowerUpCard> CardConsumed;
+		public static void OnCardConsumed(PowerUpCard card) => CardConsumed(card);
+
+		public static event Action<PowerUpCard> CurrentCardChanged;
+		public static void OnCurrentCardChanged(PowerUpCard card) => CurrentCardChanged(card);
 
 
-		static StateEvents()
+		static PersistentEvents()
 		{
 			Clear();
 		}
 
-		public static void Clear()
+		private static void Clear()
 		{
 			QuitRequested = delegate { };
 			PlayerDied = delegate { };
-			PlayerRespawned = delegate { };
 			PauseRequested = delegate { };
 			ResumeRequested = delegate { };
 			SceneChangeRequested = delegate { };
@@ -75,7 +81,12 @@ namespace Gamedev.Main.Events
 			LevelChangeRequested = delegate { };
 			RoomChanged = delegate { };
 			LevelFinished = delegate { };
-			HeadbandAnchorMoved = delegate { };
+
+			BatteryCollected = delegate { };
+			LightActivated = delegate { };
+			CardCollected = delegate { };
+			CardConsumed = delegate { };
+			CurrentCardChanged = delegate { };
 		}
 	}
 }

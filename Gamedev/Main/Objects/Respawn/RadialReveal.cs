@@ -13,8 +13,8 @@ public partial class RadialReveal : Sprite2D
 	public override void _Ready()
 	{
 		HideImmediate();
-		StateEvents.PlayerRespawned += Show;
-		StateEvents.PlayerDied += Hide;
+		GameStateEvents.PlayerRespawned += Show;
+		GameStateEvents.PlayerDied += Hide;
 	}
 
 	private Vector2 MapToTextureSpace(Vector2 position)
@@ -40,8 +40,8 @@ public partial class RadialReveal : Sprite2D
 		)
 		.SetEase(Tween.EaseType.InOut)
 		.SetTrans(Tween.TransitionType.Cubic);
-		StateEvents.PlayerRespawned -= Show;
-		StateEvents.PlayerDied -= Hide;
+		GameStateEvents.PlayerRespawned -= Show;
+		GameStateEvents.PlayerDied -= Hide;
 
 	}
 

@@ -15,8 +15,8 @@ public partial class Root : Control
 	{
 		RenderingServer.SetDefaultClearColor(Colors.Black);
 		//StateEvents.LevelFinished += ReplaceScene;
-		StateEvents.SceneChangeRequested += ReplaceScene;
-		StateEvents.QuitRequested += QuitGame;
+		PersistentEvents.SceneChangeRequested += ReplaceScene;
+		PersistentEvents.QuitRequested += QuitGame;
 
 	}
 

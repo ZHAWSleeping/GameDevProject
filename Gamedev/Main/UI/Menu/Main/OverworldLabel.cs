@@ -11,6 +11,6 @@ public partial class OverworldLabel : SelectableLabel
 	public override void Trigger()
 	{
 		base.Trigger();
-		StateEvents.OnSceneChangeRequested(overworldScene);
+		PersistentEvents.OnSceneChangeRequested(overworldScene);
 	}
 }

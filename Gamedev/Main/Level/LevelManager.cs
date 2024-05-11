@@ -38,10 +38,10 @@ public partial class LevelManager : Node
 			.ToArray();
 		//Levels = ExportedLevels.Select(w => w.ToArray()).ToArray();
 		LevelsCompleted = Levels.Select(w => w.Select(_ => false).ToArray()).ToArray();
-		StateEvents.LevelChangeRequested += ChangeLevel;
-		StateEvents.LevelFinished += MarkAsCompleted;
-		StateEvents.RoomChanged += ChangeRoom;
-		StateEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		PersistentEvents.LevelChangeRequested += ChangeLevel;
+		PersistentEvents.LevelFinished += MarkAsCompleted;
+		PersistentEvents.RoomChanged += ChangeRoom;
+		PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
 	}
 
 	private bool IsInBounds(int world, int level)
@@ -70,7 +70,7 @@ public partial class LevelManager : Node
 			Level = 0;
 			GD.PrintErr($"Attempted to load invalid level {world}-{level}, loading default level {World}-{Level}");
 		}
-		StateEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
 		DebugEvents.OnRoomChanged(this);
 	}
 

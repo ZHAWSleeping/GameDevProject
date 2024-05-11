@@ -77,6 +77,7 @@ namespace Gamedev.Main.Objects.Cards
 		{
 			BodyEntered -= Collected;
 			CollisionEvents.OnCardCollected(TypeMap[CardType]);
+			PersistentEvents.OnCardCollected(TypeMap[CardType]);
 			if (!Engine.IsEditorHint())
 			{
 				// Spinning animation

@@ -25,7 +25,7 @@ namespace Gamedev.Main.UI.Title
 			Overlay.Transition(Callable.From(() =>
 			{
 				CollisionEvents.Clear();
-				StateEvents.Clear();
+				GameStateEvents.Clear();
 				GD.Print(GetTree().ChangeSceneToPacked(Game));
 			}));
 		}

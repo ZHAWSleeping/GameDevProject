@@ -24,7 +24,7 @@ namespace Gamedev.Main.Tiles
 		public void TransitionCamera()
 		{
 			CollisionEvents.OnCameraTransitionTriggered(Anchor.GlobalPosition);
-			StateEvents.OnRoomChanged(Id);
+			PersistentEvents.OnRoomChanged(Id);
 		}
 	}
 }

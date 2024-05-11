@@ -21,9 +21,9 @@ public partial class PowerUpCardsDisplay : Control
 	{
 		// Clear editor rects if necessary
 		GetChildren().OfType<TextureRect>().ToList().ForEach(node => node.QueueFree());
-		CollisionEvents.CardCollected += AddCard;
-		CollisionEvents.CardConsumed += RemoveLastCard;
-		StateEvents.PlayerDied += _ => RemoveAll();
+		PersistentEvents.CardCollected += AddCard;
+		PersistentEvents.CardConsumed += RemoveLastCard;
+		PersistentEvents.PlayerDied += _ => RemoveAll();
 	}
 
 	/// <summary>

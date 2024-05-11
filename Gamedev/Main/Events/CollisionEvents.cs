@@ -16,8 +16,8 @@ namespace Gamedev.Main.Events
 		public static event Action LightTouched;
 		public static void OnLightTouched() => LightTouched();
 
-		public static event Action ActivateLight = delegate { };
-		public static void OnActivateLight() => ActivateLight();
+		public static event Action LightActivated = delegate { };
+		public static void OnLightActivated() => LightActivated();
 
 		public static event Action<PowerUpCard> CardCollected;
 		public static void OnCardCollected(PowerUpCard card) => CardCollected(card);
@@ -41,7 +41,7 @@ namespace Gamedev.Main.Events
 			CollisionDeath = delegate { };
 			BatteryCollected = delegate { };
 			LightTouched = delegate { };
-			ActivateLight = delegate { };
+			LightActivated = delegate { };
 			CardCollected = delegate { };
 			CardConsumed = delegate { };
 			CurrentCardChanged = delegate { };

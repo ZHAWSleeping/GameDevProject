@@ -10,7 +10,7 @@ namespace Gamedev.Main.UI.Pause
 		public override void Trigger()
 		{
 			base.Trigger();
-			StateEvents.OnResumeRequested();
+			PersistentEvents.OnResumeRequested();
 		}
 	}
 

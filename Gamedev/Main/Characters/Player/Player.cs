@@ -61,7 +61,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			if (Data.JustRespawned == 0)
 			{
-				StateEvents.OnPlayerRespawned(GlobalPosition);
+				GameStateEvents.OnPlayerRespawned(GlobalPosition);
 				Data.JustRespawned--;
 			}
 			else if (Data.JustRespawned > 0)
@@ -144,6 +144,7 @@ namespace Gamedev.Main.Characters.Player
 				if (valid)
 				{
 					CollisionEvents.OnCardConsumed(card);
+					PersistentEvents.OnCardConsumed(card);
 					Data.ResetTimers();
 				}
 			}
@@ -151,11 +152,12 @@ namespace Gamedev.Main.Characters.Player
 
 		private void Die()
 		{
-			StateEvents.OnPlayerDied(GlobalPosition);
+			GameStateEvents.OnPlayerDied(GlobalPosition);
+			PersistentEvents.OnPlayerDied(GlobalPosition);
 			AudioManager.Play(PlayerAudioManager.Sound.Death);
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 			Tween tween = LevelManager.Instance.CreateTween();
-			tween.TweenCallback(Callable.From(() => StateEvents.OnLevelChangeRequested(LevelManager.Instance.World, LevelManager.Instance.Level))).SetDelay(1);
+			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelChangeRequested(LevelManager.Instance.World, LevelManager.Instance.Level))).SetDelay(1);
 		}
 
 		private void BatteryCollected()
@@ -167,7 +169,8 @@ namespace Gamedev.Main.Characters.Player
 		{
 			if (BatteryCount > 0)
 			{
-				CollisionEvents.OnActivateLight();
+				CollisionEvents.OnLightActivated();
+				PersistentEvents.OnLightActivated();
 				BatteryCount--;
 			}
 		}

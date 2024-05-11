@@ -17,6 +17,7 @@ public partial class BatteryPickup : Area2D
 	private void _on_body_entered(Node2D body)
 	{
 		CollisionEvents.OnBatteryCollected();
+		PersistentEvents.OnBatteryCollected();
 		QueueFree();
 	}
 }

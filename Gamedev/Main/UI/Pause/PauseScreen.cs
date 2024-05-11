@@ -17,8 +17,8 @@ namespace Gamedev.Main.UI.Pause
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
-            StateEvents.PauseRequested += Pause;
-            StateEvents.ResumeRequested += Resume;
+            PersistentEvents.PauseRequested += Pause;
+            PersistentEvents.ResumeRequested += Resume;
         }
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,17 +33,17 @@ namespace Gamedev.Main.UI.Pause
             {
                 if (Paused)
                 {
-                    StateEvents.OnResumeRequested();
+                    PersistentEvents.OnResumeRequested();
                 }
                 else
                 {
-                    StateEvents.OnPauseRequested();
+                    PersistentEvents.OnPauseRequested();
                 }
             }
 
             if (@event.IsActionPressed("Cancel") && Paused)
             {
-                StateEvents.OnResumeRequested();
+                PersistentEvents.OnResumeRequested();
             }
         }
 

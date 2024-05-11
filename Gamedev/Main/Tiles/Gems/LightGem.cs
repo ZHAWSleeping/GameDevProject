@@ -26,7 +26,7 @@ namespace Gamedev.Main.Tiles.Gems
 		public override void _Ready()
 		{
 			BodyEntered += CheckForBattery;
-			CollisionEvents.ActivateLight += LightUpGem;
+			CollisionEvents.LightActivated += LightUpGem;
 		}
 
 		private void LightUpGem()
@@ -35,7 +35,7 @@ namespace Gamedev.Main.Tiles.Gems
 			GemSprite.Modulate = LitModulate;
 			PrimaryLight.Enabled = true;
 			SecondaryLight.Enabled = true;
-			CollisionEvents.ActivateLight -= LightUpGem;
+			CollisionEvents.LightActivated -= LightUpGem;
 			PingSound.Play();
 		}
 
