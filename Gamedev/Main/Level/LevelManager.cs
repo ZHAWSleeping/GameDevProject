@@ -1,4 +1,5 @@
 using Gamedev.Main.Events;
+using Gamedev.Main.Peristent;
 using Godot;
 using System;
 using System.Linq;
@@ -20,11 +21,11 @@ public partial class LevelManager : Node
 	private Godot.Collections.Array<int> ExportedWorlds = new();
 
 	public PackedScene[][] Levels { get; private set; }
-	public bool[][] LevelsCompleted { get; private set; }
+	public bool[][] LevelsCompleted { get; set; }
 
-	public int World { get; private set; } = 0;
-	public int Level { get; private set; } = 0;
-	public int Room { get; private set; } = 0;
+	public int World { get; set; } = 0;
+	public int Level { get; set; } = 0;
+	public int Room { get; set; } = 0;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -42,6 +43,7 @@ public partial class LevelManager : Node
 		PersistentEvents.LevelFinished += MarkAsCompleted;
 		PersistentEvents.RoomChanged += ChangeRoom;
 		PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		SaveManager.Save(0);
 	}
 
 	private bool IsInBounds(int world, int level)
