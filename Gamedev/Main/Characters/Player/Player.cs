@@ -69,7 +69,7 @@ namespace Gamedev.Main.Characters.Player
 				Data.JustRespawned--;
 			}
 			Data.Velocity = Velocity;
-			Data.InputDirection = InputExtensions.MovementVector();
+			Data.InputDirection = new Vector2(InputExtensions.MovementVector().X, 0);
 			Data.JumpHeld = Inputs.Jump.Pressed();
 			Data.JumpJustPressed = Inputs.Jump.JustPressed();
 			Data.DiscardJustPressed = Inputs.Discard.JustPressed();

@@ -7,12 +7,13 @@ namespace Gamedev.Main.Extensions
 	{
 		public static Vector2 MovementVector()
 		{
-			return Input.GetVector(
+			Vector2 input = Input.GetVector(
 				Inputs.West.ToString(),
 				Inputs.East.ToString(),
 				Inputs.North.ToString(),
 				Inputs.South.ToString()
 			);
+			return input.Round();
 		}
 
 		public static bool Pressed(this Inputs input)

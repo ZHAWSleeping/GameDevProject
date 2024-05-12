@@ -1,4 +1,5 @@
 using Gamedev.Main.Events;
+using Gamedev.Main.Peristent;
 using Godot;
 using System;
 
@@ -17,7 +18,6 @@ public partial class Root : Control
 		//StateEvents.LevelFinished += ReplaceScene;
 		PersistentEvents.SceneChangeRequested += ReplaceScene;
 		PersistentEvents.QuitRequested += QuitGame;
-
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
