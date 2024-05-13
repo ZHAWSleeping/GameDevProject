@@ -26,6 +26,8 @@ public partial class LevelManager : Node
 	public int World { get; set; } = 0;
 	public int Level { get; set; } = 0;
 	public int Room { get; set; } = 0;
+	public int Deaths { get; set; } = 0;
+	public float Playtime { get; set; } = 0;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -43,6 +45,7 @@ public partial class LevelManager : Node
 		PersistentEvents.LevelFinished += MarkAsCompleted;
 		PersistentEvents.RoomChanged += ChangeRoom;
 		PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		
 		SaveManager.Save(0);
 	}
 

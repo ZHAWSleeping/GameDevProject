@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc6fgsckj8s24"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Save/FilePlaytime.cs" id="1_763h8"]
+
+[node name="FilePlaytime" type="Label"]
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 18
+text = "99:99:99.99"
+vertical_alignment = 2
+script = ExtResource("1_763h8")

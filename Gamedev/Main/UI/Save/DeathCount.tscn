@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c88vgyefhxrpa"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Save/DeathCount.cs" id="1_mtlln"]
+
+[node name="DeathCount" type="Label"]
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 18
+text = "00000"
+vertical_alignment = 2
+script = ExtResource("1_mtlln")

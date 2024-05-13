@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2cnpkeunnouf"]
+
+[ext_resource type="Texture2D" uid="uid://dut3bix8biyx8" path="res://Gamedev/Main/Characters/Player/Human/HumanFrame.pxo" id="1_v7rww"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Save/Profile.cs" id="2_x0qdu"]
+[ext_resource type="Texture2D" uid="uid://cf2mi27o8rggl" path="res://Gamedev/Main/Characters/Player/Human/HumanInvertedCropped.pxo" id="3_dbk66"]
+
+[node name="Profile" type="TextureRect"]
+texture = ExtResource("3_dbk66")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("2_x0qdu")
+SavedTexture = ExtResource("1_v7rww")
+UnsavedTexture = ExtResource("3_dbk66")

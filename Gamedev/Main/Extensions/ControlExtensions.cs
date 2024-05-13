@@ -9,5 +9,11 @@ namespace Gamedev.Main.Extensions
 		{
 			control.AddThemeColorOverride("font_color", color);
 		}
+
+		public static Vector2 GetCenterGlobal(this Control control)
+		{
+			//control.
+			return Vector2.Zero;
+		}
 	}
 }

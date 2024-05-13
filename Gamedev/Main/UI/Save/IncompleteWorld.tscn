@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl5xg4xsyj10g"]
+
+[ext_resource type="Texture2D" uid="uid://rmv78jc1i070" path="res://Gamedev/Main/UI/Save/WorldIcon.pxo" id="1_757rw"]
+
+[node name="CompleteWorld" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0.501961)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_757rw")
+expand_mode = 2
+stretch_mode = 5

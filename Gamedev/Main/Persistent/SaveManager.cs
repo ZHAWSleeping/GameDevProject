@@ -13,6 +13,8 @@ namespace Gamedev.Main.Peristent
 		public int World { get; init; } = -1;
 		public int Level { get; init; } = -1;
 		public int Room { get; init; } = -1;
+		public int Deaths { get; init; } = 0;
+		public int PlaytimeMsecs { get; init; } = 0;
 		public bool[][] CompletedLevels { get; init; }
 	}
 
@@ -28,6 +30,7 @@ namespace Gamedev.Main.Peristent
 				0, new SaveFile {
 					CompletedLevels = [],
 					Slot = 0,
+					PlaytimeMsecs = 18853200,
 				}
 			},
 			{

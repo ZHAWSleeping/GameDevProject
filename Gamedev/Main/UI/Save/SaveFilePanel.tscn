@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://by0wgvwhrgito"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Save/SaveFilePanel.cs" id="1_6rsf6"]
+[ext_resource type="PackedScene" uid="uid://c2cnpkeunnouf" path="res://Gamedev/Main/UI/Save/Profile.tscn" id="2_owq7i"]
+[ext_resource type="PackedScene" uid="uid://8142ve254wth" path="res://Gamedev/Main/UI/Save/WorldProgress.tscn" id="3_ev21v"]
+[ext_resource type="PackedScene" uid="uid://dic2uactmp8jc" path="res://Gamedev/Main/UI/Save/SaveFileName.tscn" id="3_r2b8k"]
+[ext_resource type="Texture2D" uid="uid://bmdgyunjk38cs" path="res://Gamedev/Main/UI/Save/Skull.pxo" id="4_ddwyc"]
+[ext_resource type="PackedScene" uid="uid://c88vgyefhxrpa" path="res://Gamedev/Main/UI/Save/DeathCount.tscn" id="6_70hl5"]
+[ext_resource type="PackedScene" uid="uid://cc6fgsckj8s24" path="res://Gamedev/Main/UI/Save/FilePlaytime.tscn" id="7_42plm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2cnd"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[node name="SaveFilePanel" type="PanelContainer" node_paths=PackedStringArray("WorldProgress", "PlayerProfile", "FileName", "DeathCount", "Playtime")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2cnd")
+script = ExtResource("1_6rsf6")
+WorldProgress = NodePath("MarginContainer/HBoxContainer/VBoxContainer/WorldProgress")
+PlayerProfile = NodePath("MarginContainer/HBoxContainer/Profile")
+FileName = NodePath("MarginContainer/HBoxContainer/VBoxContainer/SaveFileName")
+DeathCount = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/DeathCount")
+Playtime = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilePlaytime")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Profile" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_owq7i")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="SaveFileName" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_r2b8k")]
+layout_mode = 2
+
+[node name="WorldProgress" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_ev21v")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_ddwyc")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="X" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 18
+text = "x"
+vertical_alignment = 2
+
+[node name="DeathCount" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer" instance=ExtResource("6_70hl5")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FilePlaytime" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("7_42plm")]
+layout_mode = 2

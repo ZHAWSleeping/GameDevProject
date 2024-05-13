@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dit2gvr7ptalw"]
+
+[ext_resource type="Texture2D" uid="uid://rmv78jc1i070" path="res://Gamedev/Main/UI/Save/WorldIcon.pxo" id="1_3101j"]
+
+[node name="CompleteWorld" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3101j")
+expand_mode = 2
+stretch_mode = 5

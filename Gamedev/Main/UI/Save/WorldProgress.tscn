@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://8142ve254wth"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Save/WorldProgress.cs" id="1_6cw3f"]
+[ext_resource type="PackedScene" uid="uid://dit2gvr7ptalw" path="res://Gamedev/Main/UI/Save/CompleteWorld.tscn" id="2_21okq"]
+[ext_resource type="PackedScene" uid="uid://cl5xg4xsyj10g" path="res://Gamedev/Main/UI/Save/IncompleteWorld.tscn" id="3_7csyo"]
+
+[node name="WorldProgress" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+script = ExtResource("1_6cw3f")
+CompleteWorldScene = ExtResource("2_21okq")
+IncompleteWorldScene = ExtResource("3_7csyo")
