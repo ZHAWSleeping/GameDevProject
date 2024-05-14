@@ -2,25 +2,12 @@
 
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Save/SaveFilePanel.cs" id="1_6rsf6"]
 [ext_resource type="PackedScene" uid="uid://c2cnpkeunnouf" path="res://Gamedev/Main/UI/Save/Profile.tscn" id="2_owq7i"]
+[ext_resource type="StyleBox" uid="uid://5c7ql2vjf7bk" path="res://Gamedev/Main/UI/RoundedBorder.tres" id="2_qshcb"]
 [ext_resource type="PackedScene" uid="uid://8142ve254wth" path="res://Gamedev/Main/UI/Save/WorldProgress.tscn" id="3_ev21v"]
 [ext_resource type="PackedScene" uid="uid://dic2uactmp8jc" path="res://Gamedev/Main/UI/Save/SaveFileName.tscn" id="3_r2b8k"]
 [ext_resource type="Texture2D" uid="uid://bmdgyunjk38cs" path="res://Gamedev/Main/UI/Save/Skull.pxo" id="4_ddwyc"]
 [ext_resource type="PackedScene" uid="uid://c88vgyefhxrpa" path="res://Gamedev/Main/UI/Save/DeathCount.tscn" id="6_70hl5"]
 [ext_resource type="PackedScene" uid="uid://cc6fgsckj8s24" path="res://Gamedev/Main/UI/Save/FilePlaytime.tscn" id="7_42plm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2cnd"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
 
 [node name="SaveFilePanel" type="PanelContainer" node_paths=PackedStringArray("WorldProgress", "PlayerProfile", "FileName", "DeathCount", "Playtime")]
 script = ExtResource("1_6rsf6")
@@ -32,7 +19,7 @@ Playtime = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/
 PrimaryColor = Color(0.3168, 0.88, 0.37312, 1)
 SecondaryColor = Color(0.8799, 0.9, 0.297, 1)
 DefaultColor = Color(1, 1, 1, 1)
-StyleBox = SubResource("StyleBoxFlat_t2cnd")
+StyleBox = ExtResource("2_qshcb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

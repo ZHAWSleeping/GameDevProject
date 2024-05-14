@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsm16uwsc70vs"]
+
+[ext_resource type="StyleBox" uid="uid://5c7ql2vjf7bk" path="res://Gamedev/Main/UI/RoundedBorder.tres" id="1_u5e3n"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldPanel.cs" id="2_dt8cj"]
+[ext_resource type="PackedScene" uid="uid://d3csr75r6f5do" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldName.tscn" id="3_mnkgh"]
+[ext_resource type="PackedScene" uid="uid://duk7eumvuwydu" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldIcon.tscn" id="4_7fqyr"]
+[ext_resource type="PackedScene" uid="uid://dcftx7o6m27lj" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldCompletion.tscn" id="5_u8xwb"]
+
+[node name="WorldPanel" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("1_u5e3n")
+script = ExtResource("2_dt8cj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WorldName" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_mnkgh")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="WorldIcon" parent="MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("4_7fqyr")]
+layout_mode = 2
+
+[node name="WorldCompletion" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_u8xwb")]
+layout_mode = 2

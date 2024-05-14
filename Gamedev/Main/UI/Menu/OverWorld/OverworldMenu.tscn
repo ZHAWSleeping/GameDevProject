@@ -1,17 +1,93 @@
-[gd_scene load_steps=8 format=3 uid="uid://mnm3a20felw"]
+[gd_scene load_steps=11 format=3 uid="uid://mnm3a20felw"]
 
-[ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_8urk1"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.cs" id="1_017ah"]
-[ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="2_1rugc"]
-[ext_resource type="PackedScene" uid="uid://bbsqxtor5q1gq" path="res://Gamedev/Main/UI/Menu/Main/LevelSelectLabel.tscn" id="2_w2y14"]
-[ext_resource type="PackedScene" uid="uid://cmo2ksosfmxbx" path="res://Gamedev/Main/Level/Level1/Level1.tscn" id="3_ifvit"]
+[ext_resource type="PackedScene" uid="uid://gpkil6u2nqj0" path="res://Gamedev/Main/UI/Scrollable/FixedScrollableHBox.tscn" id="2_8s42e"]
+[ext_resource type="Texture2D" uid="uid://bi0p0hmj2tu40" path="res://Gamedev/Main/UI/Menu/OverWorld/Pointer.svg" id="2_utjj8"]
+[ext_resource type="PackedScene" uid="uid://bsm16uwsc70vs" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldPanel.tscn" id="3_lsmrr"]
 
-[sub_resource type="Gradient" id="Gradient_j8erh"]
-offsets = PackedFloat32Array(0.155844, 0.477273, 1)
-colors = PackedColorArray(0, 0, 0.686275, 1, 0.190237, 0.499941, 0.397363, 1, 1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kn5hc"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_13ffv"]
-gradient = SubResource("Gradient_j8erh")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nme1l"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okocm"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq7gh"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ld63"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g53v"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
 
 [node name="OverworldMenu" type="Control"]
 layout_mode = 3
@@ -21,35 +97,42 @@ offset_bottom = 1080.0
 script = ExtResource("1_017ah")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-auto_translate_mode = 1
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = SubResource("GradientTexture1D_13ffv")
+offset_left = 894.0
+offset_top = 89.0
+offset_right = 1044.0
+offset_bottom = 239.0
+texture = ExtResource("2_utjj8")
+stretch_mode = 5
 
-[node name="ScrollableVBox" parent="." instance=ExtResource("1_8urk1")]
+[node name="FixedScrollableHBox" parent="." instance=ExtResource("2_8s42e")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = 735.0
+offset_top = 242.0
+offset_right = 3633.0
+offset_bottom = 871.0
+alignment = 0
 
-[node name="Overworld" type="Label" parent="ScrollableVBox"]
+[node name="WorldPanel" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 156
-text = "Overworld"
-horizontal_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_kn5hc")
 
-[node name="LevelSelectLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("2_w2y14")]
+[node name="WorldPanel2" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
 layout_mode = 2
-text = "Level 1"
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nme1l")
 
-[node name="QuitLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("2_1rugc")]
+[node name="WorldPanel3" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
 layout_mode = 2
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_okocm")
+
+[node name="WorldPanel4" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq7gh")
+
+[node name="WorldPanel5" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ld63")
+
+[node name="WorldPanel6" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4g53v")

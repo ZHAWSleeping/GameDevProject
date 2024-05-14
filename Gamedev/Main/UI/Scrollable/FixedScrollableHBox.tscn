@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://gpkil6u2nqj0"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Scrollable/FixedScrollableHBox.cs" id="1_tafu1"]
+
+[node name="FixedScrollableHBox" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 30
+alignment = 1
+script = ExtResource("1_tafu1")

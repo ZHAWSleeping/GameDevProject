@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://duk7eumvuwydu"]
+
+[ext_resource type="Texture2D" uid="uid://rmv78jc1i070" path="res://Gamedev/Main/UI/Save/WorldIcon.pxo" id="1_a1hpp"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldIcon.cs" id="2_comby"]
+
+[node name="WorldIcon" type="TextureRect"]
+texture = ExtResource("1_a1hpp")
+expand_mode = 4
+stretch_mode = 4
+script = ExtResource("2_comby")

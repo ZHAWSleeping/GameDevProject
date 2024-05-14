@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dykmwd4nq3cwx"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Debug/SelectableDebugRect.cs" id="1_a0jrx"]
+
+[sub_resource type="Gradient" id="Gradient_cm0hy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hyc3m"]
+gradient = SubResource("Gradient_cm0hy")
+width = 256
+height = 256
+
+[node name="SelectableDebugRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_hyc3m")
+script = ExtResource("1_a0jrx")

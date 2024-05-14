@@ -1,5 +1,6 @@
 using System;
 using Gamedev.Main.Objects.Cards;
+using Gamedev.Main.Peristent;
 using Godot;
 
 namespace Gamedev.Main.Events
@@ -63,6 +64,15 @@ namespace Gamedev.Main.Events
 
 		public static event Action<PowerUpCard> CurrentCardChanged;
 		public static void OnCurrentCardChanged(PowerUpCard card) => CurrentCardChanged(card);
+
+		public static event Action<SaveFile> SaveSelected;
+		public static void OnSaveSelected(SaveFile file) => SaveSelected(file);
+
+		public static event Action<SaveFile, int> WorldSelected;
+		public static void OnWorldSelected(SaveFile file, int world) => WorldSelected(file, world);
+
+		public static event Action<int, int> LevelSelected;
+		public static void OnWorldSelected(int world, int level) => LevelSelected(world, level);
 
 
 		static PersistentEvents()

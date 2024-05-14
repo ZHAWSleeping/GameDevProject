@@ -61,8 +61,6 @@ namespace Gamedev.Main.Peristent
 				SaveFiles = DefaultSaveFiles;
 				Write();
 			}
-			GD.Print(JsonSerializer.Serialize(SaveFiles));
-			GD.Print(SaveFiles[2].Slot);
 		}
 
 		/// <summary>

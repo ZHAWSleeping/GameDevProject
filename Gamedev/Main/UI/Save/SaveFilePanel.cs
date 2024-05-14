@@ -1,3 +1,4 @@
+using Gamedev.Main.Events;
 using Gamedev.Main.Peristent;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
@@ -109,6 +110,6 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 
 	public void Trigger()
 	{
-		throw new NotImplementedException();
+		PersistentEvents.OnSaveSelected(File);
 	}
 }
