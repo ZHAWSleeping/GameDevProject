@@ -1,4 +1,5 @@
 using Gamedev.Main.Peristent;
+using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
 
@@ -8,7 +9,7 @@ public partial class FileSelect : HBoxContainer
 	private PackedScene SaveFilePanelScene;
 
 	[Export]
-	private Control SaveFileParent;
+	private ScrollableVBox SaveFileParent;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -18,6 +19,7 @@ public partial class FileSelect : HBoxContainer
 			panel.File = save;
 			SaveFileParent.AddChild(panel);
 		}
+		SaveFileParent.RefreshChildren();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

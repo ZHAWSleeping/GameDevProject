@@ -16,6 +16,11 @@ namespace Gamedev.Main.UI.Scrollable
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
+			RefreshChildren();
+		}
+
+		public void RefreshChildren()
+		{
 			Items = GetChildren().OfType<Selectable>().ToList();
 			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
 		}
@@ -46,7 +51,7 @@ namespace Gamedev.Main.UI.Scrollable
 		public override void _Input(InputEvent @event)
 		{
 			base._Input(@event);
-			
+
 			if (@event.IsActionPressed("Accept") && Items.Any())
 			{
 				Items[Selected].Trigger();

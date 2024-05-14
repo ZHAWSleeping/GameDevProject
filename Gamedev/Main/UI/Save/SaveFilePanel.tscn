@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cc6fgsckj8s24" path="res://Gamedev/Main/UI/Save/FilePlaytime.tscn" id="7_42plm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2cnd"]
+resource_local_to_scene = true
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 10
 border_width_top = 10
@@ -22,13 +23,16 @@ corner_radius_bottom_left = 10
 corner_detail = 10
 
 [node name="SaveFilePanel" type="PanelContainer" node_paths=PackedStringArray("WorldProgress", "PlayerProfile", "FileName", "DeathCount", "Playtime")]
-theme_override_styles/panel = SubResource("StyleBoxFlat_t2cnd")
 script = ExtResource("1_6rsf6")
 WorldProgress = NodePath("MarginContainer/HBoxContainer/VBoxContainer/WorldProgress")
 PlayerProfile = NodePath("MarginContainer/HBoxContainer/Profile")
 FileName = NodePath("MarginContainer/HBoxContainer/VBoxContainer/SaveFileName")
 DeathCount = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/DeathCount")
 Playtime = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilePlaytime")
+PrimaryColor = Color(0.3168, 0.88, 0.37312, 1)
+SecondaryColor = Color(0.8799, 0.9, 0.297, 1)
+DefaultColor = Color(1, 1, 1, 1)
+StyleBox = SubResource("StyleBoxFlat_t2cnd")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
