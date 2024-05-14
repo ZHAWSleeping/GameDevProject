@@ -1,5 +1,9 @@
+using Gamedev.Main.Characters.Player;
+using Gamedev.Main.Events;
+using Gamedev.Main.Extensions;
 using Godot;
 using System;
+using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 
 public partial class RayCastEnemy : Node2D
@@ -9,31 +13,30 @@ public partial class RayCastEnemy : Node2D
 	[Export]
 	RayCast2D rayBack;
 	[Export]
-	RayCast2D rayRight;
+	ShapeCast2D rayRight;
 	[Export]
-	RayCast2D rayLeft;
+	ShapeCast2D rayLeft;
 
 
 	public bool groundFront;
 	public bool groundBack;
-	public bool groundRight;
-	public bool groundLeft;
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+	public bool wallRight;
+	public bool wallLeft;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		if (rayLeft.GetCollisions().OfType<Player>().Any() || rayRight.GetCollisions().OfType<Player>().Any())
+		{
+			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+			CollisionEvents.OnCollisionDeath();
+			return;
+		}
 		groundFront = rayFront.IsColliding();
 		groundBack = rayBack.IsColliding();
 
-		groundRight = rayRight.IsColliding();
-		groundLeft = rayLeft.IsColliding();
-		//bool abc = true;
-		//((Action)(abc ? () => { groundFront = true; } : () => { })).Invoke();
+		wallRight = rayRight.IsColliding();
+		wallLeft = rayLeft.IsColliding();
 	}
 
 	public bool NoGap()
@@ -43,6 +46,11 @@ public partial class RayCastEnemy : Node2D
 
 	public bool NoWall()
 	{
-		return !(groundRight || groundLeft);
+		return !(wallRight || wallLeft);
+	}
+
+	public bool NoFloor()
+	{
+		return !groundFront && !groundBack;
 	}
 }

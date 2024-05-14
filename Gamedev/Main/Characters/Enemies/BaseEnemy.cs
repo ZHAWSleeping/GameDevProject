@@ -2,24 +2,22 @@ using Gamedev.Main.UI.Debug;
 using Godot;
 using System;
 
-public partial class BaseEnemy : RigidBody2D
+public partial class BaseEnemy : CharacterBody2D
 {
 	[Export]
 	public float speed;
 	[Export]
-	public RayCastEnemy terrainDetection;
+	public RayCastEnemy FloorWallPlayerDetection;
 	[Export]
 	public TopDetectionEnemy topDetectionEnemyRight;
 	[Export]
 	public TopDetectionEnemy topDetectionEnemyLeft;
 
-	private Vector2 Velocity = new Vector2(0, 0);
-
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Velocity.X = speed;
+		Velocity = new(speed, 0);
 		topDetectionEnemyRight.PlayerJumpedOnTop += Die;
 		topDetectionEnemyLeft.PlayerJumpedOnTop += Die;
 	}
@@ -28,12 +26,20 @@ public partial class BaseEnemy : RigidBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = new Vector2(0, 0);
-		if (terrainDetection.NoGap() && terrainDetection.NoWall())
+
+		if (FloorWallPlayerDetection.NoFloor())
 		{
-			Move(delta);
+			velocity.Y += 16;
+			Velocity += velocity;
+			MoveAndSlide();
 			return;
 		}
-		else if (!terrainDetection.groundBack || terrainDetection.groundLeft)
+		if (FloorWallPlayerDetection.NoGap() && FloorWallPlayerDetection.NoWall())
+		{
+			MoveAndSlide();
+			return;
+		}
+		else if (!FloorWallPlayerDetection.groundBack || FloorWallPlayerDetection.wallLeft)
 		{
 			velocity.X = speed;
 		}
@@ -44,12 +50,7 @@ public partial class BaseEnemy : RigidBody2D
 
 		Velocity = velocity;
 
-		Move(delta);
-	}
-
-	private void Move(double delta)
-	{
-		MoveAndCollide((float)delta * Velocity);
+		MoveAndSlide();
 	}
 
 
