@@ -57,7 +57,6 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 	public override void _Ready()
 	{
 		base._Ready();
-		GD.Print(StyleBox.BorderColor);
 		ColorTween = CreateTween();
 		ColorTween.TweenProperty(
 			StyleBox,
