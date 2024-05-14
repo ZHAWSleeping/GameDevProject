@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxq4ypt24skm7"]
+
+[ext_resource type="PackedScene" uid="uid://fspe3lkk6dry" path="res://Gamedev/Main/UI/Scrollable/ScrollableGrid.tscn" id="1_3uc3s"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Level/LevelSelect.cs" id="1_kd8ys"]
+
+[node name="LevelSelect" type="HBoxContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+alignment = 1
+script = ExtResource("1_kd8ys")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 113
+text = "World 00"
+
+[node name="ScrollableGrid" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_3uc3s")]
+layout_mode = 2
