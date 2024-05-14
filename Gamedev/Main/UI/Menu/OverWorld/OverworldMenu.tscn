@@ -1,100 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://mnm3a20felw"]
+[gd_scene load_steps=5 format=3 uid="uid://mnm3a20felw"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.cs" id="1_017ah"]
 [ext_resource type="PackedScene" uid="uid://gpkil6u2nqj0" path="res://Gamedev/Main/UI/Scrollable/FixedScrollableHBox.tscn" id="2_8s42e"]
 [ext_resource type="Texture2D" uid="uid://bi0p0hmj2tu40" path="res://Gamedev/Main/UI/Menu/OverWorld/Pointer.svg" id="2_utjj8"]
 [ext_resource type="PackedScene" uid="uid://bsm16uwsc70vs" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldPanel.tscn" id="3_lsmrr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kn5hc"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nme1l"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okocm"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq7gh"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ld63"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g53v"]
-resource_local_to_scene = true
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[node name="OverworldMenu" type="Control"]
+[node name="OverworldMenu" type="Control" node_paths=PackedStringArray("Container")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_017ah")
+WorldScene = ExtResource("3_lsmrr")
+Container = NodePath("FixedScrollableHBox")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -112,27 +30,3 @@ offset_top = 242.0
 offset_right = 3633.0
 offset_bottom = 871.0
 alignment = 0
-
-[node name="WorldPanel" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kn5hc")
-
-[node name="WorldPanel2" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nme1l")
-
-[node name="WorldPanel3" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_okocm")
-
-[node name="WorldPanel4" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yq7gh")
-
-[node name="WorldPanel5" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6ld63")
-
-[node name="WorldPanel6" parent="FixedScrollableHBox" instance=ExtResource("3_lsmrr")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4g53v")

@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://duk7eumvuwydu" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldIcon.tscn" id="4_7fqyr"]
 [ext_resource type="PackedScene" uid="uid://dcftx7o6m27lj" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldCompletion.tscn" id="5_u8xwb"]
 
-[node name="WorldPanel" type="PanelContainer"]
+[node name="WorldPanel" type="PanelContainer" node_paths=PackedStringArray("WorldName", "WorldIcon", "WorldCompletion")]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = ExtResource("1_u5e3n")
 script = ExtResource("2_dt8cj")
+WorldName = NodePath("MarginContainer/VBoxContainer/WorldName")
+WorldIcon = NodePath("MarginContainer/VBoxContainer/MarginContainer/WorldIcon")
+WorldCompletion = NodePath("MarginContainer/VBoxContainer/WorldCompletion")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

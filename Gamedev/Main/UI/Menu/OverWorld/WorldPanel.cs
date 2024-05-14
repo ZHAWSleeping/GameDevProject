@@ -60,6 +60,7 @@ public partial class WorldPanel : PanelContainer, Selectable
 
 	public void UpdateChildren(SaveFile file, int world)
 	{
+		File = file;
 		WorldName.World = file.World;
 		WorldCompletion.Levels = file.CompletedLevels[world];
 	}

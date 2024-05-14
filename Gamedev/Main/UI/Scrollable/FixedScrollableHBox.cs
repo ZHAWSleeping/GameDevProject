@@ -7,7 +7,7 @@ using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.UI.Scrollable
 {
-	public partial class FixedScrollableHBox : HBoxContainer
+	public partial class FixedScrollableHBox : HBoxContainer, IScrollable
 	{
 		private const float Duration = 0.3f;
 		private List<Selectable> Items = new();
@@ -19,6 +19,8 @@ namespace Gamedev.Main.UI.Scrollable
 		private float Gap;
 
 		private Tween ShiftTween;
+
+		public Control Instance { get => this; set { } }
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -90,7 +92,10 @@ namespace Gamedev.Main.UI.Scrollable
 			}
 		}
 
-
+		public void RefreshChildren()
+		{
+			throw new NotImplementedException();
+		}
 	}
 
 }

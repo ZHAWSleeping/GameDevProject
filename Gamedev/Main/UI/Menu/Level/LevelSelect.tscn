@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxq4ypt24skm7"]
+[gd_scene load_steps=4 format=3 uid="uid://bxq4ypt24skm7"]
 
 [ext_resource type="PackedScene" uid="uid://fspe3lkk6dry" path="res://Gamedev/Main/UI/Scrollable/ScrollableGrid.tscn" id="1_3uc3s"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Level/LevelSelect.cs" id="1_kd8ys"]
+[ext_resource type="PackedScene" uid="uid://bw8dclo8ha7p8" path="res://Gamedev/Main/UI/Menu/Level/LevelSelectPanel.tscn" id="2_1pmnr"]
 
-[node name="LevelSelect" type="HBoxContainer"]
+[node name="LevelSelect" type="HBoxContainer" node_paths=PackedStringArray("Title")]
 offset_right = 1920.0
 offset_bottom = 1080.0
 alignment = 1
 script = ExtResource("1_kd8ys")
+PanelScene = ExtResource("2_1pmnr")
+Title = NodePath("MarginContainer/VBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
