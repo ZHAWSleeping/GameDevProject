@@ -44,9 +44,9 @@ public partial class LevelManager : Node
 		PersistentEvents.LevelChangeRequested += ChangeLevel;
 		PersistentEvents.LevelFinished += MarkAsCompleted;
 		PersistentEvents.RoomChanged += ChangeRoom;
-		PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		PersistentEvents.LevelSelected += ChangeLevel;
+		//PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
 		
-		SaveManager.Save(0);
 	}
 
 	private bool IsInBounds(int world, int level)

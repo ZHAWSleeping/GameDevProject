@@ -25,11 +25,7 @@ namespace Gamedev.Main.UI.Scrollable
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			Items = GetChildren().OfType<Selectable>().ToList();
-			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
-			StartingPosition = GlobalPosition;
-			TargetPosition = GlobalPosition;
-			Gap = GetThemeConstant("separation");
+			RefreshChildren();
 		}
 
 		public override void _PhysicsProcess(double delta)
@@ -94,7 +90,11 @@ namespace Gamedev.Main.UI.Scrollable
 
 		public void RefreshChildren()
 		{
-			throw new NotImplementedException();
+			Items = GetChildren().OfType<Selectable>().ToList();
+			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
+			StartingPosition = GlobalPosition;
+			TargetPosition = GlobalPosition;
+			Gap = GetThemeConstant("separation");
 		}
 	}
 

@@ -7,14 +7,16 @@ using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.UI.Scrollable
 {
-	public partial class ScrollableVBox : VBoxContainer
+	public partial class ScrollableVBox : VBoxContainer, IScrollable
 	{
 		private List<Selectable> Items = new();
 		private int Selected = 0;
 		private bool Released = false;
 
-		// Called when the node enters the scene tree for the first time.
-		public override void _Ready()
+        public Control Instance { get => this; set { } }
+
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
 		{
 			RefreshChildren();
 		}

@@ -106,7 +106,7 @@ namespace Gamedev.Main.UI.Menu.Level
 
 		public void Trigger()
 		{
-			throw new NotImplementedException();
+			PersistentEvents.OnLevelSelected(World, Level);
 		}
 	}
 }

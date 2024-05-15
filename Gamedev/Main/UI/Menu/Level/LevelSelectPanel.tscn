@@ -4,16 +4,17 @@
 [ext_resource type="StyleBox" uid="uid://5c7ql2vjf7bk" path="res://Gamedev/Main/UI/RoundedBorder.tres" id="1_behfc"]
 [ext_resource type="Texture2D" uid="uid://dx1n144hjpsx3" path="res://Gamedev/Main/UI/Menu/Level/Star.svg" id="3_073xt"]
 
-[node name="LevelSelectPanel" type="PanelContainer" node_paths=PackedStringArray("Number")]
+[node name="LevelSelectPanel" type="PanelContainer" node_paths=PackedStringArray("Number", "Star")]
 offset_right = 160.0
 offset_bottom = 160.0
 theme_override_styles/panel = ExtResource("1_behfc")
 script = ExtResource("1_6cjif")
-Number = NodePath("MarginContainer2/MarginContainer/Label")
+Number = NodePath("MarginContainer2/MarginContainer/Count")
 StyleBox = ExtResource("1_behfc")
 PrimaryColor = Color(0.3168, 0.88, 0.37312, 1)
 SecondaryColor = Color(0.8799, 0.9, 0.297, 1)
 DefaultColor = Color(1, 1, 1, 1)
+Star = NodePath("MarginContainer2/Star")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -29,7 +30,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer2/MarginContainer"]
+[node name="Count" type="Label" parent="MarginContainer2/MarginContainer"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 3
@@ -38,7 +39,7 @@ text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+[node name="Star" type="TextureRect" parent="MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

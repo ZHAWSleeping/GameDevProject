@@ -29,10 +29,9 @@ namespace Gamedev.Main.UI.Menu.Level
 
 		public override void _Ready()
 		{
-			base._Ready();
 			Scrollable = (IScrollable)Container;
-			PersistentEvents.WorldSelected += UpdateChildren;
 			DelegateHide = (_, _) => AnimatedHide();
+			PersistentEvents.WorldSelected += UpdateChildren;
 		}
 
 		private void UpdateChildren(SaveFile file, int world)
@@ -51,15 +50,18 @@ namespace Gamedev.Main.UI.Menu.Level
 				Scrollable.Instance.AddChild(scene);
 			}
 			Title.Text = $"World {world}";
+			Scrollable.RefreshChildren();
 			AnimatedShow();
 		}
 
 		private void AnimatedShow()
 		{
 			PersistentEvents.LevelSelected += DelegateHide;
+			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Inherit);
 			this.SetProcessModeDeferred(ProcessModeEnum.Inherit);
 			if (Tween != null)
 				Tween.Stop();
+			Tween = CreateTween();
 			Tween.TweenProperty(
 				this,
 				PropertyName.Modulate.ToString(),
@@ -74,10 +76,11 @@ namespace Gamedev.Main.UI.Menu.Level
 			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 			if (Tween != null)
 				Tween.Stop();
+			Tween = CreateTween();
 			Tween.TweenProperty(
 				this,
 				PropertyName.Modulate.ToString(),
-				Colors.White,
+				Colors.Transparent,
 				Duration
 			);
 			Tween.TweenCallback(Callable.From(() => this.SetProcessModeDeferred(ProcessModeEnum.Disabled)));

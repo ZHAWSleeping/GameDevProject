@@ -65,6 +65,10 @@ namespace Gamedev.Main.Events
 		public static event Action<PowerUpCard> CurrentCardChanged;
 		public static void OnCurrentCardChanged(PowerUpCard card) => CurrentCardChanged(card);
 
+
+		public static event Action FileSelectOpened;
+		public static void OnFileSelectOpened() => FileSelectOpened();
+
 		public static event Action<SaveFile> SaveSelected;
 		public static void OnSaveSelected(SaveFile file) => SaveSelected(file);
 
@@ -72,7 +76,7 @@ namespace Gamedev.Main.Events
 		public static void OnWorldSelected(SaveFile file, int world) => WorldSelected(file, world);
 
 		public static event Action<int, int> LevelSelected;
-		public static void OnWorldSelected(int world, int level) => LevelSelected(world, level);
+		public static void OnLevelSelected(int world, int level) => LevelSelected(world, level);
 
 
 
@@ -98,6 +102,11 @@ namespace Gamedev.Main.Events
 			CardCollected = delegate { };
 			CardConsumed = delegate { };
 			CurrentCardChanged = delegate { };
+
+			FileSelectOpened = delegate { };
+			SaveSelected = delegate { };
+			WorldSelected = delegate { };
+			LevelSelected = delegate { };
 		}
 	}
 }

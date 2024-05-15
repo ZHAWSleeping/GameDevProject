@@ -1,19 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://qwin6murmda"]
+[gd_scene load_steps=6 format=3 uid="uid://qwin6murmda"]
 
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_f5mgt"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="1_jm6ag"]
-[ext_resource type="PackedScene" uid="uid://bbsqxtor5q1gq" path="res://Gamedev/Main/UI/Menu/Main/LevelSelectLabel.tscn" id="1_p5axe"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.cs" id="1_qbnue"]
-[ext_resource type="PackedScene" uid="uid://mnm3a20felw" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.tscn" id="4_oi6f1"]
+[ext_resource type="PackedScene" uid="uid://dk2whqy1ueekj" path="res://Gamedev/Main/UI/Menu/Main/PlayLabel.tscn" id="3_dlai4"]
+[ext_resource type="Texture2D" uid="uid://dut3bix8biyx8" path="res://Gamedev/Main/Characters/Player/Human/HumanFrame.pxo" id="4_0wq1x"]
 
-[sub_resource type="Gradient" id="Gradient_brep8"]
-offsets = PackedFloat32Array(0.155844, 0.477273, 1)
-colors = PackedColorArray(0, 0, 0.686275, 1, 0.190237, 0.499941, 0.397363, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ftbiv"]
-gradient = SubResource("Gradient_brep8")
-
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("Container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,38 +14,45 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qbnue")
+Container = NodePath("HBoxContainer/MarginContainer/ScrollableVBox")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-auto_translate_mode = 1
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = SubResource("GradientTexture1D_ftbiv")
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollableVBox" parent="." instance=ExtResource("1_f5mgt")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 92
 
-[node name="Label" type="Label" parent="ScrollableVBox"]
+[node name="ScrollableVBox" parent="HBoxContainer/MarginContainer" instance=ExtResource("1_f5mgt")]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/MarginContainer/ScrollableVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 156
-text = "Main Menu"
-horizontal_alignment = 1
+text = "Working Title"
 
-[node name="LevelSelectLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_p5axe")]
+[node name="PlayLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("3_dlai4")]
 layout_mode = 2
-text = "Overworld"
-levelScene = ExtResource("4_oi6f1")
+horizontal_alignment = 0
 SelectAudio = NodePath("Select")
 ConfirmAudio = NodePath("Confirm")
 
-[node name="QuitLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_jm6ag")]
+[node name="QuitLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_jm6ag")]
 layout_mode = 2
+horizontal_alignment = 0
 SelectAudio = NodePath("Select")
 ConfirmAudio = NodePath("Confirm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1348.0
+offset_top = 186.0
+offset_right = 1820.0
+offset_bottom = 816.0
+texture = ExtResource("4_0wq1x")
+stretch_mode = 4

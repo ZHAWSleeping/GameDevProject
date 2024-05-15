@@ -7,17 +7,18 @@ using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.UI.Scrollable
 {
-	public partial class ScrollableHBox : HBoxContainer
+	public partial class ScrollableHBox : HBoxContainer, IScrollable
 	{
 		private List<Selectable> Items = new();
 		private int Selected = 0;
 		private bool Released = false;
 
+		public Control Instance { get => this; set { } }
+
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			Items = GetChildren().OfType<Selectable>().ToList();
-			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
+			RefreshChildren();
 		}
 
 		public override void _PhysicsProcess(double delta)
@@ -46,14 +47,18 @@ namespace Gamedev.Main.UI.Scrollable
 		public override void _Input(InputEvent @event)
 		{
 			base._Input(@event);
-			
+
 			if (@event.IsActionPressed("Accept") && Items.Any())
 			{
 				Items[Selected].Trigger();
 			}
 		}
 
-
+		public void RefreshChildren()
+		{
+			Items = GetChildren().OfType<Selectable>().ToList();
+			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
+		}
 	}
 
 }

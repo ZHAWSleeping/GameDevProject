@@ -74,7 +74,7 @@ namespace Gamedev.Main.UI.Scrollable
 		{
 			base._Input(@event);
 
-			if (@event.IsActionPressed("Accept") && Items.Any())
+			if (@event.IsActionPressed("Accept") && Items.Count() != 0)
 			{
 				Items[Selected].Trigger();
 			}
