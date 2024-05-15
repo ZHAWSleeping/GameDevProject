@@ -4,16 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://by0wgvwhrgito" path="res://Gamedev/Main/UI/Save/SaveFilePanel.tscn" id="2_5d450"]
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="3_cq6sk"]
 
-[node name="FileSelect" type="HBoxContainer" node_paths=PackedStringArray("Container")]
+[node name="FileSelect" type="Control" node_paths=PackedStringArray("Container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y7pa1")
+SaveFilePanelScene = ExtResource("2_5d450")
+Container = NodePath("HBoxContainer/ScrollableVBox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-script = ExtResource("1_y7pa1")
-SaveFilePanelScene = ExtResource("2_5d450")
-Container = NodePath("ScrollableVBox")
 
-[node name="ScrollableVBox" parent="." instance=ExtResource("3_cq6sk")]
+[node name="ScrollableVBox" parent="HBoxContainer" instance=ExtResource("3_cq6sk")]
 layout_mode = 2

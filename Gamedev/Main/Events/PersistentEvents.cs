@@ -78,6 +78,9 @@ namespace Gamedev.Main.Events
 		public static event Action<int, int> LevelSelected;
 		public static void OnLevelSelected(int world, int level) => LevelSelected(world, level);
 
+		public static event Action<LevelData> LevelSelected2;
+		public static void OnLevelSelected2(LevelData data) => LevelSelected2(data);
+
 
 
 		static PersistentEvents()

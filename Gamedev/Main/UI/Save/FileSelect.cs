@@ -1,77 +1,53 @@
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Gamedev.Main.Peristent;
+using Gamedev.Main.UI.Menu;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
-public partial class FileSelect : HBoxContainer
+public record class LevelData
 {
-	private const float Duration = 0.1f;
+	public int World;
+	public int Level;
+}
 
-	[Export]
-	private PackedScene SaveFilePanelScene;
+public partial class FileSelect : ScrollableMenu<object, LevelData>
+{
+	protected override IScrollable Scrollable { get; set; }
+	protected override Tween Tween { get; set; }
 
-	[Export]
-	private Control Container;
-	private IScrollable Scrollable;
-
-	private Tween Tween;
-	private Action<SaveFile> DelegateHide;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	protected override event Action<LevelData> HideEvent
 	{
-
-		PersistentEvents.FileSelectOpened += UpdateChildren;
-		DelegateHide = (_) => AnimatedHide();
-		Scrollable = (IScrollable)Container;
-	}
-
-	private void UpdateChildren()
-	{
-		Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
-		foreach (var save in SaveManager.SaveFiles.Values)
+		add
 		{
-			SaveFilePanel panel = SaveFilePanelScene.Instantiate<SaveFilePanel>();
-			panel.File = save;
-			Scrollable.Instance.AddChild(panel);
+			PersistentEvents.LevelSelected2 += value;
 		}
-		Scrollable.RefreshChildren();
-		AnimatedShow();
+		remove
+		{
+			PersistentEvents.LevelSelected2 -= value;
+		}
 	}
 
-
-	private void AnimatedShow()
+	private Dictionary<Action<object>, Action> ShowEventDict = new();
+	protected override event Action<object> ShowEvent
 	{
-		PersistentEvents.SaveSelected += DelegateHide;
-		Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Inherit);
-		this.SetProcessModeDeferred(ProcessModeEnum.Inherit);
-		if (Tween != null)
-			Tween.Stop();
-		Tween = CreateTween();
-		Tween.TweenProperty(
-			this,
-			PropertyName.Modulate.ToString(),
-			Colors.White,
-			Duration
-		);
+		add
+		{
+			ShowEventDict.Add(value, () => value(null));
+			PersistentEvents.FileSelectOpened += ShowEventDict[value];
+		}
+		remove
+		{
+			PersistentEvents.FileSelectOpened -= ShowEventDict[value];
+			ShowEventDict.Remove(value);
+		}
 	}
 
-	private void AnimatedHide()
+	protected override void HideCallback(LevelData _)
 	{
-		PersistentEvents.SaveSelected -= DelegateHide;
-		Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Disabled);
-		if (Tween != null)
-			Tween.Stop();
-		Tween = CreateTween();
-		Tween.TweenProperty(
-			this,
-			PropertyName.Modulate.ToString(),
-			Colors.Transparent,
-			Duration
-		);
-		Tween.TweenCallback(Callable.From(() => this.SetProcessModeDeferred(ProcessModeEnum.Disabled)));
+		AnimatedHide();
 	}
-
 }

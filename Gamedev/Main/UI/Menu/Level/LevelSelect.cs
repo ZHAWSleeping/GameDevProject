@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Gamedev.Main.UI.Menu.Level
 {
-	public partial class LevelSelect : HBoxContainer
+	public partial class LevelSelect : Control
 	{
 		[Export]
 		private PackedScene PanelScene;
