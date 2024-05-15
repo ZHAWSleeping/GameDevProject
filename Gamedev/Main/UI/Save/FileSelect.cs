@@ -14,20 +14,23 @@ public record class LevelData
 	public int Level;
 }
 
-public partial class FileSelect : ScrollableMenu<object, LevelData>
+public partial class FileSelect : ScrollableMenu<object, SaveFile>
 {
+	[Export]
+	private PackedScene SaveFilePanelScene;
+
 	protected override IScrollable Scrollable { get; set; }
 	protected override Tween Tween { get; set; }
 
-	protected override event Action<LevelData> HideEvent
+	protected override event Action<SaveFile> HideEvent
 	{
 		add
 		{
-			PersistentEvents.LevelSelected2 += value;
+			PersistentEvents.SaveSelected += value;
 		}
 		remove
 		{
-			PersistentEvents.LevelSelected2 -= value;
+			PersistentEvents.SaveSelected -= value;
 		}
 	}
 
@@ -46,8 +49,13 @@ public partial class FileSelect : ScrollableMenu<object, LevelData>
 		}
 	}
 
-	protected override void HideCallback(LevelData _)
+	protected override void GenerateChildren(object _)
 	{
-		AnimatedHide();
+		foreach (var save in SaveManager.SaveFiles.Values)
+		{
+			SaveFilePanel panel = SaveFilePanelScene.Instantiate<SaveFilePanel>();
+			panel.File = save;
+			Scrollable.Instance.AddChild(panel);
+		}
 	}
 }

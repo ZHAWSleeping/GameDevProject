@@ -61,10 +61,12 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 Container = NodePath("FixedScrollableHBox")
 
-[node name="LevelSelect" parent="." instance=ExtResource("8_ox70c")]
+[node name="LevelSelect" parent="." node_paths=PackedStringArray("Title", "Container") instance=ExtResource("8_ox70c")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
+Title = NodePath("VBoxContainer/MarginContainer/VBoxContainer/Label")
+Container = NodePath("VBoxContainer/MarginContainer/VBoxContainer/ScrollableGrid")
 
 [node name="LevelManager" parent="." instance=ExtResource("4_ec24p")]
 

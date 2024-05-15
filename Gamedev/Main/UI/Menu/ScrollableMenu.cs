@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Gamedev.Main.Constants;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Gamedev.Main.UI.Scrollable;
@@ -18,7 +19,6 @@ namespace Gamedev.Main.UI.Menu
 		protected abstract IScrollable Scrollable { get; set; }
 		protected abstract Tween Tween { get; set; }
 
-		protected abstract void HideCallback(THide _);
 
 		public override void _Ready()
 		{
@@ -27,8 +27,37 @@ namespace Gamedev.Main.UI.Menu
 			Scrollable = (IScrollable)Container;
 		}
 
+		public override void _Input(InputEvent @event)
+		{
+			base._Input(@event);
+			if (@event.IsAction(Inputs.Cancel.ToString()) && MenuStack.History.TryPop(out Action previous))
+			{
+				HideEvent -= HideCallback;
+				AnimatedHide();
+				previous();
+			}
+		}
+
+		protected abstract void GenerateChildren(TShow showObject);
+
+		protected void UpdateChildren(TShow showObject)
+		{
+			Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
+			GenerateChildren(showObject);
+			Scrollable.RefreshChildren();
+			AnimatedShow();
+		}
+
+		protected void HideCallback(THide _)
+		{
+			HideEvent -= HideCallback;
+			MenuStack.History.Push(AnimatedShow);
+			AnimatedHide();
+		}
+
 		protected void AnimatedShow()
 		{
+
 			HideEvent += HideCallback;
 			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Inherit);
 			this.SetProcessModeDeferred(ProcessModeEnum.Inherit);
@@ -43,19 +72,8 @@ namespace Gamedev.Main.UI.Menu
 			);
 		}
 
-		protected abstract void GenerateChildren();
-
-		protected void UpdateChildren()
-		{
-			Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
-			GenerateChildren();
-			Scrollable.RefreshChildren();
-			AnimatedShow();
-		}
-
 		protected void AnimatedHide()
 		{
-			HideEvent -= HideCallback;
 			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 			if (Tween != null)
 				Tween.Stop();

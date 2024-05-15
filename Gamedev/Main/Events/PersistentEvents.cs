@@ -81,6 +81,8 @@ namespace Gamedev.Main.Events
 		public static event Action<LevelData> LevelSelected2;
 		public static void OnLevelSelected2(LevelData data) => LevelSelected2(data);
 
+		public static event Action BackRequested;
+		public static void OnBackRequested() => BackRequested();
 
 
 		static PersistentEvents()
@@ -110,6 +112,8 @@ namespace Gamedev.Main.Events
 			SaveSelected = delegate { };
 			WorldSelected = delegate { };
 			LevelSelected = delegate { };
+			LevelSelected2 = delegate { };
+			BackRequested = delegate { };
 		}
 	}
 }
