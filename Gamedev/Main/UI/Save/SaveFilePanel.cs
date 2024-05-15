@@ -77,7 +77,7 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 	private void UpdateChildren(GameState state)
 	{
 		WorldProgress.Generate(state.File.CompletedLevels);
-		PlayerProfile.HasSaveData = state.File.CompletedLevels.Length != 0;
+		PlayerProfile.HasSaveData = state.File.IsStarted;
 		FileName.Slot = state.File.Slot;
 		DeathCount.Count = state.File.Deaths;
 		Playtime.Time = state.File.PlaytimeMsecs;

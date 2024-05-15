@@ -43,9 +43,10 @@ public partial class FileSelect : ScrollableMenu<object, GameState>
 	protected override void GenerateChildren(object _)
 	{
 		Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
-		foreach (var save in SaveManager.SaveFiles.Values)
+		for (int i = 0; i < SaveManager.Slots; i++)
 		{
 			SaveFilePanel panel = SaveFilePanelScene.Instantiate<SaveFilePanel>();
+			SaveFile save = SaveManager.Load(i);
 			panel.State = new GameState
 			{
 				File = save,

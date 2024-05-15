@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using Godot;
 
@@ -16,6 +17,19 @@ namespace Gamedev.Main.Persistent
 		public int Deaths { get; init; } = 0;
 		public int PlaytimeMsecs { get; init; } = 0;
 		public bool[][] CompletedLevels { get; init; }
+
+		public bool IsStarted
+		{
+			get
+			{
+				return CompletedLevels.Sum(b => b.Sum(bb => bb ? 1 : 0)) > 0 && PlaytimeMsecs > 0;
+			}
+		}
+
+		public SaveFile()
+		{
+			CompletedLevels = LevelManager.Instance.LevelsCompleted;
+		}
 	}
 
 	/// <summary>
@@ -23,6 +37,7 @@ namespace Gamedev.Main.Persistent
 	/// </summary>
 	public static class SaveManager
 	{
+		public const int Slots = 3;
 		private const string Path = "user://user.save";
 		private static readonly Dictionary<int, SaveFile> DefaultSaveFiles = new Dictionary<int, SaveFile>
 		{
@@ -35,13 +50,11 @@ namespace Gamedev.Main.Persistent
 			},
 			{
 				1, new SaveFile {
-					CompletedLevels = [],
 					Slot = 1,
 				}
 			},
 			{
 				2, new SaveFile {
-					CompletedLevels = [],
 					Slot = 2,
 				}
 			},
@@ -55,11 +68,6 @@ namespace Gamedev.Main.Persistent
 			{
 				using FileAccess file = FileAccess.Open(Path, FileAccess.ModeFlags.Read);
 				SaveFiles = JsonSerializer.Deserialize<Dictionary<int, SaveFile>>(file.GetLine());
-			}
-			else
-			{
-				SaveFiles = DefaultSaveFiles;
-				Write();
 			}
 		}
 
@@ -96,7 +104,17 @@ namespace Gamedev.Main.Persistent
 		/// <returns>The save file</returns>
 		public static SaveFile Load(int slot)
 		{
+			if (!SaveFiles.ContainsKey(slot))
+			{
+				SaveFiles.Add(slot, new SaveFile { Slot = slot });
+				Write();
+			}
 			return SaveFiles[slot];
+		}
+
+		public static bool Exists(int slot)
+		{
+			return SaveFiles.ContainsKey(slot);
 		}
 	}
 }
