@@ -1,5 +1,5 @@
 using Gamedev.Main.Events;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Godot;
 using System;
 using System.Linq;
@@ -23,11 +23,7 @@ public partial class LevelManager : Node
 	public PackedScene[][] Levels { get; private set; }
 	public bool[][] LevelsCompleted { get; set; }
 
-	public int World { get; set; } = 0;
-	public int Level { get; set; } = 0;
-	public int Room { get; set; } = 0;
-	public int Deaths { get; set; } = 0;
-	public float Playtime { get; set; } = 0;
+	public GameState State;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -46,7 +42,7 @@ public partial class LevelManager : Node
 		PersistentEvents.RoomChanged += ChangeRoom;
 		PersistentEvents.LevelSelected += ChangeLevel;
 		//PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
-		
+
 	}
 
 	private bool IsInBounds(int world, int level)
@@ -57,25 +53,29 @@ public partial class LevelManager : Node
 			&& level < Levels[world].Length;
 	}
 
-	private void ChangeLevel(int world, int level)
+	private void ChangeLevel(GameState state)
 	{
+		var world = state.CurrentWorld;
+		var level = state.CurrentLevel;
+
 		if (IsInBounds(world, level))
 		{
-			World = world;
-			Level = level;
+			State = state;
 		}
 		else if (IsInBounds(world, level - 1) && IsInBounds(world + 1, 0))
 		{
-			World = world + 1;
-			Level = 0;
+			State = state;
+			State.CurrentWorld += 1;
+			State.CurrentLevel = 0;
 		}
 		else
 		{
-			World = 0;
-			Level = 0;
-			GD.PrintErr($"Attempted to load invalid level {world}-{level}, loading default level {World}-{Level}");
+			State = state;
+			State.CurrentWorld = 0;
+			State.CurrentLevel = 0;
+			GD.PrintErr($"Attempted to load invalid level {world}-{level}, loading default level {0}-{0}");
 		}
-		PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		PersistentEvents.OnGameSceneChangeRequested(Levels[State.CurrentWorld][State.CurrentLevel]);
 		DebugEvents.OnRoomChanged(this);
 	}
 
@@ -94,7 +94,7 @@ public partial class LevelManager : Node
 
 	private void ChangeRoom(int room)
 	{
-		Room = room;
+		State.CurrentRoom = room;
 		DebugEvents.OnRoomChanged(this);
 	}
 }

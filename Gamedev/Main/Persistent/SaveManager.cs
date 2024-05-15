@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Godot;
 
-namespace Gamedev.Main.Peristent
+namespace Gamedev.Main.Persistent
 {
 	/// <summary>
 	/// Holds the data of one save file
@@ -81,9 +81,9 @@ namespace Gamedev.Main.Peristent
 			SaveFiles[slot] = new SaveFile
 			{
 				Slot = slot,
-				World = LevelManager.Instance.World,
-				Level = LevelManager.Instance.Level,
-				Room = LevelManager.Instance.Room,
+				World = LevelManager.Instance.State.CurrentWorld,
+				Level = LevelManager.Instance.State.CurrentLevel,
+				Room = LevelManager.Instance.State.CurrentRoom,
 				CompletedLevels = LevelManager.Instance.LevelsCompleted,
 			};
 			Write();

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4ut7y6v26rd" path="res://Gamedev/Main/Level/LevelManager.tscn" id="4_ec24p"]
 [ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
 [ext_resource type="PackedScene" uid="uid://cigaq1jrw6f7u" path="res://Gamedev/Main/UI/BatteryCounter.tscn" id="5_kdugc"]
-[ext_resource type="PackedScene" uid="uid://qwin6murmda" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.tscn" id="5_xtbrp"]
+[ext_resource type="PackedScene" uid="uid://dgeh0gb3ljr32" path="res://Gamedev/Main/UI/Menu/Main/TitleScreen.tscn" id="5_ltx50"]
 [ext_resource type="PackedScene" uid="uid://chm2ywu7bbh4v" path="res://Gamedev/Main/UI/Save/FileSelect.tscn" id="6_i866y"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
 [ext_resource type="PackedScene" uid="uid://mnm3a20felw" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.tscn" id="7_vekvf"]
@@ -44,8 +44,9 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_hjyhc")
 Viewport = NodePath("SubViewport")
 
-[node name="MainMenu" parent="." node_paths=PackedStringArray("Container") instance=ExtResource("5_xtbrp")]
+[node name="TitleScreen" parent="." node_paths=PackedStringArray("Container") instance=ExtResource("5_ltx50")]
 process_mode = 4
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 Container = NodePath("HBoxContainer/MarginContainer/ScrollableVBox")
 

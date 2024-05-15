@@ -13,17 +13,14 @@ namespace Gamedev.Main.UI.Scrollable
 		private int Selected = 0;
 		private bool Released = false;
 
-        public Control Instance { get => this; set { } }
+		public Control Instance { get => this; set { } }
 
-        // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
-		{
-			RefreshChildren();
-		}
+		// Called when the node enters the scene tree for the first time.
 
 		public void RefreshChildren()
 		{
-			Items = GetChildren().OfType<Selectable>().ToList();
+			Selected = 0;
+			Items = GetChildren().Where(n => !n.IsQueuedForDeletion()).OfType<Selectable>().ToList();
 			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
 		}
 

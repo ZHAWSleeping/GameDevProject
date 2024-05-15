@@ -1,5 +1,5 @@
 using Gamedev.Main.Events;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;

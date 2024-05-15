@@ -1,4 +1,5 @@
 using Gamedev.Main.Events;
+using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
@@ -25,34 +26,25 @@ namespace Gamedev.Main.UI.Menu.Level
 		[Export]
 		private Control Star;
 
-		public int World;
-		public int Level
-		{
-			set
-			{
-				_level = value;
-				Number.Text = value.ToString();
-			}
-			get
-			{
-				return _level;
-			}
-		}
-		private int _level;
+		public int World { get => State.CurrentWorld; }
+		public int Level { get => State.CurrentLevel; }
 
-		public bool Completed
+		public bool Completed { get => State.File.CompletedLevels[World][Level]; }
+
+		public GameState State
 		{
 			set
 			{
-				_completed = value;
-				Star.Modulate = value ? Colors.White : Colors.Transparent;
+				_state = value;
+				Number.Text = Level.ToString();
+				Star.Modulate = Completed ? Colors.White : Colors.Transparent;
 			}
 			get
 			{
-				return _completed;
+				return _state;
 			}
 		}
-		private bool _completed;
+		private GameState _state;
 
 		private Tween ColorTween;
 
@@ -106,7 +98,7 @@ namespace Gamedev.Main.UI.Menu.Level
 
 		public void Trigger()
 		{
-			PersistentEvents.OnLevelSelected(World, Level);
+			PersistentEvents.OnLevelSelected(State);
 		}
 	}
 }

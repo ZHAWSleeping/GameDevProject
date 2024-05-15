@@ -56,7 +56,8 @@ namespace Gamedev.Main.UI.Scrollable
 
 		public void RefreshChildren()
 		{
-			Items = GetChildren().OfType<Selectable>().ToList();
+			Selected = 0;
+			Items = GetChildren().Where(n => !n.IsQueuedForDeletion()).OfType<Selectable>().ToList();
 			Items.Skip(1).ToList().ForEach(item => item.Unfocus());
 		}
 	}

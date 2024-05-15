@@ -5,66 +5,64 @@ using System;
 
 namespace Gamedev.Main.UI.Pause
 {
-    public partial class PauseScreen : Control
-    {
-        [Export]
-        private ScrollableVBox Menu;
+	public partial class PauseScreen : Control
+	{
+		[Export]
+		private ScrollableVBox Menu;
 
-        [Export]
-        private AudioStreamPlayer Audio;
+		[Export]
+		private AudioStreamPlayer Audio;
 
-        private bool Paused = false;
-        // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
-        {
-            PersistentEvents.PauseRequested += Pause;
-            PersistentEvents.ResumeRequested += Resume;
-        }
+		private bool Paused = false;
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
+		{
+			PersistentEvents.PauseRequested += Pause;
+			PersistentEvents.ResumeRequested += Resume;
+			Menu.RefreshChildren();
+		}
 
-        // Called every frame. 'delta' is the elapsed time since the previous frame.
-        public override void _Process(double delta)
-        {
-        }
 
-        public override void _Input(InputEvent @event)
-        {
-            base._Input(@event);
-            if (@event.IsActionPressed("Pause"))
-            {
-                if (Paused)
-                {
-                    PersistentEvents.OnResumeRequested();
-                }
-                else
-                {
-                    PersistentEvents.OnPauseRequested();
-                }
-            }
 
-            if (@event.IsActionPressed("Cancel") && Paused)
-            {
-                PersistentEvents.OnResumeRequested();
-            }
-        }
+		public override void _Input(InputEvent @event)
+		{
+			base._Input(@event);
+			if (@event.IsActionPressed("Pause"))
+			{
+				if (Paused)
+				{
+					PersistentEvents.OnResumeRequested();
+				}
+				else
+				{
+					PersistentEvents.OnPauseRequested();
+				}
+			}
 
-        private void Pause()
-        {
-            Tween tween = CreateTween();
-            tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.White, 0.25f);
-            Menu.ProcessMode = ProcessModeEnum.Inherit;
-            Audio.PitchScale = 1.0f;
-            Audio.Play();
-            Paused = !Paused;
-        }
+			if (@event.IsActionPressed("Cancel") && Paused)
+			{
+				PersistentEvents.OnResumeRequested();
+			}
+		}
 
-        private void Resume()
-        {
-            Tween tween = CreateTween();
-            tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.Transparent, 0.25f);
-            Menu.ProcessMode = ProcessModeEnum.Disabled;
-            Audio.PitchScale = 1.5f;
-            Audio.Play();
-            Paused = !Paused;
-        }
-    }
+		private void Pause()
+		{
+			Tween tween = CreateTween();
+			tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.White, 0.25f);
+			Menu.ProcessMode = ProcessModeEnum.Inherit;
+			Audio.PitchScale = 1.0f;
+			Audio.Play();
+			Paused = !Paused;
+		}
+
+		private void Resume()
+		{
+			Tween tween = CreateTween();
+			tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.Transparent, 0.25f);
+			Menu.ProcessMode = ProcessModeEnum.Disabled;
+			Audio.PitchScale = 1.5f;
+			Audio.Play();
+			Paused = !Paused;
+		}
+	}
 }

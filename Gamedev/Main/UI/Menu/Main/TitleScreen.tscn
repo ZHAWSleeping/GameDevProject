@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://qwin6murmda"]
+[gd_scene load_steps=6 format=3 uid="uid://dgeh0gb3ljr32"]
 
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Main/TitleScreen.cs" id="1_1jm5s"]
 [ext_resource type="PackedScene" uid="uid://c72awcxhwra5f" path="res://Gamedev/Main/UI/Scrollable/ScrollableVBox.tscn" id="1_f5mgt"]
 [ext_resource type="PackedScene" uid="uid://cevehmbuf8md0" path="res://Gamedev/Main/UI/Pause/QuitLabel.tscn" id="1_jm6ag"]
-[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/Main/MainMenu.cs" id="1_qbnue"]
 [ext_resource type="PackedScene" uid="uid://dk2whqy1ueekj" path="res://Gamedev/Main/UI/Menu/Main/PlayLabel.tscn" id="3_dlai4"]
 [ext_resource type="Texture2D" uid="uid://dut3bix8biyx8" path="res://Gamedev/Main/Characters/Player/Human/HumanFrame.pxo" id="4_0wq1x"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("Container")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("Container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qbnue")
+script = ExtResource("1_1jm5s")
 Container = NodePath("HBoxContainer/MarginContainer/ScrollableVBox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

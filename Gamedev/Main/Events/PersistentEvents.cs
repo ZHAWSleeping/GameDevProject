@@ -1,6 +1,6 @@
 using System;
 using Gamedev.Main.Objects.Cards;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Godot;
 
 namespace Gamedev.Main.Events
@@ -35,13 +35,11 @@ namespace Gamedev.Main.Events
 		/// <summary>
 		/// Triggered when a new level is supposed to be loaded. Does not contain the actual level.
 		/// </summary>
-		public static event Action<int, int> LevelChangeRequested;
+		public static event Action<GameState> LevelChangeRequested;
 		/// <summary>
 		/// Triggers the change of the current level to the specified one.
 		/// </summary>
-		/// <param name="world">Which world</param>
-		/// <param name="level">Which level</param>
-		public static void OnLevelChangeRequested(int world, int level) => LevelChangeRequested(world, level);
+		public static void OnLevelChangeRequested(GameState state) => LevelChangeRequested(state);
 
 		public static event Action<int> RoomChanged;
 		public static void OnRoomChanged(int room) => RoomChanged(room);
@@ -66,24 +64,20 @@ namespace Gamedev.Main.Events
 		public static void OnCurrentCardChanged(PowerUpCard card) => CurrentCardChanged(card);
 
 
+		public static event Action TitleScreenRequested;
+		public static void OnTitleScreenRequested() => TitleScreenRequested();
+
 		public static event Action FileSelectOpened;
 		public static void OnFileSelectOpened() => FileSelectOpened();
 
-		public static event Action<SaveFile> SaveSelected;
-		public static void OnSaveSelected(SaveFile file) => SaveSelected(file);
+		public static event Action<GameState> SaveSelected;
+		public static void OnSaveSelected(GameState state) => SaveSelected(state);
 
-		public static event Action<SaveFile, int> WorldSelected;
-		public static void OnWorldSelected(SaveFile file, int world) => WorldSelected(file, world);
+		public static event Action<GameState> WorldSelected;
+		public static void OnWorldSelected(GameState state) => WorldSelected(state);
 
-		public static event Action<int, int> LevelSelected;
-		public static void OnLevelSelected(int world, int level) => LevelSelected(world, level);
-
-		public static event Action<LevelData> LevelSelected2;
-		public static void OnLevelSelected2(LevelData data) => LevelSelected2(data);
-
-		public static event Action BackRequested;
-		public static void OnBackRequested() => BackRequested();
-
+		public static event Action<GameState> LevelSelected;
+		public static void OnLevelSelected(GameState state) => LevelSelected(state);
 
 		static PersistentEvents()
 		{
@@ -108,12 +102,11 @@ namespace Gamedev.Main.Events
 			CardConsumed = delegate { };
 			CurrentCardChanged = delegate { };
 
+			TitleScreenRequested = delegate { };
 			FileSelectOpened = delegate { };
 			SaveSelected = delegate { };
 			WorldSelected = delegate { };
 			LevelSelected = delegate { };
-			LevelSelected2 = delegate { };
-			BackRequested = delegate { };
 		}
 	}
 }

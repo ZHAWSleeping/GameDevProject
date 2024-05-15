@@ -1,6 +1,6 @@
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Menu;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
@@ -8,21 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public record class LevelData
-{
-	public int World;
-	public int Level;
-}
-
-public partial class FileSelect : ScrollableMenu<object, SaveFile>
+public partial class FileSelect : ScrollableMenu<object, GameState>
 {
 	[Export]
 	private PackedScene SaveFilePanelScene;
 
-	protected override IScrollable Scrollable { get; set; }
-	protected override Tween Tween { get; set; }
-
-	protected override event Action<SaveFile> HideEvent
+	protected override event Action<GameState> HideEvent
 	{
 		add
 		{
@@ -51,10 +42,17 @@ public partial class FileSelect : ScrollableMenu<object, SaveFile>
 
 	protected override void GenerateChildren(object _)
 	{
+		Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
 		foreach (var save in SaveManager.SaveFiles.Values)
 		{
 			SaveFilePanel panel = SaveFilePanelScene.Instantiate<SaveFilePanel>();
-			panel.File = save;
+			panel.State = new GameState
+			{
+				File = save,
+				CurrentWorld = save.World,
+				CurrentLevel = save.Level,
+				CurrentRoom = save.Room,
+			};
 			Scrollable.Instance.AddChild(panel);
 		}
 	}

@@ -17,8 +17,8 @@ public partial class Level : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Player.GlobalPosition = Merger.Rooms[LevelManager.Instance.Room].RespawnPoint.GlobalPosition;
-		Camera.GlobalPosition = Merger.Rooms[LevelManager.Instance.Room].Anchor.GlobalPosition;
+		Player.GlobalPosition = Merger.Rooms[LevelManager.Instance.State.CurrentRoom].RespawnPoint.GlobalPosition;
+		Camera.GlobalPosition = Merger.Rooms[LevelManager.Instance.State.CurrentRoom].Anchor.GlobalPosition;
 		Camera.ResetSmoothing();
 	}
 

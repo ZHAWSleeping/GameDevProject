@@ -1,6 +1,6 @@
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
@@ -9,81 +9,54 @@ using System.Linq;
 
 namespace Gamedev.Main.UI.Menu.Level
 {
-	public partial class LevelSelect : Control
+	public partial class LevelSelect : ScrollableMenu<GameState, GameState>
 	{
 		[Export]
 		private PackedScene PanelScene;
 		[Export]
 		private Label Title;
-		[Export]
-		private Control Container;
-		private IScrollable Scrollable;
-		private int World;
-		private bool[] Levels;
-		private const float Duration = 0.1f;
 
-		private Tween Tween;
-
-
-		private Action<int, int> DelegateHide;
-
-		public override void _Ready()
+		protected override event Action<GameState> HideEvent
 		{
-			Scrollable = (IScrollable)Container;
-			DelegateHide = (_, _) => AnimatedHide();
-			PersistentEvents.WorldSelected += UpdateChildren;
-		}
-
-		private void UpdateChildren(SaveFile file, int world)
-		{
-			World = world;
-			Levels = file.CompletedLevels[world];
-			Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
-			int i = 0;
-			foreach (var completed in Levels)
+			add
 			{
-				LevelSelectPanel scene = PanelScene.Instantiate<LevelSelectPanel>();
-				scene.Level = i;
-				i++;
-				scene.World = world;
-				scene.Completed = completed;
-				Scrollable.Instance.AddChild(scene);
+				PersistentEvents.LevelSelected += value;
 			}
-			Title.Text = $"World {world}";
-			Scrollable.RefreshChildren();
-			AnimatedShow();
+			remove
+			{
+				PersistentEvents.LevelSelected -= value;
+			}
+		}
+		
+		protected override event Action<GameState> ShowEvent
+		{
+			add
+			{
+				PersistentEvents.WorldSelected += value;
+			}
+			remove
+			{
+				PersistentEvents.WorldSelected -= value;
+			}
 		}
 
-		private void AnimatedShow()
+		protected override void GenerateChildren(GameState state)
 		{
-			PersistentEvents.LevelSelected += DelegateHide;
-			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Inherit);
-			this.SetProcessModeDeferred(ProcessModeEnum.Inherit);
-			if (Tween != null)
-				Tween.Stop();
-			Tween = CreateTween();
-			Tween.TweenProperty(
-				this,
-				PropertyName.Modulate.ToString(),
-				Colors.White,
-				Duration
-			);
-		}
-
-		private void AnimatedHide()
-		{
-			PersistentEvents.LevelSelected -= DelegateHide;
-			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Disabled);
-			if (Tween != null)
-				Tween.Stop();
-			Tween = CreateTween();
-			Tween.TweenProperty(
-				this,
-				PropertyName.Modulate.ToString(),
-				Colors.Transparent,
-				Duration
-			);
-			Tween.TweenCallback(Callable.From(() => this.SetProcessModeDeferred(ProcessModeEnum.Disabled)));
+			Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
+			for (int i = 0; i < state.File.CompletedLevels[state.CurrentWorld].Length; i++)
+			{
+				bool completed = state.File.CompletedLevels[state.CurrentWorld][i];
+				LevelSelectPanel scene = PanelScene.Instantiate<LevelSelectPanel>();
+				scene.State = new GameState
+				{
+					File = state.File,
+					CurrentWorld = state.CurrentWorld,
+					CurrentLevel = i,
+					CurrentRoom = 0,
+				};
+				Scrollable.Instance.AddChild(scene);
+				Title.Text = $"World {state.CurrentWorld}";
+			}
 		}
 	}
 }

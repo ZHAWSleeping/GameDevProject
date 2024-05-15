@@ -16,8 +16,9 @@ namespace Gamedev.Main.UI.Menu
 		protected virtual float Duration { get; } = 0.1f;
 		protected abstract event Action<THide> HideEvent;
 		protected abstract event Action<TShow> ShowEvent;
-		protected abstract IScrollable Scrollable { get; set; }
-		protected abstract Tween Tween { get; set; }
+		protected IScrollable Scrollable { get; set; }
+		protected Tween Tween { get; set; }
+
 
 
 		public override void _Ready()
@@ -27,10 +28,10 @@ namespace Gamedev.Main.UI.Menu
 			Scrollable = (IScrollable)Container;
 		}
 
-		public override void _Input(InputEvent @event)
+		public override void _Process(double delta)
 		{
-			base._Input(@event);
-			if (@event.IsAction(Inputs.Cancel.ToString()) && MenuStack.History.TryPop(out Action previous))
+			base._Process(delta);
+			if (Input.IsActionJustPressed(Inputs.Cancel.ToString()) && MenuStack.History.TryPop(out Action previous))
 			{
 				HideEvent -= HideCallback;
 				AnimatedHide();
@@ -42,7 +43,6 @@ namespace Gamedev.Main.UI.Menu
 
 		protected void UpdateChildren(TShow showObject)
 		{
-			Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
 			GenerateChildren(showObject);
 			Scrollable.RefreshChildren();
 			AnimatedShow();
@@ -59,8 +59,10 @@ namespace Gamedev.Main.UI.Menu
 		{
 
 			HideEvent += HideCallback;
-			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Inherit);
-			this.SetProcessModeDeferred(ProcessModeEnum.Inherit);
+			//Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Inherit);
+			//this.SetProcessModeDeferred(ProcessModeEnum.Inherit);
+			Scrollable.Instance.ProcessMode = ProcessModeEnum.Inherit;
+			ProcessMode = ProcessModeEnum.Inherit;
 			if (Tween != null)
 				Tween.Stop();
 			Tween = CreateTween();
@@ -74,7 +76,8 @@ namespace Gamedev.Main.UI.Menu
 
 		protected void AnimatedHide()
 		{
-			Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+			//Scrollable.Instance.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+			Scrollable.Instance.ProcessMode = ProcessModeEnum.Disabled;
 			if (Tween != null)
 				Tween.Stop();
 			Tween = CreateTween();
@@ -84,7 +87,8 @@ namespace Gamedev.Main.UI.Menu
 				Colors.Transparent,
 				Duration
 			);
-			Tween.TweenCallback(Callable.From(() => this.SetProcessModeDeferred(ProcessModeEnum.Disabled)));
+			//Tween.TweenCallback(Callable.From(() => this.SetProcessModeDeferred(ProcessModeEnum.Disabled)));
+			Tween.TweenCallback(Callable.From(() => ProcessMode = ProcessModeEnum.Disabled));
 		}
 	}
 }

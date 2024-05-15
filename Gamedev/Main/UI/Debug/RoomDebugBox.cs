@@ -10,9 +10,9 @@ public partial class RoomDebugBox : VBoxContainer
 	[Export]
 	private PackedScene LabelScene;
 	private string[] Names = {
-		"World",
-		"Level",
-		"Room",
+		"CurrentWorld",
+		"CurrentLevel",
+		"CurrentRoom",
 	};
 
 	private Dictionary<string, DebugLabel> Labels;
@@ -31,9 +31,9 @@ public partial class RoomDebugBox : VBoxContainer
 
 		DebugEvents.RoomChanged += (data) =>
 		{
-			Labels[nameof(data.World)].DataLabel.Text = data.World.ToString();
-			Labels[nameof(data.Level)].DataLabel.Text = data.Level.ToString();
-			Labels[nameof(data.Room)].DataLabel.Text = data.Room.ToString();
+			Labels[nameof(data.State.CurrentWorld)].DataLabel.Text = data.State.CurrentWorld.ToString();
+			Labels[nameof(data.State.CurrentLevel)].DataLabel.Text = data.State.CurrentLevel.ToString();
+			Labels[nameof(data.State.CurrentRoom)].DataLabel.Text = data.State.CurrentRoom.ToString();
 		};
 	}
 }

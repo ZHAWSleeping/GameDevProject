@@ -1,5 +1,5 @@
 using Gamedev.Main.Events;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
@@ -12,7 +12,7 @@ public partial class WorldPanel : PanelContainer, Selectable
 	private Tween Animation;
 	private Vector2? OriginalPosition = null;
 
-	private SaveFile File;
+	private GameState State;
 	private int World;
 
 	[Export]
@@ -55,13 +55,13 @@ public partial class WorldPanel : PanelContainer, Selectable
 
 	public void Trigger()
 	{
-		PersistentEvents.OnWorldSelected(File, World);
+		PersistentEvents.OnWorldSelected(State);
 	}
 
-	public void UpdateChildren(SaveFile file, int world)
+	public void UpdateChildren(GameState state)
 	{
-		File = file;
-		WorldName.World = file.World;
-		WorldCompletion.Levels = file.CompletedLevels[world];
+		State = state;
+		WorldName.World = state.CurrentWorld;
+		WorldCompletion.Levels = state.File.CompletedLevels[state.CurrentWorld];
 	}
 }

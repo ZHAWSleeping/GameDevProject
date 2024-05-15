@@ -1,5 +1,5 @@
 using Gamedev.Main.Events;
-using Gamedev.Main.Peristent;
+using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
@@ -36,7 +36,7 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 	private StyleBoxFlat StyleBox;
 
 
-	public SaveFile File
+	public GameState State
 	{
 		set
 		{
@@ -49,7 +49,7 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 		}
 	}
 
-	private SaveFile _file;
+	private GameState _file;
 
 	private Tween ColorTween;
 
@@ -74,13 +74,13 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 		AddThemeStyleboxOverride("panel", StyleBox);
 	}
 
-	private void UpdateChildren(SaveFile file)
+	private void UpdateChildren(GameState state)
 	{
-		WorldProgress.Generate(file.CompletedLevels);
-		PlayerProfile.HasSaveData = file.CompletedLevels.Any();
-		FileName.Slot = file.Slot;
-		DeathCount.Count = file.Deaths;
-		Playtime.Time = file.PlaytimeMsecs;
+		WorldProgress.Generate(state.File.CompletedLevels);
+		PlayerProfile.HasSaveData = state.File.CompletedLevels.Length != 0;
+		FileName.Slot = state.File.Slot;
+		DeathCount.Count = state.File.Deaths;
+		Playtime.Time = state.File.PlaytimeMsecs;
 	}
 
 	public void Focus()
@@ -109,6 +109,6 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 
 	public void Trigger()
 	{
-		PersistentEvents.OnSaveSelected(File);
+		PersistentEvents.OnSaveSelected(State);
 	}
 }
