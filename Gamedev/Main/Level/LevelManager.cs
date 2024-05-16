@@ -97,4 +97,9 @@ public partial class LevelManager : Node
 		State.CurrentRoom = room;
 		DebugEvents.OnRoomChanged(this);
 	}
+
+	public void Tick()
+	{
+		
+	}
 }

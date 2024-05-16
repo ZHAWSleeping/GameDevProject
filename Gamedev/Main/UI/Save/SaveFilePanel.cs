@@ -80,7 +80,7 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 		PlayerProfile.HasSaveData = state.File.IsStarted;
 		FileName.Slot = state.File.Slot;
 		DeathCount.Count = state.File.Deaths;
-		Playtime.Time = state.File.PlaytimeMsecs;
+		Playtime.Time = state.File.PlaytimeTicks;
 	}
 
 	public void Focus()
@@ -109,6 +109,13 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 
 	public void Trigger()
 	{
-		PersistentEvents.OnSaveSelected(State);
+		if (State.CurrentWorld != -1 && State.CurrentLevel != -1 && State.CurrentRoom != -1)
+		{
+			PersistentEvents.OnLevelSelected(State);
+		}
+		else
+		{
+			PersistentEvents.OnSaveSelected(State);
+		}
 	}
 }

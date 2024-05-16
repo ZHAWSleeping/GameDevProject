@@ -18,10 +18,12 @@ public partial class FileSelect : ScrollableMenu<object, GameState>
 		add
 		{
 			PersistentEvents.SaveSelected += value;
+			PersistentEvents.LevelSelected += value;
 		}
 		remove
 		{
 			PersistentEvents.SaveSelected -= value;
+			PersistentEvents.LevelSelected -= value;
 		}
 	}
 

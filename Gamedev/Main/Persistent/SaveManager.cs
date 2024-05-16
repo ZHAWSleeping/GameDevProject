@@ -15,14 +15,14 @@ namespace Gamedev.Main.Persistent
 		public int Level { get; init; } = -1;
 		public int Room { get; init; } = -1;
 		public int Deaths { get; init; } = 0;
-		public int PlaytimeMsecs { get; init; } = 0;
+		public long PlaytimeTicks { get; init; } = 0;
 		public bool[][] CompletedLevels { get; init; }
 
 		public bool IsStarted
 		{
 			get
 			{
-				return CompletedLevels.Sum(b => b.Sum(bb => bb ? 1 : 0)) > 0 && PlaytimeMsecs > 0;
+				return CompletedLevels.Sum(b => b.Sum(bb => bb ? 1 : 0)) > 0 && PlaytimeTicks > 0;
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace Gamedev.Main.Persistent
 				0, new SaveFile {
 					CompletedLevels = [],
 					Slot = 0,
-					PlaytimeMsecs = 18853200,
+					PlaytimeTicks = 18853200,
 				}
 			},
 			{
