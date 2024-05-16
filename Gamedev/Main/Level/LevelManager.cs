@@ -41,6 +41,7 @@ public partial class LevelManager : Node
 		PersistentEvents.LevelFinished += MarkAsCompleted;
 		PersistentEvents.RoomChanged += ChangeRoom;
 		PersistentEvents.LevelSelected += ChangeLevel;
+		PersistentEvents.PlaytimeTicked += Tick;
 		//PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
 
 	}
@@ -100,6 +101,11 @@ public partial class LevelManager : Node
 
 	public void Tick()
 	{
-		
+		State.File.PlaytimeTicks += 1;
+	}
+
+	public void Die()
+	{
+		State.File.Deaths += 1;
 	}
 }

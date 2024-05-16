@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://ctnliy64dlo38"]
+[gd_scene load_steps=2 format=3 uid="uid://ctnliy64dlo38"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/TimeTracker.cs" id="1_fjr88"]
 
 [node name="TimeTracker" type="Node"]
+script = ExtResource("1_fjr88")

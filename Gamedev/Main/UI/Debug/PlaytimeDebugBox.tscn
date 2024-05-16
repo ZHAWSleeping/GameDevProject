@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh145mn864xgv"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Debug/PlaytimeDebugBox.cs" id="1_qtccq"]
+[ext_resource type="PackedScene" uid="uid://dm8jvfybs4oa8" path="res://Gamedev/Main/UI/Debug/DebugLabel.tscn" id="2_3rle8"]
+
+[node name="PlaytimeDebugBox" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qtccq")
+LabelScene = ExtResource("2_3rle8")

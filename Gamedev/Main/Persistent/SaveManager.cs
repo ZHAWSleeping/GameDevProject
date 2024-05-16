@@ -10,13 +10,13 @@ namespace Gamedev.Main.Persistent
 	/// </summary>
 	public class SaveFile
 	{
-		public int Slot { get; init; } = -1;
-		public int World { get; init; } = -1;
-		public int Level { get; init; } = -1;
-		public int Room { get; init; } = -1;
-		public int Deaths { get; init; } = 0;
-		public long PlaytimeTicks { get; init; } = 0;
-		public bool[][] CompletedLevels { get; init; }
+		public int Slot { get; set; } = -1;
+		public int World { get; set; } = -1;
+		public int Level { get; set; } = -1;
+		public int Room { get; set; } = -1;
+		public int Deaths { get; set; } = 0;
+		public long PlaytimeTicks { get; set; } = 0;
+		public bool[][] CompletedLevels { get; set; }
 
 		public bool IsStarted
 		{

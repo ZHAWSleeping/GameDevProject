@@ -47,6 +47,9 @@ namespace Gamedev.Main.Events
 		public static event Action<int, int> LevelFinished;
 		public static void OnLevelFinished(int world, int level) => LevelFinished(world, level);
 
+		public static event Action PlaytimeTicked;
+		public static void OnPlaytimeTicked() => PlaytimeTicked();
+
 
 		public static event Action BatteryCollected;
 		public static void OnBatteryCollected() => BatteryCollected();
@@ -95,6 +98,7 @@ namespace Gamedev.Main.Events
 			LevelChangeRequested = delegate { };
 			RoomChanged = delegate { };
 			LevelFinished = delegate { };
+			PlaytimeTicked = delegate { };
 
 			BatteryCollected = delegate { };
 			LightActivated = delegate { };

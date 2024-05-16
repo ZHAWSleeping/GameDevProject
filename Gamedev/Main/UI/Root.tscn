@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=19 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bxq4ypt24skm7" path="res://Gamedev/Main/UI/Menu/Level/LevelSelect.tscn" id="8_ox70c"]
 [ext_resource type="PackedScene" uid="uid://cur0h4kyv7fjc" path="res://Gamedev/Main/UI/Debug/RoomDebugBox.tscn" id="10_hjko8"]
 [ext_resource type="PackedScene" uid="uid://dge5ccrjsbdo0" path="res://Gamedev/Main/UI/Cards/PowerUpCardsDisplay.tscn" id="11_01kuk"]
+[ext_resource type="PackedScene" uid="uid://dh145mn864xgv" path="res://Gamedev/Main/UI/Debug/PlaytimeDebugBox.tscn" id="16_dw6rq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]
 viewport_path = NodePath("SubViewport")
@@ -115,6 +116,9 @@ theme_override_constants/separation = 4
 layout_mode = 2
 
 [node name="RoomDebugBox" parent="DebugContainer" instance=ExtResource("10_hjko8")]
+layout_mode = 2
+
+[node name="PlaytimeDebugBox" parent="DebugContainer" instance=ExtResource("16_dw6rq")]
 layout_mode = 2
 
 [node name="SlidingOverlay" parent="." instance=ExtResource("4_3uud4")]
