@@ -7,7 +7,7 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class OverworldMenu : ScrollableMenu<GameState, GameState>
+public partial class WorldSelect : ScrollableMenu<GameState, GameState>
 {
 	[Export]
 	private PackedScene WorldScene;

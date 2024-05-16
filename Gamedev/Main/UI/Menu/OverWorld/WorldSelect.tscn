@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://mnm3a20felw"]
 
-[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.cs" id="1_017ah"]
+[ext_resource type="Script" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldSelect.cs" id="1_017ah"]
 [ext_resource type="PackedScene" uid="uid://gpkil6u2nqj0" path="res://Gamedev/Main/UI/Scrollable/FixedScrollableHBox.tscn" id="2_8s42e"]
 [ext_resource type="Texture2D" uid="uid://bi0p0hmj2tu40" path="res://Gamedev/Main/UI/Menu/OverWorld/Pointer.svg" id="2_utjj8"]
 [ext_resource type="PackedScene" uid="uid://bsm16uwsc70vs" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldPanel.tscn" id="3_lsmrr"]
 
-[node name="OverworldMenu" type="Control" node_paths=PackedStringArray("Container")]
+[node name="WorldSelect" type="Control" node_paths=PackedStringArray("Container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

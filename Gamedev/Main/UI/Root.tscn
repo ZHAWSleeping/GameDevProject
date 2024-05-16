@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dgeh0gb3ljr32" path="res://Gamedev/Main/UI/Menu/Main/TitleScreen.tscn" id="5_ltx50"]
 [ext_resource type="PackedScene" uid="uid://chm2ywu7bbh4v" path="res://Gamedev/Main/UI/Save/FileSelect.tscn" id="6_i866y"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
-[ext_resource type="PackedScene" uid="uid://mnm3a20felw" path="res://Gamedev/Main/UI/Menu/OverWorld/OverworldMenu.tscn" id="7_vekvf"]
+[ext_resource type="PackedScene" uid="uid://mnm3a20felw" path="res://Gamedev/Main/UI/Menu/OverWorld/WorldSelect.tscn" id="7_vekvf"]
 [ext_resource type="PackedScene" uid="uid://c3hlnh7lg47ao" path="res://Gamedev/Main/UI/Debug/PlayerDebug.tscn" id="8_dv8f2"]
 [ext_resource type="PackedScene" uid="uid://bxq4ypt24skm7" path="res://Gamedev/Main/UI/Menu/Level/LevelSelect.tscn" id="8_ox70c"]
 [ext_resource type="PackedScene" uid="uid://cur0h4kyv7fjc" path="res://Gamedev/Main/UI/Debug/RoomDebugBox.tscn" id="10_hjko8"]
@@ -56,7 +56,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 Container = NodePath("HBoxContainer/ScrollableVBox")
 
-[node name="OverworldMenu" parent="." node_paths=PackedStringArray("Container") instance=ExtResource("7_vekvf")]
+[node name="WorldSelect" parent="." node_paths=PackedStringArray("Container") instance=ExtResource("7_vekvf")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
