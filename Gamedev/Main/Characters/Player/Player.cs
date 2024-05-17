@@ -157,7 +157,7 @@ namespace Gamedev.Main.Characters.Player
 			AudioManager.Play(PlayerAudioManager.Sound.Death);
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 			Tween tween = LevelManager.Instance.CreateTween();
-			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelChangeRequested(LevelManager.Instance.State))).SetDelay(1);
+			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelChangeRequested(LevelManager.Instance.State))).SetDelay(1.6f);
 		}
 
 		private void BatteryCollected()

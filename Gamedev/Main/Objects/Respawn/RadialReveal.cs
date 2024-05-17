@@ -6,7 +6,10 @@ using System;
 public partial class RadialReveal : Sprite2D
 {
 	[Export]
-	private float Duration = 1.0f;
+	private float Duration = 0.6f;
+
+	[Export]
+	private float Delay = 1;
 
 	private Tween Animation;
 
@@ -38,6 +41,7 @@ public partial class RadialReveal : Sprite2D
 			target - new Vector2(0.001f, 0.001f),
 			Duration
 		)
+		.SetDelay(Delay)
 		.SetEase(Tween.EaseType.InOut)
 		.SetTrans(Tween.TransitionType.Cubic);
 		GameStateEvents.PlayerRespawned -= Show;
@@ -66,6 +70,7 @@ public partial class RadialReveal : Sprite2D
 			new Vector2(2, 2),
 			Duration
 		)
+		//.SetDelay(Delay)
 		.SetEase(Tween.EaseType.InOut)
 		.SetTrans(Tween.TransitionType.Cubic);
 	}
