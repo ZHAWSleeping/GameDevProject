@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cigaq1jrw6f7u" path="res://Gamedev/Main/UI/BatteryCounter.tscn" id="5_kdugc"]
 [ext_resource type="PackedScene" uid="uid://ys6jpiihk83a" path="res://Gamedev/Main/UI/Pause/PauseScreen.tscn" id="7_k48l2"]
 [ext_resource type="PackedScene" uid="uid://c3hlnh7lg47ao" path="res://Gamedev/Main/UI/Debug/PlayerDebug.tscn" id="8_dv8f2"]
-[ext_resource type="PackedScene" uid="uid://cur0h4kyv7fjc" path="res://Gamedev/Main/UI/Debug/RoomDebugBox.tscn" id="10_hjko8"]
+[ext_resource type="PackedScene" path="res://Gamedev/Main/UI/Debug/RoomDebugBox.tscn" id="10_hjko8"]
 [ext_resource type="PackedScene" uid="uid://dge5ccrjsbdo0" path="res://Gamedev/Main/UI/Cards/PowerUpCardsDisplay.tscn" id="11_01kuk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjyhc"]

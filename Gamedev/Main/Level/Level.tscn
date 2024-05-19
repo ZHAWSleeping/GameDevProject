@@ -1,30 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8bxn0o50nv6q"]
+[gd_scene load_steps=6 format=3 uid="uid://da0mv3g1bc236"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Level/Level.cs" id="1_hih3i"]
 [ext_resource type="PackedScene" uid="uid://bq74yfdxshoho" path="res://Gamedev/Main/Level/RoomMerger.tscn" id="1_ulaju"]
-[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="4_y4hah"]
-[ext_resource type="PackedScene" uid="uid://bdex20ybgovrs" path="res://Gamedev/Main/Characters/Player.tscn" id="5_iqw2n"]
+[ext_resource type="PackedScene" uid="uid://bdex20ybgovrs" path="res://Gamedev/Main/Characters/Player/Player.tscn" id="5_iqw2n"]
 [ext_resource type="PackedScene" uid="uid://ca5jnjkkgvujn" path="res://Gamedev/Main/Characters/Player/Headband/Headband.tscn" id="6_kwmr3"]
 [ext_resource type="PackedScene" uid="uid://da8visnr5i2yh" path="res://Gamedev/Main/Level/PlayerCamera.tscn" id="7_wh2sm"]
-
-[sub_resource type="Resource" id="Resource_sc14y"]
-resource_local_to_scene = true
-script = ExtResource("4_y4hah")
-MovementSpeed = 100.0
-MaxMovementSpeed = 100.0
-AirDrag = 25.0
-JumpVelocity = 125.0
-JumpVelocityIncrement = 15.0
-WallJumpVelocity = Vector2(150, 150)
-WallJumpVelocityIncrement = 15.0
-WallSlideModifier = 0.8
-AirborneModifier = 0.15
-DashVelocity = 300.0
-StompVelocity = 350.0
-CoyoteTimeFrames = 5
-JumpTimeFrames = 12
-DashTimeFrames = 8
-Gravity = Vector2(0, 16)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("Player", "Merger", "Camera")]
 script = ExtResource("1_hih3i")
@@ -35,7 +15,6 @@ Camera = NodePath("PlayerCamera")
 [node name="RoomMerger" parent="." instance=ExtResource("1_ulaju")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast") instance=ExtResource("5_iqw2n")]
-Data = SubResource("Resource_sc14y")
 Sprite = NodePath("PlayerSprite")
 AudioManager = NodePath("PlayerAudioManager")
 Particles = NodePath("PlayerParticleManager")

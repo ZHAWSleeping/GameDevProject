@@ -1,3 +1,4 @@
+using Gamedev.Main.Characters.Player;
 using Gamedev.Main.Events;
 using Gamedev.Main.Objects.Cards;
 using Godot;
@@ -7,7 +8,7 @@ using System.Linq;
 
 public partial class PowerUpCardsDisplay : Control
 {
-	private const int MaxCards = 3;
+	private const int MaxCards = CardInventory.CardLimit;
 
 	[Export]
 	private Godot.Collections.Array<Texture2D> Cards;

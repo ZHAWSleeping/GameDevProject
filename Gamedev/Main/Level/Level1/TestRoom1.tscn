@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://c6hp0j8plytly"]
+[gd_scene load_steps=4 format=4 uid="uid://c6hp0j8plytly"]
 
 [ext_resource type="PackedScene" uid="uid://dm6irsyrgpir5" path="res://Gamedev/Main/Level/Room.tscn" id="1_c5m43"]
 [ext_resource type="PackedScene" uid="uid://i1et08txpcpx" path="res://Gamedev/Main/Objects/Cards/PowerUpCard2D.tscn" id="2_rb6sr"]
+[ext_resource type="PackedScene" uid="uid://cb24i0l8mp7he" path="res://Gamedev/Main/Characters/Enemies/BaseEnemy.tscn" id="3_635gl"]
 
 [node name="TestRoom1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("1_c5m43")]
 Tiles = NodePath("Tiles")
@@ -31,3 +32,9 @@ Sprite = NodePath("PowerUpCards")
 position = Vector2(214, 119)
 Sprite = NodePath("PowerUpCards")
 CardType = 2
+
+[node name="BaseEnemy" parent="." index="8" node_paths=PackedStringArray("FloorWallPlayerDetection", "topDetectionEnemyRight", "topDetectionEnemyLeft") instance=ExtResource("3_635gl")]
+position = Vector2(226, 123)
+FloorWallPlayerDetection = NodePath("RayCastEnemy")
+topDetectionEnemyRight = NodePath("TopDetection_Enemy_Right")
+topDetectionEnemyLeft = NodePath("TopDetection_Enemy_Left")

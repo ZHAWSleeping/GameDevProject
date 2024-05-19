@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmo2ksosfmxbx"]
 
-[ext_resource type="PackedScene" uid="uid://c8bxn0o50nv6q" path="res://Gamedev/Main/Level/Level.tscn" id="1_vitqb"]
+[ext_resource type="PackedScene" uid="uid://da0mv3g1bc236" path="res://Gamedev/Main/Level/Level.tscn" id="1_vitqb"]
 [ext_resource type="PackedScene" uid="uid://c6hp0j8plytly" path="res://Gamedev/Main/Level/Level1/TestRoom1.tscn" id="5_kkl37"]
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="5_xxi14"]
 [ext_resource type="PackedScene" uid="uid://djnwc15xpvhjd" path="res://Gamedev/Main/Level/Level1/TestRoom2.tscn" id="6_bbctc"]
 [ext_resource type="PackedScene" uid="uid://bti8qjpe5tpsh" path="res://Gamedev/Main/Level/Level1/TestRoom3.tscn" id="8_t82xc"]
 
-[sub_resource type="Resource" id="Resource_0cl4e"]
+[sub_resource type="Resource" id="Resource_wcxvn"]
 resource_local_to_scene = true
 script = ExtResource("5_xxi14")
 MovementSpeed = 100.0
 MaxMovementSpeed = 100.0
 AirDrag = 25.0
 JumpVelocity = 125.0
-JumpVelocityIncrement = 15.0
+JumpVelocityIncrement = 16.0
 WallJumpVelocity = Vector2(150, 150)
 WallJumpVelocityIncrement = 15.0
 WallSlideModifier = 0.8
@@ -57,7 +57,7 @@ Anchor = NodePath("Anchor")
 RespawnPoint = NodePath("RespawnPoint")
 
 [node name="Player" parent="." index="1" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
-Data = SubResource("Resource_0cl4e")
+Data = SubResource("Resource_wcxvn")
 Sprite = NodePath("PlayerSprite")
 AudioManager = NodePath("PlayerAudioManager")
 Particles = NodePath("PlayerParticleManager")

@@ -1,30 +1,97 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4o60hnap32vo"]
+[gd_scene load_steps=17 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_8ykvk"]
-[ext_resource type="SpriteFrames" uid="uid://dcg43b6gpim04" path="res://Gamedev/Main/Characters/CavePlayer/Cube.tres" id="2_5rbin"]
-[ext_resource type="Shape2D" uid="uid://dxvweboycl86g" path="res://Gamedev/Main/Characters/Player/PlayerHitbox.tres" id="3_13o7t"]
-[ext_resource type="PackedScene" uid="uid://xlx0k7vpgxe" path="res://Gamedev/Main/Characters/CavePlayer/ZoneTrigger.tscn" id="3_gnjan"]
+[ext_resource type="Resource" uid="uid://cyhmo207n15cb" path="res://Gamedev/Main/Characters/Player/PlayerDataRegular.tres" id="2_n8hsk"]
+[ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="3_nkscw"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="5_fnhlx"]
-[ext_resource type="Shape2D" uid="uid://g2lxx6siy7uf" path="res://Gamedev/Main/Characters/Player/PlayerHurtbox.tres" id="6_3s7xy"]
+[ext_resource type="PackedScene" uid="uid://l2s63awt1crk" path="res://Gamedev/Main/Characters/Player/PlayerSprite.tscn" id="5_sbc7p"]
+[ext_resource type="PackedScene" uid="uid://cihejt48jvtrp" path="res://Gamedev/Main/Characters/EnemyTrigger.tscn" id="6_tsaf4"]
+[ext_resource type="PackedScene" uid="uid://bjfqed20ro5sb" path="res://Gamedev/Main/Characters/Player/PlayerParticleManager.tscn" id="7_l870l"]
+[ext_resource type="PackedScene" uid="uid://7msvvx6xr55q" path="res://Gamedev/Main/Rendering/Particles/DoubleJumpParticle.tscn" id="8_ph21u"]
+[ext_resource type="PackedScene" uid="uid://d08dcb5tnic5g" path="res://Gamedev/Main/Rendering/Particles/DashTrail.tscn" id="9_1tkrb"]
+[ext_resource type="PackedScene" uid="uid://oclsdyy7332g" path="res://Gamedev/Main/Rendering/Particles/StompParticles.tscn" id="10_a6dx0"]
+[ext_resource type="PackedScene" uid="uid://c4vv6xnd4sm44" path="res://Gamedev/Main/Rendering/Particles/WallJumpParticles.tscn" id="11_62ici"]
+[ext_resource type="PackedScene" uid="uid://cletooeluxop1" path="res://Gamedev/Main/Characters/Player/PlayerAudioManager.tscn" id="12_dyyu7"]
 
-[node name="Player" type="CharacterBody2D"]
-collision_mask = 10
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgfme"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwv7"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv0xg"]
+size = Vector2(0.2, 9)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
+light_mask = 32
+collision_mask = 115
 script = ExtResource("1_8ykvk")
-Speed = 200.0
-JumpVelocity = -300.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_5rbin")
+Data = ExtResource("2_n8hsk")
+Sprite = NodePath("PlayerSprite")
+AudioManager = NodePath("PlayerAudioManager")
+Particles = NodePath("PlayerParticleManager")
+Shape = NodePath("CollisionShape2D")
+LeftWallCast = NodePath("LeftWallCast")
+RightWallCast = NodePath("RightWallCast")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("3_13o7t")
+shape = SubResource("RectangleShape2D_tps25")
 
-[node name="ZoneTrigger" parent="." instance=ExtResource("3_gnjan")]
+[node name="ZoneTrigger" parent="." instance=ExtResource("3_nkscw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTrigger"]
-shape = ExtResource("3_13o7t")
+visible = false
+shape = SubResource("RectangleShape2D_bgfme")
 
 [node name="DeathTrigger" parent="." instance=ExtResource("5_fnhlx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathTrigger"]
-shape = ExtResource("6_3s7xy")
+visible = false
+shape = SubResource("RectangleShape2D_rhwv7")
+
+[node name="PlayerSprite" parent="." node_paths=PackedStringArray("AnimTree", "Sprite", "HeadbandAnchor", "HeadbandTransform", "Joint") instance=ExtResource("5_sbc7p")]
+position = Vector2(0, -5)
+AnimTree = NodePath("AnimationTree")
+Sprite = NodePath("Human")
+HeadbandAnchor = NodePath("HeadbandAnchor")
+HeadbandTransform = NodePath("HeadbandAnchor/RemoteTransform2D")
+Joint = NodePath("HeadbandAnchor/PinJoint2D")
+
+[node name="EnemyTrigger" parent="." instance=ExtResource("6_tsaf4")]
+visible = false
+
+[node name="LeftWallCast" type="ShapeCast2D" parent="."]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_xv0xg")
+target_position = Vector2(-0.4, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RightWallCast" type="ShapeCast2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_xv0xg")
+target_position = Vector2(0.4, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="PlayerParticleManager" parent="." node_paths=PackedStringArray("JumpParticles", "StompParticles", "DashTrail", "WallJumpParticles") instance=ExtResource("7_l870l")]
+JumpParticles = NodePath("DoubleJumpParticle")
+StompParticles = NodePath("StompParticles")
+DashTrail = NodePath("DashTrail")
+WallJumpParticles = NodePath("WallJumpParticles")
+
+[node name="DoubleJumpParticle" parent="PlayerParticleManager" instance=ExtResource("8_ph21u")]
+position = Vector2(0, 5)
+
+[node name="DashTrail" parent="PlayerParticleManager" instance=ExtResource("9_1tkrb")]
+
+[node name="StompParticles" parent="PlayerParticleManager" instance=ExtResource("10_a6dx0")]
+position = Vector2(0, 5)
+
+[node name="WallJumpParticles" parent="PlayerParticleManager" instance=ExtResource("11_62ici")]
+position = Vector2(0, 5)
+
+[node name="PlayerAudioManager" parent="." instance=ExtResource("12_dyyu7")]

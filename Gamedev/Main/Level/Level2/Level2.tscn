@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8b8aixb7bu3k"]
+
+[ext_resource type="PackedScene" uid="uid://da0mv3g1bc236" path="res://Gamedev/Main/Level/Level.tscn" id="1_h3xrq"]
+[ext_resource type="PackedScene" uid="uid://go31wv4vjcpj" path="res://Gamedev/Main/Level/Level2/Room1.tscn" id="2_0wtni"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="2_w8ieq"]
+[ext_resource type="PackedScene" uid="uid://bqa5xicm353s6" path="res://Gamedev/Main/Level/Level2/Room2.tscn" id="3_jlp4v"]
+[ext_resource type="PackedScene" uid="uid://1fortojynfbl" path="res://Gamedev/Main/Level/Level2/Room3.tscn" id="4_2qc7q"]
+[ext_resource type="PackedScene" uid="uid://cayb2e0w5p6uw" path="res://Gamedev/Main/Level/Level2/Room4.tscn" id="5_bnr3s"]
+
+[sub_resource type="Resource" id="Resource_6wgmp"]
+resource_local_to_scene = true
+script = ExtResource("2_w8ieq")
+MovementSpeed = 100.0
+MaxMovementSpeed = 100.0
+AirDrag = 25.0
+JumpVelocity = 126.0
+JumpVelocityIncrement = 16.0
+WallJumpVelocity = Vector2(150, 150)
+WallJumpVelocityIncrement = 15.0
+WallSlideModifier = 0.8
+AirborneModifier = 0.15
+DashVelocity = 300.0
+StompVelocity = 350.0
+CoyoteTimeFrames = 5
+JumpTimeFrames = 12
+DashTimeFrames = 8
+Gravity = Vector2(0, 16)
+
+[node name="Level 2" node_paths=PackedStringArray("Player", "Merger", "Camera") instance=ExtResource("1_h3xrq")]
+Player = NodePath("Player")
+Merger = NodePath("RoomMerger")
+Camera = NodePath("PlayerCamera")
+
+[node name="Room1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("2_0wtni")]
+Id = 0
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("3_jlp4v")]
+position = Vector2(310, 0)
+Id = 1
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("4_2qc7q")]
+position = Vector2(310, 170)
+Id = 2
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room4" parent="RoomMerger" index="3" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("5_bnr3s")]
+position = Vector2(560, -170)
+Id = 3
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Player" parent="." index="1" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
+Data = SubResource("Resource_6wgmp")
+Sprite = NodePath("PlayerSprite")
+AudioManager = NodePath("PlayerAudioManager")
+Particles = NodePath("PlayerParticleManager")
+Shape = NodePath("CollisionShape2D")
+LeftWallCast = NodePath("LeftWallCast")
+RightWallCast = NodePath("RightWallCast")
+
+[node name="Headband" parent="." index="2" node_paths=PackedStringArray("Sprite", "Body")]
+Sprite = NodePath("Sprite2D")
+Body = NodePath("RigidBody2D")

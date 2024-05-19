@@ -8,7 +8,7 @@ namespace Gamedev.Main.Characters.Player
 {
 	public class CardInventory
 	{
-		private const int CardLimit = 3;
+		public const int CardLimit = 3;
 		private LinkedList<PowerUpCard> Cards = new();
 
 		public CardInventory()
