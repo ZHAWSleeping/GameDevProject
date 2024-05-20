@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://blxqeoy3g0eg2"]
+[gd_scene load_steps=3 format=3 uid="uid://blxqeoy3g0eg2"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Rendering/GameViewport.cs" id="1_k8jac"]
-[ext_resource type="Texture2D" uid="uid://cpfu4ygugxiv5" path="res://Gamedev/Main/Level/RoomBoundaries.pxo" id="2_tkkbj"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0dp02"]
 viewport_path = NodePath("SubViewport")
@@ -25,7 +24,3 @@ size = Vector2i(320, 180)
 size_2d_override = Vector2i(320, 180)
 size_2d_override_stretch = true
 render_target_update_mode = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
-texture = ExtResource("2_tkkbj")
-centered = false
