@@ -13,7 +13,8 @@ namespace Gamedev.Main.Characters.Player
 			Fall,
 			Stomp,
 			Death,
-			CardPickup
+			CardPickup,
+			Victory,
 		}
 
 		public override void _Ready()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cletooeluxop1"]
+[gd_scene load_steps=10 format=3 uid="uid://cletooeluxop1"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerAudioManager.cs" id="1_jywtk"]
 [ext_resource type="AudioStream" uid="uid://dib056r1034gl" path="res://Gamedev/Main/Audio/Effects/Jump.wav" id="2_wfkkk"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://gsu1ldc7e60n" path="res://Gamedev/Main/Audio/Effects/Fall.wav" id="6_4vqhi"]
 [ext_resource type="AudioStream" uid="uid://3dp3jpuwsbkw" path="res://Gamedev/Main/Audio/Effects/CardPickup.wav" id="6_xf3fl"]
 [ext_resource type="AudioStream" uid="uid://bfrthbwaovc6r" path="res://Gamedev/Main/Audio/Effects/Death.wav" id="7_bxpti"]
+[ext_resource type="AudioStream" uid="uid://l7bp38764muw" path="res://Gamedev/Main/Audio/Effects/Victory.wav" id="8_2andc"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bsdgc"]
 random_pitch = 1.2
@@ -43,3 +44,6 @@ stream = ExtResource("6_xf3fl")
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_bxpti")
+
+[node name="Victory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_2andc")
