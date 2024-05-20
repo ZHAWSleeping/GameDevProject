@@ -74,6 +74,8 @@ public partial class PowerUpCardsDisplay : Control
 	/// <param name="_"></param>
 	private void RemoveLastCard(PowerUpCard _)
 	{
+		if (CardRects.Count <= 0)
+			return;
 		TextureRect oldCard = CardRects.Last();
 		CardRects.RemoveLast();
 		ConsumeCardAnimation(oldCard);
