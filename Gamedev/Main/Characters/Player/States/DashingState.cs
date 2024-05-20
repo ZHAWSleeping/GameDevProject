@@ -3,6 +3,7 @@ using static Gamedev.Main.Characters.Player.PlayerSprite;
 using static Gamedev.Main.Extensions.VectorExtensions;
 using static Gamedev.Main.Characters.Player.PlayerFSM;
 using Godot;
+using Gamedev.Main.Constants;
 
 namespace Gamedev.Main.Characters.Player
 {
@@ -38,6 +39,7 @@ namespace Gamedev.Main.Characters.Player
 				}
 				data.Particles.DashTrailEmitting = true;
 				data.Audio.Play(PlayerAudioManager.Sound.Dash);
+				data.Player.CollisionMask &= ~(uint)Bitmasks.Physics2DLayer.Breakable;
 			}
 
 			data.DashTime--;
@@ -47,15 +49,22 @@ namespace Gamedev.Main.Characters.Player
 
 		private State FallingTransition(PlayerData data)
 		{
-			return data.DashTime <= 0
-				? State.Falling
-				: State.Invalid;
+			if (data.DashTime <= 0)
+			{
+				data.Player.CollisionMask |= (uint)Bitmasks.Physics2DLayer.Breakable;
+				return State.Falling;
+			}
+			else
+			{
+				return State.Invalid;
+			}
 		}
 
 		private State WallTransition(PlayerData data)
 		{
 			if (data.InputDirection.ToQuadrantDirection() == data.WallSide && data.WallSide != Direction.None && data.DashTime <= 0)
 			{
+				data.Player.CollisionMask |= (uint)Bitmasks.Physics2DLayer.Breakable;
 				return State.Wall;
 			}
 			return State.Invalid;
@@ -63,7 +72,15 @@ namespace Gamedev.Main.Characters.Player
 
 		private State GroundedTransition(PlayerData data)
 		{
-			return data.Player.IsOnFloor() && data.DashTime <= 0 ? State.Grounded : State.Invalid;
+			if (data.Player.IsOnFloor() && data.DashTime <= 0)
+			{
+				data.Player.CollisionMask |= (uint)Bitmasks.Physics2DLayer.Breakable;
+				return State.Grounded;
+			}
+			else
+			{
+				return State.Invalid;
+			}
 		}
 	}
 }

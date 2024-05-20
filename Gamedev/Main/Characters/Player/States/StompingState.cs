@@ -1,4 +1,5 @@
 using System;
+using Gamedev.Main.Constants;
 using Godot;
 using static Gamedev.Main.Characters.Player.PlayerFSM;
 using static Gamedev.Main.Characters.Player.PlayerSprite;
@@ -24,6 +25,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			if (data.Velocity.Y != data.StompVelocity)
 			{
+				data.Player.CollisionMask &= ~(uint)Bitmasks.Physics2DLayer.Breakable;
 				data.Audio.Play(PlayerAudioManager.Sound.Fall);
 			}
 			data.Velocity = new(0, data.StompVelocity);
@@ -34,6 +36,7 @@ namespace Gamedev.Main.Characters.Player
 		{
 			if (data.Player.IsOnFloor())
 			{
+				data.Player.CollisionMask |= (uint)Bitmasks.Physics2DLayer.Breakable;
 				data.Audio.Stop(PlayerAudioManager.Sound.Fall);
 				data.Audio.Play(PlayerAudioManager.Sound.Stomp);
 				data.Particles.StompParticlesEmitting = true;

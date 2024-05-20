@@ -31,6 +31,9 @@ namespace Gamedev.Main.Events
 		public static event Action<Vector2> CameraTransitionTriggered;
 		public static void OnCameraTransitionTriggered(Vector2 pos) => CameraTransitionTriggered(pos);
 
+		public static event Action ObjectBroken;
+		public static void OnObjectBroken() => ObjectBroken();
+
 		static CollisionEvents()
 		{
 			Clear();
@@ -46,6 +49,7 @@ namespace Gamedev.Main.Events
 			CardConsumed = delegate { };
 			CurrentCardChanged = delegate { };
 			CameraTransitionTriggered = delegate { };
+			ObjectBroken = delegate { };
 		}
 	}
 }

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk3gs21ev1we4"]
+
+[ext_resource type="TileSet" uid="uid://cl0m8mlr1m2lb" path="res://Gamedev/Main/Tiles/Destructible/DestructibleSet.tres" id="1_gdvln"]
+[ext_resource type="Script" path="res://Gamedev/Main/Tiles/Destructible/DestructibleMap.cs" id="2_24xqd"]
+
+[node name="DestructibleMap" type="TileMapLayer"]
+tile_set = ExtResource("1_gdvln")
+script = ExtResource("2_24xqd")

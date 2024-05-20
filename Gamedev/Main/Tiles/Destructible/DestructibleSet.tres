@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cl0m8mlr1m2lb"]
+
+[ext_resource type="Texture2D" uid="uid://drnwr33kuwh4q" path="res://Gamedev/Main/Tiles/Destructible/Destructible.pxo" id="1_1djus"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whfvo"]
+texture = ExtResource("1_1djus")
+texture_region_size = Vector2i(10, 10)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[resource]
+tile_size = Vector2i(10, 10)
+physics_layer_0/collision_layer = 128
+physics_layer_0/collision_mask = 129
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Destructible"
+terrain_set_0/terrain_0/color = Color(0.87, 0.3654, 0.3654, 1)
+sources/0 = SubResource("TileSetAtlasSource_whfvo")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=18 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_8ykvk"]
 [ext_resource type="Resource" uid="uid://cyhmo207n15cb" path="res://Gamedev/Main/Characters/Player/PlayerDataRegular.tres" id="2_n8hsk"]
 [ext_resource type="PackedScene" uid="uid://c0o0q4cqm3xv2" path="res://Gamedev/Main/Characters/ZoneTrigger.tscn" id="3_nkscw"]
 [ext_resource type="PackedScene" uid="uid://c68k4wpkbm4wc" path="res://Gamedev/Main/Characters/DeathTrigger.tscn" id="5_fnhlx"]
 [ext_resource type="PackedScene" uid="uid://l2s63awt1crk" path="res://Gamedev/Main/Characters/Player/PlayerSprite.tscn" id="5_sbc7p"]
+[ext_resource type="PackedScene" uid="uid://hwd0v8ifc213" path="res://Gamedev/Main/Characters/Player/DestructibleTrigger.tscn" id="5_vm57u"]
 [ext_resource type="PackedScene" uid="uid://cihejt48jvtrp" path="res://Gamedev/Main/Characters/EnemyTrigger.tscn" id="6_tsaf4"]
 [ext_resource type="PackedScene" uid="uid://bjfqed20ro5sb" path="res://Gamedev/Main/Characters/Player/PlayerParticleManager.tscn" id="7_l870l"]
 [ext_resource type="PackedScene" uid="uid://7msvvx6xr55q" path="res://Gamedev/Main/Rendering/Particles/DoubleJumpParticle.tscn" id="8_ph21u"]
@@ -27,7 +28,8 @@ size = Vector2(0.2, 9)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
 light_mask = 32
-collision_mask = 115
+collision_layer = 129
+collision_mask = 243
 script = ExtResource("1_8ykvk")
 Data = ExtResource("2_n8hsk")
 Sprite = NodePath("PlayerSprite")
@@ -51,6 +53,8 @@ shape = SubResource("RectangleShape2D_bgfme")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathTrigger"]
 visible = false
 shape = SubResource("RectangleShape2D_rhwv7")
+
+[node name="DestructibleTrigger" parent="." instance=ExtResource("5_vm57u")]
 
 [node name="PlayerSprite" parent="." node_paths=PackedStringArray("AnimTree", "Sprite", "HeadbandAnchor", "HeadbandTransform", "Joint") instance=ExtResource("5_sbc7p")]
 position = Vector2(0, -5)

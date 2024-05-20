@@ -15,6 +15,7 @@ namespace Gamedev.Main.Characters.Player
 			Death,
 			CardPickup,
 			Victory,
+			Break,
 		}
 
 		public override void _Ready()

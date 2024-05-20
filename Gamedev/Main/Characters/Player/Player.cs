@@ -42,6 +42,7 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.CollisionDeath += Die;
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
+			CollisionEvents.ObjectBroken += () => AudioManager.Play(PlayerAudioManager.Sound.Break);
 
 			Data.Player = this;
 			Data.Sprite = Sprite;
