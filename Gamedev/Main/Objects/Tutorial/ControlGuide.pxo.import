@@ -1,14 +1,14 @@
 [remap]
 
-importer="Pixelorama AnimatedSprite2D"
-type="PackedScene"
+importer="Pixelorama SpriteFrames"
+type="SpriteFrames"
 uid="uid://drlkkb21cy03e"
-path="res://.godot/imported/ControlGuide.pxo-01240ca906a59dda6d37c1766c1eba68.scn"
+path="res://.godot/imported/ControlGuide.pxo-01240ca906a59dda6d37c1766c1eba68.res"
 
 [deps]
 
 source_file="res://Gamedev/Main/Objects/Tutorial/ControlGuide.pxo"
-dest_files=["res://.godot/imported/ControlGuide.pxo-01240ca906a59dda6d37c1766c1eba68.scn"]
+dest_files=["res://.godot/imported/ControlGuide.pxo-01240ca906a59dda6d37c1766c1eba68.res"]
 
 [params]
 
@@ -17,7 +17,6 @@ animation/default/direction=0
 animation/default/repeat_count=0
 animation/autoplay_name=""
 atlas_textures/region_filter_clip_enabled=false
-root_node_name=""
 middle_import_script=""
 post_import_script=""
 sprite_sheet/edges_artifacts_avoidance_method=0

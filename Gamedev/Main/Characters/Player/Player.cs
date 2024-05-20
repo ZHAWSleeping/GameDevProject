@@ -43,6 +43,7 @@ namespace Gamedev.Main.Characters.Player
 			CollisionEvents.BatteryCollected += BatteryCollected;
 			CollisionEvents.LightTouched += CheckForBatteries;
 			CollisionEvents.ObjectBroken += () => AudioManager.Play(PlayerAudioManager.Sound.Break);
+			CollisionEvents.GoalReached += Win;
 
 			Data.Player = this;
 			Data.Sprite = Sprite;
@@ -159,6 +160,14 @@ namespace Gamedev.Main.Characters.Player
 			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 			Tween tween = LevelManager.Instance.CreateTween();
 			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelChangeRequested(LevelManager.Instance.State))).SetDelay(1.6f);
+		}
+
+		private void Win()
+		{
+			AudioManager.Play(PlayerAudioManager.Sound.Victory);
+			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+			Tween tween = LevelManager.Instance.CreateTween();
+			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelFinished(LevelManager.Instance.State))).SetDelay(1.6f);
 		}
 
 		private void BatteryCollected()

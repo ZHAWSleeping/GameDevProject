@@ -14,14 +14,21 @@ namespace Gamedev.Main.Rendering
 			PersistentEvents.PauseRequested += () => ProcessMode = ProcessModeEnum.Disabled;
 			PersistentEvents.ResumeRequested += () => ProcessMode = ProcessModeEnum.Inherit;
 			PersistentEvents.GameSceneChangeRequested += ReplaceGameScene;
+			PersistentEvents.LevelFinished += _ => Clear();
 		}
 
 		private void ReplaceGameScene(PackedScene scene)
 		{
-			CollisionEvents.Clear();
-			Viewport.GetChildren().ToList().ForEach(c => c.QueueFree());
+			Clear();
 			Node2D newScene = scene.Instantiate<Node2D>();
 			Viewport.AddChild(newScene);
+		}
+
+		private void Clear()
+		{
+			CollisionEvents.Clear();
+			GameStateEvents.Clear();
+			Viewport.GetChildren().ToList().ForEach(c => c.QueueFree());
 		}
 	}
 }

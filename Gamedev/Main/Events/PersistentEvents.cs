@@ -44,8 +44,8 @@ namespace Gamedev.Main.Events
 		public static event Action<int> RoomChanged;
 		public static void OnRoomChanged(int room) => RoomChanged(room);
 
-		public static event Action<int, int> LevelFinished;
-		public static void OnLevelFinished(int world, int level) => LevelFinished(world, level);
+		public static event Action<GameState> LevelFinished;
+		public static void OnLevelFinished(GameState state) => LevelFinished(state);
 
 		public static event Action PlaytimeTicked;
 		public static void OnPlaytimeTicked() => PlaytimeTicked();

@@ -34,6 +34,9 @@ namespace Gamedev.Main.Events
 		public static event Action ObjectBroken;
 		public static void OnObjectBroken() => ObjectBroken();
 
+		public static event Action GoalReached;
+		public static void OnGoalReached() => GoalReached();
+
 		static CollisionEvents()
 		{
 			Clear();
@@ -50,6 +53,7 @@ namespace Gamedev.Main.Events
 			CurrentCardChanged = delegate { };
 			CameraTransitionTriggered = delegate { };
 			ObjectBroken = delegate { };
+			GoalReached = delegate { };
 		}
 	}
 }

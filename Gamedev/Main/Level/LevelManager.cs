@@ -80,16 +80,19 @@ public partial class LevelManager : Node
 		DebugEvents.OnRoomChanged(this);
 	}
 
-	private void MarkAsCompleted(int world, int level)
+	private void MarkAsCompleted(GameState state)
 	{
+		int world = state.CurrentWorld;
+		int level = state.CurrentLevel;
 		if (IsInBounds(world, level))
 		{
-			LevelsCompleted[world][level] = true;
+			State.File.CompletedLevels[world][level] = true;
 		}
 		else
 		{
 			GD.PrintErr($"Attempted to complete non-existent level {world}-{level}");
 		}
+		PersistentEvents.OnWorldSelected(State);
 		DebugEvents.OnRoomChanged(this);
 	}
 

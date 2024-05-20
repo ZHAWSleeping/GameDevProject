@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://difsxl6mgpehu"]
+
+[ext_resource type="Script" path="res://Gamedev/Main/Objects/Goal.cs" id="1_bba67"]
+[ext_resource type="Texture2D" uid="uid://cgq0bhx4l6w0r" path="res://Gamedev/Main/Objects/LevelGoal.pxo" id="3_dnq4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50486"]
+
+[node name="Goal" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_bba67")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_50486")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_dnq4u")
+
+[connection signal="body_entered" from="." to="." method="GoalReached"]

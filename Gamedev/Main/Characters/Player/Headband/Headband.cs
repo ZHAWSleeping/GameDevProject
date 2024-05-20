@@ -40,6 +40,7 @@ public partial class Headband : Node2D
 		Color = DefaultColor;
 		NodePaths.Headband = this;
 		CollisionEvents.CollisionDeath += () => this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+		CollisionEvents.GoalReached += () => this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
 		CollisionEvents.CurrentCardChanged += card =>
 		{
 			if (card.CardType == Gamedev.Main.Objects.Cards.PowerUpCard.Type.Invalid)

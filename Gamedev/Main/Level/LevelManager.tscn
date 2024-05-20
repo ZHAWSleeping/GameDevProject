@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx4ut7y6v26rd"]
+[gd_scene load_steps=4 format=3 uid="uid://bx4ut7y6v26rd"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Level/LevelManager.cs" id="1_r705l"]
+[ext_resource type="PackedScene" uid="uid://cmo2ksosfmxbx" path="res://Gamedev/Main/Level/Level1/Level1.tscn" id="2_m3737"]
 [ext_resource type="PackedScene" uid="uid://c8b8aixb7bu3k" path="res://Gamedev/Main/Level/Level2/Level2.tscn" id="2_pr4ad"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_r705l")
-ExportedLevels = [ExtResource("2_pr4ad")]
-ExportedWorlds = [1]
+ExportedLevels = [ExtResource("2_m3737"), ExtResource("2_pr4ad")]
+ExportedWorlds = [2]

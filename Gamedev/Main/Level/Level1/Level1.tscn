@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmo2ksosfmxbx"]
+[gd_scene load_steps=10 format=3 uid="uid://cmo2ksosfmxbx"]
 
 [ext_resource type="PackedScene" uid="uid://da0mv3g1bc236" path="res://Gamedev/Main/Level/Level.tscn" id="1_vitqb"]
-[ext_resource type="PackedScene" uid="uid://c6hp0j8plytly" path="res://Gamedev/Main/Level/Level1/TestRoom1.tscn" id="5_kkl37"]
+[ext_resource type="PackedScene" uid="uid://bva1qjrmkn0a0" path="res://Gamedev/Main/Level/Level1/L01Room00.tscn" id="2_qd0s3"]
+[ext_resource type="PackedScene" uid="uid://cc72irk1nkgeg" path="res://Gamedev/Main/Level/Level1/L01Room01.tscn" id="3_gtqc6"]
+[ext_resource type="PackedScene" uid="uid://cx8mdfefawprx" path="res://Gamedev/Main/Level/Level1/L01Room02.tscn" id="4_5iq5q"]
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="5_xxi14"]
-[ext_resource type="PackedScene" uid="uid://djnwc15xpvhjd" path="res://Gamedev/Main/Level/Level1/TestRoom2.tscn" id="6_bbctc"]
-[ext_resource type="PackedScene" uid="uid://bti8qjpe5tpsh" path="res://Gamedev/Main/Level/Level1/TestRoom3.tscn" id="8_t82xc"]
+[ext_resource type="PackedScene" uid="uid://bakjqxaohdjuv" path="res://Gamedev/Main/Level/Level1/L01Room03.tscn" id="5_yvwba"]
+[ext_resource type="PackedScene" uid="uid://bg3horxve72qq" path="res://Gamedev/Main/Level/Level1/L01Room04.tscn" id="6_iymvx"]
+[ext_resource type="PackedScene" uid="uid://blgq1stpd0p7g" path="res://Gamedev/Main/Level/Level1/L01Room05.tscn" id="7_gxeny"]
 
 [sub_resource type="Resource" id="Resource_wcxvn"]
 resource_local_to_scene = true
@@ -30,7 +33,7 @@ Player = NodePath("Player")
 Merger = NodePath("RoomMerger")
 Camera = NodePath("PlayerCamera")
 
-[node name="TestRoom1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("5_kkl37")]
+[node name="Room00" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("2_qd0s3")]
 Id = 0
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
@@ -38,7 +41,7 @@ loadingZone = NodePath("LoadingZones")
 Anchor = NodePath("Anchor")
 RespawnPoint = NodePath("RespawnPoint")
 
-[node name="TestRoom2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("6_bbctc")]
+[node name="Room01" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("3_gtqc6")]
 position = Vector2(310, 0)
 Id = 1
 Tiles = NodePath("Tiles")
@@ -47,9 +50,36 @@ loadingZone = NodePath("LoadingZones")
 Anchor = NodePath("Anchor")
 RespawnPoint = NodePath("RespawnPoint")
 
-[node name="TestRoom3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("8_t82xc")]
+[node name="Room02" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("4_5iq5q")]
 position = Vector2(620, 0)
 Id = 2
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room03" parent="RoomMerger" index="3" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("5_yvwba")]
+position = Vector2(930, 0)
+Id = 3
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room04" parent="RoomMerger" index="4" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("6_iymvx")]
+position = Vector2(930, 170)
+Id = 4
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room05" parent="RoomMerger" index="5" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("7_gxeny")]
+position = Vector2(930, 340)
+Id = 5
 Tiles = NodePath("Tiles")
 Boundaries = NodePath("Boundaries")
 loadingZone = NodePath("LoadingZones")
