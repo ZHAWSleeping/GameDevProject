@@ -27,8 +27,8 @@ stretch_mode = 5
 
 [node name="FixedScrollableHBox" parent="." instance=ExtResource("2_8s42e")]
 layout_mode = 0
-offset_left = 735.0
+offset_left = 757.0
 offset_top = 242.0
-offset_right = 3633.0
+offset_right = 3655.0
 offset_bottom = 871.0
 alignment = 0

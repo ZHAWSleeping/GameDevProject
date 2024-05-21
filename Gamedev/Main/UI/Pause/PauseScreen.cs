@@ -1,3 +1,4 @@
+using Gamedev.Main.Audio;
 using Gamedev.Main.Events;
 using Gamedev.Main.UI.Scrollable;
 using Godot;
@@ -33,7 +34,7 @@ namespace Gamedev.Main.UI.Pause
 				{
 					PersistentEvents.OnResumeRequested();
 				}
-				else
+				else if (LevelManager.Instance.InLevel)
 				{
 					PersistentEvents.OnPauseRequested();
 				}
@@ -51,7 +52,7 @@ namespace Gamedev.Main.UI.Pause
 			tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.White, 0.25f);
 			Menu.ProcessMode = ProcessModeEnum.Inherit;
 			Audio.PitchScale = 1.0f;
-			Audio.Play();
+			PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuAccept);
 			Paused = !Paused;
 		}
 
@@ -61,7 +62,7 @@ namespace Gamedev.Main.UI.Pause
 			tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.Transparent, 0.25f);
 			Menu.ProcessMode = ProcessModeEnum.Disabled;
 			Audio.PitchScale = 1.5f;
-			Audio.Play();
+			PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuBack);
 			Paused = !Paused;
 		}
 	}

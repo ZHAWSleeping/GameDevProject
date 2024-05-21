@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdex20ybgovrs"]
+[gd_scene load_steps=19 format=3 uid="uid://bdex20ybgovrs"]
 
 [ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/Player.cs" id="1_8ykvk"]
 [ext_resource type="Resource" uid="uid://cyhmo207n15cb" path="res://Gamedev/Main/Characters/Player/PlayerDataRegular.tres" id="2_n8hsk"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://oclsdyy7332g" path="res://Gamedev/Main/Rendering/Particles/StompParticles.tscn" id="10_a6dx0"]
 [ext_resource type="PackedScene" uid="uid://c4vv6xnd4sm44" path="res://Gamedev/Main/Rendering/Particles/WallJumpParticles.tscn" id="11_62ici"]
 [ext_resource type="PackedScene" uid="uid://cletooeluxop1" path="res://Gamedev/Main/Characters/Player/PlayerAudioManager.tscn" id="12_dyyu7"]
+[ext_resource type="PackedScene" uid="uid://ctnliy64dlo38" path="res://Gamedev/Main/Characters/Player/TimeTracker.tscn" id="14_rj4eg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tps25"]
 size = Vector2(10, 10)
@@ -99,3 +100,5 @@ position = Vector2(0, 5)
 position = Vector2(0, 5)
 
 [node name="PlayerAudioManager" parent="." instance=ExtResource("12_dyyu7")]
+
+[node name="TimeTracker" parent="." instance=ExtResource("14_rj4eg")]

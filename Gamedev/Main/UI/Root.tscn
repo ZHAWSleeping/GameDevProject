@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://h6d7kbhyxf08"]
+[gd_scene load_steps=20 format=3 uid="uid://h6d7kbhyxf08"]
 
 [ext_resource type="PackedScene" uid="uid://blxqeoy3g0eg2" path="res://Gamedev/Main/Rendering/GameViewport.tscn" id="1_631j5"]
 [ext_resource type="Script" path="res://Gamedev/Main/UI/Root.cs" id="1_afext"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnr32jwpw6hmg" path="res://Gamedev/Main/Rendering/DefaultEnvironment.tscn" id="3_nom6r"]
 [ext_resource type="PackedScene" uid="uid://ce1jks86gaxc0" path="res://Gamedev/Main/UI/SlidingOverlay.tscn" id="4_3uud4"]
 [ext_resource type="PackedScene" uid="uid://bx4ut7y6v26rd" path="res://Gamedev/Main/Level/LevelManager.tscn" id="4_ec24p"]
+[ext_resource type="PackedScene" uid="uid://bxq7rahjy4ge4" path="res://Gamedev/Main/Audio/GlobalAudioManager.tscn" id="4_my0br"]
 [ext_resource type="PackedScene" uid="uid://brwpaqk7l6bsx" path="res://Gamedev/Main/UI/FPSCounter.tscn" id="5_2e066"]
 [ext_resource type="PackedScene" uid="uid://cigaq1jrw6f7u" path="res://Gamedev/Main/UI/BatteryCounter.tscn" id="5_kdugc"]
 [ext_resource type="PackedScene" uid="uid://dgeh0gb3ljr32" path="res://Gamedev/Main/UI/Menu/Main/TitleScreen.tscn" id="5_ltx50"]
@@ -32,6 +33,8 @@ script = ExtResource("1_afext")
 GameOverScene = ExtResource("2_tofx8")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_nom6r")]
+
+[node name="GlobalAudioManager" parent="." instance=ExtResource("4_my0br")]
 
 [node name="GameViewport" parent="." node_paths=PackedStringArray("Viewport") instance=ExtResource("1_631j5")]
 layout_mode = 1

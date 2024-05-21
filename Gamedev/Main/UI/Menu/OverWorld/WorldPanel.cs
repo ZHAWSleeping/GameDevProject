@@ -1,3 +1,4 @@
+using Gamedev.Main.Audio;
 using Gamedev.Main.Events;
 using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
@@ -44,6 +45,9 @@ public partial class WorldPanel : PanelContainer, Selectable
 		new_position.X = position.X - Offset / 2;
 		Animation.TweenProperty(this, PropertyName.Position.ToString(), new_position, Duration);
 		Animation.TweenProperty(this, PropertyName.Position.ToString(), position, Duration);
+
+		PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuScroll);
+
 	}
 
 	public void Focus()
@@ -55,6 +59,7 @@ public partial class WorldPanel : PanelContainer, Selectable
 
 	public void Trigger()
 	{
+		PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuAccept);
 		PersistentEvents.OnWorldSelected(State);
 	}
 

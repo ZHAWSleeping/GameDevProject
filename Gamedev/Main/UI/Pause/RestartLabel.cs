@@ -9,7 +9,6 @@ namespace CaveGame.Main.UI.Pause
 	{
 		public override void Trigger()
 		{
-			base.Trigger();
 			PersistentEvents.OnResumeRequested();
 			CollisionEvents.OnCollisionDeath();
 		}

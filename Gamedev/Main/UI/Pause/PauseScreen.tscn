@@ -49,20 +49,14 @@ theme_override_font_sizes/font_size = 156
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="ContinueLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("2_gbxx4")]
+[node name="ContinueLabel" parent="ScrollableVBox" instance=ExtResource("2_gbxx4")]
 layout_mode = 2
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
 
-[node name="RestartLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("3_cfhkt")]
+[node name="RestartLabel" parent="ScrollableVBox" instance=ExtResource("3_cfhkt")]
 layout_mode = 2
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
 
-[node name="QuitLabel" parent="ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("4_u46gu")]
+[node name="QuitLabel" parent="ScrollableVBox" instance=ExtResource("4_u46gu")]
 layout_mode = 2
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_iee23")

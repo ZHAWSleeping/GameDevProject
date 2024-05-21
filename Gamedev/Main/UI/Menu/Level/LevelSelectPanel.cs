@@ -1,3 +1,4 @@
+using Gamedev.Main.Audio;
 using Gamedev.Main.Events;
 using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
@@ -88,6 +89,8 @@ namespace Gamedev.Main.UI.Menu.Level
 			bounceTween.TweenProperty(this, PropertyName.Position.ToString(), new_position, 0.1f);
 			bounceTween.TweenProperty(this, PropertyName.Position.ToString(), position, 0.1f);
 
+			PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuScroll);
+
 		}
 
 		public void Unfocus()
@@ -98,6 +101,7 @@ namespace Gamedev.Main.UI.Menu.Level
 
 		public void Trigger()
 		{
+			PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuAccept);
 			PersistentEvents.OnLevelSelected(State);
 		}
 	}
