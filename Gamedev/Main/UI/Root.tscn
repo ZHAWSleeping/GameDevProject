@@ -94,11 +94,10 @@ layout_mode = 2
 NameLabel = NodePath("Name")
 DataLabel = NodePath("Data")
 
-[node name="PauseScreen" parent="." node_paths=PackedStringArray("Menu", "Audio") instance=ExtResource("7_k48l2")]
+[node name="PauseScreen" parent="." node_paths=PackedStringArray("Menu") instance=ExtResource("7_k48l2")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 Menu = NodePath("ScrollableVBox")
-Audio = NodePath("AudioStreamPlayer")
 
 [node name="FPSCounter" parent="." node_paths=PackedStringArray("Counter") instance=ExtResource("5_2e066")]
 layout_mode = 2

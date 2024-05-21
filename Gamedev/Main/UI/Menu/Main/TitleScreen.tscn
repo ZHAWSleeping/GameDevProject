@@ -36,17 +36,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 156
 text = "Working Title"
 
-[node name="PlayLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("3_dlai4")]
+[node name="PlayLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" instance=ExtResource("3_dlai4")]
 layout_mode = 2
 horizontal_alignment = 0
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
 
-[node name="QuitLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" node_paths=PackedStringArray("SelectAudio", "ConfirmAudio") instance=ExtResource("1_jm6ag")]
+[node name="QuitLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" instance=ExtResource("1_jm6ag")]
 layout_mode = 2
 horizontal_alignment = 0
-SelectAudio = NodePath("Select")
-ConfirmAudio = NodePath("Confirm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

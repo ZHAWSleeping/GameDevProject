@@ -11,9 +11,6 @@ namespace Gamedev.Main.UI.Pause
 		[Export]
 		private ScrollableVBox Menu;
 
-		[Export]
-		private AudioStreamPlayer Audio;
-
 		private bool Paused = false;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -51,7 +48,6 @@ namespace Gamedev.Main.UI.Pause
 			Tween tween = CreateTween();
 			tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.White, 0.25f);
 			Menu.ProcessMode = ProcessModeEnum.Inherit;
-			Audio.PitchScale = 1.0f;
 			PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuAccept);
 			Paused = !Paused;
 		}
@@ -61,7 +57,6 @@ namespace Gamedev.Main.UI.Pause
 			Tween tween = CreateTween();
 			tween.TweenProperty(this, PropertyName.Modulate.ToString(), Colors.Transparent, 0.25f);
 			Menu.ProcessMode = ProcessModeEnum.Disabled;
-			Audio.PitchScale = 1.5f;
 			PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuBack);
 			Paused = !Paused;
 		}
