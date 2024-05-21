@@ -80,6 +80,10 @@ public partial class LevelManager : Node
 		}
 		InLevel = true;
 		PersistentEvents.OnGameSceneChangeRequested(Levels[State.CurrentWorld][State.CurrentLevel]);
+		State.File.World = State.CurrentWorld;
+		State.File.Level = State.CurrentLevel;
+		State.File.Room = State.CurrentRoom;
+		SaveManager.Save(State.File.Slot);
 		DebugEvents.OnRoomChanged(this);
 	}
 
@@ -97,6 +101,8 @@ public partial class LevelManager : Node
 		}
 		InLevel = false;
 		PersistentEvents.OnWorldSelected(State);
+		State.CurrentRoom = -1;
+		SaveManager.Save(State.File.Slot);
 		DebugEvents.OnRoomChanged(this);
 	}
 

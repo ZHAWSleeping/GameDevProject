@@ -86,14 +86,7 @@ namespace Gamedev.Main.Persistent
 		/// <param name="slot"></param>
 		public static void Save(int slot)
 		{
-			SaveFiles[slot] = new SaveFile
-			{
-				Slot = slot,
-				World = LevelManager.Instance.State.CurrentWorld,
-				Level = LevelManager.Instance.State.CurrentLevel,
-				Room = LevelManager.Instance.State.CurrentRoom,
-				CompletedLevels = LevelManager.Instance.LevelsCompleted,
-			};
+			SaveFiles[slot] = LevelManager.Instance.State.File;
 			Write();
 		}
 
