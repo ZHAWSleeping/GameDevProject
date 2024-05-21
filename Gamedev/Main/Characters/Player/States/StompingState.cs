@@ -9,6 +9,7 @@ namespace Gamedev.Main.Characters.Player
 {
 	public class StompingState : PlayerState
 	{
+		private bool Started = false;
 		public override State State { get; } = State.Stomping;
 
 		protected override Func<PlayerData, State>[] Transitions { get; }
@@ -27,6 +28,7 @@ namespace Gamedev.Main.Characters.Player
 			{
 				data.Player.CollisionMask &= ~(uint)Bitmasks.Physics2DLayer.Breakable;
 				data.Audio.Play(PlayerAudioManager.Sound.Fall);
+				Started = true;
 			}
 			data.Velocity = new(0, data.StompVelocity);
 			data.Sprite.Travel(AnimationState.Fall);
@@ -34,8 +36,9 @@ namespace Gamedev.Main.Characters.Player
 
 		private State GroundedTransition(PlayerData data)
 		{
-			if (data.Player.IsOnFloor())
+			if (data.Player.IsOnFloor() && Started)
 			{
+				Started = false;
 				data.Player.CollisionMask |= (uint)Bitmasks.Physics2DLayer.Breakable;
 				data.Audio.Stop(PlayerAudioManager.Sound.Fall);
 				data.Audio.Play(PlayerAudioManager.Sound.Stomp);
