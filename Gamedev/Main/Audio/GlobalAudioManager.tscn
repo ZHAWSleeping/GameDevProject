@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxq7rahjy4ge4"]
+
+[ext_resource type="AudioStream" uid="uid://nt7psrl4a4l8" path="res://Gamedev/Main/Audio/Effects/MenuScroll.wav" id="1_kdw55"]
+[ext_resource type="Script" path="res://Gamedev/Main/Audio/GlobalAudioManager.cs" id="1_njr73"]
+[ext_resource type="AudioStream" uid="uid://bnjapmj7dqumk" path="res://Gamedev/Main/Audio/Effects/MenuBack.wav" id="3_ol714"]
+[ext_resource type="AudioStream" uid="uid://bax5rjjqbawwk" path="res://Gamedev/Main/Audio/Effects/MenuAccept.wav" id="3_vst5n"]
+
+[node name="GlobalAudioManager" type="Node"]
+script = ExtResource("1_njr73")
+
+[node name="MenuScroll" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_kdw55")
+max_polyphony = 4
+bus = &"UI"
+
+[node name="MenuAccept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vst5n")
+max_polyphony = 4
+bus = &"UI"
+
+[node name="MenuBack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ol714")
+max_polyphony = 4
+bus = &"UI"

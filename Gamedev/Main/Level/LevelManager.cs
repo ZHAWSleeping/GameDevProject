@@ -25,6 +25,8 @@ public partial class LevelManager : Node
 
 	public GameState State;
 
+	public bool InLevel { get; private set; }
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -76,6 +78,7 @@ public partial class LevelManager : Node
 			State.CurrentLevel = 0;
 			GD.PrintErr($"Attempted to load invalid level {world}-{level}, loading default level {0}-{0}");
 		}
+		InLevel = true;
 		PersistentEvents.OnGameSceneChangeRequested(Levels[State.CurrentWorld][State.CurrentLevel]);
 		DebugEvents.OnRoomChanged(this);
 	}
@@ -92,6 +95,7 @@ public partial class LevelManager : Node
 		{
 			GD.PrintErr($"Attempted to complete non-existent level {world}-{level}");
 		}
+		InLevel = false;
 		PersistentEvents.OnWorldSelected(State);
 		DebugEvents.OnRoomChanged(this);
 	}

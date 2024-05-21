@@ -1,3 +1,4 @@
+using Gamedev.Main.Audio;
 using Gamedev.Main.Events;
 using Gamedev.Main.Persistent;
 using Gamedev.Main.UI.Scrollable;
@@ -97,8 +98,7 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 		bounceTween.TweenProperty(this, PropertyName.Position.ToString(), new_position, 0.1f);
 		bounceTween.TweenProperty(this, PropertyName.Position.ToString(), position, 0.1f);
 
-		// TODO: Add Audios
-		//SelectAudio.Play();
+		PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuScroll);
 	}
 
 	public void Unfocus()
@@ -109,6 +109,7 @@ public partial class SaveFilePanel : PanelContainer, Selectable
 
 	public void Trigger()
 	{
+		PersistentAudioEvents.OnAudioRequested(GlobalAudioManager.Sound.MenuAccept);
 		if (State.CurrentWorld != -1 && State.CurrentLevel != -1 && State.CurrentRoom != -1)
 		{
 			PersistentEvents.OnLevelSelected(State);

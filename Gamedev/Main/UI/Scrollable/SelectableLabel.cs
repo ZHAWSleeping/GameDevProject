@@ -1,3 +1,4 @@
+using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Godot;
 using System;
@@ -14,12 +15,6 @@ namespace Gamedev.Main.UI.Scrollable
 		[Export]
 		private Color SecondaryColor;
 
-		[Export]
-		private AudioStreamPlayer SelectAudio;
-
-		[Export]
-		private AudioStreamPlayer ConfirmAudio;
-		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
 			ColorTween = CreateTween();
@@ -48,7 +43,8 @@ namespace Gamedev.Main.UI.Scrollable
 			bounceTween.TweenProperty(this, PropertyName.Position.ToString(), new_position, 0.1f);
 			bounceTween.TweenProperty(this, PropertyName.Position.ToString(), position, 0.1f);
 
-			SelectAudio.Play();
+			PersistentAudioEvents.OnAudioRequested(Audio.GlobalAudioManager.Sound.MenuScroll);
+
 		}
 
 		public void Unfocus()
@@ -59,7 +55,7 @@ namespace Gamedev.Main.UI.Scrollable
 
 		public virtual void Trigger()
 		{
-			ConfirmAudio.Play();
+			PersistentAudioEvents.OnAudioRequested(Audio.GlobalAudioManager.Sound.MenuAccept);
 		}
 	}
 }
