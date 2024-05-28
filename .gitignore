@@ -2,5 +2,6 @@
 .godot/
 android/
 *.csproj.old*
-bin/
+bin/*
+!bin/.gitkeep
 user.save
