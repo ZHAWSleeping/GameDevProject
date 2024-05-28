@@ -8,6 +8,9 @@ using Godot;
 
 namespace Gamedev.Main.Characters.Players
 {
+	/// <summary>
+	/// This the player. It handles input, physics, sound effects from the player and abilities.
+	/// </summary>
 	public partial class Player : CharacterBody2D
 	{
 		[Export]
@@ -122,6 +125,9 @@ namespace Gamedev.Main.Characters.Players
 			MoveAndSlide();
 		}
 
+		/// <summary>
+		/// Checks if we can discard a card and consume its ability.
+		/// </summary>
 		private void PollDiscard()
 		{
 			if (Data.DiscardJustPressed)
@@ -154,7 +160,7 @@ namespace Gamedev.Main.Characters.Players
 		}
 
 		/// <summary>
-		/// Resets the player to the respawnpoint of the room and creates a small zoom in and out animation
+		/// Resets the player to the respawn point of the room and plays the respawn animation
 		/// </summary>
 		private void Die()
 		{
@@ -166,6 +172,9 @@ namespace Gamedev.Main.Characters.Players
 			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelChangeRequested(LevelManager.Instance.State))).SetDelay(0.1f);
 		}
 
+		/// <summary>
+		/// Plays the winning animation and marks the level as complete.
+		/// </summary>
 		private void Win()
 		{
 			AudioManager.Play(PlayerAudioManager.Sound.Victory);
@@ -174,11 +183,17 @@ namespace Gamedev.Main.Characters.Players
 			tween.TweenCallback(Callable.From(() => PersistentEvents.OnLevelFinished(LevelManager.Instance.State))).SetDelay(1.6f);
 		}
 
+		/// <summary>
+		/// Increments the battery count.
+		/// </summary>
 		private void BatteryCollected()
 		{
 			BatteryCount++;
 		}
 
+		/// <summary>
+		/// Checks if batteries are available and turns lights on if they are.
+		/// </summary>
 		private void CheckForBatteries()
 		{
 			if (BatteryCount > 0)
@@ -189,6 +204,9 @@ namespace Gamedev.Main.Characters.Players
 			}
 		}
 
+		/// <summary>
+		/// Update debug UI
+		/// </summary>
 		private void UpdateDebug()
 		{
 			DebugEvents.OnPlayerDataEvent(Data);
