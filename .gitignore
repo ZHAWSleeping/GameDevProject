@@ -6,4 +6,5 @@ user.save
 bin/linux/*
 bin/macos/*
 bin/win/*
+bin/release/*
 !bin/*/.gitkeep
