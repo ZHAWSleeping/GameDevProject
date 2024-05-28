@@ -6,7 +6,7 @@ set name 'UndercardOdyssey'
 
 set os 'linux'
 pushd "$path/$os"
-zip - "$name.pck" "$name.x86_64" > "../../$release/$name-$ver-$os.zip"
+zip -r - "$name.pck" "$name.x86_64" "data_UndercardOdyssey_linuxbsd_x86_64" > "../../$release/$name-$ver-$os.zip"
 popd
 
 set os 'macos'
