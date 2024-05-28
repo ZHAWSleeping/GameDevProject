@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://1naehwqv8aoc"]
+
+[ext_resource type="PackedScene" uid="uid://da0mv3g1bc236" path="res://Gamedev/Main/Level/Level.tscn" id="1_u1p31"]
+[ext_resource type="PackedScene" uid="uid://dg3byynom6e4f" path="res://Gamedev/Main/Level/Level3/Room1.tscn" id="2_aenfo"]
+[ext_resource type="Script" path="res://Gamedev/Main/Characters/Player/PlayerData.cs" id="2_np3kr"]
+[ext_resource type="PackedScene" uid="uid://y4d6h06hadna" path="res://Gamedev/Main/Level/Level3/Room2.tscn" id="3_lclqd"]
+[ext_resource type="PackedScene" uid="uid://dxfca2oa1tgrn" path="res://Gamedev/Main/Level/Level3/Room3.tscn" id="4_nonhr"]
+[ext_resource type="PackedScene" uid="uid://7tfswfs3jwc7" path="res://Gamedev/Main/Level/Level3/Room4.tscn" id="5_x4yye"]
+[ext_resource type="PackedScene" uid="uid://b7kv4hva3pq0f" path="res://Gamedev/Main/Level/Level3/Room5.tscn" id="6_rshfh"]
+[ext_resource type="PackedScene" uid="uid://dxsse2g8b3d0y" path="res://Gamedev/Main/Level/Level3/Room6.tscn" id="7_u3bg4"]
+
+[sub_resource type="Resource" id="Resource_jovd1"]
+resource_local_to_scene = true
+script = ExtResource("2_np3kr")
+MovementSpeed = 100.0
+MaxMovementSpeed = 100.0
+AirDrag = 25.0
+JumpVelocity = 125.0
+JumpVelocityIncrement = 16.0
+WallJumpVelocity = Vector2(150, 150)
+WallJumpVelocityIncrement = 15.0
+WallSlideModifier = 0.8
+AirborneModifier = 0.15
+DashVelocity = 300.0
+StompVelocity = 350.0
+CoyoteTimeFrames = 5
+JumpTimeFrames = 12
+DashTimeFrames = 8
+Gravity = Vector2(0, 16)
+
+[node name="Level3" node_paths=PackedStringArray("Player", "Merger", "Camera") instance=ExtResource("1_u1p31")]
+Player = NodePath("Player")
+Merger = NodePath("RoomMerger")
+Camera = NodePath("PlayerCamera")
+
+[node name="Room1" parent="RoomMerger" index="0" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("2_aenfo")]
+Id = 0
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room2" parent="RoomMerger" index="1" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("3_lclqd")]
+position = Vector2(0, 170)
+Id = 1
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room3" parent="RoomMerger" index="2" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("4_nonhr")]
+position = Vector2(0, 340)
+Id = 2
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room4" parent="RoomMerger" index="3" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("5_x4yye")]
+position = Vector2(0, 510)
+Id = 3
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room5" parent="RoomMerger" index="4" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("6_rshfh")]
+position = Vector2(310, 510)
+Id = 4
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Room6" parent="RoomMerger" index="5" node_paths=PackedStringArray("Tiles", "Boundaries", "loadingZone", "Anchor", "RespawnPoint") instance=ExtResource("7_u3bg4")]
+position = Vector2(310, 340)
+Id = 5
+Tiles = NodePath("Tiles")
+Boundaries = NodePath("Boundaries")
+loadingZone = NodePath("LoadingZones")
+Anchor = NodePath("Anchor")
+RespawnPoint = NodePath("RespawnPoint")
+
+[node name="Player" parent="." index="1" node_paths=PackedStringArray("Sprite", "AudioManager", "Particles", "Shape", "LeftWallCast", "RightWallCast")]
+Data = SubResource("Resource_jovd1")
+Sprite = NodePath("PlayerSprite")
+AudioManager = NodePath("PlayerAudioManager")
+Particles = NodePath("PlayerParticleManager")
+Shape = NodePath("CollisionShape2D")
+LeftWallCast = NodePath("LeftWallCast")
+RightWallCast = NodePath("RightWallCast")
+
+[node name="Headband" parent="." index="2" node_paths=PackedStringArray("Sprite", "Body")]
+Sprite = NodePath("Sprite2D")
+Body = NodePath("RigidBody2D")

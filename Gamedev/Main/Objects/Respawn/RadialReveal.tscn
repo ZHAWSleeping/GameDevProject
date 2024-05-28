@@ -18,4 +18,5 @@ fill_to = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_fwjtq")
 centered = false
 script = ExtResource("1_6wtrd")
-Delay = 0.625
+Duration = 0.65
+Delay = 0.1
