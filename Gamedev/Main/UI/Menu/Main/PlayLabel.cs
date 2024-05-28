@@ -4,11 +4,14 @@ using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
 
-public partial class PlayLabel : SelectableLabel
+namespace Gamedev.Main.UI.Menu
 {
-	public override void Trigger()
+	public partial class PlayLabel : SelectableLabel
 	{
-		base.Trigger();
-		PersistentEvents.OnFileSelectOpened();
+		public override void Trigger()
+		{
+			base.Trigger();
+			PersistentEvents.OnFileSelectOpened();
+		}
 	}
 }

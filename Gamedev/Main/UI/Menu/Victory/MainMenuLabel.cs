@@ -3,14 +3,17 @@ using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
 
-public partial class MainMenuLabel : SelectableLabel
+namespace Gamedev.Main.UI.Menu
 {
-	[Export]
-	private PackedScene mainMenuScene;
-	public override void Trigger()
+	public partial class MainMenuLabel : SelectableLabel
 	{
-		GD.Print("Main menu");
-		base.Trigger();
-		PersistentEvents.OnSceneChangeRequested(mainMenuScene);
+		[Export]
+		private PackedScene mainMenuScene;
+		public override void Trigger()
+		{
+			GD.Print("Main menu");
+			base.Trigger();
+			PersistentEvents.OnSceneChangeRequested(mainMenuScene);
+		}
 	}
 }

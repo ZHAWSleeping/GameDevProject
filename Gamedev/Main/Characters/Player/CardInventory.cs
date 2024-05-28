@@ -4,7 +4,7 @@ using Gamedev.Main.Events;
 using Gamedev.Main.Objects.Cards;
 using Godot;
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	public class CardInventory
 	{

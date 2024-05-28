@@ -1,89 +1,92 @@
 using Godot;
 using System;
 
-public partial class PlayerParticleManager : Node2D
+namespace Gamedev.Main.Characters.Players
 {
-	[Export]
-	private GpuParticles2D JumpParticles;
-
-	[Export]
-	private GpuParticles2D StompParticles;
-
-	[Export]
-	private GpuParticles2D DashTrail;
-
-	[Export]
-	public GpuParticles2D WallJumpParticles;
-
-	public bool JumpParticlesEmitting
+	public partial class PlayerParticleManager : Node2D
 	{
-		get
-		{
-			return GetEmitting(JumpParticles);
-		}
-		set
-		{
-			SetEmitting(JumpParticles, value);
-		}
-	}
+		[Export]
+		private GpuParticles2D JumpParticles;
 
-	public bool StompParticlesEmitting
-	{
-		get
-		{
-			return GetEmitting(StompParticles);
-		}
-		set
-		{
-			SetEmitting(StompParticles, value);
-		}
-	}
+		[Export]
+		private GpuParticles2D StompParticles;
 
-	public bool DashTrailEmitting
-	{
-		get
-		{
-			return GetEmitting(DashTrail);
-		}
-		set
-		{
-			SetEmitting(DashTrail, value);
-		}
-	}
+		[Export]
+		private GpuParticles2D DashTrail;
 
-	public bool WallJumpParticlesEmitting
-	{
-		get
-		{
-			return GetEmitting(WallJumpParticles);
-		}
-		set
-		{
-			SetEmitting(WallJumpParticles, value);
-		}
-	}
+		[Export]
+		public GpuParticles2D WallJumpParticles;
 
-	private bool GetEmitting(GpuParticles2D particles)
-	{
-		return particles.Emitting;
-	}
-
-	private void SetEmitting(GpuParticles2D particles, bool value)
-	{
-		if (particles.Emitting && value)
+		public bool JumpParticlesEmitting
 		{
-			particles.Restart();
-			//Action func = null;
-			//func = () =>
-			//{
-			//	particles.Finished -= func;
-			//	particles.Emitting = true;
-			//};
-			//particles.Finished += func;
+			get
+			{
+				return GetEmitting(JumpParticles);
+			}
+			set
+			{
+				SetEmitting(JumpParticles, value);
+			}
 		}
-		else
+
+		public bool StompParticlesEmitting
 		{
-			particles.Emitting = value;
+			get
+			{
+				return GetEmitting(StompParticles);
+			}
+			set
+			{
+				SetEmitting(StompParticles, value);
+			}
+		}
+
+		public bool DashTrailEmitting
+		{
+			get
+			{
+				return GetEmitting(DashTrail);
+			}
+			set
+			{
+				SetEmitting(DashTrail, value);
+			}
+		}
+
+		public bool WallJumpParticlesEmitting
+		{
+			get
+			{
+				return GetEmitting(WallJumpParticles);
+			}
+			set
+			{
+				SetEmitting(WallJumpParticles, value);
+			}
+		}
+
+		private bool GetEmitting(GpuParticles2D particles)
+		{
+			return particles.Emitting;
+		}
+
+		private void SetEmitting(GpuParticles2D particles, bool value)
+		{
+			if (particles.Emitting && value)
+			{
+				particles.Restart();
+				//Action func = null;
+				//func = () =>
+				//{
+				//	particles.Finished -= func;
+				//	particles.Emitting = true;
+				//};
+				//particles.Finished += func;
+			}
+			else
+			{
+				particles.Emitting = value;
+			}
 		}
 	}
 }

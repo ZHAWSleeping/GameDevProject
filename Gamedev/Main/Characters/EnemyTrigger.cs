@@ -3,10 +3,13 @@ using Gamedev.Main.Events;
 using Godot;
 using System;
 
-public partial class EnemyTrigger : Area2D
+namespace Gamedev.Main.Characters
 {
-	public override void _Ready()
+	public partial class EnemyTrigger : Area2D
 	{
-		BodyEntered += (_) => CollisionEvents.OnCollisionDeath();
+		public override void _Ready()
+		{
+			BodyEntered += (_) => CollisionEvents.OnCollisionDeath();
+		}
 	}
 }

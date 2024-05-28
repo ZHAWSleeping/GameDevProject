@@ -1,22 +1,25 @@
 using Godot;
 using System;
 
-public partial class SaveFileName : Label
+namespace Gamedev.Main.UI.Save
 {
-	[Export]
-	private string Content;
-
-	public int Slot
+	public partial class SaveFileName : Label
 	{
-		set
+		[Export]
+		private string Content;
+
+		public int Slot
 		{
-			_slot = value;
-			Text = $"{Content} {value}";
+			set
+			{
+				_slot = value;
+				Text = $"{Content} {value}";
+			}
+			get
+			{
+				return _slot;
+			}
 		}
-		get
-		{
-			return _slot;
-		}
+		private int _slot;
 	}
-	private int _slot;
 }

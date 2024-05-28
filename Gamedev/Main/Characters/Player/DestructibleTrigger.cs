@@ -3,7 +3,7 @@ using Gamedev.Main.Tiles.Destructible;
 using Godot;
 using System;
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	public partial class DestructibleTrigger : Area2D
 	{

@@ -1,22 +1,25 @@
 using Godot;
 using System;
 
-public partial class WorldName : Label
+namespace Gamedev.Main.UI.Menu
 {
-	[Export]
-	private string Prefix;
-
-	private int _world;
-	public int World
+	public partial class WorldName : Label
 	{
-		set
+		[Export]
+		private string Prefix;
+
+		private int _world;
+		public int World
 		{
-			_world = value;
-			Text = $"{Prefix} {value}";
-		}
-		get
-		{
-			return _world;
+			set
+			{
+				_world = value;
+				Text = $"{Prefix} {value}";
+			}
+			get
+			{
+				return _world;
+			}
 		}
 	}
 }

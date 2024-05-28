@@ -1,56 +1,58 @@
-using Gamedev.Main.Characters.Player;
+using Gamedev.Main.Characters.Players;
 using Gamedev.Main.Events;
 using Gamedev.Main.Extensions;
 using Godot;
 using System;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
-public partial class RayCastEnemy : Node2D
+namespace Gamedev.Main.Characters.Enemies
 {
-	[Export]
-	RayCast2D rayFront;
-	[Export]
-	RayCast2D rayBack;
-	[Export]
-	ShapeCast2D rayRight;
-	[Export]
-	ShapeCast2D rayLeft;
-
-
-	public bool groundFront;
-	public bool groundBack;
-	public bool wallRight;
-	public bool wallLeft;
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+	public partial class RayCastEnemy : Node2D
 	{
-		if (rayLeft.GetCollisions().OfType<Player>().Any() || rayRight.GetCollisions().OfType<Player>().Any())
+		[Export]
+		RayCast2D rayFront;
+		[Export]
+		RayCast2D rayBack;
+		[Export]
+		ShapeCast2D rayRight;
+		[Export]
+		ShapeCast2D rayLeft;
+
+
+		public bool groundFront;
+		public bool groundBack;
+		public bool wallRight;
+		public bool wallLeft;
+
+		// Called every frame. 'delta' is the elapsed time since the previous frame.
+		public override void _PhysicsProcess(double delta)
 		{
-			this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
-			CollisionEvents.OnCollisionDeath();
-			return;
+			if (rayLeft.GetCollisions().OfType<Player>().Any() || rayRight.GetCollisions().OfType<Player>().Any())
+			{
+				this.SetProcessModeDeferred(ProcessModeEnum.Disabled);
+				CollisionEvents.OnCollisionDeath();
+				return;
+			}
+			groundFront = rayFront.IsColliding();
+			groundBack = rayBack.IsColliding();
+
+			wallRight = rayRight.IsColliding();
+			wallLeft = rayLeft.IsColliding();
 		}
-		groundFront = rayFront.IsColliding();
-		groundBack = rayBack.IsColliding();
 
-		wallRight = rayRight.IsColliding();
-		wallLeft = rayLeft.IsColliding();
-	}
+		public bool NoGap()
+		{
+			return groundFront && groundBack;
+		}
 
-	public bool NoGap()
-	{
-		return groundFront && groundBack;
-	}
+		public bool NoWall()
+		{
+			return !(wallRight || wallLeft);
+		}
 
-	public bool NoWall()
-	{
-		return !(wallRight || wallLeft);
-	}
-
-	public bool NoFloor()
-	{
-		return !groundFront && !groundBack;
+		public bool NoFloor()
+		{
+			return !groundFront && !groundBack;
+		}
 	}
 }

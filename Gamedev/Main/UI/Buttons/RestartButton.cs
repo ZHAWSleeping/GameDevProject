@@ -2,15 +2,18 @@ using Gamedev.Main.Events;
 using Godot;
 using System;
 
-public partial class RestartButton : Button
+namespace Gamedev.Main.UI.Buttons
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public partial class RestartButton : Button
 	{
-		ButtonUp += () =>
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
 		{
-			GameStateEvents.OnPlayerDied(Vector2.Zero);
-			PersistentEvents.OnPlayerDied(Vector2.Zero);
-		};
+			ButtonUp += () =>
+			{
+				GameStateEvents.OnPlayerDied(Vector2.Zero);
+				PersistentEvents.OnPlayerDied(Vector2.Zero);
+			};
+		}
 	}
 }

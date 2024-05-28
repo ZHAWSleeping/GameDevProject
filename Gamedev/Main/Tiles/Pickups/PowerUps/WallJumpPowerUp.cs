@@ -2,14 +2,17 @@ using Gamedev.Main.Events;
 using Godot;
 using System;
 
-public partial class WallJumpPowerUp : Area2D
+namespace Gamedev.Main.Tiles.Pickups.PowerUps
 {
-	[Export]
-	CollisionShape2D collisionShape2D;
-
-	private void _on_body_entered(Node2D body)
+	public partial class WallJumpPowerUp : Area2D
 	{
-		QueueFree();
-	}
+		[Export]
+		CollisionShape2D collisionShape2D;
 
+		private void _on_body_entered(Node2D body)
+		{
+			QueueFree();
+		}
+
+	}
 }

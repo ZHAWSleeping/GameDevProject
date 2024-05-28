@@ -3,19 +3,23 @@ using Gamedev.Main.Events;
 using Godot;
 using System;
 
-public partial class TopDetectionEnemy : RayCast2D
+namespace Gamedev.Main.Characters.Enemies
 {
-	public event Action PlayerJumpedOnTop = delegate { };
-
-	public override void _Ready()
+	public partial class TopDetectionEnemy : RayCast2D
 	{
+		public event Action PlayerJumpedOnTop = delegate { };
 
-	}
+		public override void _Ready()
+		{
 
-	public override void _Process(double delta)
-	{
-		if (IsColliding()){
-			PlayerJumpedOnTop();
+		}
+
+		public override void _Process(double delta)
+		{
+			if (IsColliding())
+			{
+				PlayerJumpedOnTop();
+			}
 		}
 	}
 }

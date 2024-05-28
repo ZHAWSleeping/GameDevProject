@@ -2,19 +2,22 @@ using Gamedev.Main.Events;
 using Godot;
 using System;
 
-public partial class WinScreen : Control
+namespace Gamedev.Main.UI.Menu
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public partial class WinScreen : Control
 	{
-		PersistentEvents.SceneChangeRequested += Disable;
-	}
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
+		{
+			PersistentEvents.SceneChangeRequested += Disable;
+		}
 
 
-	//TODO Disable pause during menus
-	private void Disable(PackedScene packedScene)
-	{
-		PersistentEvents.SceneChangeRequested -= Disable;
-		QueueFree();
+		//TODO Disable pause during menus
+		private void Disable(PackedScene packedScene)
+		{
+			PersistentEvents.SceneChangeRequested -= Disable;
+			QueueFree();
+		}
 	}
 }

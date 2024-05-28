@@ -2,32 +2,35 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class WorldCompletion : Label
+namespace Gamedev.Main.UI.Menu
 {
-
-	private bool[] _levels;
-	public bool[] Levels
+	public partial class WorldCompletion : Label
 	{
-		set
+
+		private bool[] _levels;
+		public bool[] Levels
 		{
-			_levels = value;
-			int max = value.Count();
-			int complete = value.Sum(b => b ? 1 : 0);
-			Text = $"{complete} / {max}";
+			set
+			{
+				_levels = value;
+				int max = value.Count();
+				int complete = value.Sum(b => b ? 1 : 0);
+				Text = $"{complete} / {max}";
+			}
+			get
+			{
+				return _levels;
+			}
 		}
-		get
+
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
 		{
-			return _levels;
 		}
-	}
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		// Called every frame. 'delta' is the elapsed time since the previous frame.
+		public override void _Process(double delta)
+		{
+		}
 	}
 }

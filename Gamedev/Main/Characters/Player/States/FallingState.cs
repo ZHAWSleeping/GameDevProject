@@ -1,10 +1,10 @@
 using System;
 using Godot;
-using static Gamedev.Main.Characters.Player.PlayerFSM;
-using static Gamedev.Main.Characters.Player.PlayerSprite;
+using static Gamedev.Main.Characters.Players.PlayerFSM;
+using static Gamedev.Main.Characters.Players.PlayerSprite;
 using static Gamedev.Main.Extensions.VectorExtensions;
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	public class FallingState : PlayerState
 	{

@@ -1,6 +1,7 @@
 using System;
-using Gamedev.Main.Characters.Player;
+using Gamedev.Main.Characters.Players;
 using Gamedev.Main.Extensions;
+using Gamedev.Main.Levels;
 using Godot;
 
 namespace Gamedev.Main.Events

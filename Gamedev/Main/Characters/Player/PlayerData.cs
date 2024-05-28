@@ -1,8 +1,8 @@
 using Godot;
-using static Gamedev.Main.Characters.Player.PlayerFSM;
+using static Gamedev.Main.Characters.Players.PlayerFSM;
 using static Gamedev.Main.Extensions.VectorExtensions;
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	[GlobalClass]
 	public partial class PlayerData : Resource
