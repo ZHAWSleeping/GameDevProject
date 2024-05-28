@@ -15,7 +15,7 @@ namespace Gamedev.Main.Extensions
         }
 
         public static Node[] GetCollisions (this ShapeCast2D caster) {
-            return Enumerable.Range(0, caster.GetCollisionCount()).Select(index => caster.GetCollider(index)).Cast<Node>().ToArray();
+            return Enumerable.Range(0, caster.GetCollisionCount()).Select(caster.GetCollider).OfType<Node>().ToArray();
         }
     }
 }
