@@ -4,6 +4,8 @@
 
 In this upcoming platformer you must use the power of the magical headband to venture through a mysterious cavern. Make use of special cards that empower your abilities to reach new heights (or lows).
 
+[GitHub](https://github.com/ZHAWSleeping/GameDevProject/tree/main)
+
 ## Installation
 
 Undercard Odyssey does not require installation. Simply download the Game from [the "Releases" tab](https://github.com/ZHAWSleeping/GameDevProject/releases) for Linux, Windows or MacOS. Do note that the MacOS version is untested and may be blocked by [Gatekeeper](https://en.wikipedia.org/wiki/Gatekeeper_(macOS)). Otherwise, ensure that the executable and the `.pck` file share the same name and are located in the same directory.
