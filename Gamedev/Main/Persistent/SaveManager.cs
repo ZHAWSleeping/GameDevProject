@@ -105,10 +105,5 @@ namespace Gamedev.Main.Persistent
 			}
 			return SaveFiles[slot];
 		}
-
-		public static bool Exists(int slot)
-		{
-			return SaveFiles.ContainsKey(slot);
-		}
 	}
 }

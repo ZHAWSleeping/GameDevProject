@@ -17,8 +17,6 @@ namespace Gamedev.Main.UI
 		public override void _Ready()
 		{
 			RenderingServer.SetDefaultClearColor(Colors.Black);
-			//StateEvents.LevelFinished += ReplaceScene;
-			PersistentEvents.SceneChangeRequested += ReplaceScene;
 			PersistentEvents.QuitRequested += QuitGame;
 		}
 

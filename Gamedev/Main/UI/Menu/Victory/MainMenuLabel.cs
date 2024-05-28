@@ -13,7 +13,7 @@ namespace Gamedev.Main.UI.Menu
 		{
 			GD.Print("Main menu");
 			base.Trigger();
-			PersistentEvents.OnSceneChangeRequested(mainMenuScene);
+			//PersistentEvents.OnSceneChangeRequested(mainMenuScene);
 		}
 	}
 }

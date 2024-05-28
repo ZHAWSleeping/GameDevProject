@@ -16,7 +16,6 @@ namespace Gamedev.Main.UI.Menu
 		public override void Trigger()
 		{
 			base.Trigger();
-			PersistentEvents.OnSceneChangeRequested(overworldScene);
 		}
 	}
 }

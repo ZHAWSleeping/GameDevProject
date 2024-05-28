@@ -33,7 +33,6 @@ namespace Gamedev.Main.Levels
 		public bool InLevel { get; private set; }
 
 
-		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
 			Instance = this;
@@ -53,6 +52,12 @@ namespace Gamedev.Main.Levels
 
 		}
 
+		/// <summary>
+		/// Checks if the given level exists.
+		/// </summary>
+		/// <param name="world">World</param>
+		/// <param name="level">Level</param>
+		/// <returns></returns>
 		private bool IsInBounds(int world, int level)
 		{
 			return world >= 0
@@ -61,6 +66,11 @@ namespace Gamedev.Main.Levels
 				&& level < Levels[world].Length;
 		}
 
+
+		/// <summary>
+		/// Loads the current level in the specified state object.
+		/// </summary>
+		/// <param name="state">The state</param>
 		private void ChangeLevel(GameState state)
 		{
 			var world = state.CurrentWorld;
@@ -92,6 +102,10 @@ namespace Gamedev.Main.Levels
 			DebugEvents.OnRoomChanged(this);
 		}
 
+		/// <summary>
+		/// Marks the current level in the specified state as marked.
+		/// </summary>
+		/// <param name="state">The state</param>
 		private void MarkAsCompleted(GameState state)
 		{
 			int world = state.CurrentWorld;
@@ -111,17 +125,27 @@ namespace Gamedev.Main.Levels
 			DebugEvents.OnRoomChanged(this);
 		}
 
+		/// <summary>
+		/// Update the current room
+		/// </summary>
+		/// <param name="room"></param>
 		private void ChangeRoom(int room)
 		{
 			State.CurrentRoom = room;
 			DebugEvents.OnRoomChanged(this);
 		}
 
+		/// <summary>
+		/// Tick the playtime tracker
+		/// </summary>
 		public void Tick()
 		{
 			State.File.PlaytimeTicks += 1;
 		}
 
+		/// <summary>
+		/// Increment the death counter
+		/// </summary>
 		public void Die()
 		{
 			State.File.Deaths += 1;
