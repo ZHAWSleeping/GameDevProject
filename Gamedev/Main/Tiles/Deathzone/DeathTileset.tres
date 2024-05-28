@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cs5rb3oifxote"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cs5rb3oifxote"]
 
 [ext_resource type="Texture2D" uid="uid://dacyb7801206" path="res://Gamedev/Main/Tiles/Deathzone/DeathTileset.png" id="1_fbpqm"]
+[ext_resource type="Texture2D" uid="uid://dkn317a582w53" path="res://Gamedev/Main/Tiles/Deathzone/Spikes.pxo" id="2_0bg3u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mp6ag"]
 texture = ExtResource("1_fbpqm")
@@ -8,7 +9,20 @@ texture_region_size = Vector2i(10, 10)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l335q"]
+texture = ExtResource("2_0bg3u")
+texture_region_size = Vector2i(10, 10)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, -2, 1, -2, 4, 5, -4, 5)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -4, 2, -1, 2, 1, -5, 4)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -5, 4, -5, 1, 2, -1, 2)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -1, 5, -4, 5, 4, -2, 1)
+
 [resource]
 tile_size = Vector2i(10, 10)
 physics_layer_0/collision_layer = 8
 sources/0 = SubResource("TileSetAtlasSource_mp6ag")
+sources/1 = SubResource("TileSetAtlasSource_l335q")
