@@ -5,10 +5,14 @@ set release 'bin/release'
 set name 'UndercardOdyssey'
 
 set os 'linux'
-zip --junk-paths - "$path/$os/$name.pck" "$path/$os/$name.x86_64" > "$release/$name-$ver-$os.zip"
+pushd "$path/$os"
+zip - "$name.pck" "$name.x86_64" > "../../$release/$name-$ver-$os.zip"
+popd
 
 set os 'macos'
 cp "$path/$os/$name.zip" "$release/$name-$ver-$os.zip"
 
 set os 'win'
-zip --junk-paths - "$path/$os/$name.pck" "$path/$os/$name.exe" > "$release/$name-$ver-$os.zip"
+pushd "$path/$os"
+zip -r - "$name.pck" "$name.exe" "data_UndercardOdyssey_windows_x86_64" > "../../$release/$name-$ver-$os.zip"
+popd
