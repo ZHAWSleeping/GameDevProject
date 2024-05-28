@@ -5,6 +5,9 @@ namespace Gamedev.Main.Characters.Players
 {
 	public partial class PlayerParticleManager : Node2D
 	{
+		/// <summary>
+		/// Particles are created by jumping, walking, dashing, or stomping
+		/// </summary>
 		[Export]
 		private GpuParticles2D JumpParticles;
 

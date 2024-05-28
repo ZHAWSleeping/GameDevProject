@@ -6,6 +6,9 @@ using System;
 
 namespace Gamedev.Main.UI.Menu
 {
+	/// <summary>
+	/// Label for a button in a menu.
+	/// </summary>
 	public partial class PlayLabel : SelectableLabel
 	{
 		public override void Trigger()

@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace Gamedev.Main.Characters.Enemies
 {
+	/// <summary>
+	/// The raycasts attached to an enemy that lets them detect walls our gaps in the floor
+	/// </summary>
 	public partial class RayCastEnemy : Node2D
 	{
 		[Export]

@@ -6,6 +6,9 @@ using Godot;
 
 namespace Gamedev.Main.Events
 {
+	/// <summary>
+	/// Events used for debugging.
+	/// </summary>
 	public static class DebugEvents
 	{
 		public static event Action<Vector2> PlayerSpeed;

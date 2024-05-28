@@ -4,6 +4,10 @@ using System;
 
 namespace Gamedev.Main.Levels
 {
+	/// <summary>
+	/// One room of a level. Has a tilemap, loadzone, anchorpoint for the camera and respawnpoint for the player.
+	/// 
+	/// </summary>
 	public partial class Room : Node2D
 	{
 		[Export]

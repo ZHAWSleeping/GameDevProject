@@ -4,6 +4,10 @@ using System;
 
 namespace Gamedev.Main.Tiles.Pickups
 {
+	/// <summary>
+	/// Little item that can be picked up by touching it.
+	/// Used to light up gems.
+	/// </summary>
 	public partial class BatteryPickup : Area2D
 	{
 		// Called when the node enters the scene tree for the first time.

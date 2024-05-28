@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Gamedev.Main.Tiles
 {
+	/// <summary>
+	/// Used to transition between rooms.
+	/// </summary>
 	public partial class LoadingZone : TileMapLayer
 	{
 		[Export]

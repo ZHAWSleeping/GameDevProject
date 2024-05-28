@@ -4,6 +4,9 @@ using System;
 
 namespace Gamedev.Main.Characters
 {
+	/// <summary>
+	/// Trigger for when a new room needs to be loaded.
+	/// </summary>
 	public partial class ZoneTrigger : Area2D
 	{
 		// Called when the node enters the scene tree for the first time.

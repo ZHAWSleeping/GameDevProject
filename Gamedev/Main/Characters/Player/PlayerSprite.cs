@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace Gamedev.Main.Characters.Players
 {
+	/// <summary>
+	/// Manages the different animation states of the palyer. (idle, walk, jump, fall, land, wall) in an Enum.
+	/// </summary>
 	public partial class PlayerSprite : Node2D
 	{
 

@@ -3,6 +3,9 @@ using System;
 
 namespace Gamedev.Main.UI.Menu
 {
+	/// <summary>
+	/// Label for a a world in the world selector.
+	/// </summary>
 	public partial class WorldName : Label
 	{
 		[Export]

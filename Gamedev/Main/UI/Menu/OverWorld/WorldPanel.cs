@@ -7,6 +7,10 @@ using System;
 
 namespace Gamedev.Main.UI.Menu
 {
+	/// <summary>
+	/// Panel where a world can be selected.
+	/// A world contains multiple levels.
+	/// </summary>
 	public partial class WorldPanel : PanelContainer, Selectable
 	{
 

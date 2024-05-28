@@ -5,6 +5,9 @@ using System;
 
 namespace Gamedev.Main.Tiles.Gems
 {
+	/// <summary>
+	/// Crystal that lights up when the palyer touches it and has a battery to power it.
+	/// </summary>
 	public partial class LightGem : Area2D
 	{
 		[Export]

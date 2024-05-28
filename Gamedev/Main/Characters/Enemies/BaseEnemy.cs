@@ -4,6 +4,10 @@ using System;
 
 namespace Gamedev.Main.Characters.Enemies
 {
+	/// <summary>
+	/// A basic enemy (like a Goomba) that travels left to right and back. 
+	/// Can detect gaps and walls which make this enemy change course.
+	/// </summary>
 	public partial class BaseEnemy : CharacterBody2D
 	{
 		[Export]

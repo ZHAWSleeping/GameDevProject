@@ -3,6 +3,10 @@ using System;
 
 namespace Gamedev.Main.Objects
 {
+	/// <summary>
+	/// A rolling boulder.
+	/// Speed and direction can be set in the editor.
+	/// </summary>
 	public partial class Boulder : RigidBody2D
 	{
 		[Export]

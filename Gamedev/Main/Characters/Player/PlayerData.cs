@@ -4,6 +4,11 @@ using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.Characters.Players
 {
+	/// <summary>
+	/// Contains parameters for the palyer.
+	/// Should be changed in the editor.
+	/// 
+	/// </summary>
 	[GlobalClass]
 	public partial class PlayerData : Resource
 	{
@@ -62,6 +67,12 @@ namespace Gamedev.Main.Characters.Players
 		public Direction Facing = Direction.West;
 		public Direction VisuallyFacing = Direction.West;
 
+		/// <summary>
+		/// Timers for dash, jump and coyote.
+		/// Coyote timer is the timer for how many frames after leaving a platform the palyer has to still jump and not fall.
+		/// Jump is for how much extra force is applied when holding the jump button.
+		/// Dash is to manage the dash's duration.
+		/// </summary>
 		public void ResetTimers()
 		{
 			CoyoteTime = CoyoteTimeFrames;

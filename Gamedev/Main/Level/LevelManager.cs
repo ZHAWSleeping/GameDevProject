@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Gamedev.Main.Levels
 {
+	/// <summary>
+	/// A level selector from which the palyer can select what level they want to play.
+	/// </summary>
 	public partial class LevelManager : Node
 	{
 		public static LevelManager Instance { get; private set; }

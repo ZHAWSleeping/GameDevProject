@@ -5,6 +5,9 @@ using System;
 
 namespace Gamedev.Main.Characters.Enemies
 {
+	/// <summary>
+	/// The detection for when players jump ontop of an enemy and kill the enemy
+	/// </summary>
 	public partial class TopDetectionEnemy : RayCast2D
 	{
 		public event Action PlayerJumpedOnTop = delegate { };

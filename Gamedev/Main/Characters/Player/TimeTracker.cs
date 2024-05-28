@@ -4,6 +4,9 @@ using System;
 
 namespace Gamedev.Main.Characters.Players
 {
+	/// <summary>
+	/// Tracks how long the palyer has played on this specific save.
+	/// </summary>
 	public partial class TimeTracker : Node
 	{
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,6 +15,11 @@ namespace Gamedev.Main.Characters.Players
 			PersistentEvents.OnPlaytimeTicked();
 		}
 
+		/// <summary>
+		/// Truncates milliseconds played into hours, minutes, and seconds.
+		/// </summary>
+		/// <param name="time"></param> 
+		/// <returns></returns>
 		public static string DisplayTicks(long time)
 		{
 			double msec = 1000 / (int)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second") * time;

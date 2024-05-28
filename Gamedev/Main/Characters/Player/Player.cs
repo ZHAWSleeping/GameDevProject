@@ -153,6 +153,9 @@ namespace Gamedev.Main.Characters.Players
 			}
 		}
 
+		/// <summary>
+		/// Resets the player to the respawnpoint of the room and creates a small zoom in and out animation
+		/// </summary>
 		private void Die()
 		{
 			GameStateEvents.OnPlayerDied(GlobalPosition);

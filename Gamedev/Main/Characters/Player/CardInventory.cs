@@ -6,6 +6,12 @@ using Godot;
 
 namespace Gamedev.Main.Characters.Players
 {
+	/// <summary>
+	/// Inventory for how many and what cards the player is holding.
+	/// Max amount can be set/altered.
+	/// If a pickup would exceed the max amount, the oldest card is removed instead.
+	/// Functions as a STACK!
+	/// </summary>
 	public class CardInventory
 	{
 		public const int CardLimit = 3;
@@ -16,6 +22,12 @@ namespace Gamedev.Main.Characters.Players
 			CollisionEvents.CardCollected += Add;
 		}
 
+		/// <summary>
+		/// Adds a given card to the palyers inventory.
+		/// Card is added ontop of the current card stack.
+		/// If card limit would be exceed then the oldest card is removed.
+		/// </summary>
+		/// <param name="card"></param> the card type to be added to the inventory
 		public void Add(PowerUpCard card)
 		{
 			if (Cards.Count() >= CardLimit)

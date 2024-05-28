@@ -4,6 +4,9 @@ using static Gamedev.Main.Extensions.VectorExtensions;
 
 namespace Gamedev.Main.Events
 {
+	/// <summary>
+	/// Events that change gamestates such as when the aplyer dies or when he respawns. (stop and resume scenes)
+	/// </summary>
 	public static class GameStateEvents
 	{
 		public static event Action<Vector2> PlayerDied;
@@ -17,6 +20,9 @@ namespace Gamedev.Main.Events
 			Clear();
 		}
 
+		/// <summary>
+		/// CLears all signals so that when a new level is loaded no old connections are up which could lead to nullpointers.
+		/// </summary>
 		public static void Clear()
 		{
 			PlayerDied = delegate { };

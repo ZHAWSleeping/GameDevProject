@@ -5,6 +5,9 @@ namespace Gamedev.Main.Characters.Players
 {
 	public partial class PlayerAudioManager : Node2D
 	{
+		/// <summary>
+		/// Handles the audio for the different actions performed by the player character.
+		/// </summary>
 		public enum Sound
 		{
 			Jump,
@@ -34,6 +37,10 @@ namespace Gamedev.Main.Characters.Players
 			stream.Play();
 		}
 
+		/// <summary>
+		/// Stops a given sound from playing
+		/// </summary>
+		/// <param name="sound"></param> Sound object that is supposed to be stopped.
 		public void Stop(Sound sound)
 		{
 			AudioStreamPlayer2D stream = GetNodeOrNull<AudioStreamPlayer2D>(sound.ToString());
