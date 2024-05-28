@@ -4,121 +4,124 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class LevelManager : Node
+namespace Gamedev.Main.Levels
 {
-	public static LevelManager Instance { get; private set; }
-
-	/// <summary>
-	/// List of levels.
-	/// </summary>
-	[Export]
-	private Godot.Collections.Array<PackedScene> ExportedLevels = new();
-
-	/// <summary>
-	/// List of level counts per world. We need this since Godot doesn't support typed nested arrays at the moment.
-	/// </summary>
-	[Export]
-	private Godot.Collections.Array<int> ExportedWorlds = new();
-
-	public PackedScene[][] Levels { get; private set; }
-	public bool[][] LevelsCompleted { get; set; }
-
-	public GameState State;
-
-	public bool InLevel { get; private set; }
-
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public partial class LevelManager : Node
 	{
-		Instance = this;
-		Levels = ExportedWorlds
-			.Select(
-				(w, i) => ExportedLevels.Skip(ExportedWorlds.Take(i).Sum()).Take(w).ToArray()
-			)
-			.ToArray();
-		//Levels = ExportedLevels.Select(w => w.ToArray()).ToArray();
-		LevelsCompleted = Levels.Select(w => w.Select(_ => false).ToArray()).ToArray();
-		PersistentEvents.LevelChangeRequested += ChangeLevel;
-		PersistentEvents.LevelFinished += MarkAsCompleted;
-		PersistentEvents.RoomChanged += ChangeRoom;
-		PersistentEvents.LevelSelected += ChangeLevel;
-		PersistentEvents.PlaytimeTicked += Tick;
-		//PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
+		public static LevelManager Instance { get; private set; }
 
-	}
+		/// <summary>
+		/// List of levels.
+		/// </summary>
+		[Export]
+		private Godot.Collections.Array<PackedScene> ExportedLevels = new();
 
-	private bool IsInBounds(int world, int level)
-	{
-		return world >= 0
-			&& world < Levels.Length
-			&& level >= 0
-			&& level < Levels[world].Length;
-	}
+		/// <summary>
+		/// List of level counts per world. We need this since Godot doesn't support typed nested arrays at the moment.
+		/// </summary>
+		[Export]
+		private Godot.Collections.Array<int> ExportedWorlds = new();
 
-	private void ChangeLevel(GameState state)
-	{
-		var world = state.CurrentWorld;
-		var level = state.CurrentLevel;
+		public PackedScene[][] Levels { get; private set; }
+		public bool[][] LevelsCompleted { get; set; }
 
-		if (IsInBounds(world, level))
+		public GameState State;
+
+		public bool InLevel { get; private set; }
+
+
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
 		{
-			State = state;
-		}
-		else if (IsInBounds(world, level - 1) && IsInBounds(world + 1, 0))
-		{
-			State = state;
-			State.CurrentWorld += 1;
-			State.CurrentLevel = 0;
-		}
-		else
-		{
-			State = state;
-			State.CurrentWorld = 0;
-			State.CurrentLevel = 0;
-			GD.PrintErr($"Attempted to load invalid level {world}-{level}, loading default level {0}-{0}");
-		}
-		InLevel = true;
-		PersistentEvents.OnGameSceneChangeRequested(Levels[State.CurrentWorld][State.CurrentLevel]);
-		State.File.World = State.CurrentWorld;
-		State.File.Level = State.CurrentLevel;
-		State.File.Room = State.CurrentRoom;
-		SaveManager.Save(State.File.Slot);
-		DebugEvents.OnRoomChanged(this);
-	}
+			Instance = this;
+			Levels = ExportedWorlds
+				.Select(
+					(w, i) => ExportedLevels.Skip(ExportedWorlds.Take(i).Sum()).Take(w).ToArray()
+				)
+				.ToArray();
+			//Levels = ExportedLevels.Select(w => w.ToArray()).ToArray();
+			LevelsCompleted = Levels.Select(w => w.Select(_ => false).ToArray()).ToArray();
+			PersistentEvents.LevelChangeRequested += ChangeLevel;
+			PersistentEvents.LevelFinished += MarkAsCompleted;
+			PersistentEvents.RoomChanged += ChangeRoom;
+			PersistentEvents.LevelSelected += ChangeLevel;
+			PersistentEvents.PlaytimeTicked += Tick;
+			//PersistentEvents.OnGameSceneChangeRequested(Levels[World][Level]);
 
-	private void MarkAsCompleted(GameState state)
-	{
-		int world = state.CurrentWorld;
-		int level = state.CurrentLevel;
-		if (IsInBounds(world, level))
-		{
-			State.File.CompletedLevels[world][level] = true;
 		}
-		else
+
+		private bool IsInBounds(int world, int level)
 		{
-			GD.PrintErr($"Attempted to complete non-existent level {world}-{level}");
+			return world >= 0
+				&& world < Levels.Length
+				&& level >= 0
+				&& level < Levels[world].Length;
 		}
-		InLevel = false;
-		PersistentEvents.OnWorldSelected(State);
-		State.CurrentRoom = -1;
-		SaveManager.Save(State.File.Slot);
-		DebugEvents.OnRoomChanged(this);
-	}
 
-	private void ChangeRoom(int room)
-	{
-		State.CurrentRoom = room;
-		DebugEvents.OnRoomChanged(this);
-	}
+		private void ChangeLevel(GameState state)
+		{
+			var world = state.CurrentWorld;
+			var level = state.CurrentLevel;
 
-	public void Tick()
-	{
-		State.File.PlaytimeTicks += 1;
-	}
+			if (IsInBounds(world, level))
+			{
+				State = state;
+			}
+			else if (IsInBounds(world, level - 1) && IsInBounds(world + 1, 0))
+			{
+				State = state;
+				State.CurrentWorld += 1;
+				State.CurrentLevel = 0;
+			}
+			else
+			{
+				State = state;
+				State.CurrentWorld = 0;
+				State.CurrentLevel = 0;
+				GD.PrintErr($"Attempted to load invalid level {world}-{level}, loading default level {0}-{0}");
+			}
+			InLevel = true;
+			PersistentEvents.OnGameSceneChangeRequested(Levels[State.CurrentWorld][State.CurrentLevel]);
+			State.File.World = State.CurrentWorld;
+			State.File.Level = State.CurrentLevel;
+			State.File.Room = State.CurrentRoom;
+			SaveManager.Save(State.File.Slot);
+			DebugEvents.OnRoomChanged(this);
+		}
 
-	public void Die()
-	{
-		State.File.Deaths += 1;
+		private void MarkAsCompleted(GameState state)
+		{
+			int world = state.CurrentWorld;
+			int level = state.CurrentLevel;
+			if (IsInBounds(world, level))
+			{
+				State.File.CompletedLevels[world][level] = true;
+			}
+			else
+			{
+				GD.PrintErr($"Attempted to complete non-existent level {world}-{level}");
+			}
+			InLevel = false;
+			PersistentEvents.OnWorldSelected(State);
+			State.CurrentRoom = -1;
+			SaveManager.Save(State.File.Slot);
+			DebugEvents.OnRoomChanged(this);
+		}
+
+		private void ChangeRoom(int room)
+		{
+			State.CurrentRoom = room;
+			DebugEvents.OnRoomChanged(this);
+		}
+
+		public void Tick()
+		{
+			State.File.PlaytimeTicks += 1;
+		}
+
+		public void Die()
+		{
+			State.File.Deaths += 1;
+		}
 	}
 }

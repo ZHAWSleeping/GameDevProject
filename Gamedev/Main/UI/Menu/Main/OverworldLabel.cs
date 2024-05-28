@@ -3,14 +3,17 @@ using Gamedev.Main.UI.Scrollable;
 using Godot;
 using System;
 
-public partial class OverworldLabel : SelectableLabel
+namespace Gamedev.Main.UI.Menu
 {
-	[Export]
-	private PackedScene overworldScene;
-
-	public override void Trigger()
+	public partial class OverworldLabel : SelectableLabel
 	{
-		base.Trigger();
-		PersistentEvents.OnSceneChangeRequested(overworldScene);
+		[Export]
+		private PackedScene overworldScene;
+
+		public override void Trigger()
+		{
+			base.Trigger();
+			PersistentEvents.OnSceneChangeRequested(overworldScene);
+		}
 	}
 }

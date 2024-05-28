@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Gamedev.Main.Characters.Player;
+using Gamedev.Main.Characters.Players;
 using Gamedev.Main.Events;
 using Godot;
 

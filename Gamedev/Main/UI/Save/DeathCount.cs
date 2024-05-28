@@ -1,19 +1,22 @@
 using Godot;
 using System;
 
-public partial class DeathCount : Label
+namespace Gamedev.Main.UI.Save
 {
-	public int Count
+	public partial class DeathCount : Label
 	{
-		set
+		public int Count
 		{
-			_count = value;
-			Text = value.ToString();
+			set
+			{
+				_count = value;
+				Text = value.ToString();
+			}
+			get
+			{
+				return _count;
+			}
 		}
-		get
-		{
-			return _count;
-		}
+		private int _count;
 	}
-	private int _count;
 }

@@ -1,25 +1,28 @@
 using Godot;
 using System;
 
-public partial class Profile : TextureRect
+namespace Gamedev.Main.UI.Save
 {
-	[Export]
-	private Texture2D SavedTexture;
-
-	[Export]
-	private Texture2D UnsavedTexture;
-
-	public bool HasSaveData
+	public partial class Profile : TextureRect
 	{
-		set
+		[Export]
+		private Texture2D SavedTexture;
+
+		[Export]
+		private Texture2D UnsavedTexture;
+
+		public bool HasSaveData
 		{
-			_hasSaveData = value;
-			Texture = value ? SavedTexture : UnsavedTexture;
+			set
+			{
+				_hasSaveData = value;
+				Texture = value ? SavedTexture : UnsavedTexture;
+			}
+			get
+			{
+				return _hasSaveData;
+			}
 		}
-		get
-		{
-			return _hasSaveData;
-		}
+		private bool _hasSaveData;
 	}
-	private bool _hasSaveData;
 }

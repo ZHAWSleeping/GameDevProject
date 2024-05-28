@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	/// <summary>
 	/// The player's movement state machine. Transitions are checked first. Then, the state gets executed.

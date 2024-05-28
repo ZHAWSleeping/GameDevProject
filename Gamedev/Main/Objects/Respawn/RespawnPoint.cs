@@ -1,10 +1,13 @@
 using Godot;
 using System;
 
-public partial class RespawnPoint : Sprite2D
+namespace Gamedev.Main.Objects.Respawn
 {
-	public override void _Ready()
+	public partial class RespawnPoint : Sprite2D
 	{
-		//Visible = false;
+		public override void _Ready()
+		{
+			//Visible = false;
+		}
 	}
 }

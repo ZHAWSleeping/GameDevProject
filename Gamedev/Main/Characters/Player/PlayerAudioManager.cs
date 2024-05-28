@@ -1,7 +1,7 @@
 using Gamedev.Main.Events;
 using Godot;
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	public partial class PlayerAudioManager : Node2D
 	{

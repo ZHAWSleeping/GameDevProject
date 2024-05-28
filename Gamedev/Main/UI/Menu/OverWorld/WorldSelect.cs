@@ -7,49 +7,52 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class WorldSelect : ScrollableMenu<GameState, GameState>
+namespace Gamedev.Main.UI.Menu
 {
-	[Export]
-	private PackedScene WorldScene;
-
-	protected override event Action<GameState> HideEvent
+	public partial class WorldSelect : ScrollableMenu<GameState, GameState>
 	{
-		add
-		{
-			PersistentEvents.WorldSelected += value;
-		}
-		remove
-		{
-			PersistentEvents.WorldSelected -= value;
-		}
-	}
+		[Export]
+		private PackedScene WorldScene;
 
-	protected override event Action<GameState> ShowEvent
-	{
-		add
+		protected override event Action<GameState> HideEvent
 		{
-			PersistentEvents.SaveSelected += value;
-		}
-		remove
-		{
-			PersistentEvents.SaveSelected -= value;
-		}
-	}
-
-	protected override void GenerateChildren(GameState state)
-	{
-		Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
-		for (int i = 0; i < state.File.CompletedLevels.Length; i++)
-		{
-			WorldPanel panel = WorldScene.Instantiate<WorldPanel>();
-			panel.UpdateChildren(new GameState
+			add
 			{
-				File = state.File,
-				CurrentWorld = i,
-				CurrentLevel = state.CurrentLevel,
-				CurrentRoom = state.CurrentRoom,
-			});
-			Scrollable.Instance.AddChild(panel);
+				PersistentEvents.WorldSelected += value;
+			}
+			remove
+			{
+				PersistentEvents.WorldSelected -= value;
+			}
+		}
+
+		protected override event Action<GameState> ShowEvent
+		{
+			add
+			{
+				PersistentEvents.SaveSelected += value;
+			}
+			remove
+			{
+				PersistentEvents.SaveSelected -= value;
+			}
+		}
+
+		protected override void GenerateChildren(GameState state)
+		{
+			Scrollable.Instance.GetChildren().ToList().ForEach(c => c.QueueFree());
+			for (int i = 0; i < state.File.CompletedLevels.Length; i++)
+			{
+				WorldPanel panel = WorldScene.Instantiate<WorldPanel>();
+				panel.UpdateChildren(new GameState
+				{
+					File = state.File,
+					CurrentWorld = i,
+					CurrentLevel = state.CurrentLevel,
+					CurrentRoom = state.CurrentRoom,
+				});
+				Scrollable.Instance.AddChild(panel);
+			}
 		}
 	}
 }

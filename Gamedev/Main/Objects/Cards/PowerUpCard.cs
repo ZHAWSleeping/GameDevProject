@@ -1,4 +1,4 @@
-using Gamedev.Main.Characters.Player;
+using Gamedev.Main.Characters.Players;
 using Godot;
 
 namespace Gamedev.Main.Objects.Cards

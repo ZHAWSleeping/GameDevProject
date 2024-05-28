@@ -7,7 +7,7 @@ using System.Linq;
 
 
 
-namespace Gamedev.Main.Characters.Player
+namespace Gamedev.Main.Characters.Players
 {
 	public partial class PlayerSprite : Node2D
 	{

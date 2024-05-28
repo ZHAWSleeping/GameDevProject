@@ -3,42 +3,45 @@ using Gamedev.Main.Persistent;
 using Godot;
 using System;
 
-public partial class Root : Control
+namespace Gamedev.Main.UI
 {
-	[Export]
-	private PackedScene GameOverScene;
-	[Export]
-	private PackedScene pauseScreen;
-
-	private PackedScene activeScene;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public partial class Root : Control
 	{
-		RenderingServer.SetDefaultClearColor(Colors.Black);
-		//StateEvents.LevelFinished += ReplaceScene;
-		PersistentEvents.SceneChangeRequested += ReplaceScene;
-		PersistentEvents.QuitRequested += QuitGame;
-	}
+		[Export]
+		private PackedScene GameOverScene;
+		[Export]
+		private PackedScene pauseScreen;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+		private PackedScene activeScene;
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
+		{
+			RenderingServer.SetDefaultClearColor(Colors.Black);
+			//StateEvents.LevelFinished += ReplaceScene;
+			PersistentEvents.SceneChangeRequested += ReplaceScene;
+			PersistentEvents.QuitRequested += QuitGame;
+		}
 
-	public void QuitGame()
-	{
-		GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
-		GetTree().Quit();
-	}
+		// Called every frame. 'delta' is the elapsed time since the previous frame.
+		public override void _Process(double delta)
+		{
+		}
+
+		public void QuitGame()
+		{
+			GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
+			GetTree().Quit();
+		}
 
 
-	private void GameOver()
-	{
-		AddChild(GameOverScene.Instantiate());
-	}
+		private void GameOver()
+		{
+			AddChild(GameOverScene.Instantiate());
+		}
 
-	private void ReplaceScene(PackedScene packedScene)
-	{
-		AddChild(packedScene.Instantiate());
+		private void ReplaceScene(PackedScene packedScene)
+		{
+			AddChild(packedScene.Instantiate());
+		}
 	}
 }

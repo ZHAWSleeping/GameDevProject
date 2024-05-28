@@ -3,27 +3,30 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class WorldProgress : HBoxContainer
+namespace Gamedev.Main.UI.Save
 {
-	[Export]
-	private PackedScene CompleteWorldScene;
-
-	[Export]
-	private PackedScene IncompleteWorldScene;
-
-	public void Generate(bool[][] CompletedLevels)
+	public partial class WorldProgress : HBoxContainer
 	{
-		foreach (var World in CompletedLevels)
-		{
-			if (World.All(b => b) && World.Any())
-			{
-				AddChild(CompleteWorldScene.Instantiate());
-			}
-			else
-			{
-				AddChild(IncompleteWorldScene.Instantiate());
-			}
-		}
+		[Export]
+		private PackedScene CompleteWorldScene;
 
+		[Export]
+		private PackedScene IncompleteWorldScene;
+
+		public void Generate(bool[][] CompletedLevels)
+		{
+			foreach (var World in CompletedLevels)
+			{
+				if (World.All(b => b) && World.Any())
+				{
+					AddChild(CompleteWorldScene.Instantiate());
+				}
+				else
+				{
+					AddChild(IncompleteWorldScene.Instantiate());
+				}
+			}
+
+		}
 	}
 }
