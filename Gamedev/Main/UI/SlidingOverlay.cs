@@ -18,22 +18,29 @@ namespace Gamedev.Main.UI
 
 		}
 
-		// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
-		{
-		}
-
+		/// <summary>
+		/// Tween to slide in an overlay
+		/// </summary>
+		/// <param name="tween"></param> tween for the overlay
 		public void SlideIn(Tween tween)
 		{
 			tween.TweenProperty(this, PropertyName.Position.ToString(), Vector2.Zero, SlideDuration).SetDelay(0.2f);
 		}
 
+		/// <summary>
+		/// Tween to remove a overlay
+		/// </summary>
+		/// <param name="tween"></param> tween for the overlay
 		public void SlideOut(Tween tween)
 		{
 			tween.TweenProperty(this, PropertyName.Position.ToString(), new Vector2(0, (int)Size.Y), SlideDuration).SetDelay(0.2f);
 		}
 
 
+		/// <summary>
+		/// Reloads the current scene
+		/// </summary>
+		/// <param name="_"></param>
 		public void RestartGame(Vector2 _)
 		{
 			Tween tween = CreateTween();
@@ -49,6 +56,10 @@ namespace Gamedev.Main.UI
 			.SetDelay(1.0f);
 		}
 
+		/// <summary>
+		/// Tweene transition between scenes
+		/// </summary>
+		/// <param name="callback"></param>
 		public void Transition(Callable callback)
 		{
 			Tween tween = CreateTween();

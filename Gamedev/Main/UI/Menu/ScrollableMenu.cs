@@ -9,6 +9,12 @@ using Godot;
 
 namespace Gamedev.Main.UI.Menu
 {
+	/// <summary>
+	/// Can generate children and has different states for show, hide.
+	/// Params are used for events.
+	/// </summary>
+	/// <typeparam name="TShow"></typeparam> state when shown
+	/// <typeparam name="THide"></typeparam> state when hidden
 	public abstract partial class ScrollableMenu<TShow, THide> : Control
 	{
 		[Export]

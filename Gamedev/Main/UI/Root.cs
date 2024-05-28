@@ -22,11 +22,6 @@ namespace Gamedev.Main.UI
 			PersistentEvents.QuitRequested += QuitGame;
 		}
 
-		// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
-		{
-		}
-
 		public void QuitGame()
 		{
 			GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);

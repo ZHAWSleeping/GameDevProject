@@ -4,6 +4,9 @@ using System;
 
 namespace Gamedev.Main.UI
 {
+	/// <summary>
+	/// Counter for how many batteries the player is carrying/has collected.
+	/// </summary>
 	public partial class BatteryCounter : HBoxContainer
 	{
 

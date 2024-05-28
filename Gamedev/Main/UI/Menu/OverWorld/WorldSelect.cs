@@ -9,6 +9,11 @@ using System.Linq;
 
 namespace Gamedev.Main.UI.Menu
 {
+	/// <summary>
+	/// Inherits from scrollable menu.
+	/// Has different gamestates.
+	/// Has multiple worlds as children and some stats about their levels.
+	/// </summary>
 	public partial class WorldSelect : ScrollableMenu<GameState, GameState>
 	{
 		[Export]
