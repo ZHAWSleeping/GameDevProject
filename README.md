@@ -2,7 +2,7 @@
 
 # Undercard Odyssey
 
-In this upcoming platformer you must use the power of the magical headband to venture through a mysterious cavern. Make use of special cards that empower your abilities to reach new heights.
+In this upcoming platformer you must use the power of the magical headband to venture through a mysterious cavern. Make use of special cards that empower your abilities to reach new heights (or lows).
 
 ## Installation
 
