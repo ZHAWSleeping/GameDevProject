@@ -8,6 +8,14 @@ In this upcoming platformer you must use the power of the magical headband to ve
 
 Undercard Odyssey does not require installation. Simply download the Game from [the "Releases" tab]() for Linux, Windows or MacOS. Do note that the MacOS version is untested and may be blocked by [Gatekeeper](https://en.wikipedia.org/wiki/Gatekeeper_(macOS)). Otherwise, ensure that the executable and the `.pck` file share the same name and are located in the same directory.
 
+**NOTE:** In some cases you may have to delete your save file since there is currently no way to return to the level select without finishing a level. The savefile is located in these locations:
+
+|OS|Location|
+|-|-|
+|Linux|`~/.local/share/godot/app_userdata/Undercard Odyssey/user.save`|
+|MacOS|`~/Library/Application Support/Godot/app_userdata/Undercard Odyssey/user.save`|
+|Windows|`%APPDATA%\Godot\app_userdata\Undercard Odyssey\user.save`|
+
 ### Controls
 
 |Action|Keyboard|Controller (XBox)|
