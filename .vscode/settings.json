@@ -1,4 +1,5 @@
 {
     "dotnetAcquisitionExtension.enableTelemetry": false,
     "rest-client.enableTelemetry": false,
+    "MarkdownPaste.path": "${fileDirname}/doc/img",
 }

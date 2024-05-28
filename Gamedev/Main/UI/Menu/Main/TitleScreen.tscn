@@ -34,7 +34,8 @@ layout_mode = 2
 [node name="Title" type="Label" parent="HBoxContainer/MarginContainer/ScrollableVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 156
-text = "Working Title"
+text = "Undercard
+Odyssey"
 
 [node name="PlayLabel" parent="HBoxContainer/MarginContainer/ScrollableVBox" instance=ExtResource("3_dlai4")]
 layout_mode = 2
